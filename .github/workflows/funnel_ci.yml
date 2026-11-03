@@ -1,0 +1,55 @@
+name: "Funnel AI Research & Kernel CI/CD"
+
+on:
+  schedule:
+    # Runs everyday at 00:00 UTC (08:00 AM SGT)
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+    inputs:
+      force_run:
+        description: "Force immediate funnel collection"
+        required: false
+        default: true
+        type: boolean
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  collect-and-funnel:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run Research & Kernel Funnel Collector
+        run: |
+          python3 scripts/funnel_collector.py
+
+      - name: Update Main README Index
+        run: |
+          python3 -c "
+          import os, glob
+          daily_files = sorted(glob.glob('data/daily/*.md'), reverse=True)
+          if not daily_files:
+              exit(0)
+          latest_file = daily_files[0]
+          print(f'Latest funnel snapshot: {latest_file}')
+          "
+
+      - name: Commit and Push Changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore(ci): automated daily research & kernel funnel [skip ci]"
+          file_pattern: "data/daily/* README.md"
+          commit_user_name: "github-actions[bot]"
+          commit_user_email: "github-actions[bot]@users.noreply.github.com"
+          commit_author: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
