@@ -1,0 +1,132 @@
+{
+  "dense_equivalence_diff": 0.0,
+  "beta_ablation": [
+    {
+      "beta": 0.0,
+      "recall_at_4": 70.0
+    },
+    {
+      "beta": 0.4,
+      "recall_at_4": 81.66666666666667
+    },
+    {
+      "beta": 0.8,
+      "recall_at_4": 90.0
+    },
+    {
+      "beta": 1.2,
+      "recall_at_4": 93.33333333333333
+    },
+    {
+      "beta": 1.6,
+      "recall_at_4": 98.33333333333333
+    }
+  ],
+  "context_sweep": [
+    {
+      "context_length": 1024,
+      "k_chunks": 6,
+      "cisa_recall": 92.0,
+      "ada_cisa_recall": 98.0,
+      "gain": 6.0
+    },
+    {
+      "context_length": 2048,
+      "k_chunks": 6,
+      "cisa_recall": 84.0,
+      "ada_cisa_recall": 98.0,
+      "gain": 14.0
+    },
+    {
+      "context_length": 4096,
+      "k_chunks": 6,
+      "cisa_recall": 74.0,
+      "ada_cisa_recall": 86.0,
+      "gain": 12.0
+    },
+    {
+      "context_length": 8192,
+      "k_chunks": 6,
+      "cisa_recall": 72.0,
+      "ada_cisa_recall": 92.0,
+      "gain": 20.0
+    }
+  ],
+  "dispersion_results": [
+    {
+      "scenario": "Coherent Prompt",
+      "static_cossim": 0.4108616883951135,
+      "da_cossim": 0.4108616883951135,
+      "partitions": 1
+    },
+    {
+      "scenario": "Moderate Divergence",
+      "static_cossim": 0.3832131297300758,
+      "da_cossim": 0.3715996910862464,
+      "partitions": 3
+    },
+    {
+      "scenario": "Topic/Phase Boundary",
+      "static_cossim": 0.34670525200069346,
+      "da_cossim": 0.3800905182395447,
+      "partitions": 2
+    }
+  ],
+  "layer_budget": {
+    "fixed_avg_kl": 13.306558584569288,
+    "ada_avg_kl": 12.590119390306151,
+    "kl_reduction_pct": 5.3841058130081985,
+    "total_fixed_chunks": 128,
+    "total_ada_chunks": 192
+  },
+  "hardware_projections": [
+    {
+      "context_tokens": 4096,
+      "dense_mb": 16.0,
+      "cisa_mb": 4.6875,
+      "ada_cisa_mb": 4.0,
+      "bandwidth_reduction_factor": 4.0,
+      "projected_speedup": 2.3876236163079025
+    },
+    {
+      "context_tokens": 16384,
+      "dense_mb": 64.0,
+      "cisa_mb": 6.1875,
+      "ada_cisa_mb": 5.5,
+      "bandwidth_reduction_factor": 11.636363636363637,
+      "projected_speedup": 5.150757658949366
+    },
+    {
+      "context_tokens": 65536,
+      "dense_mb": 256.0,
+      "cisa_mb": 12.1875,
+      "ada_cisa_mb": 11.5,
+      "bandwidth_reduction_factor": 22.26086956521739,
+      "projected_speedup": 8.216994610475757
+    },
+    {
+      "context_tokens": 131072,
+      "dense_mb": 512.0,
+      "cisa_mb": 20.1875,
+      "ada_cisa_mb": 19.5,
+      "bandwidth_reduction_factor": 26.256410256410255,
+      "projected_speedup": 9.254056012998817
+    },
+    {
+      "context_tokens": 524288,
+      "dense_mb": 2048.0,
+      "cisa_mb": 68.1875,
+      "ada_cisa_mb": 67.5,
+      "bandwidth_reduction_factor": 30.340740740740742,
+      "projected_speedup": 10.269316083002561
+    },
+    {
+      "context_tokens": 1048576,
+      "dense_mb": 4096.0,
+      "cisa_mb": 132.1875,
+      "ada_cisa_mb": 131.5,
+      "bandwidth_reduction_factor": 31.14828897338403,
+      "projected_speedup": 10.465386997259268
+    }
+  ]
+}
