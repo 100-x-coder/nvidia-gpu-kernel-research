@@ -1,0 +1,522 @@
+{
+  "Attention & Sequence Kernels": {
+    "keywords": [
+      "attention",
+      "flashattention",
+      "flash-attention",
+      "ringattention",
+      "linear attention",
+      "mla",
+      "multi-head latent attention",
+      "kv cache",
+      "paged attention",
+      "vllm",
+      "flashinfer",
+      "context extension",
+      "long-context"
+    ],
+    "items": [
+      {
+        "title": "Supporting Viewpoint Coordination for Compliance by Design with an Artifact Model for Regulatory Requirements Engineering",
+        "summary": "Regulatory compliance has become an essential software requirement Legal demands for compliance by design CbD call for requirements engineering RE approaches that derive requirements and support compliance implementation in subsequent software engineering SE processes such as software design The complexity of the legal knowledge demanded in regulatory RE makes it important to involve legal experts and ensure the relevant specifications are valid and usable for them Regulatory requirements must support compliance implementation in software design However there is a lack of approaches bridging legal and SE viewpoints and interaction challenges between the two persist To address engineeringlegal coordination in specification of regulatory requirements we propose the Artifact Model for Regulatory Requirements Engineering AM4RRE operationalized through templates AM4RRE was positively evaluated by most of the 37 practitioners for coordination in regulatory RE and for supporting requirements quality Results from a quasiexperiment with 34 of them in 10 groups indicated that templateguided coordination was associated with on average shorter total specification time when executed first and higher requirements quality in most groups in which it varied Existing RE research and practice provide little attention and support for viewpoint coordination in regulatory RE for CbD Artifactoriented approaches such as AM4RRE have the potential to guide coordination in RE for better RE results and contribute to concretizing the role and contribution of RE to CbD",
+        "url": "http://arxiv.org/abs/2611.03631v1",
+        "date": "2026-11-02",
+        "author": "Oleksandr Kosenkov",
+        "type": "Paper"
+      },
+      {
+        "title": "Reviso: Not All Visual Evidence Deserves Equal Attention in Video Captioning",
+        "summary": "Multimodal large language models (MLLMs) can generate detailed video captions, yet they may overemphasize minor details while overlooking essential context and key events. We argue that not all visual evidence deserves equal attention, as the importance of visual information depends on the content of each video. Motivated by this observation, we propose Reviso, an agentic video captioning framework that learns what to observe and how to gather relevant visual evidence. From a low-frame-rate global preview, Reviso constructs a hierarchical Context--Focus--Points (CFP) observation plan that identifies the video context, prioritizes key aspects, and defines concrete observation targets and corresponding tools. Guided by this plan, Reviso performs goal-directed active perception by selectively revisiting temporal segments and combining tools for fine-grained inspection. It interprets the acquired evidence, updates its plan as needed, and integrates global and local information to generate the final caption. To learn this observation strategy, we develop a verification-guided pipeline that constructs high-quality training trajectories through factual verification and teacher-guided refinement. We further train Reviso using Group Relative Policy Optimization (GRPO), incorporating a key-fact reward for caption quality, a Plan Alignment Reward (PAR) for identifying important observation targets, and an Unproductive Tool-Call Penalty (UTCP) that adjusts observation-cost penalties based on caption quality. Experiments across four video captioning benchmarks show that Reviso outperforms the evaluated open-source baselines, while its generated captions better support downstream video question answering. These findings highlight the effectiveness and potential of priority-guided active observation for video captioning.",
+        "url": "http://arxiv.org/abs/2611.03602v1",
+        "date": "2026-11-02",
+        "author": "Tengfei Liu",
+        "type": "Paper"
+      },
+      {
+        "title": "ParaDeAl: Parallel Descent Algorithms for Sparse Statistics",
+        "summary": "Best subset selection is a central problem in statistical regression, drawing increasing attention from the broader optimization and machine learning communities. Solving the hard L0 sparsity constraint directly has been computationally challenging; as a result, most existing work proposes formulations which do not enforce the constraint, but instead use a mix of L0/L1/L2 penalties to encourage sparsity. Modern methods for solving such penalized formulations are tractable for p = 100,000, but give up direct control over sparsity. In this paper, we propose a two-stage proximal gradient descent-based approach which both enforces the sparsity constraint and incorporates L1/L2 penalties, leveraging GPUs for computational acceleration to find approximate solutions. Our method, ParaDeAl, offers the user the ability to select the problem hyperparameters, solves all configurations in parallel, and obtains solutions up to 15x faster than the best state-of-the-art CPU competitors while achieving almost identical test accuracy for the same support size for large (p > 100,000) synthetic and real-world datasets.",
+        "url": "http://arxiv.org/abs/2611.03529v1",
+        "date": "2026-11-02",
+        "author": "Adam Deng",
+        "type": "Paper"
+      },
+      {
+        "title": "ST-GFM: Spectral-Temporal Graph Forecasting with Measured Perturbation Bounds and Masked Spectral Reconstruction",
+        "summary": "Graph forecasters for sensor networks are trained in one regime and deployed in others, where sensor coupling and signal frequency content both change. We split this spectral shift into an operator channel and a frequency channel, each with a dimensionless measure. ST-GFM (Spectral-Temporal Graph Forecasting Model) filters every input step with Chebyshev and bidirectional diffusion filters on one learned, non-symmetric operator and alternates them with per-node temporal attention. For the operator channel we prove Frobenius-norm perturbation bounds for both graph branches, show that the Chebyshev bound is attained to first order, and compute its constant from the trained weights and the measured operator norm: 17.9 on METR-LA and 21.5 on PEMS-BAY. Under random edge dropout the trained layer moves by 2.0% to 3.1% of this bound. Masked Spectral Reconstruction (MSR), a self-supervised loss active in the first 40 epochs, matches the log power spectrum of the encoder output to that of the input. For small log-spectral residuals on unclamped bins it is proportional to an Itakura-Saito divergence to leading order. Removing it raises the 60-minute MAE by 0.30 on METR-LA, close to the 0.33 lost when all three self-supervised losses go. Under one shared evaluation pipeline, the 60-minute MAE of ST-GFM is 3.5% below a retrained STAEformer on METR-LA and 13.0% below it on PEMS-BAY. Its 60-minute MAE is 3.0980.017 on METR-LA (five seeds) and 1.5760.006 on PEMS-BAY (three seeds), the lowest PEMS-BAY MAE among twelve published baselines.",
+        "url": "http://arxiv.org/abs/2611.03512v1",
+        "date": "2026-11-02",
+        "author": "Aashish Bohra",
+        "type": "Paper"
+      },
+      {
+        "title": "Stochastic Matching with Polynomial Degree",
+        "summary": "We study the stochastic matching problem, where a graph $G$ is known in advance, but each edge survives independently with probability $p$. The goal is to select a subgraph $H$ of small maximum degree before seeing the surviving edges, while preserving a $(1-ε)$ fraction of the expected maximum matching size. This problem has received significant attention due to its numerous applications in kidney exchange, labor markets, and online dating.   In this paper, we show there is always a subgraph $H \\subseteq G$ achieving a $(1-ε)$-approximation while having a maximum degree of at most $O\\left(\\frac{\\log(1/ε)}{ε^4} \\cdot \\frac{1}{p}\\right).$ This resolves a major conjecture of the literature, first stated by [BDH, STOC'20], that $poly(\\frac{1}{εp})$ degrees suffice. The best previous bound was $(1/p)^{\\exp((1/ε)\\log(1/ε))}$ by [ABGR, STOC'25].   The key to this result is a lemma of independent interest that any distribution over the matchings of a stochastic graph can be transformed to another distribution which matches each vertex with exactly the same probability, but exhibits extremely low total pairwise correlation.",
+        "url": "http://arxiv.org/abs/2611.03367v1",
+        "date": "2026-11-02",
+        "author": "Soheil Behnezhad",
+        "type": "Paper"
+      },
+      {
+        "title": "Six-hourly Probabilistic Precipitation Forecasts Created From Hourly Probabilities",
+        "summary": "A lightweight neural network is described that produces six-hourly, spatially detailed probabilistic quantitative precipitation forecasts (PQPF) from a sequence of hourly spatially detailed probabilistic forecasts, for lead times from 6 to 72\\,h. The hourly forecasts were generated by a ``zero-inflated'' Attention Residual U-Net that outputs the parameters of a probability distribution including a probability of no precipitation and a weighted mixture of two Gamma distributions at each grid point for each hourly forecast lead time. The six-hourly network passes the six consecutive hourly parameter sets, together with summary statistics of the spatial texture of the raw deterministic forecast, through a small recurrent (GRU) layer and a multi-layer perceptron, and maps them to a corresponding zero-inflated mixture of three Gamma distributions describing the six-hourly accumulated precipitation. Training uses sets of hourly probabilistic forecasts, drawn preferentially from wet and heavy-precipitation cases (importance sampling), and matched Multi-Radar Multi-Sensor (MRMS) six-hourly precipitation accumulations, subject to a quality threshold. The resulting six-hourly probabilistic forecasts are well calibrated and skillful, as demonstrated by reliability diagrams, performance diagrams and Brier Skill Scores evaluated over an out-of-sample period spanning day 12 through the end of every month of 2025. The Brier Skill Scores are consistently and significantly higher than those of a baseline that sums independent draws from the hourly distributions. Forecasts show realistic modulation of precipitation related to terrain variations",
+        "url": "http://arxiv.org/abs/2611.03326v1",
+        "date": "2026-11-02",
+        "author": "Thomas M Hamill",
+        "type": "Paper"
+      },
+      {
+        "title": "R$^2$-Omni: Reducing Structural and Precision Redundancy in Omni-LLMs for Long-Form Generation",
+        "summary": "Omni-modal large language models (Omni-LLMs) typically process large numbers of multimodal tokens from audio-visual inputs, incurring substantial computational costs and a large memory footprint for the key-value (KV) cache. Aggressive token pruning can alleviate this problem while maintaining competitive performance on multiple-choice tasks, which require only a single option as output. However, we observe substantial quality degradation when generating long-form, open-ended responses. We attribute this gap to query-guided selection, which can retain sufficient evidence for answer selection while discarding details needed for comprehensive generation. This motivates reducing overlapping information across tokens, termed structural redundancy, while preserving diverse content. However, the retained representations may still contain precision redundancy due to unnecessarily high numerical precision in their cached values. To address these two levels of redundancy in token representations, we introduce a training-free framework named R$^2$-Omni. First, Structure-Aware Token Consolidation (STC) consolidates redundant representations using spatiotemporal similarity in video and local continuity in audio. Then, Semantic-Sensitivity Guided Precision Allocation (SSPA) allocates value precision to the retained representations according to the estimated reduction in attention-output error under quantized keys, with query attention and audio-visual alignment providing a semantic prior. Extensive experiments on long-form generation benchmarks demonstrate an average 5.0$\\times$ reduction in the memory footprint while preserving 97.98% of baseline generation quality and achieving a 1.48$\\times$ end-to-end speedup, highlighting the benefits of jointly reducing structural and precision redundancy.",
+        "url": "http://arxiv.org/abs/2611.03247v1",
+        "date": "2026-11-02",
+        "author": "Bolong Feng",
+        "type": "Paper"
+      },
+      {
+        "title": "CISA: Retrofitting Dense Attention Models with Chunk-Indexed Sparse Attention",
+        "summary": "Long-context LLM inference is costly because attention repeatedly reads a growing key-value (KV) history. We introduce Chunk-Indexed Sparse Attention (CISA), which retrofits pretrained dense attention models without gradient updates. CISA selects fixed-size KV chunks using compact summaries of existing keys, avoiding token-level indexing and a separate full-length index cache. It uses one indexing query per KV group and shares selected chunks across queries in that group. During prefill, QShare reuses selections across adjacent queries to reduce indexing cost and improve KV reuse and GPU utilization. We evaluate CISA on NVIDIA Nemotron 3 Nano and Ultra, and Inkling-Small. In one-layer BF16 benchmarks at batch size 32 using Ultra's per-device attention dimensions, core attention is 11.7x faster for prefill queries near the end of a 1M-token prompt and 13.0x faster during decode. Including chunk scoring, selection, and all other measured GPU work, speedups are 8.6x and 3.0x. On Ultra NVFP4 with a 4,096-chunk budget, aggregate scores stay within 1.5 percentage points of dense attention on MRCR, LongBench v2, and GraphWalks. RULER sweeps on Nano and Ultra BF16 up to one million tokens show scores within 2.05 percentage points of dense attention with 8-16x fewer KV reads. Serving million-token prompts with 32 concurrent requests and 4K output tokens per request, CISA achieves 2.29x the end-to-end throughput of dense attention using Nemotron 3 Ultra NVFP4 on four NVIDIA B300 GPUs. Selecting fewer chunks increases throughput to 2.61x; in separate GraphWalks evaluations, the smaller budget widens the aggregate score gap from 1.49 to 3.59 percentage points. These results expose a practical quality-speed tradeoff without sparse training.",
+        "url": "http://arxiv.org/abs/2611.03200v1",
+        "date": "2026-11-02",
+        "author": "Mohammed Dabbah",
+        "type": "Paper"
+      },
+      {
+        "title": "Written Once, Read Differently How Language Models Own Answers Steer Their Next Ones",
+        "summary": "When a language model answers a yes/no question, that answer changes how it answers a different question about the same entity. We study this \\emph{self-commitment} in 22 open-weight models from four families (0.5B--72B parameters), fixing the model's first answer and measuring the shift in its second across 3,600 question pairs about 120 entities. Each answer writes a \\emph{commitment direction} into the residual stream. The similarity of two questions' directions predicts their coupling on held-out entities ($ρ= 0.43$--$0.85$), and ablating a single direction shared across topics leaves at most 17\\% of the effect in every model. How this direction is read is far less stable: the reading circuit spreads across more attention heads as models grow, instruction tuning makes more questions read it in the opposite sense, and in one model changing only the system prompt reverses the circuit's sign. Ablating the direction while sparing the attention sink removes most of the coupling at under 1.3\\% perplexity cost in 18 of 19 instruction-tuned models, though it shifts standalone answers in two. Without the sink spared, the direction's alignment with the leading principal component of ordinary text predicts which models pay a high cost. Written once, the commitment is read differently across scale, training and prompt.",
+        "url": "http://arxiv.org/abs/2611.03198v1",
+        "date": "2026-11-02",
+        "author": "Marcus Armstrong",
+        "type": "Paper"
+      },
+      {
+        "title": "KAUSTics-Net: Diffusion-Based Through-Water UAV Restoration with a Semi-Synthetic Dataset",
+        "summary": "Accurate mapping of shallow-water environments using unmanned aerial vehicle (UAV) imagery is challenged by water-induced distortions, including refraction, caustics, and wavelength-dependent attenuation. The scarcity of paired distorted and reference imagery further limits the development of supervised restoration methods. To address this challenge, we introduce KAUSTics, a semi-synthetic dataset combining 1,280 reference patches derived from 32 high-resolution UAV images with 12,800 degraded observations generated through Blender-based water-surface rendering and empirical color and blur augmentations. We further propose KAUSTics-Net, a pixel-space conditional diffusion framework integrating a multi-scale conditional encoder, feature-wise linear modulation (FiLM), cross-attention, and a composite reconstruction objective to restore shallow-water imagery. We evaluated the framework against eight image-restoration methods, complemented by architectural ablations and cross-dataset experiments. On KAUSTics, KAUSTics-Net achieved a mean peak signal-to-noise ratio (PSNR) of 31.715 +/- 0.439 dB, structural similarity index (SSIM) of 0.849 +/- 0.002, and learned perceptual image patch similarity (LPIPS) of 0.145 +/- 0.007 across three training seeds. On the independent Sea-Undistort dataset, sampler-aware fine-tuning improved restoration fidelity, reaching 19.469 +/- 0.332 dB PSNR and 0.554 +/- 0.005 SSIM under combined water-surface distortions, although perceptual trade-offs remained. Additional experiments on real UAV imagery examined feature preservation and segmentation behavior. These findings demonstrate the potential of semi-synthetic training and conditional diffusion for shallow-water image restoration while highlighting the importance of evaluating both reconstruction fidelity and downstream remote-sensing utility.",
+        "url": "http://arxiv.org/abs/2611.03120v1",
+        "date": "2026-11-02",
+        "author": "Dario Scilla",
+        "type": "Paper"
+      },
+      {
+        "title": "SPATEX: Array-Flexible Multichannel-to-Multichannel Target Speech Extraction using Direction Clue",
+        "summary": "Multichannel-to-multichannel target speech extraction (MIMO TSE) aims to recover the target speech signal at each microphone while preserving interchannel spatial information. However, existing MIMO TSE systems generally assume a fixed microphone configuration, limiting their applicability to recording devices with varying microphone configurations. In this work, we propose SPATEX, the first array-flexible MIMO TSE framework that reconstructs microphone-wise target speech signals across microphone counts and array geometries. Given microphone coordinates and a target direction-of-arrival (DOA), SPATEX combines geometry-aware channel exchange and shared temporal attention to jointly reconstruct microphone-wise target signals while maintaining permutation equivariance. Experiments show that SPATEX outperforms array-flexible single-output baselines under most test conditions and consistently improves extraction quality and spatial fidelity over fixed-array MIMO baselines. Ablation studies further validate the benefits of temporal coordination and spatial supervision, while additional evaluations demonstrate robustness to target DOA errors. Our code and dataset are available at https://github.com/Wenanzhi/SPATEX.",
+        "url": "http://arxiv.org/abs/2611.03119v1",
+        "date": "2026-11-02",
+        "author": "Wen Wen",
+        "type": "Paper"
+      },
+      {
+        "title": "Diagonal Equivalence in State Space Models: Characterization, Retrieval Rank, and Selective Extensions",
+        "summary": "We classify real and complex state-space models (SSMs) with linear transitions, distinguishing fixed-basis diagonal equivalence from input-output equivalence and tracking coefficient-conditioning windows under coordinate changes. We characterize diagonal equivalence through commuting transition families whose members are diagonalizable over the chosen field. With time-shared token-local matrix maps, we identify this class's state-mediated kernels with unnormalized scalar-mode linear attention with multiplicative masks. Mamba 3's multiple-input, multiple-output (MIMO) construction lifts one value per local interface; SSD-MIMO routes independent values for local retrieval rank above one. HybridMamba combines Mamba 1's per-coordinate decay, Mamba 2-style heads and Mamba 3's complex rotations and two-endpoint writes, mixing real and rotating state blocks with different decay laws. They recover Mamba 1-3 single-input, single-output (SISO) configurations as exact special cases. On five large H100 bfloat16 workloads, our fused GPU kernels improve geometric-mean training time over official Mamba 1/3 in matched SISO recoveries, with Mamba 2 near parity at SSM-core scope. Memory tradeoffs depend on the baseline and metric: saved-for-backward versus peak allocation. In small-model multi-token recall experiments, both designs outperform Mamba 1-3 on the hardest tier; higher routing ranks perform best in gated or phase-diverse configurations. In single-seed language models with about 500M parameters, both improve on Mamba 1/2 in test loss at 2B tokens, but the routing gains do not translate into lower language-model loss. Our best configurations approach Mamba 3 SISO through 10B tokens while remaining behind it and Mamba 3 MIMO in language-model loss.",
+        "url": "http://arxiv.org/abs/2611.03101v1",
+        "date": "2026-11-02",
+        "author": "Dennis Rochau",
+        "type": "Paper"
+      },
+      {
+        "title": "Cross-Layer Refinement and Frequency-aware Fusion Network for Multi-Source Remote Sensing Image Classification",
+        "summary": "Multi-source remote sensing image classification benefits from complementary spectral and structural information. However, identifying discriminative cross-modal features remains challenging. This letter proposes a Cross-Layer Refinement and Frequency-aware Fusion Network (CRFNet) within a lightweight dual-branch architecture. Specifically, a Cross-Layer Refinement Attention (CLRA) module propagates selected attention relationships across successive layers and employs top relation selection to progressively strengthen discriminative spatial dependencies while suppressing irrelevant responses. Furthermore, a Frequency-aware Complementary Fusion (FCF) module combines frequency-wise interactions with cross-modal channel attention in the Fourier domain. The resulting representations are then converted into spatial-domain gates to selectively modulate complementary features. Experiments on the Houston 2013 and Augsburg datasets demonstrate that the proposed CRFNet consistently outperforms several state-of-the-art methods. The codes are publicly available at https://github.com/oucailab/CRFNet",
+        "url": "http://arxiv.org/abs/2611.03078v1",
+        "date": "2026-11-02",
+        "author": "Wenhan Xiao",
+        "type": "Paper"
+      },
+      {
+        "title": "Shared-Pattern Collaborative Network for Multi-Source Remote Sensing Data Classification",
+        "summary": "Multi-source remote sensing data classification has received growing attention recently. However, existing methods still struggle to jointly model long-range contextual dependencies and shared spatial patterns across heterogeneous modalities. To address this issue, we propose a Shared-Pattern Collaborative Network (SPCNet) for HSI and SAR/LiDAR joint classification. To enhance cross-modal collaborative learning, Shared-Pattern Collaborative Block (SPCB) is designed by introducing a shared large-kernel operator and a dynamic convolution branch, enabling the network to capture common spatial structures and content-adaptive local features. Furthermore, Region-Adaptive Modality Allocator (RAMA) is developed to assign spatially varying modality weights for reliable feature fusion. Experiments on Houston2013, Augsburg, and Houston2018 datasets demonstrate that SPCNet achieves superior classification performance over several state-of-the-art methods. The code will be made publicly available at https://github.com/oucailab/SPCNet",
+        "url": "http://arxiv.org/abs/2611.03069v1",
+        "date": "2026-11-02",
+        "author": "Chenfang Yang",
+        "type": "Paper"
+      },
+      {
+        "title": "ILLRAW: Illumination-Aware RAW Object Detection",
+        "summary": "Existing RAW-based detectors typically introduce learnable ISP modules to convert RAW inputs into sRGB-like formats to fit off-the-shelf detectors. However, this RAW-to-sRGB paradigm decouples representation learning from the downstream detection task. Crucially, it forces the network to inherit human-centric visual priors while discarding intrinsic RAW advantages, such as linear sensor responses and high-bit-depth, minimally processed scene cues. In this paper, we propose \\textbf{ILLRAW}, an \\textbf{ILL}umination-aware end-to-end \\textbf{RAW} object detection framework. Instead of reconstructing visually plausible sRGB images, ILLRAW directly learns detection-oriented RAW features through a lightweight feature adapter inserted at the input stage of existing detectors. ILLRAW estimates an illumination mask and introduces channel-sensitive embeddings to model Bayer-channel responses. These features are fused by an illumination attention fusion module. Experiments show clear improvements on the diverse AODRaw benchmark and competitive performance on LOD and PascalRAW, with particularly strong results under dark exposure.",
+        "url": "http://arxiv.org/abs/2611.02995v1",
+        "date": "2026-11-02",
+        "author": "Xinzhe Wang",
+        "type": "Paper"
+      },
+      {
+        "title": "Exact Fusion of Softmax Attention Heads Can Require Exponentially Many Atoms",
+        "summary": "Fusing independently normalized attention heads can increase the number of explicit key-value entries, or atoms, needed to preserve their output. We prove a sharp separation for $W_d(q)=\\sum_{j=1}^dσ(q_j)$: its $d$ two-atom heads use $2d$ head-atom terms, whereas its minimum single-head representation has exactly $2^d$ atoms, even with arbitrary fixed replacement keys, scalar values, and positive masses. The same lower bound holds for every fixed uniform error below $1/2$ on $\\mathbb R^d$, and the threshold is sharp. The proof uses exposed-key normal cones; exact equality on any nonempty open query domain inherits the bound. The resulting atom bound for a fixed head count is tight when that count divides $d$. A normalized family retains its exponential exact minimum while approaching a constant on fixed-radius query balls. For pretrained-model caches, a classical affine-rank bound and a certified instance exclude exact vector preservation at a specified atom count. Learned-cache comparisons on two disjoint banks of 64 contexts show budget-dependent reversals and calibration effects.",
+        "url": "http://arxiv.org/abs/2611.02943v1",
+        "date": "2026-11-02",
+        "author": "Hiroyasu Usami",
+        "type": "Paper"
+      }
+    ]
+  },
+  "MoE (Mixture of Experts) & Routing": {
+    "keywords": [
+      "moe",
+      "mixture of experts",
+      "mixture-of-experts",
+      "expert routing",
+      "switch transformer",
+      "deepseek-v2",
+      "deepseek-v3",
+      "token dispatch",
+      "ep parallelism",
+      "expert parallelism",
+      "fused moe"
+    ],
+    "items": [
+      {
+        "title": "Sonar-MoE: In-Backward Expert Updates for Memory-Efficient Mixture-of-Experts Training",
+        "summary": "Most parameters of a Mixture-of-Experts (MoE) model belong to its experts, and standard training keeps every expert gradient in GPU memory until the optimizer step. This memory grows with the number and size of the experts, so it rises as MoE models scale. We introduce Sonar-MoE, which updates each expert tensor during the backward pass and frees its gradient right away. It brings optimizer-in-backward from dense models to batched MoE expert tensors, so the GPU never holds more than one layer of expert gradients. When we fine-tune OLMoE-1B-7B and Granite-3.1-3B-A800M in bf16 with two expert-kernel backends, Sonar-MoE lowers peak memory by 19% to 22%. Its updates are bitwise identical to standard training without expert gradient clipping, and held-out loss stays within 0.003 of all baselines. Each step also takes 17% to 23% less time than standard training with global-norm clipping. Updating whole batched tensors rather than individual experts is what keeps Sonar-MoE fast, as it avoids a 20% to 72% slowdown while using the same memory. Sonar-MoE matches optimizer-in-backward over all parameters in memory and speed while still clipping the dense parameters.",
+        "url": "http://arxiv.org/abs/2611.03577v1",
+        "date": "2026-11-02",
+        "author": "Avni Mittal",
+        "type": "Paper"
+      },
+      {
+        "title": "Library of Layers (LoL): Adaptively Ordering Transformer Layers at Runtime",
+        "summary": "Computer programmers chain together the same reusable computational primitives, for example, conditional statements or loops, but in different orders to implement different algorithms. In contrast, existing language model architectures always execute their layers in the same order. We introduce Library of Layers (LoL), an architecture that dynamically orders its layers during inference to solve the problem at hand. LoL has a single hyperparameter, the size of its global library of transformer blocks, that allows it to transition seamlessly between parameter reuse and sparsity, generalizing the parameter-efficiency and FLOPs-efficiency tradeoffs of dense, depth-recurrent, and mixture of experts architectures in one unified family. We show that LoL achieves competitive performance with all three above baselines when pretrained on text data. On synthetic sudoku and maze data, we observe that the model employs distinct layer orderings to implement different solution strategies, and we can intervene on routing to force a model to apply a specific solution strategy to a problem instance. In a multilingual natural language setting, we find that LoL chooses different layer order patterns based on language and script. Similarly, we train LoL on safety data and fit probes to its router outputs, finding that these probes distinguish safe from unsafe text with high AUROC. LoL provides a path toward a future in which models dynamically compose their own computational graph, enabling more efficient and controllable reasoning.",
+        "url": "http://arxiv.org/abs/2611.03526v1",
+        "date": "2026-11-02",
+        "author": "Abdellah Rahmani",
+        "type": "Paper"
+      },
+      {
+        "title": "NormMoX: A Normative Mixture of Experts for Explainable Autism Classification from Structural and Functional MRI",
+        "summary": "While structural and functional magnetic resonance imaging (sMRI, fMRI) offer profound potential for researching autism spectrum disorder (ASD) and understanding individual neurodivergence, current classifiers lack the explanatory power needed for scientific study, clinical use and personal-level insights. Most models learn from imaging features that also vary with age, sex, scanner site and head motion. They fuse the two modalities without a common reference and explain decisions against arbitrary reference inputs rather than a typical brain. We present NormMoX, a normative mixture of experts that makes the typical brain the shared reference for prediction, fusion and explanation. Normative models trained on large healthy cohorts give the value each brain measure is expected to take for a person's age and sex. NormMoX learns from each person's deviations from these expected values. For each modality, a neural network expert turns the deviations into a score of evidence for ASD. A fusion head, MoX, compares each score with those of typical controls before combining them. It therefore needs no imputation when a modality is missing and shows in which modality each person is atypical. On 1,035 participants of ABIDE I, NormMoX reached an AUROC of $0.728 \\pm 0.004$ in repeated cross-validation, above linear, single-modality and deep fusion baselines. NormMoX thus shows not only whether a person is likely to have ASD, but where, and in which modality, their brain departs from typical. The implementation is available at https://github.com/Novelex/NormMox.",
+        "url": "http://arxiv.org/abs/2611.03349v1",
+        "date": "2026-11-02",
+        "author": "Muhammad Hasan Masrur",
+        "type": "Paper"
+      },
+      {
+        "title": "PagedMoE: Cross-Precision Expert Caching for Token-Level Dynamic Precision in SSD-Resident MoE Inference",
+        "summary": "Large Mixture-of-Experts (MoE) models are promising for local inference because sparse routing allows the routed-expert pool to reside on SSD while DRAM caches recently used experts. However, under practical DRAM cache capacities, substantial SSD I/O remains on the critical path despite I/O-computation overlap. Token-level dynamic expert precision offers a natural way to reduce this data demand by allocating bits according to expert importance and quantization sensitivity. Nevertheless, treating each bit-width of the same expert as an independent object prevents cross-precision cache reuse, causing overlapping data to be fetched repeatedly.   The key insight is that precision should instead denote the refinement depth of one shared expert state. Based on this insight, we present PagedMoE, which stores each expert once using a prefix-compatible tree codebook and bitplane layout. Lower-precision representations are valid prefixes of higher-precision ones, allowing cached data to be reused or extended by fetching only missing bitplanes. PagedMoE selects the required prefix length before I/O using current routing weights and offline expert-specific error profiles, and directly executes cached 1-8-bit prefixes without materializing full-precision experts.   At an average routed-expert precision of 2.5 bits, PagedMoE achieves quality close to GPTQ-INT4 on Qwen3.5-397B-A17B and to MXFP4 on most evaluated GLM5.2 tasks. With a 24 GiB expert cache, it reaches 8.89 tokens/s on Qwen3.5, 1.33x the throughput of the same dynamic requests using independent precision objects and 1.56x that of uniform 4-bit execution.",
+        "url": "http://arxiv.org/abs/2611.03173v1",
+        "date": "2026-11-02",
+        "author": "Yutong Lin",
+        "type": "Paper"
+      },
+      {
+        "title": "VideoEditor-MoE: Scaling Complex Video Editing with Mixture of Experts",
+        "summary": "Complex video editing requires understanding complex instructions while jointly fulfilling multiple editing requests. Meeting these demands through dense model scaling substantially increases computational cost. We introduce VideoEditor-MoE, the first open-source mixture-of-experts framework for video editing. Beyond sparse MLP-MoE layers, MoE-Attention expands attention capacity through routed key--value experts while preserving global interactions among video tokens. Initialized from a 5B video editing model, VideoEditor-MoE scales to 14B and 56B parameters, with approximately 8B parameters activated per token in both variants. Comparisons with existing methods and two complementary baselines, Explicit-MoE and MLP-MoE, assess its benefits over explicit expert guidance and MLP-only expert architectures. Further analyses demonstrate that all experts remain active and reveal that learned routing responds more strongly to sample content and diffusion noise levels than to human-defined editing categories. Spatial analysis further indicates sensitivity to object-level semantic features. We also identify decoupled weight decay as a strategy for stabilizing expert scaling.",
+        "url": "http://arxiv.org/abs/2611.03043v1",
+        "date": "2026-11-02",
+        "author": "Xiao Cao",
+        "type": "Paper"
+      }
+    ]
+  },
+  "GEMM, Tensor Cores & Low-Precision": {
+    "keywords": [
+      "gemm",
+      "matmul",
+      "matrix multiplication",
+      "tensor core",
+      "wgmma",
+      "cutlass",
+      "cute",
+      "fp8",
+      "fp4",
+      "nvfp4",
+      "mxfp4",
+      "mxfp8",
+      "quantization",
+      "awq",
+      "gptq",
+      "bitsandbytes",
+      "block scaling",
+      "sm90",
+      "sm100"
+    ],
+    "items": [
+      {
+        "title": "Ask, Don't Equip: Question-Driven Coding Agents for Deep Kernel Optimization",
+        "summary": "LLM agents for GPU kernel optimization sit at two ends of a structure-freedom tradeoff. Scripted agents fix what the model does at each step, via a learned policy, an optimization menu, or fixed roles, and are sample-efficient where the recipe applies and stall where it does not. Open-ended agents let a self-directed model mutate a population of kernels and pay for the freedom in trials: thousands of evaluations, repeated edits, and wrong candidates. Both respond to hard targets by equipping the agent with more: parsed profiler output, disassembly analysis, retrieval over documentation and libraries, and stores of lessons. We argue that both lack direction, a hypothesis about where the remaining gap is, and that a short question asked at the right moment supplies it without narrowing what the agent may do next. We present KernelSeek, a question-driven agent that makes an existing CUDA kernel faster with no operator-specific knowledge and no faster implementation to imitate: a general-purpose coding agent, a minimal harness that enforces a verifiable goal, and questions at decision points, first from a human, then from a bank the agent applies to itself. On the same task, evaluator, hardware, and week, a tool-rich autonomous agent built in the prevailing style plateaued at 0.50x FlashAttention-3 after 133 model-driven steps; KernelSeek reached 1.13x. It then produced dependency-free FlashAttention forward kernels for Hopper and Blackwell, single CUDA files with no CUTLASS, CuTe, cuBLAS, or cuDNN, correct on all 182 scenarios per architecture and 1.16x FlashAttention-3 and 1.46x FlashAttention-4 (geometric mean). Across 162 human messages and 11.5K agent tool calls, every large gain followed a question that moved the agent to a different layer of the system or rejected a claimed limit, never one that supplied information. We release the kernels, harness, question bank, and all traces.",
+        "url": "http://arxiv.org/abs/2611.03517v1",
+        "date": "2026-11-02",
+        "author": "Gabriele Oliaro",
+        "type": "Paper"
+      },
+      {
+        "title": "A Cross-Domain Matrix Engine for Signal Processing and Deep Neural Net Inference",
+        "summary": "Matrix multiplication dominates both PHY signal processing and Deep Neural Network (DNN) inference, yet these domains place opposing demands on the matrix engine. Signal processing requires low-latency execution of relatively small matrix operations, whereas DNN inference, particularly at large batch sizes, prioritizes high throughput and energy efficiency for large matrix multiplications. While offering efficient memory access profile, a Systolic Array (SA) adds fill and drain delays per matrix. Those can be amortized for large matrices but not for small matrices. Conversely, a tensor unit completes the kernel in few cycles but would require repeated reads of same operand tiles over large matrices. This makes SA too slow for signal processing and tensor too inefficient for AI. We show that this need not be a choice between systolic and tensor structuring of Multiply-Accumulate (MAC) units. We propose a single engine that operates primarily as a SA and, through low-cost reconfiguration, transforms into a tensor-style engine on a per-operation basis. MUXes create both the spatial reduction adder tree and temporal reduction accumulators from the existing MACs and registers within the systolic array. The proposed reconfigurable SA simulated using modified SCALESim simulator, verified on an Zynq 702 FPGA and synthesized using ASAP 7nm FinFET library. SCALE-Sim simulations shows up to 7.5x lower latency for small complex value PHY kernels. Even on DNN workloads, it achieves up to 1.65x speedups over vanilla SA execution with trivial increase of memory accesses, retaining the systolic array's memory access advantage. Synthesis results estimate reconfigurable fabric costs only 8% power and 13.6% area overheads.",
+        "url": "http://arxiv.org/abs/2611.03503v1",
+        "date": "2026-11-02",
+        "author": "Mehdi Safarpour",
+        "type": "Paper"
+      },
+      {
+        "title": "FLAMIA: FLAsh MIcroscaling Attention for Fast and Causally Safe Training on Blackwell",
+        "summary": "Attention remains a substantial computational cost in Transformer training, particularly at long context lengths. NVIDIA Blackwell GPUs provide high-throughput low-precision matrix multiplication, but exploiting it in attention requires addressing quantization overhead, causal information leakage through shared scales, and numerical inconsistencies between the forward and backward passes. We present FLAMIA, a family of attention kernels for Blackwell with MXFP8 and mixed NVFP4/FP8 training paths. Our design combines token-block scaling that reuses quantized operands across matrix orientations, targeted safeguards against scale-induced leakage, and consistent forward and backward computations. Fused quantization and architecture-specific kernel optimizations reduce overhead, while document-local scaling and workload-aware scheduling support variable-length documents directly in packed layouts without repacking. Across various causal packed-document workloads, the MXFP8 path accelerates the combined forward and backward attention call, including quantization, by factors of $1.10$--$1.40\\times$ on B200 and $1.06$--$1.42\\times$ on B300 relative to the fastest evaluated baseline for each workload. We validate training stability and quality preservation on pretraining Llama-style models. These results show how jointly designing quantization, training numerics, and document scheduling translates low-bit hardware throughput into practical attention acceleration.",
+        "url": "http://arxiv.org/abs/2611.03344v1",
+        "date": "2026-11-02",
+        "author": "Fedor Velikonivtsev",
+        "type": "Paper"
+      },
+      {
+        "title": "SHq: Learnable Grids for LLM Weight Quantization",
+        "summary": "Block-scaled lookup-table (LUT) formats, which represent weights as indices into a small value set (the grid), have become standard for low-bit LLM quantization, ranging from NF4 and BOF4 to the 3-bit LUT instruction in NVIDIA Rubin. While these formats leave the grid definition flexible, existing implementations rely on fixed grids derived either from numerical data types (INT, FP) or assumed weight distributions (NF, BOF). We demonstrate that no single fixed grid is universally optimal; the best fixed grid varies with bit-width: BOFS at 2 bits, NF at 4 and 5 bits, and INT at 6 bits. We introduce SHq, a closed-form family of grids parameterized by two critical degrees of freedom: a companding strength α that interpolates level spacing from uniform to floating-point-like, and an offset c that introduces asymmetry. This offset allows the sign bit of the FP8 block scale, otherwise unused, to select between the grid and its mirror image, up to doubling the number of distinct values available per block. SHq modifies only the lookup table contents and serves as a drop-in replacement for the grid in any such format. Across five models ranging from 3B to 35B parameters, including a mixture-of-experts architecture, evaluated at 2-6 bits using RTN and GPTQ, SHq achieves the lowest KL divergence in every setting at 3 and 4 bits and in most settings at 2, 5 and 6 bits. It outperforms the best fixed grid by up to 34% and remains superior under mixed-precision configurations. At 4.5 bits per weight, the SHq format reduces the KL divergence of NVFP4 by 41-67% while improving downstream accuracy. Grid families incorporating both spacing and offset parameters perform comparably, whereas those lacking an offset exhibit clearly higher error, confirming that these two degrees of freedom drive the observed gains. We therefore propose SHq as the standard grid for block-scaled lookup-table formats.",
+        "url": "http://arxiv.org/abs/2611.02966v1",
+        "date": "2026-11-02",
+        "author": "Michael Helcig",
+        "type": "Paper"
+      }
+    ]
+  },
+  "Kernel Compilers & DSLs (Triton, TileLang, CUDA)": {
+    "keywords": [
+      "triton",
+      "tilelang",
+      "thunderkittens",
+      "cutedsl",
+      "tvm",
+      "halide",
+      "autotuning",
+      "kernel generation",
+      "cuda optimization",
+      "warp specialization",
+      "tma",
+      "tensor memory accelerator"
+    ],
+    "items": [
+      {
+        "title": "A Triangular Log-Det PDHG for Semidefinite Programming: Complementarity Selection and Global Linear Convergence",
+        "summary": "Semidefinite programming (SDP) is an important class of convex optimization problems with wide applications in practice. In this paper, we study a solution-selection question for first-order methods for solving SDPs: Can a first-order method provably select a strictly complementary solution when one exists, and a maximally complementary solution otherwise? We propose Triangular Log-Det PDHG (TriLog-PDHG), a primal-dual hybrid gradient method equipped with a triangular log-determinant Bregman kernel. We show that TriLog-PDHG converges to a KKT point for any fixed positive shift and to a maximally complementary solution for every sufficiently small positive shift. When a strictly complementary solution exists, the unshifted method provably selects a strictly complementary KKT point and enjoys a global linear convergence rate. Under the same condition, we further develop an averaged and adaptively restarted variant that accelerates convergence. Numerical experiments on classical examples and SDPLIB instances illustrate the complementarity-selection and convergence properties predicted by the theory.",
+        "url": "http://arxiv.org/abs/2611.03638v1",
+        "date": "2026-11-02",
+        "author": "Lijun Ding",
+        "type": "Paper"
+      },
+      {
+        "title": "Tracing source imprints on the gravitational direct wave",
+        "summary": "The direct wave component of black hole (BH) ringdown, revealed through quasinormal-mode filters, carries a non-quasinormal-mode imprint of the plunging perturber's dynamics. However, the connection between the source trajectory and the observed direct wave remains incompletely understood. We first show that the full waveform filtered by the frequency-dependent black hole response gives a substantially more localized kernel than the standard rational filter approach. We then show that analytically continuing the Teukolsky source variables to complex coordinates allows for a semianalytic direct wave which closely reproduces numerical integration throughout the entire plunge. Our generalized steepest-descent method clarifies how coherent emission shapes the imprint of source dynamics on the observed direct wave beyond the light-cone picture.",
+        "url": "http://arxiv.org/abs/2611.03632v1",
+        "date": "2026-11-02",
+        "author": "Andrew Laeuger",
+        "type": "Paper"
+      },
+      {
+        "title": "Benchmark Prediction with Sparse and Unpaired Cached Responses",
+        "summary": "Evaluating a generative model on all queries from all available benchmark tasks is prohibitively expensive. As such, models are often evaluated on different subsets of tasks and/or different subsets of queries from a given task. The resulting collection of responses and the corresponding (model, task) score matrix are sparse and unpaired. In this paper, we introduce the Product Kernel Perspective Space (PKPS), a collection of low-dimensional representations of models based on their embedded responses. PKPS generalizes existing methods for representing black-box generative models by comparing responses to similar -- rather than just identical -- queries and is therefore able to utilize sparse and unpaired information. Theoretically, we show that benchmark prediction using PKPS is query-efficient relative to methods that only use information from dense and paired portions of the evaluation data. Empirically, we show that PKPS-based methods outperform baselines on benchmark prediction across two large benchmark suites.",
+        "url": "http://arxiv.org/abs/2611.03614v1",
+        "date": "2026-11-02",
+        "author": "Hayden Helm",
+        "type": "Paper"
+      },
+      {
+        "title": "Associated Varieties of Finite-Group Orbifolds",
+        "summary": "Let $V$ be a simple, strongly finitely generated vertex algebra with a connected nonnegative integer grading, and let $G$ be a finite group of grading-preserving automorphisms. In this paper, we prove that $X_{V^G}\\cong X_V/G$ as reduced Poisson varieties. More precisely, the canonical surjection $R_{V^G}\\longrightarrow (R_V)^G $ has nilpotent kernel. The proof uses a uniform derivative bound in a relative $C_2$-quotient, which also implies that $V^G$ is strongly finitely generated. Consequently, quasi-lisseness and $C_2$-cofiniteness descend to finite-group orbifolds, and hence, by existing results, so does strong rationality.",
+        "url": "http://arxiv.org/abs/2611.03611v1",
+        "date": "2026-11-02",
+        "author": "Andrew Riesen",
+        "type": "Paper"
+      },
+      {
+        "title": "Determinant boundaries and gaps in determinantal complexity",
+        "summary": "Landsberg, Manivel, and Ressayre constructed determinant-boundary components whose defining forms, for odd n >= 3, are limits of n x n determinants but cannot themselves be represented by determinants of that size. Their border determinantal complexity (DC) is therefore smaller than their exact DC.   We prove that the difference can grow linearly with n. For every n >= 10, we construct an explicit homogeneous form of degree n, concise in n^2 variables, whose orbit closure is a boundary component, whose border DC is n, and whose exact DC is at least 2n - 1. Thus n rows suffice when limits are allowed, whereas every exact representation requires at least 2n - 1 rows. The same bound holds for the unpadded odd-skew forms at every odd n >= 3.   We also prove that every concise degree-n boundary form in n^2 variables has exact DC at least n + 2. We construct three families of pairwise distinct boundary components. Together with the traceless determinant, they give at least floor((n-1)/2) + floor(n/3) components for every n >= 3, with an additional term counted explicitly in the paper.   The main lower bound follows from a general degree lemma. If an affine matrix represents an irreducible homogeneous polynomial f of degree d and has globally free rank-one cokernel over the coordinate ring of f = 0, its size is at least 2d - 1. The adjugate factors into two nonzero kernel vectors, each requiring a coordinate of degree at least d - 1. Comparing their product with the degree of a cofactor proves the bound. The lemma is sharp for individual representations, as witnessed by algebraic branching programs. Whether the exact-versus-border gap can grow superlinearly remains open.",
+        "url": "http://arxiv.org/abs/2611.03554v1",
+        "date": "2026-11-02",
+        "author": "Karthik Sheshadri",
+        "type": "Paper"
+      },
+      {
+        "title": "Nonparametric Intensity Estimation for Covariate-Driven Poisson Processes Using Deep Learning",
+        "summary": "We consider nonparametric maximum likelihood estimation of the intensity function of a Poisson process, allowing the intensity to depend on observed covariates. Such models describe how event rates vary with external conditions, including conditions under which the intensity becomes arbitrarily small or vanishes. However, risk analysis based on the Kullback-Leibler (KL) divergence typically requires the true intensity to be bounded away from zero, a restrictive assumption in applications. We develop a unified approach that avoids this assumption and derive an oracle inequality for the covariate-averaged Hellinger distance between the true intensity and the nonparametric maximum likelihood estimator (NPMLE). As an application of the oracle inequality, we establish convergence rates for NPMLEs based on deep neural networks (DNNs). Our results show that, as in nonparametric regression, the ability of DNNs to capture underlying structure leads to improved convergence rates. Specifically, DNN-based NPMLEs mitigate the curse of dimensionality when the true intensity has a compositional structure and automatically adapt to a low-dimensional Riemannian manifold structure of the event space. For intensity functions with a compositional structure, DNN-based NPMLEs achieve nearly minimax-optimal convergence rates without explicitly incorporating this structure into the network architecture. Simulations demonstrate that DNN-based estimators outperform kernel estimators in most settings, while manifold kernels remain competitive in some designs. Finally, we analyze stimulus-evoked neural spiking using data from the Allen Brain Observatory Visual Coding Neuropixels project. DNN-based NPMLEs provide better out-of-sample performance than a conditional kernel estimator, as evaluated by held-out log-likelihood.",
+        "url": "http://arxiv.org/abs/2611.03552v1",
+        "date": "2026-11-02",
+        "author": "Atsutomo Yara",
+        "type": "Paper"
+      },
+      {
+        "title": "Lattice Green's functions for Poisson problems with two unbounded and one periodic direction",
+        "summary": "Fourier-based Poisson solvers treat periodic directions spectrally and unbounded ones by the Hockney--Eastwood convolution with a free-space kernel. With two unbounded and one periodic direction, the setting of vortex tubes, wakes and jets, the kernel used so far by these solvers combines the two-dimensional kernel on the zero periodic mode with the symbol of the operator sampled on the doubled grid on every other mode. We show that the second ingredient is not exact: the error is the field of the periodic images of the source and independent of the mesh size. While the period $L_z$ is not much longer than the unbounded extent $L_x$, it is of order $\\exp(-2πd/L_z)$, with $d$ the distance to the nearest image; beyond, it grows like $(L_z/L_x)^2$. The error is thus small on cubic domains, but larger than the solution itself on elongated ones. We remove the approximation by extending the integral representation of the exact second-order kernel of Hou and Colonius: the screened kernel of each mode is evaluated in closed form along one unbounded direction and by Gauss--Legendre quadrature along the other, for the high-order dimension-split and Mehrstellen stencils, at a one-off cost of about one solve. The kernels, implemented in the open-source library \\flups{}, are verified by comparison with independent quadratures, by a padding test sensitive to the boundary condition enforced, and by convergence at the order of each stencil on an axially modulated tube source, on domains up to $64$ times longer than wide and up to $2.7\\times10^{11}$ unknowns.",
+        "url": "http://arxiv.org/abs/2611.03458v1",
+        "date": "2026-11-02",
+        "author": "Gilles Poncelet",
+        "type": "Paper"
+      },
+      {
+        "title": "Two-level additive Schwarz preconditioners with GDSW coarse spaces for high-order discretizations in 3D",
+        "summary": "Overlapping Schwarz methods are among the most successful domain decomposition preconditioners for large-scale finite element simulations. In this work, the Generalized Dryja-Smith-Widlund (GDSW), GDSW$^*$, and Reduced GDSW (RGDSW) coarse spaces are studied for three-dimensional high-order finite element method (FEM) and virtual element method (VEM) for the Poisson equation and the equations of linear elasticity. To the best of our knowledge, this is the first study of GDSW-type coarse spaces for polynomial degrees $k\\ge 3$ in three dimensions, for either discretization. In 3D VEM, the face degrees of freedom (DOFs) are moments instead of point values. The kernel of the differential operator, which defines the interface values of the GDSW coarse basis functions, must be represented through these moments. The construction is therefore no longer purely algebraic and, without this correction, the coarse level loses its effect for $k\\ge 3$. FEM and VEM are tested on hexahedral meshes, and VEM is additionally tested on polyhedral ones. Polynomial degrees up to $k=5$ and runs on up to $4\\,096$ subdomains and parallel cores are included in the numerical study. Numerical experiments show scalable iteration counts for all coarse space variants for the Poisson problem, illustrating the expected trade-off between the coarse space size and robustness. Further experiments for linear elasticity confirms that the moment-based construction extends naturally from the scalar to the vector-valued problem.",
+        "url": "http://arxiv.org/abs/2611.03447v1",
+        "date": "2026-11-02",
+        "author": "Tommaso Bevilacqua",
+        "type": "Paper"
+      },
+      {
+        "title": "Bridging Neural Tangent Kernel Analysis and Reinforcement Learning for Deep Function Approximation",
+        "summary": "Despite their widespread success across machine learning, the learning dynamics and generalization properties of neural networks remain poorly understood. The neural tangent kernel (NTK) provides an analytical characterization of the learning dynamics of infinitely wide neural networks and serves as a useful proxy for finite-width networks in supervised learning. In this work, we extend the NTK framework to reinforcement learning (RL) by introducing a temporal-difference (TD) flow formulation that accommodates time-varying mini-batches and TD targets, yielding a closed-form solution for value function evolution in an overparametrized setting. We also devise an optimization-based state-space exploration method that leverages the closed-form solution, coupled with constraints on the environment, to model the set of feasible states. On a deterministic grid environment, we validate that the proposed RL-based NTK formulation is indeed learning efficiently and adapting to the distribution shift in the training data distribution, and we demonstrate that the resulting exploration strategy improves sample efficiency. To our knowledge, this is the first work to extend NTK theory to characterize the learning dynamics of RL training with time-varying mini-batches and TD updates.",
+        "url": "http://arxiv.org/abs/2611.03435v1",
+        "date": "2026-11-02",
+        "author": "William St-Arnaud",
+        "type": "Paper"
+      },
+      {
+        "title": "Smoothing the Bouncing-Geodesic Singularity in AdS/CFT",
+        "summary": "Black hole singularities remain a central open problem in quantum gravity. In the AdS/CFT correspondence, bulk spacelike extremal surfaces can probe the black hole interior, and information about the near-singularity geometry is encoded in analytically continued boundary correlators. As the bouncing geodesic approaches the black hole singularity, it becomes nearly null and gives rise to characteristic divergences at complex times. Importantly, these complex-time singularities emerge only in the strict semiclassical limit ($G_N\\to 0$ or $c\\to\\infty$) and are governed by the asymptotically linear quasinormal mode (QNM) spectrum. At finite $c$, nonlinear deformations of the QNM trajectories produce suppression kernel that smooths out the complex-time singularities. Using Liouville CFT as an analytically solvable example, we explicitly demonstrate the finite-$c$ deformation of the QNM spectrum and its associated pole-zero structure. We also identify a complementary Gaussian smoothing mechanism arising from finite-energy fluctuations in the thermal spectral decomposition. These results show how finite $G_N$ quantum corrections modify the holographic imprints of the classical black hole singularity.",
+        "url": "http://arxiv.org/abs/2611.03347v1",
+        "date": "2026-11-02",
+        "author": "Mingxuan Liu",
+        "type": "Paper"
+      },
+      {
+        "title": "End-to-End NTT on FPGA for FHE Acceleration",
+        "summary": "Fully homomorphic encryption (FHE) enables privacy-preserving computation on encrypted data without decryption. Despite its strong security guarantees, FHE incurs substantial computational and memory overhead. In FHE-based deep learning inference, on average 63% of the CPU time is spent on the number theoretic transform (NTT) and its inverse (INTT), which reduce the complexity of polynomial multiplication from $O(N^2)$ to $O(N \\log N)$. Prior FPGA works follow two approaches: accelerating entire FHE schemes, which yields significant speedups but ties them to specific parameters and algorithms, or accelerating only the NTT, which applies across schemes, algorithms, and libraries. Most FPGA NTT designs require interconnects that grow with parallelism and utilize significant resources, which complicates routing on multi-die FPGAs. Additionally, to the best of our knowledge, end-to-end NTT acceleration within an FHE context has so far been left unexplored. We design a fully unrolled, delay-commutator streaming NTT/INTT kernel, and floorplan it across the three dies of an AMD Alveo V80. At 400 MHz, the kernel transforms a polynomial of $2^{16}$ coefficients every 5.12 $μ$s, the highest throughput among FPGA designs at this size. Offloaded end to end, it is up to 22x faster than the CPU per transform. We integrate the kernel into the Lattigo FHE library and evaluate it end to end. With 128-bit secure parameters, it accelerates core FHE operations, such as key switching and bootstrapping, by 1.8-2.2x, and neural network inference by 1.8-2.1x.",
+        "url": "http://arxiv.org/abs/2611.03325v1",
+        "date": "2026-11-02",
+        "author": "Mohamed Allam",
+        "type": "Paper"
+      },
+      {
+        "title": "FACTO: fast atom-centered tensor operator for accurate and efficient foundational machine-learned interatomic potentials",
+        "summary": "High-throughput inference remains a central challenge for equivariant machine-learned interatomic potentials. Here we introduce FACTO, an atom-centered equivariant architecture that confines evolving learned state and dense channel mixing to atoms, expressing neighbor interactions as fully fusible reductions. We complement this design with custom register-accumulated aggregation kernels and tensor-core FP32 emulation, accelerating inference while retaining FP32-level energy conservation under emulated arithmetic in molecular dynamics. Comprehensive evaluations on Matbench Discovery, MLIP Arena and MatCalc demonstrate high throughput alongside strong predictive accuracy and physical reliability. On Matbench Discovery, the four FACTO-OAM variants show top-tier performance by overall rank sum among 46 models with complete scores, advancing the accuracy-throughput Pareto frontier. On MLIP Arena, FACTO achieves state- of-the-art stability under extreme heating and compression, alongside high fidelity in hydrogen combustion. On MatCalc, FACTO outperforms the compared baselines in structural and elastic predictions while retaining competitive accuracy for energetic and thermal properties.",
+        "url": "http://arxiv.org/abs/2611.03276v1",
+        "date": "2026-11-02",
+        "author": "Siyuan Liu",
+        "type": "Paper"
+      },
+      {
+        "title": "Kernelized Stable Fluids for simulating physically accurate solutions",
+        "summary": "The Stable Fluids algorithm is a fractional step method for solving the incompressible Navier-Stokes (NS) equations in an unconditionally stable way. It was initially developed for visual effects and allows real-time simulations because of its low computational complexity. The method solves the advection step by using the method of characteristics which is implemented via linear interpolation. This results in excessive diffusion of vorticity and is one of the main reasons for the physical inaccuracy of the algorithm. We propose Kernelized Stable Fluids with Sparse Cholesky Preconditioning (KSF-Chol) in order to address this shortcoming and make the algorithm thereby suitable for engineering problems and scientific computing. The algorithm is modified by replacing the linear interpolation approach with kernel interpolation in the advection step. We accelerate the computationally expensive kernel interpolation by using sparse Cholesky preconditioning and a near-/far-field approach and optimize both methods for computations on a uniform Cartesian grid. KSF-Chol achieves per time step a near-linear computational complexity of $\\mathcal{O}(N\\log^d(N/\\varepsilon_{\\mathrm{chol}}))$ in space and time. We test KSF-Chol against reference solvers and numerical reference data on multiple 2D and 3D benchmarks and demonstrate a significantly reduced numerical diffusion as well as a competitive accuracy concerning the computation of relevant flow quantities.",
+        "url": "http://arxiv.org/abs/2611.03263v1",
+        "date": "2026-11-02",
+        "author": "L. Scholz",
+        "type": "Paper"
+      },
+      {
+        "title": "Persistence of $C^2$ regularity for aggregation patches",
+        "summary": "We prove persistence of $C^2$ boundary regularity for patch solutions of the two-dimensional aggregation transport equation, in contrast with the known $C^2$ ill-posedness of Euler vortex patches. More generally, we consider transport equations with kernels of the form $L(\\nabla N)$, where $N$ is the fundamental solution of the Laplacian and $L$ is a linear map. We show that $C^2$ regularity persists for every $C^2$ initial patch if and only if $L$ is a scalar multiple of the identity. Our approach builds on the curvature formulation introduced by Kiselev and Luo.",
+        "url": "http://arxiv.org/abs/2611.03258v1",
+        "date": "2026-11-02",
+        "author": "Juan Carlos Cantero",
+        "type": "Paper"
+      },
+      {
+        "title": "Rigidity of the Peres-Virág class",
+        "summary": "Consider the hyperbolic Gaussian analytic function (GAF) \\begin{equation*} F_{\\mathbb{D}}(z)=\\sum_{n=0}^{\\infty }ξ_{n}z^{n},\\qquad |z|<1, \\end{equation*} where the $ξ_{n}$ are independent standard complex Gaussian variables. Peres-Virág theorem tells that the distribution of the zeros of $F_{\\mathbb{D}}(z)$ is provided by a Determinantal Point Process (DPP). We prove that $F_{\\mathbb{D}}(z)$ is the only GAF whose zeros are determinantal with a Hermitian kernel, up to multiplication by a zero-free holomorphic function and a one-to-one holomorphic change of variable, with a \\ non-degeneracy condition imposed to exclude trivial cases. The proof identifies a geometric property of GAF's with (local) determinantal zeros: the metric defined by the first intensity must have constant curvature $-4$.",
+        "url": "http://arxiv.org/abs/2611.03118v1",
+        "date": "2026-11-02",
+        "author": "Luís Daniel Abreu",
+        "type": "Paper"
+      },
+      {
+        "title": "Hybrid Federated Learning for Multimodal Fusion under Missing Modalities and Site Heterogeneity",
+        "summary": "Multimodal fusion is studied under hybrid federation, where data are partitioned across samples and feature blocks. The proposed two-dimensional federated smooth multiple-kernel large-margin learning method (2D-FedSMKL) integrates availability-corrected modality scores, group-kernel regularization, and smooth worst-site risk aggregation. For fixed maps and propensities, the objective is convex and smooth. Curvature bounds and exact synchronous block-gradient equivalence are established for binary and multiclass scores, giving a conditional accelerated rate. An oracle-propensity binary risk bound and a propensity-perturbation result are also derived. Simulations and two public activity-recognition benchmarks assess site heterogeneity and modality absence. Worst-site aggregation improves worst-site performance under heterogeneity, including reversed and size-balanced designs. On the benchmarks, validation selects the correction; the selected model is not significantly worse than the strongest reference at the worst site, and group-regularization benefits vary by dataset.",
+        "url": "http://arxiv.org/abs/2611.03032v1",
+        "date": "2026-11-02",
+        "author": "Xiaofei Wu",
+        "type": "Paper"
+      },
+      {
+        "title": "Noise-resilient collective order through temporal memory in self-propelled particles",
+        "summary": "Temporal memory can stabilise collective motion by filtering noisy local observations, but persistent information can also impede adaptation when the collective state changes. We investigate this competition in Vicsek-type systems using two distinct alignment rules: a finite buffer of past observations and a recursive update of an internal directional state. In both models, increasing effective memory shifts the loss of polar order to stronger noise and can restore ordered motion under conditions for which the corresponding memoryless Vicsek model is disordered. The stationary responses of the two models show an approximate correspondence when parameterised by a kernel-based effective memory, consistent with temporal averaging playing a common role in their ordering behaviour rather than from the details of the memory implementation. Their transient dynamics, however, are not determined by effective memory alone. Following a collective perturbation, recovery is fastest at an intermediate memory depth and becomes slower when outdated observations are retained too strongly. Temporal integration therefore produces a trade-off: deeper memory improves noise resilience, whereas excessive persistence reduces responsiveness. These results identify memory depth as a control parameter that separates the optimisation of stationary order from that of dynamical recovery in noisy active systems.",
+        "url": "http://arxiv.org/abs/2611.03003v1",
+        "date": "2026-11-02",
+        "author": "Mihir Durve",
+        "type": "Paper"
+      },
+      {
+        "title": "Local limit Theorem for Directed polymers in a random environment in the full weak disorder regime",
+        "summary": "For directed polymers in random environment, we provide a short and mostly self-contained proof of the local limit theorem in the full weak disorder phase, including the critical inverse temperature $β_c$. That is, the point-to-point partition function is well approximated by the product of two independent point-to-line partition functions (one starting from each endpoint of the system) multiplied by the simple random walk transition kernel. The approximation is valid in the $L^p$ sense for an optimal range of $p$. The result is new at $β=β_c$ and for $p>2$, and in all cases the proof is significantly simpler, technically and conceptually, than what can be found in the literature. As a consequence of the result we establish an invariance principle for the polymer measure with fixed end-point, valid for all $β\\in [0,β_c]$.",
+        "url": "http://arxiv.org/abs/2611.02998v1",
+        "date": "2026-11-02",
+        "author": "Stefan Junk",
+        "type": "Paper"
+      },
+      {
+        "title": "Symmetry, uniqueness and nondegeneracy of positive solutions of the Choquard equation",
+        "summary": "We study positive solutions \\(Q\\in H^1(\\mathbb R^N)\\) of \\[-ΔQ+Q=(I_α*Q^p)Q^{p-1},\\] where \\(I_α\\) is the Riesz potential of order \\(α\\), \\(N\\ge1\\), \\(0<α<N\\), \\(p>1+α/N\\), and \\((N-2)p<N+α\\). We prove that every such solution is radially symmetric and strictly decreasing about some point. For \\(p\\ge2\\), we establish uniqueness up to translations and show that the real linearized operator has Morse index one and kernel spanned by \\(\\partial_1Q,\\ldots,\\partial_NQ\\).   The symmetry proof uses the method of moving planes. Uniqueness follows from nondegeneracy and compactness through a continuation argument.",
+        "url": "http://arxiv.org/abs/2611.02980v1",
+        "date": "2026-11-02",
+        "author": "Song Fan",
+        "type": "Paper"
+      },
+      {
+        "title": "Memory Admission and Result-Retention Sizing in an RV32IMC FPGA Soft Processor",
+        "summary": "In FPGA soft processors with shared backing block RAM, memory admission can stall a multiplication after its product has been prepared. We study how admission timing changes result retention in PaceRV, our board-tested five-stage RV32IMC core, using fixed binaries and matched dynamic instructions. Offering data requests one edge earlier reduces geometric-mean Embench cycles by 18.2% and retention opportunities from 375,063 to 4,373. Admission and retention cycle gains are conditional and non-additive. Under slower reads, a 99% capture target selects an 18-edge validity window with registered requests and 28 edges with early requests, although no multiplication matched within both measurement intervals waits longer. A predeclared sizing rule predicts opportunity recovery exactly in all finite tests, including kernels excluded from model development. Independent timing analysis closely estimates execution-cycle savings. The results support choosing admission first, then deciding whether to extend validity and sizing it against an explicit capture or missed-opportunity objective.",
+        "url": "http://arxiv.org/abs/2611.02974v1",
+        "date": "2026-11-02",
+        "author": "Yihang Dai",
+        "type": "Paper"
+      }
+    ]
+  },
+  "Pre-training & Distributed Infrastructure": {
+    "keywords": [
+      "pre-training",
+      "pretraining",
+      "foundation model",
+      "megatron",
+      "deepspeed",
+      "fsdp",
+      "tensor parallel",
+      "pipeline parallel",
+      "sequence parallel",
+      "3d parallelism",
+      "context parallelism",
+      "data parallel",
+      "cluster scheduling",
+      "collective communication",
+      "nccl"
+    ],
+    "items": [
+      {
+        "title": "A Common Language for Dynamic Graphs: Interaction Tokenization Enables Foundation Models",
+        "summary": "Dynamic graphs capture evolving interactions in Web systems, including online communication, user engagement, and recommendation. Graph foundation models aim to reuse predictive capabilities across networks, but extending this capability to dynamic graphs faces two challenges. First, node identities are graph-specific, and similar interaction patterns can appear at different temporal and activity scales, making histories difficult to represent consistently across networks. Second, the predictive roles of historical patterns vary across interaction dynamics, limiting transfer from a narrow range of training processes. In this paper, we show that a common interaction language, combined with learning across diverse interaction processes, offers a basis for dynamic graph foundation modeling. We propose CL-DGFM, a Common Language Dynamic Graph Foundation Model for temporal link prediction. Its Dynamic Interaction Tokenizer encodes interaction memory, historical connectivity, and ordered destination transitions into calibrated tabular inputs, making dynamic histories accessible to existing predictors without an additional trainable graph encoder. Its Dynamic Interaction Prior trains a pretrained tabular foundation predictor across diverse synthetic dynamics. Labeled historical context guides prediction, with a Contextual Value Adapter modulating attention values. The model transfers to real graphs without target-graph parameter updates. Experiments on TGB and TGB-Seq demonstrate competitive performance. Further comparisons show that the common language supports basic machine learning and neural models, and enables direct use of frozen tabular foundation models on dynamic graphs.",
+        "url": "http://arxiv.org/abs/2611.03246v1",
+        "date": "2026-11-02",
+        "author": "Fuyuan Ma",
+        "type": "Paper"
+      },
+      {
+        "title": "Control Foundation Models across Changing Block Diagrams: Generalizing Time-Series Prediction to Dynamic Graphs",
+        "summary": "In the prediction and control of physical systems, combining records from different experiments and operations is expected to supply information that no single experiment provides on its own. Time-series foundation models, which learn a shared predictor from diverse time series, offer a framework for treating such records as a common training resource. Moreover, query-based prediction models, which switch between known and target signals within the same time series, make it possible to handle response prediction and control-input generation in a unified manner. However, in control-experiment data, the connections between signals change with the experimental stage, such as system identification, filtering, and feedback control, which calls for a formulation that handles signal values and connection structures dynamically and in a unified way. We formulate a control foundation model that defines a data space of dynamic graphs containing connections, signal values, and missing values, together with an operation on this space that specifies the known signals and the prediction targets. This allows response prediction and control-input generation to be described as a common masked prediction problem, even for experimental data with different connections and recorded signals. The Block Diagram Transformer (BDT), which implements this formulation, combines attention along the time axis with a graph neural network that follows the block-diagram connections, and can be initialized with the pretrained parameters of existing time-series foundation models. Trained on control-experiment data that mix multiple experimental settings, the proposed model stabilized an unstable system through feedback control, which is difficult to achieve by fine-tuning existing time-series foundation models. Ongoing work applying this approach to a wide range of target systems is also yielding promising results.",
+        "url": "http://arxiv.org/abs/2611.02900v1",
+        "date": "2026-11-02",
+        "author": "Yuji Okamoto",
+        "type": "Paper"
+      }
+    ]
+  },
+  "Post-training, Alignment & RL": {
+    "keywords": [
+      "post-training",
+      "post training",
+      "rlhf",
+      "dpo",
+      "ppo",
+      "grpo",
+      "reinforcement learning from human feedback",
+      "instruction tuning",
+      "sft",
+      "preference optimization",
+      "reasoning models",
+      "distillation",
+      "lora",
+      "qlora"
+    ],
+    "items": [
+      {
+        "title": "RASP: Read-All, Sparse-Plasticity Continual Learning in a Stationary-Size LoRA",
+        "summary": "Parameter-efficient continual learning on pre-trained Vision Transformers largely relies on a costly premise: preventing catastrophic forgetting requires either spawning a dedicated LoRA branch per session---causing adapter parameters to scale linearly with task horizon---or applying sparse Mixture-of-Experts gating symmetrically to both forward and backward passes, which sacrifices representational rank at test time. We argue that reading consolidated knowledge and writing new task credit are fundamentally asymmetric operations. Because visual features in a shared low-rank space distribute across rank-1 atoms rather than localizing in disjoint task silos, forward inference should read all atoms at full rank capacity, whereas backward optimization should restrict plasticity to a sparse subset of input-aligned channels. We introduce RASP (Read-All, Sparse-Plasticity LoRA), which adapts a single stationary-size adapter across sequential tasks. At each step, a scene-modulated cosine router selects the top-$q$ unlocked atoms to receive gradients, blocks updates on the remaining $r-q$ channels, and penalizes Frobenius Gram coherence between active and non-updated output directions. Across sessions, the router's empirical activation trace and each atom's exact spectral norm form a zero-overhead geometric consolidation index $ω_j = \\sqrt{\\tilde{c}_j \\tildeσ_j}$ that drives Cauchy step attenuation and boundary anchor locking. Across CIFAR-100, CUB-200, ImageNet-R, and ImageNet-A, RASP matches or surpasses branch-expanding LoRA learners under a strictly constant parameter footprint.",
+        "url": "http://arxiv.org/abs/2611.03513v1",
+        "date": "2026-11-02",
+        "author": "Wen-Hsuan Liu",
+        "type": "Paper"
+      },
+      {
+        "title": "Forecasting How RLHF Responds to Reward-Model Edits Before Training",
+        "summary": "Responses with headers, lists and greater length receive high scores from reward models (RMs), and RLHF policies learn to produce these features even when true quality does not improve. Practitioners therefore edit their RMs, but they learn whether an edit works only after an RL run. We show that the response of a policy to an RM edit can be forecast before training, from samples of the current policy and the scores of the old and new RM. If we read the RM as a set of prices, the first-order theory of KL-regularized RL implies that each feature moves in proportion to its within-prompt covariance with the change in reward. We implant controlled price changes into retrained RMs under a 2^(4-1) fractional factorial design with a self-distilled placebo, run 54 RL runs from six parent policies, and fix every forecast before the runs. With the covariance predictor, we predict the direction of all 20 changes in supply whose forecast has the same sign at every parent and explain 82% of the standardized change. With counterfactual prices, the classical alternative, we explain 50%. The forecast also holds under GRPO and for real RM upgrades, where we explain 66% out of sample with a coefficient frozen from the factorial runs. For rent, the gap between the proxy reward and a gold reward from stronger judges, we rank RM edits correctly with the same covariance over the first 30 steps (Spearman 0.94). This measures the horizon of the forecast: by step 200, the ranking of the factorial edits reverses under both RLOO and GRPO, while the real upgrades keep their order. When we vary the KL coefficient beta, the initial response does not depend on beta, and the response saturates below the KL equilibrium. In one experiment, the long-run response to a price rise is consistent with an additional implicit regularizer beta_0 of about 0.003 to 0.007.",
+        "url": "http://arxiv.org/abs/2611.03244v1",
+        "date": "2026-11-02",
+        "author": "Zixiao Wang",
+        "type": "Paper"
+      },
+      {
+        "title": "Controlling Sharpening in LLM Post-Training",
+        "summary": "LLM post-training via reinforcement learning has shown consistent improvements in accuracy at the cost of reducing behavioral coverage - a phenomenon known as sharpening that can stall progress on difficult tasks. Repeated sampling objectives such as $\\mathrm{pass@k}$ and $\\mathrm{max@k}$ are known to mitigate sharpening, but the mechanism behind it remains poorly understood. Moreover, existing approaches for $\\mathrm{@k}$ optimization use dedicated algorithms, and no general framework exists for adapting established policy optimization methods from $\\mathrm{@}1$ to $\\mathrm{@k}$. We derive the optimal policies for KL-regularized $\\mathrm{pass@k}$ and $\\mathrm{max@k}$ objectives in closed form. Our explicit solutions reveal that $\\mathrm{@k}$ optimization naturally redistributes learning pressure based on prompt difficulty, directing it toward harder problems. Crucially, we show that standard $\\mathrm{@}1$ objectives achieve these exact same optimal policies through prompt-adaptive regularization or reward transformation. Ultimately, this yields an optimizer-independent explanation for why $\\mathrm{@k}$ objectives reduce sharpening on easy tasks while prioritizing success on harder ones. Building on these insights, we introduce $\\mathrm{@k}$ Adaptive Pressure for Policy Optimization (KAPPO). Following a one-time reference calibration, KAPPO seamlessly adapts existing $\\mathrm{@}1$ methods to $\\mathrm{@k}$ via prompt-adaptive regularization or reward transformation, without otherwise altering their training procedures. Experiments with several RL methods on mathematical reasoning and code generation demonstrate that KAPPO provides direct control over sharpening. Crucially, we demonstrate that $\\mathrm{@k}$ pressure can be fully realized with single completion training, matching the performance of multi-completion $\\mathrm{@k}$ optimizers at a fraction of the cost.",
+        "url": "http://arxiv.org/abs/2611.03146v1",
+        "date": "2026-11-02",
+        "author": "Simon Matrenok",
+        "type": "Paper"
+      }
+    ]
+  }
+}

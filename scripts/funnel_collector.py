@@ -134,17 +134,29 @@ def main():
         cat = classify_item(item["title"], item["summary"])
         CATEGORIES[cat]["items"].append(item)
         
-    date_str = datetime.date.today().isoformat()
+    today = datetime.date.today()
+    date_str = today.isoformat()
     repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     output_dir = os.path.join(repo_root, "data", "daily")
-    
-    # Clear previous entries so each run maintains only the freshest snapshot
-    if os.path.exists(output_dir):
-        for fname in os.listdir(output_dir):
-            fpath = os.path.join(output_dir, fname)
-            if os.path.isfile(fpath) or os.path.islink(fpath):
-                os.unlink(fpath)
     os.makedirs(output_dir, exist_ok=True)
+    
+    # Retention policy: Clear files older than 30 days based on their YYYY-MM-DD date stamp
+    retention_days = 30
+    cutoff_date = today - datetime.timedelta(days=retention_days)
+    
+    for fname in os.listdir(output_dir):
+        # Match files like YYYY-MM-DD.md or YYYY-MM-DD.json
+        match = re.match(r"^(\d{4}-\d{2}-\d{2})\.(json|md)$", fname)
+        if match:
+            file_date_str = match.group(1)
+            try:
+                file_date = datetime.date.fromisoformat(file_date_str)
+                if file_date < cutoff_date:
+                    old_path = os.path.join(output_dir, fname)
+                    print(f"🗑️ Removing expired snapshot (> {retention_days} days old): {fname}")
+                    os.unlink(old_path)
+            except ValueError:
+                pass
     
     # Save both timestamped and static latest references
     json_path = os.path.join(output_dir, f"{date_str}.json")
