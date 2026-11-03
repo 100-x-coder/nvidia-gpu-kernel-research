@@ -137,12 +137,25 @@ def main():
     date_str = datetime.date.today().isoformat()
     repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     output_dir = os.path.join(repo_root, "data", "daily")
+    
+    # Clear previous entries so each run maintains only the freshest snapshot
+    if os.path.exists(output_dir):
+        for fname in os.listdir(output_dir):
+            fpath = os.path.join(output_dir, fname)
+            if os.path.isfile(fpath) or os.path.islink(fpath):
+                os.unlink(fpath)
     os.makedirs(output_dir, exist_ok=True)
+    
+    # Save both timestamped and static latest references
     json_path = os.path.join(output_dir, f"{date_str}.json")
     md_path = os.path.join(output_dir, f"{date_str}.md")
+    latest_json_path = os.path.join(output_dir, "latest.json")
+    latest_md_path = os.path.join(output_dir, "latest.md")
     
     # Save raw JSON
     with open(json_path, "w", encoding="utf-8") as f:
+        json.dump(CATEGORIES, f, indent=2, ensure_ascii=False)
+    with open(latest_json_path, "w", encoding="utf-8") as f:
         json.dump(CATEGORIES, f, indent=2, ensure_ascii=False)
         
     # Generate structured Markdown report
@@ -165,8 +178,11 @@ def main():
             lines.append(f"| {title_link} | {item['author']} | {item['date']} | {desc_snippet} |")
         lines.append("")
         
+    report_content = "\n".join(lines)
     with open(md_path, "w", encoding="utf-8") as f:
-        f.write("\n".join(lines))
+        f.write(report_content)
+    with open(latest_md_path, "w", encoding="utf-8") as f:
+        f.write(report_content)
         
     print(f"✅ Generated report: {md_path}")
     print(f"✅ Generated dataset: {json_path}")

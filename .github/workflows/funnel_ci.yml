@@ -34,22 +34,15 @@ jobs:
         run: |
           python3 scripts/funnel_collector.py
 
-      - name: Update Main README Index
+      - name: Stage Changes and Clean Old Files
         run: |
-          python3 -c "
-          import os, glob
-          daily_files = sorted(glob.glob('data/daily/*.md'), reverse=True)
-          if not daily_files:
-              exit(0)
-          latest_file = daily_files[0]
-          print(f'Latest funnel snapshot: {latest_file}')
-          "
+          git add -A data/daily/
 
       - name: Commit and Push Changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "chore(ci): automated daily research & kernel funnel [skip ci]"
-          file_pattern: "data/daily/* README.md"
+          commit_message: "chore(ci): update daily research & kernel funnel (cleared previous) [skip ci]"
+          file_pattern: "data/daily/*"
           commit_user_name: "github-actions[bot]"
           commit_user_email: "github-actions[bot]@users.noreply.github.com"
           commit_author: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
