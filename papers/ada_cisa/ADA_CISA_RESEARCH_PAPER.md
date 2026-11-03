@@ -1,10 +1,10 @@
 # Ada-CISA: Adaptive Outlier-Aware Chunk-Indexed Sparse Attention with Dynamic Dispersion Gating for Long-Context Serving on NVIDIA GPUs
 
 **Author:** Lee Si Yuan (\texttt{siyuanlee.cs@gmail.com})  
-**Affiliation:** NVIDIA GPU Kernel Research Group (Extended from CISA by Dabbah et al., arXiv:2611.03200v1)  
 **Date:** November 2026  
 **Repository:** [nvidia-gpu-kernel-research](https://github.com/100-x-coder/nvidia-gpu-kernel-research)  
-**Target Hardware:** NVIDIA Hopper (GH200 / H100 SM90) and Blackwell (B200 / B300 SM100 / SM120)  
+**Evaluation Mode:** Algorithmic reference simulation and analytical roofline memory traffic modeling  
+**Target Hardware Architecture:** NVIDIA Hopper (GH200 / H100 SM90) and Blackwell (B200 / B300 SM100 / SM120)  
 **Publication PDF:** [`papers/ada_cisa/ada_cisa.pdf`](./ada_cisa.pdf)  
 **LaTeX Source:** [`papers/ada_cisa/ada_cisa.tex`](./ada_cisa.tex)  
 **Benchmark Suite:** [`papers/ada_cisa/benchmarks/run_benchmark.py`](./benchmarks/run_benchmark.py)  

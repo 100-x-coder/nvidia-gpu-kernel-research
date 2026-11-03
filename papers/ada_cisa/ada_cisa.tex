@@ -19,8 +19,7 @@
 
 \author{
     \textbf{Lee Si Yuan} \\
-    \texttt{siyuanlee.cs@gmail.com} \\
-    \textit{NVIDIA GPU Kernel Research Group}
+    \texttt{siyuanlee.cs@gmail.com}
 }
 
 \date{November 2026}
@@ -36,7 +35,7 @@ However, our structural investigation reveals three fundamental limitations in s
 
 To overcome these deficiencies, we propose \textbf{Ada-CISA} (Adaptive Chunk-Indexed Sparse Attention). Ada-CISA introduces: (i) \textbf{Norm-Weighted Outlier-Aware (NOA) Key Summaries}, which apply an exponentiated norm-weighting scheme to amplify salient tokens with $O(d)$ ingestion complexity and zero added storage; (ii) \textbf{Dispersion-Aware Dynamic QShare (DA-QShare)}, an online directional coherence gate that dynamically partitions query blocks when cosine dispersion exceeds a threshold $\tau_{\text{disp}}$; and (iii) \textbf{Entropy-Gated Dynamic Budgeting (Ada-Budget)}, which dynamically reallocates chunk quotas proportional to attention peakedness.
 
-Empirical verification shows that Ada-CISA boosts needle retrieval recall from \textbf{70.0\% to 98.3\%} (+28.3\%) under equivalent budgets ($\beta=1.6$), yields a \textbf{+20.0\% net recall gain} at 8,192 context length, reduces KV cache HBM reads by \textbf{31.1$\times$} at 1M tokens, and projects an end-to-end kernel speedup of \textbf{10.5$\times$} on NVIDIA Blackwell B200/B300 GPUs.
+Algorithmic simulation and analytical roofline modeling show that Ada-CISA boosts needle retrieval recall from \textbf{70.0\% to 98.3\%} (+28.3\%) under equivalent budgets ($\beta=1.6$), yields a \textbf{+20.0\% net recall gain} at 8,192 context length, reduces modeled KV cache HBM reads by \textbf{31.1$\times$} at 1M tokens, and projects an analytical memory-bound kernel speedup of \textbf{10.5$\times$} on NVIDIA Blackwell B200/B300 architectures.
 \end{abstract}
 
 \section{Introduction}
@@ -126,8 +125,8 @@ On NVIDIA Hopper (SM90) and Blackwell (SM100/SM120):
     \item \textbf{Zero-Copy vLLM Integration}: Chunk size $C=16$ maps 1:1 to physical page blocks, eliminating scatter/gather copies.
 \end{itemize}
 
-\section{Empirical Evaluation}
-We executed our benchmark and test suite (`run\_benchmark.py` and `test\_kernel\_simulation.py`).
+\section{Algorithmic Simulation and Roofline Verification}
+To evaluate the mathematical formulations of Ada-CISA prior to hardware deployment, we implemented a reference simulation and verification harness in Python (\texttt{run\_benchmark.py} and \texttt{test\_kernel\_simulation.py}). The harness evaluates exact mathematical equivalence, token retrieval dynamics, and KL divergence, combined with an architectural memory-traffic model to project HBM3e bandwidth reductions on Hopper (SM90) and Blackwell (SM100) configurations.
 
 \subsection{Full-Budget Equivalence Verification}
 Under full budget ($k_{\text{chunks}} = \text{total chunks}$), Ada-CISA converges exactly to full causal dense attention:
