@@ -1,6 +1,6 @@
 # Ada-CISA: Adaptive Outlier-Aware Chunk-Indexed Sparse Attention with Dynamic Dispersion Gating for Long-Context Serving on NVIDIA GPUs
 
-**Author:** Lee Si Yuan (\texttt{siyuanlee.cs@gmail.com})  
+**Author:** Lee Si Yuan (*Independent Researcher*, \texttt{siyuanlee.cs@gmail.com})  
 **Date:** November 2026  
 **Repository:** [nvidia-gpu-kernel-research](https://github.com/100-x-coder/nvidia-gpu-kernel-research)  
 **Evaluation Mode:** Algorithmic reference simulation and analytical roofline memory traffic modeling  
