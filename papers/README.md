@@ -7,6 +7,7 @@ This directory contains research papers, novel extensions, and empirical verific
 | Paper Title | Author | Base Work | Status | Formats & Artifacts |
 |---|---|---|---|---|
 | **Ada-CISA**: Adaptive Outlier-Aware Chunk-Indexed Sparse Attention with Dynamic Dispersion Gating | Lee Si Yuan (Independent Researcher, `siyuanlee.cs@gmail.com`) | Dabbah et al. (CISA, [arXiv:2611.03200v1](http://arxiv.org/abs/2611.03200v1)) | Verified & Benchmarked | [PDF Document](./ada_cisa/ada_cisa.pdf) • [LaTeX Source](./ada_cisa/ada_cisa.tex) • [Markdown Paper](./ada_cisa/ADA_CISA_RESEARCH_PAPER.md) • [Benchmarks](./ada_cisa/benchmarks/run_benchmark.py) • [Results](./ada_cisa/results/benchmark_results.json) |
+| **Causal Prefix Microscaling**: Scale-Dependency Study for Low-Precision Attention | Lee Si Yuan (Independent Researcher, `siyuanlee.cs@gmail.com`) | Velikonivtsev et al. (FLAMIA, [arXiv:2611.03344v1](https://arxiv.org/abs/2611.03344)) | CPU Reference Study | [PDF Document](./causal_scale_attention/causal_prefix_microscaling.pdf) • [LaTeX Source](./causal_scale_attention/causal_prefix_microscaling.tex) • [Markdown Paper](./causal_scale_attention/CAUSAL_PREFIX_MICROSCALING.md) • [Experiment](./causal_scale_attention/scale_leakage_experiment.py) • [Results](./causal_scale_attention/results.json) |
 
 ### Key Findings of Ada-CISA:
 - **Needle Retrieval Recall:** Elevated from 70.0% (standard CISA arithmetic mean) to **98.3%** using Norm-Weighted Outlier-Aware (NOA) summarization ($\beta=1.6$).

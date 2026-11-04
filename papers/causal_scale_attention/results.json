@@ -1,0 +1,57 @@
+{
+  "description": "CPU E4M3-like quantization dependency simulation; not GPU timing",
+  "seed": 20261104,
+  "length": 4096,
+  "trials": 64,
+  "rows": [
+    {
+      "scale_group_tokens": 1,
+      "rmse": 82.67561263380082,
+      "background_rmse": 0.0007957429863301423,
+      "adjacent_future_change_rate": 0.0,
+      "scale_groups_per_sequence": 4096
+    },
+    {
+      "scale_group_tokens": 2,
+      "rmse": 82.67561266954323,
+      "background_rmse": 0.0025670591989687555,
+      "adjacent_future_change_rate": 0.01557159423828125,
+      "scale_groups_per_sequence": 2048
+    },
+    {
+      "scale_group_tokens": 4,
+      "rmse": 82.67561274189356,
+      "background_rmse": 0.004318240992293041,
+      "adjacent_future_change_rate": 0.031056722005208332,
+      "scale_groups_per_sequence": 1024
+    },
+    {
+      "scale_group_tokens": 8,
+      "rmse": 82.67561288166002,
+      "background_rmse": 0.006476089579201293,
+      "adjacent_future_change_rate": 0.06211635044642857,
+      "scale_groups_per_sequence": 512
+    },
+    {
+      "scale_group_tokens": 16,
+      "rmse": 82.67561317776477,
+      "background_rmse": 0.009554399124000098,
+      "adjacent_future_change_rate": 0.124365234375,
+      "scale_groups_per_sequence": 256
+    },
+    {
+      "scale_group_tokens": 32,
+      "rmse": 82.67561376650629,
+      "background_rmse": 0.013762347218339846,
+      "adjacent_future_change_rate": 0.24870447958669356,
+      "scale_groups_per_sequence": 128
+    },
+    {
+      "scale_group_tokens": "causal_prefix_32_token_blocks",
+      "rmse": 82.67561263380082,
+      "background_rmse": 0.0007957429863307329,
+      "adjacent_future_change_rate": 0.0,
+      "scale_groups_per_sequence": 347.59375
+    }
+  ]
+}
