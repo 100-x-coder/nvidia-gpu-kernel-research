@@ -1,0 +1,157 @@
+{
+  "study": "synthetic_paired_promotion_gate",
+  "seed": 20261105,
+  "trials_per_cell": 30000,
+  "model": {
+    "log_latency_common_drift_sd": 0.05,
+    "log_latency_independent_jitter_sd": 0.02,
+    "independent_jitter_distribution": "Gaussian",
+    "paired_order": "same drift draw for baseline and candidate in each pair",
+    "gate": "promote iff mean paired log-latency difference + z_0.95 * estimated_SE < -log(1 + minimum_practical_gain)",
+    "minimum_practical_gain": 0.01,
+    "fixed_sample_sizes": [
+      8,
+      16,
+      32
+    ],
+    "z_value": 1.6448536269514722
+  },
+  "results": [
+    {
+      "repeats": 8,
+      "true_speedup": 0.0,
+      "promotion_probability": 0.009266666666666666,
+      "unpaired_promotion_probability": 3.3333333333333335e-05,
+      "minimum_practical_gain": 0.01,
+      "one_sided_confidence": 0.95,
+      "null_mean_sample_sd_log_latency": {
+        "paired_difference": 0.027350344003822965,
+        "unpaired_baseline": 0.051962560449645236,
+        "unpaired_candidate": 0.052028833310425376
+      }
+    },
+    {
+      "repeats": 8,
+      "true_speedup": 0.005,
+      "promotion_probability": 0.02723333333333333,
+      "unpaired_promotion_probability": 0.0002,
+      "minimum_practical_gain": 0.01,
+      "one_sided_confidence": 0.95
+    },
+    {
+      "repeats": 8,
+      "true_speedup": 0.01,
+      "promotion_probability": 0.0721,
+      "unpaired_promotion_probability": 0.0007333333333333333,
+      "minimum_practical_gain": 0.01,
+      "one_sided_confidence": 0.95
+    },
+    {
+      "repeats": 8,
+      "true_speedup": 0.02,
+      "promotion_probability": 0.2925333333333333,
+      "unpaired_promotion_probability": 0.0101,
+      "minimum_practical_gain": 0.01,
+      "one_sided_confidence": 0.95
+    },
+    {
+      "repeats": 8,
+      "true_speedup": 0.05,
+      "promotion_probability": 0.9819333333333333,
+      "unpaired_promotion_probability": 0.39923333333333333,
+      "minimum_practical_gain": 0.01,
+      "one_sided_confidence": 0.95
+    },
+    {
+      "repeats": 16,
+      "true_speedup": 0.0,
+      "promotion_probability": 0.0015666666666666667,
+      "unpaired_promotion_probability": 0.0,
+      "minimum_practical_gain": 0.01,
+      "one_sided_confidence": 0.95,
+      "null_mean_sample_sd_log_latency": {
+        "paired_difference": 0.02781508998612458,
+        "unpaired_baseline": 0.05288562696609524,
+        "unpaired_candidate": 0.05293645194723496
+      }
+    },
+    {
+      "repeats": 16,
+      "true_speedup": 0.005,
+      "promotion_probability": 0.012833333333333334,
+      "unpaired_promotion_probability": 0.0,
+      "minimum_practical_gain": 0.01,
+      "one_sided_confidence": 0.95
+    },
+    {
+      "repeats": 16,
+      "true_speedup": 0.01,
+      "promotion_probability": 0.0598,
+      "unpaired_promotion_probability": 0.0002,
+      "minimum_practical_gain": 0.01,
+      "one_sided_confidence": 0.95
+    },
+    {
+      "repeats": 16,
+      "true_speedup": 0.02,
+      "promotion_probability": 0.4161666666666667,
+      "unpaired_promotion_probability": 0.007866666666666666,
+      "minimum_practical_gain": 0.01,
+      "one_sided_confidence": 0.95
+    },
+    {
+      "repeats": 16,
+      "true_speedup": 0.05,
+      "promotion_probability": 0.9998666666666667,
+      "unpaired_promotion_probability": 0.8202333333333334,
+      "minimum_practical_gain": 0.01,
+      "one_sided_confidence": 0.95
+    },
+    {
+      "repeats": 32,
+      "true_speedup": 0.0,
+      "promotion_probability": 0.0001,
+      "unpaired_promotion_probability": 0.0,
+      "minimum_practical_gain": 0.01,
+      "one_sided_confidence": 0.95,
+      "null_mean_sample_sd_log_latency": {
+        "paired_difference": 0.028079503108343024,
+        "unpaired_baseline": 0.05347054916789848,
+        "unpaired_candidate": 0.05345922963357607
+      }
+    },
+    {
+      "repeats": 32,
+      "true_speedup": 0.005,
+      "promotion_probability": 0.0052,
+      "unpaired_promotion_probability": 0.0,
+      "minimum_practical_gain": 0.01,
+      "one_sided_confidence": 0.95
+    },
+    {
+      "repeats": 32,
+      "true_speedup": 0.01,
+      "promotion_probability": 0.05386666666666667,
+      "unpaired_promotion_probability": 0.0001,
+      "minimum_practical_gain": 0.01,
+      "one_sided_confidence": 0.95
+    },
+    {
+      "repeats": 32,
+      "true_speedup": 0.02,
+      "promotion_probability": 0.6247,
+      "unpaired_promotion_probability": 0.015066666666666667,
+      "minimum_practical_gain": 0.01,
+      "one_sided_confidence": 0.95
+    },
+    {
+      "repeats": 32,
+      "true_speedup": 0.05,
+      "promotion_probability": 1.0,
+      "unpaired_promotion_probability": 0.9985333333333334,
+      "minimum_practical_gain": 0.01,
+      "one_sided_confidence": 0.95
+    }
+  ],
+  "scope": "Synthetic CPU simulation only; no GPU timings or claims about real benchmark noise."
+}
