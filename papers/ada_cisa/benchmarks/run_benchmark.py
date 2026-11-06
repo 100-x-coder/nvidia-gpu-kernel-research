@@ -14,8 +14,7 @@ import math
 import random
 import time
 import json
-import os
-import sys
+from pathlib import Path
 
 def dot_product(v1, v2):
     return sum(x * y for x, y in zip(v1, v2))
@@ -267,8 +266,8 @@ def run_suite():
             if target_chunk in selected:
                 hits += 1
         recall = (hits / trials) * 100
-        print(f"  Beta = {beta:.1f} (0.0 = Uniform CISA) -> Recall@{k_chunks}: {recall:5.1f}%")
-        beta_ablation.append({"beta": beta, "recall_at_4": recall})
+        print(f"  Beta = {beta:.1f} (0.0 = Uniform CISA) -> Target selection@{k_chunks}: {recall:5.1f}%")
+        beta_ablation.append({"beta": beta, "target_selection_rate_at_4": recall})
     results["beta_ablation"] = beta_ablation
 
     # Test 3: Needle-in-a-Haystack Across Sequence Contexts (1k to 16k)
@@ -305,8 +304,8 @@ def run_suite():
         context_results.append({
             "context_length": N,
             "k_chunks": k_eval,
-            "cisa_recall": c_rec,
-            "ada_cisa_recall": a_rec,
+            "cisa_target_selection_rate": c_rec,
+            "ada_cisa_target_selection_rate": a_rec,
             "gain": a_rec - c_rec
         })
     results["context_sweep"] = context_results
@@ -452,22 +451,22 @@ def run_suite():
         ratio = dense_bytes / ada_bytes
         speedup = min(16.5, max(1.0, 0.88 * (ratio ** 0.72)))
         
-        print(f"{N:>10d} | {dense_bytes/1024**2:10.2f} MB | {cisa_bytes/1024**2:10.2f} MB | {ada_bytes/1024**2:10.2f} MB | {ratio:15.1f}x | {speedup:9.2f}x")
+        print(f"{N:>10d} | {dense_bytes/1024**2:10.2f} MiB | {cisa_bytes/1024**2:10.2f} MiB | {ada_bytes/1024**2:10.2f} MiB | {ratio:15.1f}x | {speedup:9.2f}x")
         perf_projections.append({
             "context_tokens": N,
-            "dense_mb": dense_bytes / 1024**2,
-            "cisa_mb": cisa_bytes / 1024**2,
-            "ada_cisa_mb": ada_bytes / 1024**2,
+            "dense_mib": dense_bytes / 1024**2,
+            "cisa_mib": cisa_bytes / 1024**2,
+            "ada_cisa_mib": ada_bytes / 1024**2,
             "bandwidth_reduction_factor": ratio,
             "projected_speedup": speedup
         })
     results["hardware_projections"] = perf_projections
 
     # Save to json
-    out_dir = "/home/leesiyuan/Repos/nvidia-gpu-kernel-research/papers/ada_cisa/results"
-    os.makedirs(out_dir, exist_ok=True)
-    out_file = os.path.join(out_dir, "benchmark_results.json")
-    with open(out_file, "w") as f:
+    out_dir = Path(__file__).resolve().parent.parent / "results"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    out_file = out_dir / "benchmark_results.json"
+    with out_file.open("w") as f:
         json.dump(results, f, indent=2)
     print(f"\n[ALL TESTS PASSED] Saved results to {out_file}")
 

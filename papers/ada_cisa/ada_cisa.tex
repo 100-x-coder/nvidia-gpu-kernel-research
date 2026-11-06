@@ -3,6 +3,7 @@
 \usepackage[margin=0.75in]{geometry}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{booktabs}
+\usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{microtype}
 \usepackage{xcolor}
@@ -32,34 +33,34 @@
 \begin{abstract}
 Serving long-context Large Language Models (LLMs) with context windows extending to millions of tokens induces severe high-bandwidth memory (HBM) retrieval bottlenecks during autoregressive generation. Recently, Chunk-Indexed Sparse Attention (CISA; Dabbah et al., arXiv:2611.03200v1) demonstrated that pre-trained dense attention models can be retrofitted without fine-tuning by partitioning the Key-Value (KV) cache into fixed chunks ($C=16$) and scoring arithmetic-mean key representatives with an uncalibrated or KL-matched query.
 
-However, our structural investigation reveals three fundamental limitations in standard CISA: (1) \textbf{The Arithmetic Mean Dilemma}, wherein averaging key vectors across a chunk dilutes sharp activation outliers (such as entity tokens or needle keys), attenuating salient scores by $16\times$ and degrading needle retrieval recall to 70.0\%; (2) \textbf{Query Centroid Collapse in Static QShare}, where rigid query grouping ($G=16$) causes the shared index query to drift into an uninformative subspace across semantic boundaries; and (3) \textbf{Layer-Homogeneous Budget Rigidity}, enforcing an invariant chunk count regardless of attention entropy across transformer layers.
+We study three hypotheses about static CISA in synthetic reference simulations: (1) \textbf{Mean-summary dilution}, where one key's contribution to a $C=16$ arithmetic mean is scaled by $1/16$; (2) \textbf{Query-centroid sensitivity}, where a shared query may be a poor representative across divergent queries; and (3) \textbf{Fixed-budget tradeoffs}, where a constant chunk budget does not respond to score entropy. These simulations do not establish how frequently these effects occur in deployed models.
 
-To overcome these deficiencies, we propose \textbf{Ada-CISA} (Adaptive Chunk-Indexed Sparse Attention). Ada-CISA introduces: (i) \textbf{Norm-Weighted Outlier-Aware (NOA) Key Summaries}, which apply an exponentiated norm-weighting scheme to amplify salient tokens with $O(d)$ ingestion complexity and zero added storage; (ii) \textbf{Dispersion-Aware Dynamic QShare (DA-QShare)}, an online directional coherence gate that dynamically partitions query blocks when cosine dispersion exceeds a threshold $\tau_{\text{disp}}$; and (iii) \textbf{Entropy-Gated Dynamic Budgeting (Ada-Budget)}, which dynamically reallocates chunk quotas proportional to attention peakedness.
+To overcome these deficiencies, we propose \textbf{Ada-CISA} (Adaptive Chunk-Indexed Sparse Attention). Ada-CISA introduces: (i) \textbf{Norm-Weighted Outlier-Aware (NOA) Key Summaries}, which apply exponentiated norm weighting; representative construction costs $O(Cd)$ arithmetic and stores one $d$-element vector per chunk, as the baseline does; (ii) \textbf{Dispersion-Aware Dynamic QShare (DA-QShare)}, an online directional coherence gate that dynamically partitions query blocks when cosine dispersion exceeds a threshold $\tau_{\text{disp}}$; and (iii) \textbf{Entropy-Gated Dynamic Budgeting (Ada-Budget)}, which changes chunk quotas using thresholds on normalized score entropy.
 
-Algorithmic simulation and analytical roofline modeling show that Ada-CISA boosts needle retrieval recall from \textbf{70.0\% to 98.3\%} (+28.3\%) under equivalent budgets ($\beta=1.6$), yields a \textbf{+20.0\% net recall gain} at 8,192 context length, reduces modeled KV cache HBM reads by \textbf{31.1$\times$} at 1M tokens, and projects an analytical memory-bound kernel speedup of \textbf{10.5$\times$} on NVIDIA Blackwell B200/B300 architectures.
+Seeded CPU simulation reports needle-chunk selection rates of \textbf{70.0\% and 98.3\%} for $\beta=0$ and $1.6$ (60 trials each), and a \textbf{+20.0 percentage-point} difference at 8,192 tokens (50 trials). A separate analytical traffic model estimates a \textbf{31.1$\times$} read reduction at 1M tokens. Its \textbf{10.5$\times$} latency figure is an illustrative model projection, not a GPU measurement or benchmark result.
 \end{abstract}
 
 \section{Introduction}
-As modern foundation models expand sequence lengths to 1M--10M tokens (e.g., Gemini 1.5, Llama-3.1, Nemotron-3 Ultra), the primary operational bottleneck shifts from compute-bound matrix multiplications to extreme memory-bandwidth-bound Key-Value (KV) cache retrieval. For a batch size of $B=32$ with context length $N=1,048,576$, an 8-head Grouped Query Attention (GQA) model in BF16 stores approximately 4.0 GB of KV cache per sequence. Repeatedly reading this state during generation exhausts HBM bandwidth on modern GPU clusters.
+At million-token context lengths, repeatedly reading the Key-Value (KV) cache can make attention memory-bandwidth-bound during decoding. For a batch size of $B=32$ with context length $N=1,048,576$, an 8-head Grouped Query Attention (GQA) model in BF16 stores approximately 4.0 GiB (4,096 MiB) of KV cache per sequence. Repeatedly reading this state during generation exhausts HBM bandwidth on modern GPU clusters.
 
 Recently, Dabbah et al.~\cite{cisa2026} proposed Chunk-Indexed Sparse Attention (CISA), partitioning the KV history into chunks of size $C=16$ matching vLLM physical pages. CISA summarizes each chunk by its arithmetic mean:
 \begin{equation}
 r_j = \frac{1}{C}\sum_{u \in \mathcal{C}_j} k_u
 \end{equation}
-A projected indexing query $q^I$ scores representatives $s_j = \langle q^I, r_j \rangle / \sqrt{d}$ to select the top-$k$ chunks. While CISA offers gradient-free deployment, our mathematical and empirical analysis demonstrates that arithmetic averaging dilutes critical outlier channels, while static query grouping induces centroid drift across semantic boundaries.
+A projected indexing query $q^I$ scores representatives $s_j = \langle q^I, r_j \rangle / \sqrt{d}$ to select the top-$k$ chunks. Our synthetic simulations examine whether mean summaries or static query sharing can lose useful information in selected cases; they do not establish how often these effects arise in deployed models.
 
-In this work, we propose \textbf{Ada-CISA}, a mathematically grounded extension providing:
+We study \textbf{Ada-CISA} as three algorithmic heuristics in a CPU reference simulation; the hardware implementation remains future work:
 \begin{enumerate}
-    \item \textbf{Norm-Weighted Outlier-Aware (NOA) Summaries}: An exponentiated weighting function that preserves salient keys.
-    \item \textbf{Dispersion-Aware Dynamic QShare (DA-QShare)}: Adaptive query grouping that prevents centroid collapse at phase boundaries.
-    \item \textbf{Entropy-Gated Dynamic Budget Allocation (Ada-Budget)}: Variance-driven layer budget reallocation.
-    \item \textbf{Hopper/Blackwell Hardware Co-Design}: Asynchronous TMA paged gather pipelines.
+    \item \textbf{Norm-Weighted Outlier-Aware (NOA) Summaries}: An exponentiated weighting function that assigns larger weights to higher-norm keys; retrieval effects are evaluated only in synthetic cases.
+    \item \textbf{Dispersion-Aware Dynamic QShare (DA-QShare)}: A seed-cosine threshold heuristic for splitting query groups.
+    \item \textbf{Entropy-Gated Dynamic Budget Allocation (Ada-Budget)}: Threshold-based chunk-budget changes using normalized score entropy.
+    \item \textbf{Proposed hardware direction (not implemented)}: An asynchronous TMA paged-gather pipeline for future evaluation.
 \end{enumerate}
 
 \section{Shortcomings of Static CISA}
 
 \subsection{The Arithmetic Mean Dilemma}
-In modern Transformer activations, salient features (such as needle identifiers or syntax tokens) exhibit high activation norms $\|k_u\|_2 \gg \mu_k$. When using the uniform arithmetic mean:
+For a chunk with one designated key and $C-1$ background keys, the uniform arithmetic mean is:
 \begin{equation}
 r_j = \frac{1}{C} k_{\text{salient}} + \frac{C-1}{C} \bar{k}_{\text{background}}
 \end{equation}
@@ -67,7 +68,7 @@ The inner product with a target query $q$ is attenuated:
 \begin{equation}
 \langle q, r_j \rangle = \frac{1}{C} \langle q, k_{\text{salient}} \rangle + \frac{C-1}{C} \langle q, \bar{k}_{\text{background}} \rangle
 \end{equation}
-For $C=16$, the critical signal is suppressed by $16\times$, leading to false negatives in chunk retrieval (needle recall drops to 70.0\%).
+For $C=16$, the salient key contribution to the mean is scaled by $1/16$. In the seeded CPU reference retrieval experiment, the baseline selected the needle chunk in 70.0\% of 60 trials; this rate is specific to that synthetic setup.
 
 \subsection{Centroid Drift in Static QShare}
 CISA's QShare enforces static blocks of $G=16$ query tokens:
@@ -87,7 +88,7 @@ where the weights $w_u$ are given by:
 \begin{equation}
 w_u = \frac{\exp\left( \beta \cdot \frac{\|k_u\|_2}{\mu_{\mathcal{C}_j}} \right)}{\sum_{v \in \mathcal{C}_j} \exp\left( \beta \cdot \frac{\|k_v\|_2}{\mu_{\mathcal{C}_j}} \right)}, \quad \mu_{\mathcal{C}_j} = \frac{1}{|\mathcal{C}_j|} \sum_{v \in \mathcal{C}_j} \|k_v\|_2
 \end{equation}
-Here $\beta \ge 0$ denotes the salience temperature. When $\beta = 0$, $w_u = 1/C$, recovering standard CISA. For $\beta > 0$, tokens with elevated norms dominate $r_j^{\text{NOA}}$. Because $\|k_u\|_2$ is computed at KV append time, computation is $O(d)$ and requires zero additional storage ($r_j \in \mathbb{R}^d$).
+Here $\beta \ge 0$ denotes the salience temperature. When $\beta = 0$, $w_u = 1/C$, recovering standard CISA. For $\beta > 0$, higher-norm tokens receive greater weight. Constructing a representative costs $O(Cd)$ arithmetic for a chunk of $C$ keys in dimension $d$. The representative has the same $d$-element storage size as the baseline mean. The Python implementation clips the exponent at 20 and replaces mean norms below $10^{-8}$ with 1.0; this is a simulation safeguard, not part of the idealized formula.
 
 \subsection{Dispersion-Aware Dynamic QShare}
 DA-QShare evaluates online directional coherence using cosine similarity:
@@ -101,7 +102,7 @@ Given group seed $q_{\text{seed}}$ and incoming query $q_t$:
 \text{New partition } \{q_t\}, & \text{otherwise}
 \end{cases}
 \end{equation}
-This bounds group dispersion, preventing centroid drift.
+This seed-based threshold is a heuristic. It does not bound every pairwise similarity within a partition or guarantee that centroid drift is prevented.
 
 \subsection{Entropy-Gated Dynamic Budget Allocation}
 Given raw chunk scores $s_j$ over eligible set $\mathcal{E}_t$:
@@ -116,10 +117,10 @@ k_{\text{alloc}} = \begin{cases}
 k_{\text{base}}, & \text{otherwise}
 \end{cases}
 \end{equation}
-This redirects bandwidth from focal layers to diffuse layers.
+This heuristic decreases the chunk count for low entropy and increases it for high entropy. In the reported eight-layer simulation, Ada-Budget fetched 192 chunks versus 128 for the fixed policy; it reduced average KL by 5.4\% while using more modeled attention work.
 
-\section{Hardware Co-Design (SM90 / SM100)}
-On NVIDIA Hopper (SM90) and Blackwell (SM100/SM120):
+\section{Proposed Hardware Design Sketch (Not Implemented)}
+The following unimplemented design directions assume compatible runtime interfaces and require hardware validation:
 \begin{itemize}
     \item \textbf{TMA Asynchronous Paged Gather}: Producer warps dispatch TMA descriptor instructions directly targeting physical page IDs, streaming blocks into circular SRAM multibuffers.
     \item \textbf{Warp Specialization}: Consumer warpgroups execute WGMMA Tensor Core instructions concurrently with memory staging.
@@ -127,52 +128,56 @@ On NVIDIA Hopper (SM90) and Blackwell (SM100/SM120):
 \end{itemize}
 
 \section{Algorithmic Simulation and Roofline Verification}
-To evaluate the mathematical formulations of Ada-CISA prior to hardware deployment, we implemented a reference simulation and verification harness in Python (\texttt{run\_benchmark.py} and \texttt{test\_kernel\_simulation.py}). The harness evaluates exact mathematical equivalence, token retrieval dynamics, and KL divergence, combined with an architectural memory-traffic model to project HBM3e bandwidth reductions on Hopper (SM90) and Blackwell (SM100) configurations.
+To evaluate selected formulations before hardware deployment, we implemented a Python reference simulation (\texttt{run\_benchmark.py} and \texttt{test\_kernel\_simulation.py}). It checks one full-budget output comparison to tolerance $10^{-5}$, reports synthetic retrieval and KL metrics, and evaluates an analytical memory-traffic model. It does not benchmark a GPU or validate the projected latency model on Hopper or Blackwell.
 
 \subsection{Full-Budget Equivalence Verification}
-Under full budget ($k_{\text{chunks}} = \text{total chunks}$), Ada-CISA converges exactly to full causal dense attention:
+In one seeded full-budget test ($k_{\text{chunks}} = \text{total chunks}$), the simulator's output difference from full causal dense attention was:
 \begin{equation}
 \max |o^{\text{dense}} - o^{\text{Ada-CISA}}| = 0.00 \times 10^0
 \end{equation}
-confirming bitwise consistency.
+The harness asserts that this difference is below $10^{-5}$. This is a single CPU reference case, not a proof of bitwise equivalence across inputs or hardware.
 
 \subsection{Salience Temperature ($\beta$) Ablation}
-Table~\ref{tab:beta_ablation} displays needle retrieval recall at $k=4$ over 2,048 tokens:
+Table~\ref{tab:beta_ablation} displays target-chunk selection rates at $k=4$ over 2,048 synthetic tokens (60 trials per temperature):
 \begin{table}[h]
 \centering
 \small
-\caption{Ablation of salience parameter $\beta$ ($N=2048$, $k=4$).}
+\caption{Synthetic needle-chunk selection by temperature ($N=2048$, 60 trials per cell, $k=4$).}
 \label{tab:beta_ablation}
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{llcc}
 \toprule
-$\beta$ & Formulation & Recall @ 4 & Relative Gain \\
+$\beta$ & Formulation & Selection rate & Difference (pp) \\
 \midrule
 0.0 & CISA (Uniform Mean) & 70.0\% & Baseline \\
-0.4 & Mild Norm Weighting & 81.7\% & +11.7\% \\
-0.8 & Balanced Weighting & 90.0\% & +20.0\% \\
-1.2 & Salience Calibrated & 93.3\% & +23.3\% \\
-\textbf{1.6} & Strong Salience & \textbf{98.3\%} & \textbf{+28.3\%} \\
+0.4 & Mild Norm Weighting & 81.7\% & +11.7 \\
+0.8 & Balanced Weighting & 90.0\% & +20.0 \\
+1.2 & Higher Norm Weighting & 93.3\% & +23.3 \\
+\textbf{1.6} & Stronger Norm Weighting & \textbf{98.3\%} & \textbf{+28.3} \\
 \bottomrule
 \end{tabular}
+}
 \end{table}
 
-\subsection{Long-Context Needle Retrieval Scaling}
-Table~\ref{tab:context_scaling} tracks needle recall with budget $k=6$ across context lengths from 1,024 to 8,192 tokens:
+\subsection{Long-Context Needle-Chunk Selection Scaling}
+Table~\ref{tab:context_scaling} tracks target-chunk selection rates with budget $k=6$ (50 trials per context length):
 \begin{table}[h]
 \centering
 \small
-\caption{Needle recall scaling across context lengths ($k=6$).}
+\caption{Synthetic target-chunk selection rate across context lengths ($k=6$, 50 trials per condition).}
 \label{tab:context_scaling}
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{rcccc}
 \toprule
-Context ($N$) & Chunks & CISA & Ada-CISA & Gain \\
+Context ($N$) & Chunks & CISA & Ada-CISA & Difference (pp) \\
 \midrule
-1,024 & 64 & 92.0\% & \textbf{98.0\%} & +6.0\% \\
-2,048 & 128 & 84.0\% & \textbf{98.0\%} & +14.0\% \\
-4,096 & 256 & 74.0\% & \textbf{86.0\%} & +12.0\% \\
-8,192 & 512 & 72.0\% & \textbf{92.0\%} & \textbf{+20.0\%} \\
+1,024 & 64 & 92.0\% & \textbf{98.0\%} & +6.0 \\
+2,048 & 128 & 84.0\% & \textbf{98.0\%} & +14.0 \\
+4,096 & 256 & 74.0\% & \textbf{86.0\%} & +12.0 \\
+8,192 & 512 & 72.0\% & \textbf{92.0\%} & \textbf{+20.0} \\
 \bottomrule
 \end{tabular}
+}
 \end{table}
 
 \subsection{Semantic Phase Boundaries in DA-QShare}
@@ -180,8 +185,9 @@ Table~\ref{tab:dispersion} demonstrates that under abrupt topic transitions, DA-
 \begin{table}[h]
 \centering
 \small
-\caption{Cosine similarity to dense attention across prompt transitions.}
+\caption{Cosine similarity to dense attention in three synthetic query scenarios.}
 \label{tab:dispersion}
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{lccc}
 \toprule
 Scenario & Static QShare & DA-QShare & Subgroups \\
@@ -191,32 +197,37 @@ Moderate Drift & \textbf{0.3832} & 0.3716 & 3 \\
 Topic Boundary & 0.3467 & \textbf{0.3801} & 2 \\
 \bottomrule
 \end{tabular}
+}
 \end{table}
 
 \subsection{HBM Traffic Model (Blackwell SM100)}
-Table~\ref{tab:traffic} details memory read reduction and projected speedup for 8-head GQA (BF16, $d=128$) up to 1,048,576 tokens on NVIDIA Blackwell B200/B300 hardware.
+Table~\ref{tab:traffic} reports model estimates for an assumed 8-head GQA (BF16, $d=128$) configuration, not measurements on NVIDIA Blackwell B200/B300 hardware.
 \begin{table}[h]
 \centering
 \footnotesize
 \setlength{\tabcolsep}{3.5pt}
 \caption{HBM read volume and projected speedup on Blackwell.}
 \label{tab:traffic}
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{rrrrr}
 \toprule
 Tokens ($N$) & Dense Read & Ada-CISA & Reduction & Speedup \\
 \midrule
-4,096 & 16.0 MB & 4.0 MB & 4.0$\times$ & 2.39$\times$ \\
-16,384 & 64.0 MB & 5.5 MB & 11.6$\times$ & 5.15$\times$ \\
-65,536 & 256.0 MB & 11.5 MB & 22.3$\times$ & 8.22$\times$ \\
-131,072 & 512.0 MB & 19.5 MB & 26.3$\times$ & 9.25$\times$ \\
-524,288 & 2,048.0 MB & 67.5 MB & 30.3$\times$ & 10.27$\times$ \\
-\textbf{1,048,576} & \textbf{4,096.0 MB} & \textbf{131.5 MB} & \textbf{31.1$\times$} & \textbf{10.47$\times$} \\
+4,096 & 16.0 MiB & 4.0 MiB & 4.0$\times$ & 2.39$\times$ \\
+16,384 & 64.0 MiB & 5.5 MiB & 11.6$\times$ & 5.15$\times$ \\
+65,536 & 256.0 MiB & 11.5 MiB & 22.3$\times$ & 8.22$\times$ \\
+131,072 & 512.0 MiB & 19.5 MiB & 26.3$\times$ & 9.25$\times$ \\
+524,288 & 2,048.0 MiB & 67.5 MiB & 30.3$\times$ & 10.27$\times$ \\
+\textbf{1,048,576} & \textbf{4,096.0 MiB} & \textbf{131.5 MiB} & \textbf{31.1$\times$} & \textbf{10.47$\times$} \\
 \bottomrule
 \end{tabular}
+}
 \end{table}
 
 \section{Conclusion}
-Ada-CISA transforms Chunk-Indexed Sparse Attention into a robust, outlier-aware architecture for long-context serving on modern NVIDIA GPUs. By incorporating norm-weighted summarization, dispersion gating, and entropy-driven budgeting, Ada-CISA raises needle retrieval recall to 98.3\%, reduces HBM reads by $31.1\times$ at 1M tokens, and unlocks an estimated $10.5\times$ speedup on NVIDIA Blackwell GPUs.
+This study evaluates algorithmic heuristics in seeded CPU simulations and an analytical traffic model. The retrieval and quality results are limited to the generated inputs and trial counts; the read reduction and latency ratio are model outputs. No NVIDIA GPU implementation or timing is included.
+
+\paragraph{Code and formal check.} The code and results are in \texttt{code\_attachment.zip}. Lean checks the uniform-mean decomposition and that NOA weights reduce to uniform weights at $\beta=0$; it does not prove retrieval performance or hardware behavior.
 
 \begin{thebibliography}{9}
 \bibitem{cisa2026}
@@ -226,13 +237,16 @@ M.~Dabbah, I.~Golan, O.~Tropp, et al., ``CISA: Retrofitting Dense Attention Mode
 T.~Dao, D.~Haziza, F.~Massa, and A.~Gu, ``FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-Precision,'' \emph{arXiv:2407.08608}, 2024.
 
 \bibitem{fa4}
-T.~Dao et al., ``FlashAttention-4: Co-designing Algorithm and Kernel for Asymmetric Hardware Scaling,'' \emph{arXiv:2603.05451}, 2026.
+T.~Zadouri et al., ``FlashAttention-4: Algorithm and Kernel Pipelining Co-Design for Asymmetric Hardware Scaling,'' \emph{arXiv:2603.05451}, 2026.
 
 \bibitem{pagedattention}
 W.~Kwon, Z.~Li, S.~Zhuang, et al., ``Efficient Memory Management for Large Language Model Serving with PagedAttention,'' \emph{SOSP}, 2023.
 
 \bibitem{deepseekv3}
-DeepSeek-AI, ``DeepSeek-V3 Technical Report: Multi-Head Latent Attention and Native Sparse Architecture,'' 2025.
+DeepSeek-AI, ``DeepSeek-V3 Technical Report,'' arXiv:2412.19437, 2024.
+
+\bibitem{cudaguide}
+NVIDIA, ``CUDA C++ Programming Guide,'' \url{https://docs.nvidia.com/cuda/cuda-programming-guide/}.
 
 \bibitem{flamia2026}
 F.~Velikonivtsev, M.~Koltakov, and D.~Kuznedelev, ``FLAMIA: FLAsh MIcroscaling Attention for Fast and Causally Safe Training on Blackwell,'' \emph{arXiv:2611.03344v1}, 2026.

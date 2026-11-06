@@ -22,7 +22,8 @@ This paper evaluates one narrow alternative: for token position `i` within a sca
 Let a block contain values `x_0, …, x_(B-1)`, and let `M` be the largest finite positive code in the E4M3 codebook. Define the prefix scale
 
 ```text
-s_i = 2^ceil(log2(max_(0 <= j <= i) |x_j| / M))
+s_i = 1, if max_(0 <= j <= i) |x_j| = 0
+s_i = 2^ceil(log2(max_(0 <= j <= i) |x_j| / M)), otherwise
 q_i = s_i * Q_E4M3(x_i / s_i)
 ```
 
@@ -63,3 +64,7 @@ The next useful checks are: reproduce the exact FLAMIA scale conversion and rang
 ## References
 
 1. F. Velikonivtsev, M. Koltakov, and D. Kuznedelev, “FLAMIA: FLAsh MIcroscaling Attention for Fast and Causally Safe Training on Blackwell,” arXiv:2611.03344v1, 2026. [arXiv](https://arxiv.org/abs/2611.03344)
+
+## Code and formal check
+
+The [code attachment](./code_attachment.zip) includes this experiment and its output. The Lean theorem `prefix_summary_independent_of_suffix` proves the abstract prefix-only property; it does not formalize floating-point rounding or the full quantizer. See [the formal verification notes](../formal/FORMAL_VERIFICATION.md).

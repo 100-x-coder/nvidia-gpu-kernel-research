@@ -5,7 +5,7 @@
 <p class="meta">siyuanlee.cs@gmail.com</p>
 <p class="meta">November 2026</p>
 <h2>Abstract</h2>
-<p>Self-evolving kernel optimizers retain validated implementations as references for later runs. If promotion depends on a small set of noisy timings, a transient measurement advantage can become persistent system state. We study a fixed-sample promotion rule based on paired log-latency measurements and a minimum practical speedup. A candidate is promoted only when the upper one-sided confidence bound on its mean log-latency difference clears that speedup threshold. We evaluate the rule in a reproducible CPU Monte Carlo model with shared timing drift and independent Gaussian jitter. With 32 pairs and a 1% minimum gain, the simulated gate promoted a candidate with a true 5% speedup in 30,000 of 30,000 trials and a candidate with no speedup in 3 of 30,000 trials. These are model-specific simulation outcomes, not estimates of GPU error rates. The study motivates randomized, paired hardware evaluation before using such a gate in a kernel optimization system.</p>
+<p>Self-evolving kernel optimizers retain validated implementations as references for later runs. If promotion depends on a small set of noisy timings, a transient measurement advantage can become persistent system state. We study a fixed-sample promotion rule based on paired log-latency measurements and a minimum practical speedup. A candidate is promoted only when the upper one-sided confidence bound on its mean log-latency difference clears that speedup threshold. We evaluate the rule in a reproducible CPU Monte Carlo model with shared timing drift and independent Gaussian jitter. With 32 pairs and a 1% minimum gain, the paired gate promoted a 5%-faster candidate in 30,000 of 30,000 trials and a zero-speedup candidate in 4 of 30,000 trials in this seeded simulation. These are model-specific simulation outcomes, not estimates of GPU error rates. The study motivates randomized, paired hardware evaluation before using such a gate in a kernel optimization system.</p>
 <h2>1. Introduction</h2>
 <p>Systems that search for improved GPU kernels need to decide when a candidate should replace a known-good implementation. This decision matters especially in a self-evolving workflow, where a promoted implementation can become the reference point for subsequent optimization. ForgeKernel describes such a workflow for kernel generation and optimization [1].</p>
 <p>Kernel latency varies with device state, clocks, contention, launch conditions, and measurement overhead. Choosing the minimum observed latency therefore tends to favor candidates that benefited from favorable noise. This paper studies a statistical promotion rule that compares reference and candidate timings in nearby paired blocks. Taking logarithms makes a difference correspond to a multiplicative latency ratio.</p>
@@ -24,18 +24,18 @@
 <h2>4. Results</h2>
 <p>Table 1 reports promotion proportions for selected cells. Each entry is based on 30,000 Monte Carlo trials.</p>
 <table><thead><tr><th>Pairs</th><th>True speedup</th><th>Paired</th><th>Unpaired</th></tr></thead><tbody>
-<tr><td>8</td><td>0%</td><td>0.927%</td><td>0.003%</td></tr>
-<tr><td>8</td><td>2%</td><td>29.253%</td><td>1.010%</td></tr>
-<tr><td>8</td><td>5%</td><td>98.193%</td><td>39.923%</td></tr>
-<tr><td>16</td><td>0%</td><td>0.157%</td><td>0.000%</td></tr>
-<tr><td>16</td><td>2%</td><td>41.617%</td><td>0.787%</td></tr>
-<tr><td>16</td><td>5%</td><td>99.987%</td><td>82.023%</td></tr>
-<tr><td>32</td><td>0%</td><td>0.010%</td><td>0.000%</td></tr>
-<tr><td>32</td><td>2%</td><td>62.470%</td><td>1.507%</td></tr>
-<tr><td>32</td><td>5%</td><td>100.000%</td><td>99.853%</td></tr>
+<tr><td>8</td><td>0%</td><td>0.910%</td><td>2.810%</td></tr>
+<tr><td>8</td><td>2%</td><td>28.903%</td><td>11.470%</td></tr>
+<tr><td>8</td><td>5%</td><td>98.230%</td><td>43.783%</td></tr>
+<tr><td>16</td><td>0%</td><td>0.193%</td><td>1.707%</td></tr>
+<tr><td>16</td><td>2%</td><td>41.660%</td><td>13.687%</td></tr>
+<tr><td>16</td><td>5%</td><td>99.987%</td><td>65.050%</td></tr>
+<tr><td>32</td><td>0%</td><td>0.013%</td><td>0.987%</td></tr>
+<tr><td>32</td><td>2%</td><td>63.540%</td><td>19.037%</td></tr>
+<tr><td>32</td><td>5%</td><td>100.000%</td><td>89.227%</td></tr>
 </tbody></table>
-<p>At 32 pairs, the paired rule promoted 3 of 30,000 zero-speedup candidates (0.01%) and all 30,000 candidates with a true 5% speedup. The finite simulation does not establish a zero false-promotion probability: with 30,000 trials, the observed proportion has limited resolution, and a zero count would not imply a zero underlying probability. At the 1% minimum-gain boundary, the promotion proportion is 5.39% for 32 pairs, consistent with the nominal one-sided boundary behavior in this model.</p>
-<p>Under the null condition, the mean paired sample standard deviation was approximately <code>0.0281</code> log units at 32 pairs. The corresponding unpaired baseline and candidate values were approximately <code>0.0535</code>. This difference is expected because the paired construction removes the shared drift. The measured advantage is consequently conditional on the simulated covariance structure.</p>
+<p>At 32 pairs, the paired rule promoted 4 of 30,000 zero-speedup candidates (0.013%) and all 30,000 candidates with a true 5% speedup. The finite simulation does not establish a zero false-promotion probability: with 30,000 trials, the observed proportion has limited resolution, and a zero count would not imply a zero underlying probability. At the 1% minimum-gain boundary, the promotion proportion is 5.34% for the paired gate and 5.32% for the unpaired gate. The normal critical value with an estimated standard deviation is approximate, so this is a simulation check, not an exact 5% guarantee.</p>
+<p>Under the null condition, the mean paired sample standard deviation was approximately <code>0.0281</code> log units at 32 pairs. The corresponding unpaired baseline and candidate values were approximately <code>0.0534</code> and <code>0.0535</code>. This difference is expected because the paired construction removes the shared drift. The measured advantage is consequently conditional on the simulated covariance structure.</p>
 <h2>5. Implications and limitations</h2>
 <p>The rule provides a concrete evidence threshold for deciding whether a candidate replaces a retained reference. The simulation illustrates how paired measurements can improve sensitivity when they share substantial environmental drift. It does not establish that real GPU timings have this structure or that the stated threshold controls false promotions on a device.</p>
 <p>The experiment uses synthetic Gaussian data, a normal critical value, and independent observations. It includes no GPU timings, kernel execution, thermal or clock transitions, autocorrelation, adaptive sample-size selection, multi-candidate search, correctness evaluation, or workload regressions. The shared drift is intentionally large relative to independent jitter. The reported rates describe this model and random seed only. A hardware study should use randomized paired blocks, prespecified stopping, calibrated uncertainty estimates, repeated null comparisons, and correction for the number of candidates tested.</p>

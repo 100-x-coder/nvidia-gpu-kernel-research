@@ -3,52 +3,52 @@
   "beta_ablation": [
     {
       "beta": 0.0,
-      "recall_at_4": 70.0
+      "target_selection_rate_at_4": 70.0
     },
     {
       "beta": 0.4,
-      "recall_at_4": 81.66666666666667
+      "target_selection_rate_at_4": 81.66666666666667
     },
     {
       "beta": 0.8,
-      "recall_at_4": 90.0
+      "target_selection_rate_at_4": 90.0
     },
     {
       "beta": 1.2,
-      "recall_at_4": 93.33333333333333
+      "target_selection_rate_at_4": 93.33333333333333
     },
     {
       "beta": 1.6,
-      "recall_at_4": 98.33333333333333
+      "target_selection_rate_at_4": 98.33333333333333
     }
   ],
   "context_sweep": [
     {
       "context_length": 1024,
       "k_chunks": 6,
-      "cisa_recall": 92.0,
-      "ada_cisa_recall": 98.0,
+      "cisa_target_selection_rate": 92.0,
+      "ada_cisa_target_selection_rate": 98.0,
       "gain": 6.0
     },
     {
       "context_length": 2048,
       "k_chunks": 6,
-      "cisa_recall": 84.0,
-      "ada_cisa_recall": 98.0,
+      "cisa_target_selection_rate": 84.0,
+      "ada_cisa_target_selection_rate": 98.0,
       "gain": 14.0
     },
     {
       "context_length": 4096,
       "k_chunks": 6,
-      "cisa_recall": 74.0,
-      "ada_cisa_recall": 86.0,
+      "cisa_target_selection_rate": 74.0,
+      "ada_cisa_target_selection_rate": 86.0,
       "gain": 12.0
     },
     {
       "context_length": 8192,
       "k_chunks": 6,
-      "cisa_recall": 72.0,
-      "ada_cisa_recall": 92.0,
+      "cisa_target_selection_rate": 72.0,
+      "ada_cisa_target_selection_rate": 92.0,
       "gain": 20.0
     }
   ],
@@ -82,49 +82,49 @@
   "hardware_projections": [
     {
       "context_tokens": 4096,
-      "dense_mb": 16.0,
-      "cisa_mb": 4.6875,
-      "ada_cisa_mb": 4.0,
+      "dense_mib": 16.0,
+      "cisa_mib": 4.6875,
+      "ada_cisa_mib": 4.0,
       "bandwidth_reduction_factor": 4.0,
       "projected_speedup": 2.3876236163079025
     },
     {
       "context_tokens": 16384,
-      "dense_mb": 64.0,
-      "cisa_mb": 6.1875,
-      "ada_cisa_mb": 5.5,
+      "dense_mib": 64.0,
+      "cisa_mib": 6.1875,
+      "ada_cisa_mib": 5.5,
       "bandwidth_reduction_factor": 11.636363636363637,
       "projected_speedup": 5.150757658949366
     },
     {
       "context_tokens": 65536,
-      "dense_mb": 256.0,
-      "cisa_mb": 12.1875,
-      "ada_cisa_mb": 11.5,
+      "dense_mib": 256.0,
+      "cisa_mib": 12.1875,
+      "ada_cisa_mib": 11.5,
       "bandwidth_reduction_factor": 22.26086956521739,
       "projected_speedup": 8.216994610475757
     },
     {
       "context_tokens": 131072,
-      "dense_mb": 512.0,
-      "cisa_mb": 20.1875,
-      "ada_cisa_mb": 19.5,
+      "dense_mib": 512.0,
+      "cisa_mib": 20.1875,
+      "ada_cisa_mib": 19.5,
       "bandwidth_reduction_factor": 26.256410256410255,
       "projected_speedup": 9.254056012998817
     },
     {
       "context_tokens": 524288,
-      "dense_mb": 2048.0,
-      "cisa_mb": 68.1875,
-      "ada_cisa_mb": 67.5,
+      "dense_mib": 2048.0,
+      "cisa_mib": 68.1875,
+      "ada_cisa_mib": 67.5,
       "bandwidth_reduction_factor": 30.340740740740742,
       "projected_speedup": 10.269316083002561
     },
     {
       "context_tokens": 1048576,
-      "dense_mb": 4096.0,
-      "cisa_mb": 132.1875,
-      "ada_cisa_mb": 131.5,
+      "dense_mib": 4096.0,
+      "cisa_mib": 132.1875,
+      "ada_cisa_mib": 131.5,
       "bandwidth_reduction_factor": 31.14828897338403,
       "projected_speedup": 10.465386997259268
     }

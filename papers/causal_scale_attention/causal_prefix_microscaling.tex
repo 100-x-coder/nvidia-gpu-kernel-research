@@ -21,7 +21,7 @@ This paper evaluates one narrow alternative: for token position $i$ within a sca
 \section{Prefix-Causal Microscaling}
 Let a block contain values $x_0,\ldots,x_{B-1}$, and let $M$ be the largest finite positive code in the E4M3 codebook. Define the prefix scale
 \begin{align}
-s_i &= 2^{\lceil\log_2(\max_{0\leq j\leq i}|x_j|/M)\rceil},\\
+s_i &= \begin{cases}1,&\max_{0\leq j\leq i}|x_j|=0,\\2^{\lceil\log_2(\max_{0\leq j\leq i}|x_j|/M)\rceil},&\text{otherwise},\end{cases}\\
 q_i &= s_i Q_{\mathrm{E4M3}}(x_i/s_i),
 \end{align}
 where $Q_{\mathrm{E4M3}}$ rounds to the nearest finite code. The scale used for token $i$ depends only on tokens at positions $j\leq i$. Therefore, appending a future token cannot change $q_i$. Since the prefix maximum is nondecreasing, the exponent changes only when a new prefix maximum crosses a power-of-two threshold. Scale metadata can be represented as exponent change points, subject to an implementation that can efficiently consume those runs.
@@ -62,6 +62,9 @@ The full-precision-inclusive RMSE is dominated by the deliberately enormous outl
 The quantizer is an E4M3-like codebook implementation, not a bit-for-bit reproduction of FLAMIA's conversion path. The experiment is not an attention forward/backward test and says nothing about gradient consistency, model loss, throughput, or memory traffic on B200/B300. It also omits attention's per-key scale folding and packed-document scheduling.
 
 The next useful checks are to reproduce FLAMIA's exact scale conversion and range rules; test on real Q/K/V activation traces; verify causal output and gradient invariance through a full attention reference; then measure metadata overhead and fused-kernel latency on Blackwell. Until then, these results should be treated as a CPU numerical observation, not a GPU optimization claim.
+
+\section{Code and formal check}
+The code and output are in \texttt{code\_attachment.zip}. Lean checks the abstract claim that a value computed only from a fixed prefix is independent of later suffix values; it does not formalize E4M3 rounding or the complete quantization code.
 
 \begin{thebibliography}{1}
 \bibitem{flamia}

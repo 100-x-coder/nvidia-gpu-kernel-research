@@ -12,7 +12,7 @@ November 2026
 
 ## Abstract
 
-Self-evolving kernel optimizers retain validated implementations as references for later runs. If promotion depends on a small set of noisy timings, a transient measurement advantage can become persistent system state. We study a fixed-sample promotion rule based on paired log-latency measurements and a minimum practical speedup. A candidate is promoted only when the upper one-sided confidence bound on its mean log-latency difference clears that speedup threshold. We evaluate the rule in a reproducible CPU Monte Carlo model with shared timing drift and independent Gaussian jitter. With 32 pairs and a 1% minimum gain, the simulated gate promoted a candidate with a true 5% speedup in 30,000 of 30,000 trials and a candidate with no speedup in 3 of 30,000 trials. These are model-specific simulation outcomes, not estimates of GPU error rates. The study motivates randomized, paired hardware evaluation before using such a gate in a kernel optimization system.
+Self-evolving kernel optimizers retain validated implementations as references for later runs. If promotion depends on a small set of noisy timings, a transient measurement advantage can become persistent system state. We study a fixed-sample promotion rule based on paired log-latency measurements and a minimum practical speedup. A candidate is promoted only when the upper one-sided confidence bound on its mean log-latency difference clears that speedup threshold. We evaluate the rule in a reproducible CPU Monte Carlo model with shared timing drift and independent Gaussian jitter. With 32 pairs and a 1% minimum gain, the paired gate promoted a 5%-faster candidate in 30,000 of 30,000 trials and a zero-speedup candidate in 4 of 30,000 trials in this seeded simulation. These are model-specific simulation outcomes, not estimates of GPU error rates. The study motivates randomized, paired hardware evaluation before using such a gate in a kernel optimization system.
 
 ## 1. Introduction
 
@@ -54,19 +54,19 @@ Table 1 reports promotion proportions for selected cells. Each entry is based on
 
 | Pairs | True speedup | Paired | Unpaired |
 |---:|---:|---:|---:|
-| 8 | 0% | 0.927% | 0.003% |
-| 8 | 2% | 29.253% | 1.010% |
-| 8 | 5% | 98.193% | 39.923% |
-| 16 | 0% | 0.157% | 0.000% |
-| 16 | 2% | 41.617% | 0.787% |
-| 16 | 5% | 99.987% | 82.023% |
-| 32 | 0% | 0.010% | 0.000% |
-| 32 | 2% | 62.470% | 1.507% |
-| 32 | 5% | 100.000% | 99.853% |
+| 8 | 0% | 0.910% | 2.810% |
+| 8 | 2% | 28.903% | 11.470% |
+| 8 | 5% | 98.230% | 43.783% |
+| 16 | 0% | 0.193% | 1.707% |
+| 16 | 2% | 41.660% | 13.687% |
+| 16 | 5% | 99.987% | 65.050% |
+| 32 | 0% | 0.013% | 0.987% |
+| 32 | 2% | 63.540% | 19.037% |
+| 32 | 5% | 100.000% | 89.227% |
 
-At 32 pairs, the paired rule promoted 3 of 30,000 zero-speedup candidates (0.01%) and all 30,000 candidates with a true 5% speedup. The finite simulation does not establish a zero false-promotion probability: with 30,000 trials, the observed proportion has limited resolution, and a zero count would not imply a zero underlying probability. At the 1% minimum-gain boundary, the promotion proportion is 5.39% for 32 pairs, consistent with the nominal one-sided boundary behavior in this model.
+At 32 pairs, the paired rule promoted 4 of 30,000 zero-speedup candidates (0.013%) and all 30,000 candidates with a true 5% speedup. The finite simulation does not establish a zero false-promotion probability: with 30,000 trials, the observed proportion has limited resolution, and a zero count would not imply a zero underlying probability. At the 1% minimum-gain boundary, the promotion proportion is 5.34% for the paired gate and 5.32% for the unpaired gate. The normal critical value with an estimated standard deviation is approximate, so this is a simulation check, not an exact 5% guarantee.
 
-Under the null condition, the mean paired sample standard deviation was approximately `0.0281` log units at 32 pairs. The corresponding unpaired baseline and candidate values were approximately `0.0535`. This difference is expected because the paired construction removes the shared drift. The measured advantage is consequently conditional on the simulated covariance structure.
+Under the null condition, the mean paired sample standard deviation was approximately `0.0281` log units at 32 pairs. The corresponding unpaired baseline and candidate values were approximately `0.0534` and `0.0535`. This difference is expected because the paired construction removes the shared drift. The measured advantage is consequently conditional on the simulated covariance structure.
 
 ## 5. Implications and limitations
 
@@ -81,3 +81,6 @@ We presented a fixed-sample, paired confidence-bound rule for kernel promotion a
 ## References
 
 [1] Y. Chen et al., “ForgeKernel: Self-Evolving Kernels Catching and Surpassing Experts and Agents,” arXiv:2611.04998, 2026. [https://arxiv.org/abs/2611.04998](https://arxiv.org/abs/2611.04998)
+## Code and formal checks
+
+The [code attachment](./code_attachment.zip) contains the simulation and regenerated results. Lean checks common-drift cancellation and the log-threshold ratio equivalence; it does not establish the Monte Carlo rates or the gate's calibration. See [the formal verification notes](../formal/FORMAL_VERIFICATION.md).

@@ -37,14 +37,20 @@ def simulate():
             paired_spread, base_spread, cand_spread = [], [], []
             for _ in range(TRIALS):
                 paired = []
-                base, cand = [], []
+                paired_base, paired_cand = [], []
                 for _ in range(n):
                     drift = rng.gauss(0.0, COMMON_DRIFT_SD)
                     e0 = rng.gauss(0.0, INDEPENDENT_JITTER_SD)
                     e1 = rng.gauss(0.0, INDEPENDENT_JITTER_SD)
-                    base.append(drift + e0)
-                    cand.append(drift + delta + e1)
-                    paired.append((drift + delta + e1) - (drift + e0))
+                    paired_base.append(drift + e0)
+                    paired_cand.append(drift + delta + e1)
+                    paired.append(paired_cand[-1] - paired_base[-1])
+                # The unpaired comparison has independent drift draws for the
+                # two timing series; otherwise the claimed baseline is paired.
+                base = [rng.gauss(0.0, COMMON_DRIFT_SD) +
+                        rng.gauss(0.0, INDEPENDENT_JITTER_SD) for _ in range(n)]
+                cand = [rng.gauss(0.0, COMMON_DRIFT_SD) + delta +
+                        rng.gauss(0.0, INDEPENDENT_JITTER_SD) for _ in range(n)]
                 m, sd = mean_sd(paired)
                 if m + Z_ONE_SIDED_95 * sd / math.sqrt(n) < threshold:
                     accepted += 1
@@ -81,6 +87,7 @@ def simulate():
             "log_latency_independent_jitter_sd": INDEPENDENT_JITTER_SD,
             "independent_jitter_distribution": "Gaussian",
             "paired_order": "same drift draw for baseline and candidate in each pair",
+            "unpaired_order": "independent drift and jitter draws for baseline and candidate series",
             "gate": "promote iff mean paired log-latency difference + z_0.95 * estimated_SE < -log(1 + minimum_practical_gain)",
             "minimum_practical_gain": MIN_GAIN,
             "fixed_sample_sizes": list(REPEATS),

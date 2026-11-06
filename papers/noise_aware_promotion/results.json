@@ -7,6 +7,7 @@
     "log_latency_independent_jitter_sd": 0.02,
     "independent_jitter_distribution": "Gaussian",
     "paired_order": "same drift draw for baseline and candidate in each pair",
+    "unpaired_order": "independent drift and jitter draws for baseline and candidate series",
     "gate": "promote iff mean paired log-latency difference + z_0.95 * estimated_SE < -log(1 + minimum_practical_gain)",
     "minimum_practical_gain": 0.01,
     "fixed_sample_sizes": [
@@ -20,82 +21,82 @@
     {
       "repeats": 8,
       "true_speedup": 0.0,
-      "promotion_probability": 0.009266666666666666,
-      "unpaired_promotion_probability": 3.3333333333333335e-05,
+      "promotion_probability": 0.0091,
+      "unpaired_promotion_probability": 0.0281,
       "minimum_practical_gain": 0.01,
       "one_sided_confidence": 0.95,
       "null_mean_sample_sd_log_latency": {
-        "paired_difference": 0.027350344003822965,
-        "unpaired_baseline": 0.051962560449645236,
-        "unpaired_candidate": 0.052028833310425376
+        "paired_difference": 0.02724152794335368,
+        "unpaired_baseline": 0.051950641324795044,
+        "unpaired_candidate": 0.051944908983989214
       }
     },
     {
       "repeats": 8,
       "true_speedup": 0.005,
-      "promotion_probability": 0.02723333333333333,
-      "unpaired_promotion_probability": 0.0002,
+      "promotion_probability": 0.028166666666666666,
+      "unpaired_promotion_probability": 0.04306666666666667,
       "minimum_practical_gain": 0.01,
       "one_sided_confidence": 0.95
     },
     {
       "repeats": 8,
       "true_speedup": 0.01,
-      "promotion_probability": 0.0721,
-      "unpaired_promotion_probability": 0.0007333333333333333,
+      "promotion_probability": 0.0709,
+      "unpaired_promotion_probability": 0.0584,
       "minimum_practical_gain": 0.01,
       "one_sided_confidence": 0.95
     },
     {
       "repeats": 8,
       "true_speedup": 0.02,
-      "promotion_probability": 0.2925333333333333,
-      "unpaired_promotion_probability": 0.0101,
+      "promotion_probability": 0.2890333333333333,
+      "unpaired_promotion_probability": 0.1147,
       "minimum_practical_gain": 0.01,
       "one_sided_confidence": 0.95
     },
     {
       "repeats": 8,
       "true_speedup": 0.05,
-      "promotion_probability": 0.9819333333333333,
-      "unpaired_promotion_probability": 0.39923333333333333,
+      "promotion_probability": 0.9823,
+      "unpaired_promotion_probability": 0.43783333333333335,
       "minimum_practical_gain": 0.01,
       "one_sided_confidence": 0.95
     },
     {
       "repeats": 16,
       "true_speedup": 0.0,
-      "promotion_probability": 0.0015666666666666667,
-      "unpaired_promotion_probability": 0.0,
+      "promotion_probability": 0.0019333333333333333,
+      "unpaired_promotion_probability": 0.017066666666666667,
       "minimum_practical_gain": 0.01,
       "one_sided_confidence": 0.95,
       "null_mean_sample_sd_log_latency": {
-        "paired_difference": 0.02781508998612458,
-        "unpaired_baseline": 0.05288562696609524,
-        "unpaired_candidate": 0.05293645194723496
+        "paired_difference": 0.027810104087931893,
+        "unpaired_baseline": 0.052940731762556384,
+        "unpaired_candidate": 0.05295022320616686
       }
     },
     {
       "repeats": 16,
       "true_speedup": 0.005,
-      "promotion_probability": 0.012833333333333334,
-      "unpaired_promotion_probability": 0.0,
+      "promotion_probability": 0.013066666666666667,
+      "unpaired_promotion_probability": 0.03136666666666667,
       "minimum_practical_gain": 0.01,
       "one_sided_confidence": 0.95
     },
     {
       "repeats": 16,
       "true_speedup": 0.01,
-      "promotion_probability": 0.0598,
-      "unpaired_promotion_probability": 0.0002,
+      "promotion_probability": 0.06063333333333333,
+      "unpaired_promotion_probability": 0.05173333333333333,
       "minimum_practical_gain": 0.01,
       "one_sided_confidence": 0.95
     },
     {
       "repeats": 16,
       "true_speedup": 0.02,
-      "promotion_probability": 0.4161666666666667,
-      "unpaired_promotion_probability": 0.007866666666666666,
+      "promotion_probability": 0.4166,
+      "unpaired_promotion_probability": 0.13686666666666666,
       "minimum_practical_gain": 0.01,
       "one_sided_confidence": 0.95
     },
@@ -103,44 +104,44 @@
       "repeats": 16,
       "true_speedup": 0.05,
       "promotion_probability": 0.9998666666666667,
-      "unpaired_promotion_probability": 0.8202333333333334,
+      "unpaired_promotion_probability": 0.6505,
       "minimum_practical_gain": 0.01,
       "one_sided_confidence": 0.95
     },
     {
       "repeats": 32,
       "true_speedup": 0.0,
-      "promotion_probability": 0.0001,
-      "unpaired_promotion_probability": 0.0,
+      "promotion_probability": 0.00013333333333333334,
+      "unpaired_promotion_probability": 0.009866666666666666,
       "minimum_practical_gain": 0.01,
       "one_sided_confidence": 0.95,
       "null_mean_sample_sd_log_latency": {
-        "paired_difference": 0.028079503108343024,
-        "unpaired_baseline": 0.05347054916789848,
-        "unpaired_candidate": 0.05345922963357607
+        "paired_difference": 0.028068688612385748,
+        "unpaired_baseline": 0.05337805329348044,
+        "unpaired_candidate": 0.053451762688435434
       }
     },
     {
       "repeats": 32,
       "true_speedup": 0.005,
-      "promotion_probability": 0.0052,
-      "unpaired_promotion_probability": 0.0,
+      "promotion_probability": 0.004966666666666667,
+      "unpaired_promotion_probability": 0.0221,
       "minimum_practical_gain": 0.01,
       "one_sided_confidence": 0.95
     },
     {
       "repeats": 32,
       "true_speedup": 0.01,
-      "promotion_probability": 0.05386666666666667,
-      "unpaired_promotion_probability": 0.0001,
+      "promotion_probability": 0.05343333333333333,
+      "unpaired_promotion_probability": 0.05316666666666667,
       "minimum_practical_gain": 0.01,
       "one_sided_confidence": 0.95
     },
     {
       "repeats": 32,
       "true_speedup": 0.02,
-      "promotion_probability": 0.6247,
-      "unpaired_promotion_probability": 0.015066666666666667,
+      "promotion_probability": 0.6354,
+      "unpaired_promotion_probability": 0.19036666666666666,
       "minimum_practical_gain": 0.01,
       "one_sided_confidence": 0.95
     },
@@ -148,7 +149,7 @@
       "repeats": 32,
       "true_speedup": 0.05,
       "promotion_probability": 1.0,
-      "unpaired_promotion_probability": 0.9985333333333334,
+      "unpaired_promotion_probability": 0.8922666666666667,
       "minimum_practical_gain": 0.01,
       "one_sided_confidence": 0.95
     }
