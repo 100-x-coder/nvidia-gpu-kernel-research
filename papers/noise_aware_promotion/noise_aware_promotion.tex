@@ -1,15 +1,17 @@
-\documentclass[10pt]{article}
-\usepackage[letterpaper,margin=1in]{geometry}
-\usepackage{amsmath,amssymb,booktabs}
+\documentclass[11pt]{article}
+\usepackage{acl}
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
 \usepackage{microtype}
-\usepackage{hyperref}
-\usepackage{enumitem}
-\hypersetup{colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black}
+\usepackage{inconsolata}
+\usepackage{amsmath,amssymb,booktabs}
 
-\title{Noise-Aware Promotion for Self-Evolving GPU Kernels\\
-\large A Statistical Extension to Cross-Run Kernel Optimization}
-\author{Lee Si Yuan\\Independent Researcher\\\texttt{siyuanlee.cs@gmail.com}}
-\date{November 2026}
+\title{Noise-Aware Promotion for Self-Evolving GPU Kernels: A Statistical Extension to Cross-Run Kernel Optimization}
+\author{Lee Si Yuan \\
+  Independent Researcher \\
+  \texttt{siyuanlee.cs@gmail.com}}
 
 \begin{document}
 \maketitle
@@ -82,8 +84,5 @@ The experiment uses synthetic Gaussian data, a normal critical value, and indepe
 \section{Conclusion}
 We presented a fixed-sample, paired confidence-bound rule for kernel promotion and evaluated it in a transparent synthetic timing model. Pairing improved detection of larger gains under the model's shared-drift assumption. Hardware measurements remain necessary to calibrate the rule and assess its behavior in an actual GPU optimization workflow.
 
-\begin{thebibliography}{1}
-\bibitem{forgekernel}
-Y. Chen et al., ``ForgeKernel: Self-Evolving Kernels Catching and Surpassing Experts and Agents,'' arXiv:2611.04998, 2026. \url{https://arxiv.org/abs/2611.04998}.
-\end{thebibliography}
+\bibliography{references}
 \end{document}
