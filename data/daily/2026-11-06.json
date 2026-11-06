@@ -1,0 +1,116 @@
+{
+  "Attention & Sequence Kernels": {
+    "keywords": [
+      "attention",
+      "flashattention",
+      "flash-attention",
+      "ringattention",
+      "linear attention",
+      "mla",
+      "multi-head latent attention",
+      "kv cache",
+      "paged attention",
+      "vllm",
+      "flashinfer",
+      "context extension",
+      "long-context"
+    ],
+    "items": []
+  },
+  "MoE (Mixture of Experts) & Routing": {
+    "keywords": [
+      "moe",
+      "mixture of experts",
+      "mixture-of-experts",
+      "expert routing",
+      "switch transformer",
+      "deepseek-v2",
+      "deepseek-v3",
+      "token dispatch",
+      "ep parallelism",
+      "expert parallelism",
+      "fused moe"
+    ],
+    "items": []
+  },
+  "GEMM, Tensor Cores & Low-Precision": {
+    "keywords": [
+      "gemm",
+      "matmul",
+      "matrix multiplication",
+      "tensor core",
+      "wgmma",
+      "cutlass",
+      "cute",
+      "fp8",
+      "fp4",
+      "nvfp4",
+      "mxfp4",
+      "mxfp8",
+      "quantization",
+      "awq",
+      "gptq",
+      "bitsandbytes",
+      "block scaling",
+      "sm90",
+      "sm100"
+    ],
+    "items": []
+  },
+  "Kernel Compilers & DSLs (Triton, TileLang, CUDA)": {
+    "keywords": [
+      "triton",
+      "tilelang",
+      "thunderkittens",
+      "cutedsl",
+      "tvm",
+      "halide",
+      "autotuning",
+      "kernel generation",
+      "cuda optimization",
+      "warp specialization",
+      "tma",
+      "tensor memory accelerator"
+    ],
+    "items": []
+  },
+  "Pre-training & Distributed Infrastructure": {
+    "keywords": [
+      "pre-training",
+      "pretraining",
+      "foundation model",
+      "megatron",
+      "deepspeed",
+      "fsdp",
+      "tensor parallel",
+      "pipeline parallel",
+      "sequence parallel",
+      "3d parallelism",
+      "context parallelism",
+      "data parallel",
+      "cluster scheduling",
+      "collective communication",
+      "nccl"
+    ],
+    "items": []
+  },
+  "Post-training, Alignment & RL": {
+    "keywords": [
+      "post-training",
+      "post training",
+      "rlhf",
+      "dpo",
+      "ppo",
+      "grpo",
+      "reinforcement learning from human feedback",
+      "instruction tuning",
+      "sft",
+      "preference optimization",
+      "reasoning models",
+      "distillation",
+      "lora",
+      "qlora"
+    ],
+    "items": []
+  }
+}
