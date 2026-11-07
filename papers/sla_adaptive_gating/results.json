@@ -1,0 +1,128 @@
+{
+  "study": "adaptive contiguous sub-tile scalar decay grouping gates",
+  "seed": 20261107,
+  "shape": {
+    "key_channels": 256,
+    "value_channels": 32,
+    "tile_channels": 64,
+    "steps": 48
+  },
+  "contiguous_gate_groups_per_64_channel_tile": [
+    1,
+    2,
+    4,
+    8,
+    16
+  ],
+  "results": {
+    "clustered": {
+      "1": {
+        "max_gate_error": 0.034426893673201064,
+        "max_local_bound_ratio": 0.5823387413247176,
+        "final_state_frobenius_error": 0.028451601270869552
+      },
+      "2": {
+        "max_gate_error": 0.04076036389557125,
+        "max_local_bound_ratio": 0.5465057494267135,
+        "final_state_frobenius_error": 0.027081050765924757
+      },
+      "4": {
+        "max_gate_error": 0.04370316108967687,
+        "max_local_bound_ratio": 0.5148208774950187,
+        "final_state_frobenius_error": 0.02523007098830535
+      },
+      "8": {
+        "max_gate_error": 0.04370316108967687,
+        "max_local_bound_ratio": 0.4410484314924021,
+        "final_state_frobenius_error": 0.021330818931669417
+      },
+      "16": {
+        "max_gate_error": 0.03355374881025108,
+        "max_local_bound_ratio": 0.4276215444627581,
+        "final_state_frobenius_error": 0.015931976129568787
+      }
+    },
+    "one_outlier": {
+      "1": {
+        "max_gate_error": 0.5535447513806592,
+        "max_local_bound_ratio": 0.13393325132368364,
+        "final_state_frobenius_error": 0.07711512325188262
+      },
+      "2": {
+        "max_gate_error": 0.017838029436150316,
+        "max_local_bound_ratio": 0.5922081000751089,
+        "final_state_frobenius_error": 0.013754117000238708
+      },
+      "4": {
+        "max_gate_error": 0.02146448633198117,
+        "max_local_bound_ratio": 0.5250237523201707,
+        "final_state_frobenius_error": 0.012879156488927688
+      },
+      "8": {
+        "max_gate_error": 0.020533236590145387,
+        "max_local_bound_ratio": 0.460564639981832,
+        "final_state_frobenius_error": 0.011645166039615617
+      },
+      "16": {
+        "max_gate_error": 0.016691081859920742,
+        "max_local_bound_ratio": 0.4147629570672841,
+        "final_state_frobenius_error": 0.009147003632725805
+      }
+    },
+    "smooth": {
+      "1": {
+        "max_gate_error": 0.2750000000000002,
+        "max_local_bound_ratio": 0.6049062768787652,
+        "final_state_frobenius_error": 0.1674516887462526
+      },
+      "2": {
+        "max_gate_error": 0.13531746031746056,
+        "max_local_bound_ratio": 0.6093687695490165,
+        "final_state_frobenius_error": 0.10308965715713157
+      },
+      "4": {
+        "max_gate_error": 0.06547619047619102,
+        "max_local_bound_ratio": 0.6310346408024526,
+        "final_state_frobenius_error": 0.058075506432418135
+      },
+      "8": {
+        "max_gate_error": 0.030555555555556668,
+        "max_local_bound_ratio": 0.6735235768640605,
+        "final_state_frobenius_error": 0.029663843780761198
+      },
+      "16": {
+        "max_gate_error": 0.01309523809524038,
+        "max_local_bound_ratio": 0.7739565951932565,
+        "final_state_frobenius_error": 0.014915371002592784
+      }
+    },
+    "bimodal": {
+      "1": {
+        "max_gate_error": 0.3400000000000003,
+        "max_local_bound_ratio": 0.9999999999999993,
+        "final_state_frobenius_error": 1.6806120228623291
+      },
+      "2": {
+        "max_gate_error": 6.661338147750939e-16,
+        "max_local_bound_ratio": 1.0090022072114984,
+        "final_state_frobenius_error": 4.8017702489449327e-14
+      },
+      "4": {
+        "max_gate_error": 3.1086244689504383e-15,
+        "max_local_bound_ratio": 0.36177134304687775,
+        "final_state_frobenius_error": 8.06883625941739e-14
+      },
+      "8": {
+        "max_gate_error": 3.1086244689504383e-15,
+        "max_local_bound_ratio": 0.3618294829000775,
+        "final_state_frobenius_error": 8.068838047904304e-14
+      },
+      "16": {
+        "max_gate_error": 3.1086244689504383e-15,
+        "max_local_bound_ratio": 0.36192528783588523,
+        "final_state_frobenius_error": 8.06884037034668e-14
+      }
+    }
+  },
+  "limitations": "Deterministic CPU synthetic recurrence only; not a model-quality, TPU/GPU kernel, throughput, or training study."
+}

@@ -1,0 +1,63 @@
+\documentclass[11pt]{article}
+\usepackage[final]{acl}
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage{amsmath,amssymb,booktabs}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{inconsolata}
+\title{Adaptive Contiguous Decay Grouping for Gated Linear Attention: A CPU Reference Study}
+\author{Lee Si Yuan \\
+  Independent Researcher \\
+  \texttt{siyuanlee.cs@gmail.com}}
+\begin{document}
+\maketitle
+\begin{abstract}
+Systolic Linear Attention (SLA) groups per-channel forget gates to replace vector rescaling with tile-friendly scalar operations. A fixed group can incur avoidable state error when gate values vary within a tile. We study an adaptive, order-preserving refinement: partition each physical channel tile into a budgeted number of contiguous subtiles, assign each subtile its mean gate, and select boundaries by dynamic programming to minimize squared gate error. A deterministic CPU reference recurrence at 256 key channels, 32 value channels, and 48 steps evaluates four synthetic gate patterns. Two groups per 64-channel tile reduce final state error by 82.1\% for a one-outlier pattern and eliminate error for the constructed bimodal pattern; reductions are smaller for clustered and smoothly varying gates. We verify a one-step Frobenius perturbation bound numerically. This is an algorithmic feasibility study only: it provides no evidence about model quality, TPU/GPU kernel speed, or the cost of boundary selection and gate dispatch.
+\end{abstract}
+\section{Introduction}
+SLA changes gated-delta attention to better match TPU systolic matrix units through wide shared keys, tile-grouped forget gates, and matrix-based chunk solves \citep{amirkhanyan2026sla}. Grouping gates is an approximation: replacing a diagonal gate by a scalar per channel group changes the recurrent state. The source paper analyzes its architecture and quality; our narrow question is whether subdividing a fixed physical tile where its gate pattern warrants it can reduce this approximation error without reordering channels.
+
+We propose adaptive contiguous decay grouping (ACDG). For each 64-channel tile and each token, choose at most $K$ contiguous segments. Each segment uses the arithmetic mean of its channel gates. A dynamic program finds the minimum sum of squared gate residuals among all such partitions. The channel order is preserved. The method does not change keys, values, or the write update, and is not claimed to be a production implementation.
+\section{Method}
+For one recurrent step, let $S\in\mathbb{R}^{d_k\times d_v}$ be the incoming state and $f\in(0,1]^{d_k}$ the channel-wise forget gate. The exact decay is $D_f S$, with $D_f=\operatorname{diag}(f)$. A partition $\mathcal{P}$ assigns scalar $\bar f_g=|g|^{-1}\sum_{i\in g}f_i$ to each contiguous segment $g$. The approximate state applies $D_{\bar f}S$ followed by the same rank-one write as the exact recurrence.
+
+The partition objective is $\min_{\mathcal{P}:|\mathcal{P}|\le K}\sum_{g\in\mathcal{P}}\sum_{i\in g}(f_i-\bar f_g)^2$. Prefix sums give each segment cost in constant time; a standard $O(Km^2)$ dynamic program solves the problem for a tile of width $m$. This is per-token metadata work in the reference algorithm. We do not include its GPU/TPU execution cost.
+
+For any fixed state, the decay-only perturbation obeys
+\begin{equation}
+\|(D_f-D_{\bar f})S\|_F \le \|f-\bar f\|_\infty\,\|S\|_F.
+\end{equation}
+This follows from the induced $2$-norm of a diagonal matrix. It bounds a single step, not the total sequence error; future gates and writes propagate previous perturbations. The script checks this local inequality for all tested steps with floating-point tolerance.
+\section{CPU Reference Experiment}
+We use Python's standard library and a fixed seed (20261107). The recurrence has $d_k=256$, $d_v=32$, 64-channel physical tiles, and 48 steps. Every method uses identical initial states, keys, values, and full per-channel gate traces. We compare $K\in\{1,2,4,8,16\}$ contiguous segments per tile against the exact full-gate recurrence. Four synthetic gate patterns isolate clustered noise, one low outlier per tile, a smooth within-tile ramp, and a two-level bimodal pattern. These are controlled constructions, not samples from a trained model or paper benchmark.
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lrrr}
+\toprule
+Pattern & $K=1$ error & $K=2$ error & Reduction \\
+\midrule
+Clustered & 0.02845 & 0.02710 & 4.7\% \\
+One outlier & 0.07712 & 0.01380 & 82.1\% \\
+Smooth ramp & 0.16745 & 0.10310 & 38.4\% \\
+Bimodal & 1.68061 & 0.00000 & 100\% \\
+\bottomrule
+\end{tabular}
+\caption{Final-state Frobenius error relative to the exact recurrence. Values are from one seeded synthetic run per pattern.}
+\end{table}
+
+The error decreases as the segment budget grows in these four traces. Two segments capture the constructed isolated outlier and exact two-level pattern, while the smooth ramp retains nonzero error. The clustered pattern gains little at $K=2$. The results support conditional utility in these constructions, not a universal quality claim. The zero in the bimodal case is exact for the generated gates and partition, up to floating-point arithmetic.
+\section{Limitations and Next Steps}
+The experiment uses synthetic gates and one seeded trace per regime. It does not measure retrieval accuracy, perplexity, gradient behavior, numerical stability at low precision, energy, memory traffic, or latency. Dynamic programming and boundary generation may cost more than the saved elementwise gate work, and per-token segment boundaries may require dispatch or masks that reduce fusion. This environment exposes an 8-core CPU and has no NVIDIA GPU, CUDA compiler, or TPU runtime; no accelerator claims are tested. A useful next study would benchmark a fused implementation against exact per-channel and fixed-tile grouping on real workloads, measure the metadata overhead, and tune the boundary policy on held-out sequences.
+\section{Conclusion}
+Budgeted contiguous gate segmentation is a simple reference extension to fixed tile grouping. In the synthetic recurrence it can reduce approximation error sharply when gate structure aligns with a small number of contiguous segments, while gains are modest for clustered gates. The implementation and evidence are reproducible, but accelerator usefulness remains an open empirical question.
+\section*{Reproducibility}
+Run \texttt{python3 experiment.py}. The script writes \texttt{results.json}, uses no third-party packages, checks the one-step inequality at each step, and fixes the random seed. Source paper: Amirkhanyan and Cheng (2026), arXiv:2611.06828v1.
+\begin{thebibliography}{1}
+\bibitem[Amirkhanyan and Cheng(2026)]{amirkhanyan2026sla}
+Gagik Amirkhanyan and Nuojin Cheng. 2026. Systolic Linear Attention: Co-Designing Tile-Grouped Gated Delta Attention for TPUs. arXiv:2611.06828v1. \url{https://arxiv.org/abs/2611.06828v1}.
+\end{thebibliography}
+\end{document}
