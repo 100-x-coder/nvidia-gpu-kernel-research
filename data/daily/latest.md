@@ -1,27 +1,83 @@
-# Automated Research & Kernel Funnel (2026-11-06)
+# Automated Research & Kernel Funnel (2026-11-07)
 
 > Automated daily CI/CD snapshot indexing fresh Pre-training, Post-training, and GPU Kernel Optimizations.
 
 ## Attention & Sequence Kernels
 
-_No new tracked entries for this section in the latest batch._
+| Title / Paper | Author / Source | Date | Key Highlights |
+|---|---|---|---|
+| [Souffleur: A Glanceable Display for Mobile Voice Conversations](http://arxiv.org/abs/2611.08443v1) | Anton Wolter | 2026-11-05 | The speech capabilities of mobile devices have grown, but their displays still rely on a text-based chat. When resuming a voice chat after a context switch, the... |
+| [T3R: Training-Free Two-Stage Token Refinement Towards Efficient and Robust VLA Models](http://arxiv.org/abs/2611.08413v1) | Mohammed Hassan | 2026-11-05 | Vision-Language-Action (VLA) models enable end-to-end robot control, but inference is increasingly expensive. Each decision processes hundreds of visual tokens,... |
+| [Muir: Linear Attention with Sensitivity-Allocated Gating and Matched-Filter Readout](http://arxiv.org/abs/2611.08376v1) | Tushaar Gangavarapu | 2026-11-05 | Linear attention compresses context into a fixed-size key-value state for linear-time training and constant-memory inference. Gated delta-rule models decay this... |
+| [OraRefer: Segmentation-Guided Multi-Photograph Fusion for Oral Cancer Screening with Guaranteed Patient-Level Sensitivity](http://arxiv.org/abs/2611.08360v1) | Rupam Mukherjee | 2026-11-05 | Oral cancer and the oral potentially malignant disorders (OPMD) that can precede it are visible on the oral mucosa, which makes smartphone photographs a promisi... |
+| [Polarity Classification with Multitask Learning Syntax Augmentation](http://arxiv.org/abs/2611.08323v1) | Muhammad Imran | 2026-11-05 | Sentiment Analysis (SA) is a fundamental NLP task concerned with the identification and categorization of subjective information in text. While lexicon-based me... |
+| [First-Token Attraction in Mamba Dynamics](http://arxiv.org/abs/2611.08303v1) | Trinh T. Nguyen | 2026-11-05 | We study token dynamics in deep Mamba models, with a particular focus on the attracting role of the first token. Unlike attention mechanisms, where token intera... |
+| [Should You Split Decode? Disaggregation Across Future Models and Accelerators](http://arxiv.org/abs/2611.08299v1) | Ramyad Hadidi | 2026-11-05 | For large language model (LLM) inference, prefill/decode disaggregation (P/D) is deployed in production to isolate phases with different resource demands. Atten... |
+| [Experimental Evidence for Type-I Superconductivity in $\mathrm{OsB_2}$](http://arxiv.org/abs/2611.08239v1) | Yogesh Singh | 2026-11-05 | Since the discovery of superconductivity in $\mathrm{MgB_2}$, metal diborides have attracted significant attention. Among these, osmium diboride ($\mathrm{OsB_2... |
+| [Beyond Quadratic Attention: Separable Gaussian Operators for ODE Vision Transformers](http://arxiv.org/abs/2611.08236v1) | Carlos Boned Riera | 2026-11-05 | Self-attention carries a quadratic cost in token count, which limits how far Vision Transformers can scale with input resolution. We introduce SSoG, a separable... |
+| [Signals, Evidence, and Context: User Scrutiny in Real-World LLM Conversations](http://arxiv.org/abs/2611.08232v1) | Ahana Biswas | 2026-11-05 | Large language models (LLMs) often present synthesized answers without making their supporting evidence easy to inspect. We study how features of these answers ... |
+| [IntentWeaver: Sustaining Coherence across Evolving Intents in Human-AI Co-Writing](http://arxiv.org/abs/2611.08214v1) | Yuanhao Zhang | 2026-11-05 | Writers hold intents at many levels, from overarching goals to concrete wording, and evolve them by periodically popping back up from the text to higher-level i... |
+| [Patch Attention Wisely: Understanding Patch Length in Attention-Based Forecasting](http://arxiv.org/abs/2611.08160v1) | Junyu Chen | 2026-11-05 | Attention-based time series forecasters commonly group consecutive observations into patches. Patch length is known to have a substantial impact on forecasting ... |
+| [Improving Context-Shift Robustness of Convolutional Networks via Context-Regularized Cross-Entropy](http://arxiv.org/abs/2611.08157v1) | Jinen Setpal | 2026-11-05 | Image classification models often encounter objects in diverse and unpredictable contexts at test time, which may differ substantially from those seen during tr... |
+| [Beyond K/V Caches: Cross-Model State Handoff in Hybrid Linear-Attention LLMs](http://arxiv.org/abs/2611.08133v1) | Jiacheng Cai | 2026-11-05 | Production deployments often use different models to balance cost and quality through cascading, routing, and switching models during long conversations. Contex... |
+| [FreeOcc: Decoupling Ego-Motion for Efficient 4D Occupancy Forecasting via Continuous Flow Matching](http://arxiv.org/abs/2611.08128v1) | Zeping Zhang | 2026-11-05 | Current 4D occupancy world models use heavy cross-attention or deep recurrence to disentangle ego-motion from scene dynamics. This requires significant computat... |
+| [Gabor Gabor: E-Gaborformer, a Strictly Causal Speech Recognizer with Gabor-Dictionary Convolutions and Delta-Rule Memory](http://arxiv.org/abs/2611.08092v1) | Nir Krakowski | 2026-11-05 | Real-time voice agents need a speech recognizer that never waits for future audio and whose memory per call does not grow with the length of the call. We presen... |
+| [Value or Attention: Investigating Layer-wise Relevance Propagation for Graph Attention Networks](http://arxiv.org/abs/2611.08088v1) | Ken Schreiber | 2026-11-05 | Graph Attention Networks (GATs) are increasingly used in domains where scientists need to read a model's reasoning, from medicine to materials science, yet the ... |
+| [MUSS: A Multi-scale and Sequence-based Model for Single-cell Gene Regulation](http://arxiv.org/abs/2611.08086v1) | Kangjie Zheng | 2026-11-05 | Modeling gene regulation in single cells requires jointly representing DNA sequence, chromatin accessibility, and gene expression across regulatory scales. Sequ... |
+| [Optimal Competitive Ratios for Chasing Convex Functions with Quadratic Growth](http://arxiv.org/abs/2611.08078v1) | Linzhe He | 2026-11-05 | Chasing convex function has attracted much attention in recent years, which can be formulated as a game between a learner and an adversary. In each round, the a... |
+| [Precision - Preserving Subtensor Inference for a 22B Joint Audio - Video Generator under a Fixed GPU Working Set](http://arxiv.org/abs/2611.08023v1) | Hanyue Shen | 2026-11-05 | Complete-block offloading reduces model residency but requires each transferred block to fit the GPU budget. We present Precision-Preserving Subtensor Inference... |
+| [Sigmoid Tensor Decomposition for Compact Representations of Binary Data](http://arxiv.org/abs/2611.08020v1) | Irina Kopnina | 2026-11-05 | Nonlinear low-rank decompositions are receiving growing attention as a way to represent structured data with fewer parameters than conventional linear methods. ... |
+| [Automatic keyphrase extraction and annotation: modern theoretical approaches and practical solutions for text and speech](http://arxiv.org/abs/2611.08006v1) | Daria Guseva | 2026-11-05 | The exponential growth of textual and audiovisual information has made the task of automatic keyphrase extraction (KE) increasingly significant. This article pr... |
+| [Towards Multiscale Molecular Representation Learning through Geometry-Based Fragmentation for Polymer Property Prediction](http://arxiv.org/abs/2611.07998v1) | Makoto Takamoto | 2026-11-05 | It is well established that molecular substructures can contribute unequally to chemical and physical properties, with specific motifs or side chains often play... |
+| [QRAE: Query-Relevant Attention Entropy for Context Compression in DeepSearch Agents](http://arxiv.org/abs/2611.07976v1) | Yingjie Tan | 2026-11-05 | DeepSearch LLM agents repeatedly search and carry retrieved sources into subsequent reasoning steps. This expanding context increases token consumption and late... |
+| [Circe: Training-Free LLM Self-Evaluation via Component Interaction Consistency](http://arxiv.org/abs/2611.07948v1) | Shuyi Miao | 2026-11-05 | As large language models (LLMs) are increasingly deployed in real-world applications, evaluating the correctness of their responses is crucial for reliable use.... |
+| [AttnSR: Attention Step Reward for Long-Horizon Agentic RL](http://arxiv.org/abs/2611.07932v1) | Mengsong Wu | 2026-11-05 | Long-horizon LLM agents make multi-step decisions, yet outcome-reward-only reinforcement learning provides little direct supervision for individual steps. We in... |
+| [When Bigger Becomes Brittle: Why Compression Hurts More as Language Models Scale](http://arxiv.org/abs/2611.07891v1) | Gautam Gupta | 2026-11-05 | Quantization and pruning reduce the cost of deploying language models, but their effects are usually reported as benchmark scores. Such scores record only the l... |
 
 ## MoE (Mixture of Experts) & Routing
 
-_No new tracked entries for this section in the latest batch._
+| Title / Paper | Author / Source | Date | Key Highlights |
+|---|---|---|---|
+| [Multimodal Hierarchical Mixture-of-Experts for 3D Medical Vision-Language Modeling](http://arxiv.org/abs/2611.08185v1) | Gizem Mert | 2026-11-05 | Medical 3D scans and reports are inherently hierarchical, with diagnostic cues concentrated in specific anatomical regions across multiple levels of organizatio... |
+| [SAE Interprets MoE: Sparse AutoEncoders Reveal That MoE Experts Exhibit Human-Interpretable Fine-Grained Specialization](http://arxiv.org/abs/2611.08089v1) | Anyuan Zhuo | 2026-11-05 | Mixture-of-Experts (MoE) models route each token to a few of many experts, yet what an individual expert is responsible for remains unsettled. Existing analyses... |
+| [EDGAR: Efficient Diffusion-Driven Gaussian Avatar Refinement via Synthetic Failure](http://arxiv.org/abs/2611.07909v1) | Kwan Yun | 2026-11-05 | Recent advances in Gaussian splatting have enabled efficient and photorealistic head avatar reconstruction, yet monocular video-based or image-based methods sti... |
 
 ## GEMM, Tensor Cores & Low-Precision
 
-_No new tracked entries for this section in the latest batch._
+| Title / Paper | Author / Source | Date | Key Highlights |
+|---|---|---|---|
+| [Rotation Is Token-Blind: A Structural Criterion for Post-Training Quantization of Feed-Forward Geometry Transformers](http://arxiv.org/abs/2611.07955v1) | Huanfei He | 2026-11-05 | Feed-forward 3D models use Transformers to predict camera poses, depth, and structure in one pass, avoiding iterative multi-view optimization. Long sequences an... |
 
 ## Kernel Compilers & DSLs (Triton, TileLang, CUDA)
 
-_No new tracked entries for this section in the latest batch._
+| Title / Paper | Author / Source | Date | Key Highlights |
+|---|---|---|---|
+| [Spectral Regimes of Truncated sinc-Power and Pulse-Train Kernels: Edge Exponents, Per-Edge Plunges, and the Landau-Widom Limit](http://arxiv.org/abs/2611.08401v1) | Unnikrishna Pillai | 2026-11-05 | A signal band-limited to one rectangular band and observed through a finite window is the classical concentration problem of Slepian, Landau, Pollak, and Widom.... |
+| [4D Point Splatting for mmWave Radar Micro-Doppler Differentiable Rendering](http://arxiv.org/abs/2611.08342v1) | Adnan Armouti | 2026-11-05 | Millimeter-wave radar resolves the micrometer displacements of a moving body as micro-Doppler, enabling gait, gesture, activity, pose and vital-sign sensing. Ea... |
+| [Fluctuations, Moderate and Large Deviations about Hydrodynamic Limits of Space-Time Hawkes Processes](http://arxiv.org/abs/2611.08339v1) | Fuqing Gao | 2026-11-05 | We study Gaussian fluctuations, moderate and large deviations around the high-density hydrodynamic limit of critical and nearly critical space-time Hawkes proce... |
+| [Butler's conjecture for K3 curves](http://arxiv.org/abs/2611.08333v1) | Soheyla Feyzbakhsh | 2026-11-05 | Butler's conjectures predict that, on a general smooth curve $C$ of genus $g\ge3$, a general coherent system $[\mathcal{O}_C\otimes V\xrightarrow{\varphi}E]$ wi... |
+| [Hierarchical Incremental Beta Splatting for Online Reconstruction](http://arxiv.org/abs/2611.08288v1) | Linus Franke | 2026-11-05 | Online 3D Gaussian Splatting reconstructs a scene during capture: each keyframe spawns primitives once and refines them for only a few dozen iterations, leaving... |
+| [Pattern selection and biomass shifts in a vegetation model with nonlocal competition and Allee activation](http://arxiv.org/abs/2611.08215v1) | Federico Dimatz | 2026-11-05 | We study a single-species vegetation model in which a strong Allee effect acts locally and competition acts through a nonlocal kernel, and we describe the kerne... |
+| [Existence, Uniqueness, Feller Property and Diricihlet form of the Keller-Segel particle system up to blow up](http://arxiv.org/abs/2611.08207v1) | Yoan Tardy | 2026-11-05 | The Keller-Segel particle system as defined in \cite{ft} through the Dirichlet form theory (see \cite{f}) consists of $N$ planar Brownian motions interacting th... |
+| [Uniqueness and nondegeneracy for a critical Choquard equation with Hardy potential](http://arxiv.org/abs/2611.08146v1) | Guangze Gu | 2026-11-05 | We study the critical Choquard equation \[ -Δu-μ-x-^{-2}u =\bigl(-\cdot-^{2-N}*-u-^p\bigr)-u-^{p-2}u \qquad\text{in }\mathbb R^N, \] where $-\cdot-^{2-N}$ is th... |
+| [Drift-Resilient Predictive Interference Management: Online Adaptation of an Extreme-Value Predictor](http://arxiv.org/abs/2611.08132v1) | Aamir Mahmood | 2026-11-05 | Predictive interference management supports ultra-reliable low-latency communication (URLLC) by allocating finite-blocklength resources against a high condition... |
+| [Gradient Boosting for Efficient Rank Discovery in Tensor Network Kernel Machines](http://arxiv.org/abs/2611.08093v1) | Albert Saiapin | 2026-11-05 | Tensor network kernel machines (TNKMs) combine nonlinear features with low-rank tensor representations to model complex relationships efficiently. However, sele... |
+| [Reproducing Kernel (Quasi-)Banach Spaces with the $\ell^p$ Coefficient Norms](http://arxiv.org/abs/2611.08032v1) | Tianfang Wang | 2026-11-05 | This paper advances the theory of reproducing kernel Banach spaces (RKBSs) by investigating the general $\ell^p$ regularization framework, with a particular foc... |
+| [Hypocoercivity for a thermostatted Boltzmann equation](http://arxiv.org/abs/2611.07999v1) | Josephine Evans | 2026-11-05 | We study the Boltzmann equation for a gas on the three-dimensional torus. Its particles collide with one another and with a thermal reservoir whose temperature ... |
+| [TCSExam: Evaluating Frontier LLMs on the Full Range of TCS Research](http://arxiv.org/abs/2611.07962v1) | Yifan Luo | 2026-11-05 | Can large language models (LLMs) advance theoretical computer science and resolve its long-standing open conjectures? To study progress toward this goal, we int... |
+| [Group-free radial Kunze-Stein phenomenon on affine buildings](http://arxiv.org/abs/2611.07889v1) | Łukasz Pawlak | 2026-11-05 | We give a geometric proof of the radial Kunze--Stein phenomenon on the good vertices of a thick, locally finite, regular affine building of irreducible type. Th... |
+| [Quasi-polynomial-sized vertex multicut-mimicking networks and kernelization for Vertex Multiway Cut](http://arxiv.org/abs/2611.07880v1) | Eduard Eiben | 2026-11-05 | We give deterministic polynomial-time constructions of vertex multicut-mimicking networks of quasi-polynomial size. Given a graph G, a terminal set T, and a pos... |
 
 ## Pre-training & Distributed Infrastructure
 
-_No new tracked entries for this section in the latest batch._
+| Title / Paper | Author / Source | Date | Key Highlights |
+|---|---|---|---|
+| [SLA: Scaling Spatial-Language-Action Model via Continual Pre-training](http://arxiv.org/abs/2611.08373v1) | Fuhao Li | 2026-11-05 | Reliable robotic manipulation requires both semantic understanding and precise control in three-dimensional space. However, vision-language-action (VLA) foundat... |
+| [Scaling Neural Motor Decoding via Decoupled Behavioral Pretraining](http://arxiv.org/abs/2611.08263v1) | Divyansha Lachi | 2026-11-05 | Recent neural decoding approaches achieve strong performance by training on large collections of paired neural-behavioral recordings, but such datasets are expe... |
 
 ## Post-training, Alignment & RL
 
-_No new tracked entries for this section in the latest batch._
+| Title / Paper | Author / Source | Date | Key Highlights |
+|---|---|---|---|
+| [Geometric Relevance Is Not Sufficient: Evaluating Focused Post-Training Supervision in Diffusion Docking](http://arxiv.org/abs/2611.08249v1) | Michael Brown | 2026-11-05 | Diffusion-based molecular docking requires learning a corrective score field across a broad corruption distribution, yet individual pose errors can differ subst... |
+| [DictLLM: Post-training Compression of Large Language Model with Dictionary Kernels](http://arxiv.org/abs/2611.08082v1) | Jinho Park | 2026-11-05 | Efficient deployment of large language models (LLMs) on mobile devices requires balancing performance with compute and memory constraints. Post-training compres... |
