@@ -1,0 +1,72 @@
+# Mass-Adaptive History Promotion for Mixed-Dimensional Attention: A CPU Reference Study
+
+**Author:** Lee Si Yuan  
+**Group:** Independent Researcher  
+**Email:** siyuanlee.cs@gmail.com  
+**Extension of:** Jiacheng Lu et al., *NanoKV: High-Ratio KV Cache Compression for Autoregressive Video Generation*, arXiv:2611.06377v1 (2026). [Source paper](https://arxiv.org/abs/2611.06377v1)
+
+## Abstract
+
+NanoKV-Fast uses mixed-dimensional attention and a fixed policy to protect sensitive history in autoregressive video generation. We explore query-conditioned promotion: compute low-dimensional attention over all history, then promote the top-$r$ tokens by approximate attention mass to full-dimensional keys and values before a shared softmax. A deterministic CPU study compares this rule with recency, random, and full-attention-oracle token selection. Across 40 seeds and 24 queries per seed, mass-based promotion lowers relative output error against full-dimensional attention from 0.435 to 0.367 in a diffuse low-rank construction, from 0.938 to 0.832 for isotropic vectors, and from 0.935 to 0.011 in a construction with query-aligned old spikes, at $r=4$ of 64 tokens. The full-attention oracle performs better, especially in the isotropic case, showing that low-dimensional mass is an imperfect proxy. These are synthetic numerical results, not video-model quality, latency, or GPU measurements. The proposed policy's selection, codec-decode, and promotion overheads remain unmeasured.
+
+## 1. Introduction
+
+NanoKV compresses historical keys and values for autoregressive video generation. Its optional NanoKV-Fast variant uses mixed-dimensional attention to reduce work while retaining full dimensions for sensitive history. The paper describes a fixed protection policy informed by sensitivity analysis and rollout-quality feedback. We ask whether a query-conditioned rule can allocate full-dimensional attention to history that appears important to the current query.
+
+We propose **mass-adaptive history promotion (MAHP)** as a narrow reference algorithm. It first evaluates all history in low dimension, then promotes the top-$r$ positions by low-dimensional attention probability and recomputes their key/value paths in full dimension. The mixed set uses one joint softmax. Unlike the source work's fixed protection policy, this rule varies the promoted positions with the query. Our CPU study tests the selection heuristic on controlled vector constructions. It does not reproduce NanoKV's codec, train a video model, or establish that the runtime cost is worthwhile.
+
+## 2. Method
+
+For query $q\in\mathbb{R}^{D}$ and history $(k_i,v_i)_{i=1}^{N}$, let $\tilde{k}_i,\tilde{v}_i$ be low-dimensional decoded approximations represented in the output space. Compute low-dimensional logits $\tilde{s}_i=q^\top\tilde{k}_i/\sqrt{D}$ and probabilities $\tilde{p}=\mathrm{softmax}(\tilde{s})$. Select $S_r=\operatorname{TopR}(\tilde{p},r)$. For $i\in S_r$, use full-dimensional $(k_i,v_i)$; otherwise use $(\tilde{k}_i,\tilde{v}_i)$. The output is
+
+\[
+o_r=\sum_{i=1}^{N}\mathrm{softmax}(s^{(r)})_i v_i^{(r)},
+\]
+
+where $s_i^{(r)}=q^\top k_i/\sqrt{D}$ for promoted positions and $q^\top\tilde{k}_i/\sqrt{D}$ otherwise, with the corresponding full or low value $v_i^{(r)}$. Deterministic tie-breaking uses token index. The low-dimensional probabilities are a selection signal only; they are not reused as mixed attention weights.
+
+The idealized attention arithmetic ratio, ignoring projection, selection, decoding, and launch costs, is
+
+\[
+\rho(r)=\frac{(N-r)d + rD}{ND},
+\]
+
+where $d$ is the low dimension. At $N=64$, $d=8$, and $D=32$, $r\in\{4,8,16\}$ corresponds to ratios 0.297, 0.344, and 0.438. This counts dot-product/value dimensions; it is not a latency estimate.
+
+## 3. CPU Reference Experiment
+
+The standard-library Python experiment uses 40 seeds, 24 queries per seed, $N=64$, $D=32$, and $d=8$. It compares all-low attention, MAHP selection, recency selection, random selection, and an oracle that selects top positions using full-dimensional attention probabilities. The oracle is only an upper-bound comparator: it requires full scores and is not an efficient deployment policy. The target output is full-dimensional attention using all history. The metric is mean per-query relative $\ell_2$ output error, averaged across seeds.
+
+Three controlled regimes are used:
+
+1. **Diffuse:** attenuated features outside the low-dimensional subspace.
+2. **Isotropic:** independent random key/value vectors with no preferred subspace.
+3. **Old spike:** query-aligned high-score tokens among the oldest 24 positions, with one distinct token per query, deliberately testing whether recency is useful when an old token matters.
+
+These vectors are synthetic and are not NanoKV training or evaluation data.
+
+| Regime | All low | MAHP, $r=4$ | Recency, $r=4$ | Oracle, $r=4$ |
+|---|---:|---:|---:|---:|
+| Diffuse | 0.435 | 0.367 | 0.420 | 0.367 |
+| Isotropic | 0.938 | 0.832 | 0.909 | 0.599 |
+| Old spike | 0.935 | 0.011 | 0.936 | 0.001 |
+
+The entries are mean relative output error against full-dimensional attention; lower is better. At $r=4$, MAHP improves on all-low and recency selection in all three generated regimes. In the old-spike construction it substantially outperforms recency because the selected high-mass positions can be old. The oracle gap remains substantial in the isotropic regime; in the constructed spike regime both selectors identify nearly all of the deliberately dominant items. Across these constructions, mean error decreases as $r$ increases from 4 to 8 to 16; this finite set does not establish monotonicity generally.
+
+## 4. Limitations and next steps
+
+This implementation uses truncation as a simple low-dimensional approximation rather than NanoKV's learned joint head-channel codecs. It omits codec fitting, quantization, causal rollout, cross-layer error propagation, video quality metrics, and GPU kernel execution. The selector evaluates low-dimensional scores over all history and then recomputes promoted tokens; top-$r$ selection and full-dimensional promotion may erase arithmetic savings. The reported ratio excludes this overhead and must not be read as a speedup. Synthetic outputs do not establish effects on PSNR, SSIM, LPIPS, VBench, memory, or latency.
+
+The available Apple M2 environment has no NVIDIA GPU or CUDA runtime, so no accelerator measurements were possible. A useful next experiment would implement MAHP within NanoKV-Fast, compare fixed protection with query-conditioned selection on held-out video rollouts, measure selection and cache-decode costs, and test quality and latency over full autoregressive generation. The oracle results should be used only to diagnose whether better importance estimates could help.
+
+## 5. Conclusion
+
+Query-conditioned promotion by low-dimensional attention mass is a simple alternative to fixed history protection. In three synthetic settings it reduced full-attention output error versus all-low and recency baselines at the same promotion budget, while the full-dimensional oracle exposed a sizeable estimation gap. Whether the rule improves the quality-compute trade-off in NanoKV-Fast remains an empirical question.
+
+## Reproducibility
+
+Run `python3 experiment.py` in this directory. It writes `results.json`; the experiment uses no third-party Python packages and is deterministic. The ACL-style LaTeX source is `paper.tex`, and `acl.sty` is included. The PDF is compiled from this source using Tectonic.
+
+## Reference
+
+Lu, Jiacheng, Haoyi Zhu, Sipei Yi, Enze Xie, Cheng Zhuo, and Yu Li. 2026. “NanoKV: High-Ratio KV Cache Compression for Autoregressive Video Generation.” arXiv:2611.06377v1. [https://arxiv.org/abs/2611.06377v1](https://arxiv.org/abs/2611.06377v1)
