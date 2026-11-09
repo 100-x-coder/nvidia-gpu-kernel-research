@@ -1,0 +1,45 @@
+{
+  "experiment": "synthetic_muir_readout_gain_quantization_cpu_reference",
+  "seed_start": 20261109,
+  "seeds": 64,
+  "state_rows": 128,
+  "value_width": 32,
+  "tile_rows": 8,
+  "average_bits_per_tile": 4,
+  "bits_per_tile_minimum": 2,
+  "source": "Muir arXiv:2611.08376v1; proposed quantization extension is not in the source paper",
+  "limitations": "Synthetic controlled CPU study; no trained checkpoints, corpus, GPU, or latency measurement.",
+  "summary": {
+    "uniform": {
+      "mean_output_l2_error": 2.3682159175021056,
+      "median_output_l2_error": 1.788949284554091,
+      "mean_certified_bound": 50.549077126696375,
+      "bound_violations": 0
+    },
+    "sensitivity_allocated": {
+      "mean_output_l2_error": 0.43617515810008395,
+      "median_output_l2_error": 0.35544488360346266,
+      "mean_certified_bound": 16.497151743644494,
+      "bound_violations": 0
+    }
+  },
+  "mean_relative_error_reduction_vs_uniform": 0.7711964164444293,
+  "allocated_bits_seed_0": [
+    2,
+    5,
+    5,
+    2,
+    2,
+    2,
+    8,
+    2,
+    4,
+    4,
+    3,
+    2,
+    6,
+    5,
+    6,
+    6
+  ]
+}

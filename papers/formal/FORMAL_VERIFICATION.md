@@ -22,3 +22,7 @@ lake build PaperClaims
 ```
 
 Each paper's `code_attachment.zip` contains its runnable Python experiment, the corresponding checked-in JSON output, and this Lean proof source/documentation. The scripts use only the Python standard library; Ada-CISA's tests use the standard-library `unittest` runner.
+
+## Muir readout quantization bound
+
+`MuirReadoutClaims.lean` proves that coordinate-wise error radii bound a nonnegative weighted signed sum, and that the peak-over-levels quantization bound decreases as the number of levels increases. It was checked with the repository-pinned Lean 4.35.0 / Mathlib toolchain. These lemmas formalize the algebra used by the SABQ paper; they do not prove greedy allocation optimality, code execution, empirical measurements, model quality, or hardware speed.
