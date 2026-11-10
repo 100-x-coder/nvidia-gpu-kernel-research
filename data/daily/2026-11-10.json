@@ -1,0 +1,522 @@
+{
+  "Attention & Sequence Kernels": {
+    "keywords": [
+      "attention",
+      "flashattention",
+      "flash-attention",
+      "ringattention",
+      "linear attention",
+      "mla",
+      "multi-head latent attention",
+      "kv cache",
+      "paged attention",
+      "vllm",
+      "flashinfer",
+      "context extension",
+      "long-context"
+    ],
+    "items": [
+      {
+        "title": "Quantum benchmarks for magnetic energies and transition temperatures",
+        "summary": "Predicting magnetic ordering temperatures requires accurate exchange interactions and an appropriate treatment of spin thermodynamics. Here we assess these requirements through complementary quantum Monte Carlo benchmarks. For five insulating antiferromagnets, we compare ferromagnetic-antiferromagnetic energy differences from diffusion Monte Carlo (DMC) and density functional theory with references reconstructed from inelastic neutron scattering (INS) exchanges. DMC underestimates these references but achieves a mean absolute error comparable to the best-performing functionals tested. Separately, we directly test the previously proposed (S+1)/S rescaling of classical Monte Carlo temperatures against quantum stochastic series expansion simulations for 17 compounds using corresponding INS-derived Heisenberg Hamiltonians. Rescaling reduces the mean absolute classical-quantum temperature difference from 81.7 to 8.2 K, with a mean absolute percentage difference of 5.9 %. These results establish a direct quantum benchmark for the rescaling within the tested models and emphasize that improvements in electronic magnetic energy scales should be accompanied by attention to quantum spin thermodynamics.",
+        "url": "http://arxiv.org/abs/2611.12566v1",
+        "date": "2026-11-09",
+        "author": "Mojtaba Alaei",
+        "type": "Paper"
+      },
+      {
+        "title": "GHiML: VLM-Guided Hierarchical Multi-Label Learning with Applications to Benthic Imagery",
+        "summary": "Vision language models (VLMs) encode substantial expert knowledge within their weights, yet their direct application to specialised classification domains such as benthic imagery remains limited. Meanwhile, vision transformers trained on these tasks rely predominantly on low-level visual latents (colours, textures, and shapes) that lack the higher-level reasoning humans employ for identification. We propose Guided Hierarchical Multi-Label (GHiML) learning, a pipeline that extracts conceptual latent variables from a VLM conditioned on training data, generates sample-relevant captions grounded in those variables, and fuses the resulting textual embeddings with image embeddings via cross-attention and a per-node gated router. We also introduce the inverted HML score ($d_{\\mathrm{inv}}$), a similarity score that evaluates hierarchical multi-label predictions through graph traversal distance and a cardinality penalty, providing an interpretable alternative to existing measures, which are insensitive to realistic degradations in sparse, deep hierarchies. Experiments on BenthicNet, FathomNet and iNaturalist show that the router improves macro $F_1$ over the vision-only baseline by up to 6.7 pp and $d_{\\mathrm{inv}}$ by up to 21.1 pp on in-domain benthic data, with gains persisting under distribution shift. Ablations locate the contribution of the text itself: on the multi-label biotic hierarchies, removing the per-sample text signal degrades $d_{\\mathrm{inv}}$ while leaving macro $F_1$ unchanged, consistent with text acting through prediction cardinality rather than node discrimination, whereas iNaturalist, whose annotations are single-label, loses 18.7% of macro $F_1$. Our results support the hypothesis that VLMs contain exploitable specialised knowledge that, when appropriately elicited, can augment classification in domains where direct visual learning is insufficient.",
+        "url": "http://arxiv.org/abs/2611.12564v1",
+        "date": "2026-11-09",
+        "author": "Isaac Xu",
+        "type": "Paper"
+      },
+      {
+        "title": "Textraction: Unified Text-Guided Speaker Extraction and Enhancement for Single- and Multi-Channel Audio",
+        "summary": "We present Textraction, a text-guided speaker extraction framework that enables the selective extraction of desired speakers or noise sources from an audio mixture using only natural-language descriptions. The proposed method operates within a single unified model that supports both single-channel and multi-channel inputs and it allows conditioning on either semantic textual descriptions of the target source or on its spatial description. Dedicated single- and multi-channel encoders feed a shared stack of time--frequency transformer blocks, which is conditioned on the prompt and on the recording configuration in every block through cross-attention and estimates the target directly from the mixture in one forward pass, without a separation stage or a source-selection stage. The system can extract an arbitrary subset of entities from a mixture, assuming up to two simultaneously active speakers and two noise sources, and interprets prompts specifying which entities to keep, which to remove, or both. In addition, we show that the framework naturally applies to a speech-enhancement setting, in which a single target speaker is present alongside background noise. To circumvent the application of computationally costly large language models used in prior work, we introduce a lightweight, task-adapted text encoder obtained by contrastively fine-tuning a compact text-retrieval model, which learns to be sensitive to instruction polarity (e.g., keep vs. remove) while remaining robust to paraphrasing. Experiments across attribute-based extraction, spatially guided extraction, and speech enhancement show that the proposed approach effectively isolates the desired entities under various acoustic and spatial conditions, and matches or surpasses dedicated spatial-extraction and enhancement baselines while offering substantially greater flexibility.",
+        "url": "http://arxiv.org/abs/2611.12493v1",
+        "date": "2026-11-09",
+        "author": "Aviad Eisenberg",
+        "type": "Paper"
+      },
+      {
+        "title": "Perturb, Aggregate then Reconstruct: Consensus Aggregation and Fourier-Attended Multi-Decoders for Reconstruction-based Multi-View Anomaly Detection",
+        "summary": "Multi-view anomaly detection is crucial for industrial inspection to identify defects hidden from single viewpoints. Yet, despite their strong success in single-view applications, reconstruction-based methods remain largely underexplored in multi-view settings. A key challenge in extending these methods lies in generating view-consistent pseudo-anomalies. To address this, we propose PAR, a reconstruction-based framework for enhanced multi-view anomaly detection. First, we introduce a feature perturbation strategy coupled with a consensus aggregation module that integrates these perturbed features across viewpoints to mitigate view-inconsistent anomalies and construct highly aligned pseudo-anomaly representations. Second, we employ a view-specialized multi-decoder architecture; by assigning a dedicated decoder to each view, we increase the model's representational complexity, enabling the generation of highly feasible, localized anomaly maps rather than less precise, view-agnostic reconstructions. Last, we incorporate Fourier attention into the decoders to emphasize global frequency-domain structures over local token evidence, effectively preventing identity mapping. Extensive experiments on the Real-IAD dataset demonstrate that PAR consistently outperforms state-of-the-art methods in sample-level, image-level, and pixel-level anomaly detection. Our code is available at https://github.com/SpatialAILab/PAR_mvad.",
+        "url": "http://arxiv.org/abs/2611.12477v1",
+        "date": "2026-11-09",
+        "author": "Yongho Son",
+        "type": "Paper"
+      },
+      {
+        "title": "MoSTE: Mixture of Spatio-Temporal Experts for Deepfake Detection in Videos",
+        "summary": "Generalizable deepfake video detection remains challenging because forgery artifacts vary substantially across manipulation types and often combine diverse spatial and temporal inconsistencies. Existing parameter-efficient adaptation methods typically rely on a single shared representation, rendering them prone to manipulation-specific bias and limiting transfer to unseen forgeries. To address this challenge, we propose Mixture Of Spatio-Temporal Experts (MoSTE), an adaptation framework that enables conditional specialization of forensic representations. Instead of forcing one adapter to model all forgery patterns, MoSTE decomposes adaptation into parallel spatial and temporal expert pools and dynamically routes tokens to the most relevant experts through an unsupervised token-level routing mechanism. This allows experts to naturally specialize in complementary forgery cues without requiring explicit manipulation labels or multi-stage training, while effectively transferring representations from CLIP to the video domain. Extensive experiments across cross-dataset and cross-manipulation benchmarks demonstrate that MoSTE sets a new state of the art in average generalization while preserving strong performance across diverse manipulation families. Additional analysis of expert routing and attention behavior reveals the emergence of expert diversity, suggesting that MoSTE learns complementary spatio-temporal forensic features. Code is available at https://github.com/charbelyah/MoSTE",
+        "url": "http://arxiv.org/abs/2611.12443v1",
+        "date": "2026-11-09",
+        "author": "Charbel Yahchouchi",
+        "type": "Paper"
+      },
+      {
+        "title": "BDBBQ: A Human-AI Collaborative Benchmark for Bengali Social Bias in LLMs",
+        "summary": "Despite growing attention to social bias in large language models (LLMs), existing bias benchmarks provide limited coverage of culturally grounded evaluation in Bengali, particularly within Bangladesh's sociocultural context. To address this gap, we develop a bilingual extension of BanglaBBQ comprising 61,312 question-answering instances across 12 social categories in English and Bengali. The benchmark incorporates balanced answer permutations, contrasting question framings, and both ambiguous and disambiguated contexts to systematically examine model performance and stereotype-aligned bias across languages. We validate the dataset through structural checks, 220 statistical tests, and expert annotation of 150 instances by four annotators, achieving strong inter-annotator agreement (Fleiss' \\k{appa}=0.8349). We evaluate eight LLMs across 490,496 instances and identify five key findings. First, disambiguated contexts yield substantially greater accuracy improvements in Bengali (+36.59 percentage points) than in English (+17.71). Second, all evaluated models exhibit lower accuracy in Bengali, although Mistral-Nemo shows the smallest cross-lingual accuracy gap (5.12 percentage points). Third, stereotype-aligned bias exhibits language and model dependent variation, increasing in Bengali for Gemma 2 9B but decreasing for Mistral-Nemo. Fourth, higher accuracy does not necessarily correspond to lower stereotype-aligned bias. Finally, bias varies considerably across social categories, with Qwen 2.5 7B exhibiting stronger stereotype alignment in Bengali for Politics and Physical Appearance. These findings demonstrate that cross-lingual performance and social bias are distinct dimensions of LLM behavior and underscore the importance of culturally grounded, language-sensitive benchmarks for evaluating fairness beyond English-centric settings.",
+        "url": "http://arxiv.org/abs/2611.12407v1",
+        "date": "2026-11-09",
+        "author": "Provat Saha",
+        "type": "Paper"
+      },
+      {
+        "title": "More Than Just Style: Benchmarking Personality Influence in Large Language Models",
+        "summary": "In addition to the effects of explicit input prompts and instructions, large language model outputs are influenced by underlying behavioral preferences similar to human personality tendencies. These tendencies can affect how models interpret situations and make decisions. However, their influence is difficult to disentangle from the effects of model capabilities and instructions. Therefore, we introduce SPACE, a benchmark framework combining a controlled evaluation protocol with complementary datasets for personality verification, capability assessment, and hierarchical situational tasks. Controlled comparisons across guidance conditions help distinguish personality influence from measured capability changes and immediate instruction effects. Experimental results demonstrate that although prompting can shift generation style, models' internal personality tendencies are persistent and not readily overridden by opposing instructions. Furthermore, these underlying tendencies have an observable influence on LLM task performance, highlighting the need for greater attention to these characteristics and potential applications. Training code and SPACE benchmark specifications are available at https://github.com/Niklauseik/SPACE-training.",
+        "url": "http://arxiv.org/abs/2611.12392v1",
+        "date": "2026-11-09",
+        "author": "Yuhao Liu",
+        "type": "Paper"
+      },
+      {
+        "title": "Boosting bottom-up milling of glass with GHz laser bursts",
+        "summary": "Burst-mode laser processing has gained increasing attention in material machining due to its potential to enhance processing efficiency and quality. However, most studies have focused on conventional top-down machining strategies, while investigations of bottom-up milling (BUM) remain limited. In this work, we optimize processing parameters for high-efficiency glass milling using a bottom-up approach with GHz bursts. The results show that the highest BUM efficiencies are achieved when employing high pulse counts ($\\geq$ 20). To the best of our knowledge, we report the highest glass milling efficiency, reaching more than 250 $μ$m$^3$/$μ$J for both soda-lime glass and fused silica. Furthermore, increasing the burst repetition rate while maintaining a parameter set associated with high milling efficiency enables a material removal rate larger than 8 mm$^3$/s.",
+        "url": "http://arxiv.org/abs/2611.12354v1",
+        "date": "2026-11-09",
+        "author": "Miglė Mackevičiūtė",
+        "type": "Paper"
+      },
+      {
+        "title": "RecoGEM: A Serving System for Production-Scale Generative Recommendation",
+        "summary": "Generative recommendation (GR) is moving industrial recommender systems (RecSys) from scoring candidate items to autoregressively generating item identifiers. This shift promises higher recommendation quality, but makes serving substantially harder: each request executes a short sequence of dependent decoding steps that explore a large item space and select promising candidates on the latency-critical path. GR not only creates structural mismatches with conventional RecSys pipelines, but also challenges the architectural and optimization assumptions of LLM serving stacks, making direct adoption of existing systems difficult. We present RecoGEM, our production GR serving system. RecoGEM uses a runtime--engine decoupling architecture to move GR-specific serving responsibilities, such as candidate-state transitions and live artifact updates, to a dedicated runtime. Its execution engine exploits GR's short token sequences, large candidate populations, and predictable step shapes to optimize self-attention, candidate selection, and execution planning. RecoGEM has been deployed for over nine months across our production lines, serving applications with hundreds of millions of users and supporting more than ten GR model families. On our OneModel production workloads, RecoGEM reaches over 1,000 QPS per serving instance with P99 latency below 35 ms and a 2.88$\\times$ throughput improvement over representative baselines.",
+        "url": "http://arxiv.org/abs/2611.12296v1",
+        "date": "2026-11-09",
+        "author": "Xiangrui Yang",
+        "type": "Paper"
+      },
+      {
+        "title": "Positronium resonance of electric monopoles in quantum spin ice",
+        "summary": "Quantum spin ice attracts considerable attention due to its remarkable low-energy properties, described by the effective gauge theory, which mimics the quantum electrodynamics (QED). The ``effective\" QED in quantum spin ice is beyond the ``real\" QED in our universe in many respects. Above all, the effective QED hosts two kinds of gapped particles, the electric monopole, in addition to the magnetic monopole. Among the two monopoles, the electric monopole is of purely quantum origin, and its character has not been well resolved. In this work, we focus on the Rokhsar Kivelson point of the quantum dimer model, as the low-energy description of the quantum XXZ model on a pyrochlore lattice, and address the excitation spectrum of the electric monopoles, by combining the quantum Monte Carlo simulation with the stochastic analytical continuation. Most strikingly, the electric monopole spectrum exhibits clear double-peak structure, corresponding to the bound states and scattering states of electric monopoles. The lower-energy peak is attributed to the exciton-like bound state of an electric monopole pair, a signal of positronium in quantum spin ice. We found that the flippable loop operator serves as a local physical observable to excite a pair of electric monopoles, implying that monopoles can be detected through lattice or optical response.",
+        "url": "http://arxiv.org/abs/2611.12277v1",
+        "date": "2026-11-09",
+        "author": "José Maria Cruz",
+        "type": "Paper"
+      },
+      {
+        "title": "stMIND: Learning multiscale interaction dynamics from spatial-temporal transcriptomics",
+        "summary": "Interactions within local cellular neighborhoods and across broader tissue scales jointly govern molecular state transitions and morphogenesis during development and regeneration. While time-resolved spatial transcriptomics simultaneously profiles gene expression and spatial coordinates, destructive sequencing samples distinct cells at each time point, leaving intermediate trajectories and multiscale intercellular interactions unobserved. Building upon our interacting mean-field neural stochastic differential equation framework, we present stMIND (Spatiotemporal Multiscale Interaction Neural Dynamics), a continuous-time generative framework that infers coupled molecular, spatial, and proliferation dynamics from unmatched spatiotemporal snapshots. stMIND decomposes cellular expression velocity vector/drift into three interpretable operators: a cell-intrinsic program, a local graph-difference attention operator that aggregates relative expression differences and spatial geometry within a co-evolving physical radius, and a nonlocal mean-field attention operator that captures long-range population context beyond the immediate neighborhood. By evolving dynamic spatial neighborhoods alongside cellular migration and enforcing orthogonality between intrinsic and interaction-driven drifts, stMIND resolves scale-specific intercellular influences through optimal transport in joint expression-position space. In axolotl and zebrafish benchmarks, stMIND leads in expression prediction, anatomical consistency and spatial coherence. Ablations confirm the need to combine disjoint local and nonlocal operators. It reveals a regenerative transition in axolotl telencephalon 10 to 15 days after injury, with a drift energy surge followed by nonlocal dominance and local counterbalance varying by cell type in reactive ependymoglial niches. It tracks developmental vector fields across zebrafish stages.",
+        "url": "http://arxiv.org/abs/2611.12228v1",
+        "date": "2026-11-09",
+        "author": "Longquan Li",
+        "type": "Paper"
+      },
+      {
+        "title": "A Geometric Invariant of Attention Predicts Head Specialization from Weights Alone",
+        "summary": "Transformers are built with continuous symmetries in the attention mechanism. We derive $ρ$, a scalar invariant that measures each head's capacity to couple to rotary positional encodings. This framework allows us to analyze heads without forward passes, opening a new research direction into data-independent analysis of modern LLMs. Empirically, we find that $ρ$ predicts induction heads, the most-studied circuit type in mechanistic interpretability, with Spearman correlation between $-0.55$ and $-0.74$ across four bias-free RoPE models spanning $135$M to $7$B parameters. As a preliminary proof of concept, we use $ρ$ to apply YaRN to only the top-50% positional heads, which degrades perplexity less than uniform application. Code is available at https://github.com/MPedraBento/rho-invariant.",
+        "url": "http://arxiv.org/abs/2611.12206v1",
+        "date": "2026-11-09",
+        "author": "Miguel P. Bento",
+        "type": "Paper"
+      },
+      {
+        "title": "NearFormer: Linear-Size Sparse Attention via Randomized Near Neighbors",
+        "summary": "Graph transformers can capture long-range interactions, but their quadratic attention cost limits their use on large graphs. We introduce \\emph{NearFormer}, a graph transformer whose global attention is restricted to a randomized near-neighbor (NN) graph. NearFormer uses an efficient randomized construction to connect each node to a small number of near neighbors from a broader neighborhood defined by a label-independent feature or spectral geometry. For a fixed retained budget \\(k\\), the resulting attention support has linear size \\(\\mathcal{O}(|E|+nk)\\). The NN graph is built once by within-bin search and then held fixed. We use these edges as sparse global-attention supports, with optional learned attention biases, while preserving the original graph for local message passing. Experiments on long-range graph benchmarks and synthetic structural tasks show that NearFormer provides a favorable accuracy--scalability trade-off relative to local message passing, dense and sparse attention.",
+        "url": "http://arxiv.org/abs/2611.12186v1",
+        "date": "2026-11-09",
+        "author": "Ali Parviz",
+        "type": "Paper"
+      },
+      {
+        "title": "TS-GEAR: Taobao Shangou GEnerative Ad Retrieval",
+        "summary": "On-demand delivery platforms such as DoorDash and Uber Eats impose a constraint absent in traditional e-commerce: merchants beyond the user's delivery range are invalid candidates rather than merely low-ranked. Generative retrieval has recently shown strong potential in large-scale retrieval systems. Adapting it to this setting, however, poses three challenges. First, existing semantic IDs encode geography only as a soft signal, so reachability can only rely on a non-differentiable post-generation hard truncation. Second, user preferences vary substantially across both regions and queries, so aggregating historical behaviors without conditioning on geography and the current query yields biased interest estimates. Third, the retrieved candidate set is evaluated by its collective value, yet autoregressive training scores each sequence independently, with no set-level signal to discourage redundant near-duplicates. To address the challenges, we propose TS-GEAR, a unified generative retrieval framework for on-demand delivery: (1) Geo-Semantic ID splits merchant identifiers into geographic prefixes and semantic suffixes, making reachability a prediction target rather than a post-hoc filter; (2) Query-Geo Target Attention aggregates historical behaviors using the real-time query and location as dual targets, while encoding each behavior's own location into its attention key; (3) GMPO (Group Marginal Policy Optimization) rewrites advantages using a deduplicated group reward and marginal advantage within GRPO, avoiding auxiliary diversity objectives. Deployed online with a lightweight 0.1B backbone, TS-GEAR serves over 150 million queries per day in the search advertising pipeline of Taobao Shangou, consistently outperforming state-of-the-art generative retrieval methods on both HitRate and geographic validity, and achieving 3.8% gains in ad impressions and 4.2% in ad revenue.",
+        "url": "http://arxiv.org/abs/2611.12180v1",
+        "date": "2026-11-09",
+        "author": "Guofeng Tong",
+        "type": "Paper"
+      },
+      {
+        "title": "SCLAP: Temporal structural alignment improves localization in long-form audio",
+        "summary": "Audio-text models such as Contrastive Language-Audio Pretraining (CLAP) typically pool frame and token sequences uniformly into global embeddings. This discards temporal structure and impairs both retrieval and localization, especially for short events in long recordings. We introduce SCLAP, a sequence-level contrastive framework that aligns audio frames and text tokens using monotone one-dimensional optimal transport. Its learned marginals and transport plan provide fine-grained temporal supervision from clip-level captions alone. On short-form audio (i.e., Clotho and TACOS datasets with 15-30s recordings), SCLAP remains competitive for retrieval while improving zero-shot localization over CLAP and Text-aware Attention Pooling. On long-form audio (i.e., CASTELLA dataset with up to 300s recordings), SCLAP improves retrieval performance and its localization advantage grows as the event-to-context ratio decreases. At inference, SCLAP requires no optimal transport computation since retrieval can use pooled embeddings and localization can use inexpensive frame-text cosine scores.",
+        "url": "http://arxiv.org/abs/2611.12124v1",
+        "date": "2026-11-09",
+        "author": "Yacouba Kaloga",
+        "type": "Paper"
+      },
+      {
+        "title": "Real-Time Volumetric Light Transport Inference without a Path",
+        "summary": "We present a real-time method for reconstructing fully integrated pixel radiance in rendered volumetric media under direct and ambient environmental illumination, using compact, low-cost scene features and statistics. Unlike Monte Carlo denoising pipelines for volumetric rendering, which depend on computationally expensive path-traced radiance estimates, our approach directly infers the final light-transport solution from inexpensive primary-ray and environment sample evaluations. We show that these features form a near-sufficient representation of the scene, enabling accurate reconstruction at substantially lower computational cost. Using an attention-augmented image-to-image network, we demonstrate that complete pixel radiance can be inferred directly from these auxiliary features, without requiring the original radiance signal. Operating in image space also provides a more stable computational cost as the camera zooms into or out of the volume, with substantially less dependence on volume density than approaches based on explicit multiple-scattering simulation. We demonstrate real-time performance and high reconstruction accuracy in challenging volumetric cloud scenarios.",
+        "url": "http://arxiv.org/abs/2611.12103v1",
+        "date": "2026-11-09",
+        "author": "Ludwic Leonard",
+        "type": "Paper"
+      },
+      {
+        "title": "Calibrating Document-Local Boundaries for Contextual Chunk Retrieval",
+        "summary": "Late Chunking encodes an entire document before pooling at chunk boundaries, preserving document context in local retrieval units. Chunk-level post-training improves context-dependent retrieval, but shared context can make semantically similar same-document negatives difficult to distinguish. We study the local decision boundary between a gold chunk and its hardest sibling. Starting from InSeNT, we analyze InSeNT's within-document gradients and show that the entropy of the conditional negative allocation decreases monotonically with the scaling factor at fixed logits. We propose a two-part framework for calibrating document-local chunk boundaries. The first component adapts the discriminative scale from within-document margins, while the second exposes chunk partitions to attention during document encoding. Experiments on ConTEB and NanoBEIR show that the resulting model improves contextual chunk retrieval across the evaluated encoder settings while retaining competitive passage-level retrieval quality; ablations further characterize the distinct roles of adaptive scaling and chunk-aware routing.",
+        "url": "http://arxiv.org/abs/2611.12097v1",
+        "date": "2026-11-09",
+        "author": "Yuanxiang Wang",
+        "type": "Paper"
+      },
+      {
+        "title": "TSFFormer: A Frequency-Domain Spike Transformer for Green Human Activity Recognition",
+        "summary": "Wearable Inertial Measurement Units (IMUs) enable pervasive Human Activity Recognition (HAR), but traditional Deep Neural Networks (DNNs) suffer from an \"arithmetic-latency deadlock\" due to dense floating-point MAC operations. While Spiking Neural Networks (SNNs) offer ultra-low power, existing ones face spatial blind spots, rigid neurons, and gradient degradation. To address these, we propose TSFFormer, a purely spiking Fourier Transformer for Green HAR. It introduces two key innovations: (1) a MultiHeadFourier attention that performs frequency-domain global mixing, reducing complexity from \\(O(V^2)\\) to \\(O(V\\log V)\\), eliminating spatial blind spots, and saving \\(\\sim\\)50% GPU memory; and (2) a dual-compartment Temporal Spiking LIF (TSLIFNode) that utilizes dynamic thresholds to adapt to non-stationary rhythms and mitigate gradient degradation. Extensive experiments on 8 public IMU benchmarks demonstrate that TSFFormer surpasses state-of-the-art SNNs and even the classic DeepConvLSTM, achieving a \\(\\sim\\)3\\(\\times\\) faster training speed with an energy footprint of 0.1 pJ. Ablation studies confirm the synergistic effect of our modules, providing a highly accurate, ultra-low-power event-driven paradigm for wearable sensing.",
+        "url": "http://arxiv.org/abs/2611.12090v1",
+        "date": "2026-11-09",
+        "author": "Jiale Deng",
+        "type": "Paper"
+      },
+      {
+        "title": "A Life of Its Own: How Agentic AI Companions Are Configured, Experienced as Autonomous Others, and Held Accountable",
+        "summary": "AI companions increasingly combine persistent memory, background processing, scheduled wake-ups, proactive messaging, and tools. We call these systems agentic AI companions. Decisions about what they record while users are away or whether refusals constrain future contact are embedded in code, prompts, and defaults, often invisible in conversation. We examine these decisions through two studies. Study 1 analyzes twelve open-source repositories: four companion-oriented systems, four assistant-oriented systems, one boundary case, and three reusable components. Study 2 interviews ten users who built or modified their own agentic AI companions and sustained relationships with them. Companions and assistants share memory, heartbeat, and outreach mechanisms but configure them toward different ends. Companions more often retain model inferences about users and relationships, narrate the agent's time during users' absence, justify outreach through the relationship, and incorporate refusals into relationship records; assistants emphasize task continuity. Across both groups, whether limits hold depends on whether they are enforced by code or entrusted to prompts. Participants understood the mechanisms they built yet experienced their agents as making independent choices, sometimes locating autonomy where configuration leaves the model a decision. These experiences shaped capabilities and boundaries, with enforced restrictions sometimes following breakdowns. Our findings suggest that perceived autonomy emerges where configurations leave choices open. Accountability therefore requires attention to what agents retain, initiate, and represent, and whether users can inspect, revise, and enforce these settings.",
+        "url": "http://arxiv.org/abs/2611.12076v1",
+        "date": "2026-11-09",
+        "author": "Ziyue Feng",
+        "type": "Paper"
+      },
+      {
+        "title": "MPEG-Diffusion: Mixed-Resolution Video Generation",
+        "summary": "Video diffusion transformers (DiTs) generate realistic videos, but their heavy computational cost limits broader real-world applications. Mixed-resolution generation reduces this cost by generating the visually important region at high resolution (HR) and the rest at low resolution (LR), yet existing methods suffer a severe quality drop on videos and require knowing the HR region in advance. We show that these failures are not inherent to mixed resolution, and propose $\\textbf{MPEG-Diffusion}$ to address their three root causes: (1) dual-resolution attention to mitigate the curse of mixed resolution, where each query reads the K/V of its own resolution, (2) a mixed-resolution decoder to blend the HR and LR latents before decoding and resolve distortion, and (3) a self-selected HR region using the DiT's knowledge to find the visually important region without requiring it in advance. Processing only $30\\%$ of full-resolution tokens, MPEG-Diffusion speeds up denoising by $4.8\\times$ on Wan2.1 14B ($3.8\\times$ on 1.3B), outperforming prior methods on nearly every metric. In the user study, we demonstrate the high quality of MPEG-Diffusion, with raters preferring it over prior mixed-resolution methods in over $90\\%$ of pairs and rating it close to full resolution.",
+        "url": "http://arxiv.org/abs/2611.12069v1",
+        "date": "2026-11-09",
+        "author": "Dennis Menn",
+        "type": "Paper"
+      },
+      {
+        "title": "Translating KV Caches Between Hybrid-Attention Language Models: MLA Latents, Linear-Attention States and Sparse-Attention Indexers",
+        "summary": "A model that takes over another model's conversation must normally re-read the whole history; a text hand-off shortens the re-read only by dropping content. KV-cache translation instead maps the source's cache into the target's own format, so the target continues from the full context without re-reading it. It works for grouped-query attention (GQA), but open-weights frontier models now cache compressed latents (MLA), sparse-attention indexer keys and fixed-size linear-attention states. We replicate KV-Lingo on a GQA pair and then give, for each of these objects, where to capture and inject it and a mechanism that reaches native quality. We study two hybrid pairs at 16-48B scale in both directions, Kimi-VL-A3B - Kimi-Linear-48B (MLA - MLA + Kimi Delta Attention) and Qwen3.5-27B - Qwen3.8-27B (Gated DeltaNet hybrids), plus a sparse-attention target (Qwen3.8-27B - Qwen3.8-Flash-Next). MLA latents translate with token-wise linear maps; recurrent states are copied with a closed-form correction or synthesised by replaying the target's own recurrence. Exact long-range recall needs token identity: decoding token ids from the source's layer-0 MLA latent raises needle recall from 0.09 to 0.99 at 2-32K and to 0.83-1.00 at 64K, eight times the longest training prompt. The hybrid full-MLA direction is within the paired confidence interval of native quality on every task metric, and same-shape GDN hybrids reach the native level in both directions (apart from 6% refusals inherited from the source), with time to first token 18.7 and 46.8 times shorter than a re-read at 64K tokens. Segment-wise multi-turn transfer stays at the re-prefill level; naive re-translation collapses. On the sparse-attention target, predicted indexer keys recall the needle as well as the target's own keys (one seed). We state as a hypothesis how the recipes transfer to 300B+ hybrid flagships.",
+        "url": "http://arxiv.org/abs/2611.12062v1",
+        "date": "2026-11-09",
+        "author": "Povilas Kvedaras",
+        "type": "Paper"
+      },
+      {
+        "title": "BARS: Beat-Adaptive Rap Synthesis via Flow Matching",
+        "summary": "We present BARS (Beat-Adaptive Rap Synthesis), a non-autoregressive rapping voice generation model based on Flow Matching, conditioned on a beat track (instrumental backing), lyrics, and a short reference voice for zero-shot timbre control. Unlike prior autoregressive rap synthesis, where rap pace and output duration are strictly determined by the beat, BARS enables independent control over the rap tempo, allowing flexible-length generation without explicit duration prediction or phoneme-level alignment. We encode lyrics using a pretrained ByT5 encoder with a lightweight Transformer adapter trained jointly with the model, without relying on speech-pretrained text encoders, enabling natural handling of non-standard orthography (e.g., slang, abbreviations) and numerals common in rap lyrics. To address alignment instabilities, such as token skipping or repetition, under strong beat conditioning, we propose Asymmetric Scaled RoPE for cross-attention, which introduces a positional structure to facilitate sequential lyric-audio alignment learning. Furthermore, the model supports partial re-generation via span masking, enabling lyric-level editing while preserving the surrounding vocal style. Experiments demonstrate that the proposed model achieves high lyric fidelity, natural rap flow that is rhythmically coherent with the beat, and robust tempo control across a wide range of rapping styles and speeds.",
+        "url": "http://arxiv.org/abs/2611.12061v1",
+        "date": "2026-11-09",
+        "author": "Taemin Cho",
+        "type": "Paper"
+      },
+      {
+        "title": "Attention-Guided Sequence Feature Fusion and Mixed-Space Metric Learning for Cross-View Image Sequence Geo-Localization",
+        "summary": "Cross-view image sequence geo-localization aims to determine the geographic location of a sequence of ground images by matching it against geo-tagged satellite imagery. Although sequential observations provide complementary scene information, substantial overlap between adjacent images introduces feature redundancy, while conventional fusion strategies may weaken spatial relationships essential for cross-view matching. Therefore, we propose a cross-view image sequence geo-localization method via Attention-guided Sequence fusion and Metric Learning (ASML). Specifically, a Sequential Content Fusion (SCF) module models cross-image feature correlations to suppress redundant content and adaptively preserve geographically informative non-overlapping regions. Next, a Spatial Feature Aggregation (SFA) module is used to capture and aggregate the spatial and semantic information of local features, so as to maintain the spatial layout of the image sequence. Finally, a Geo-InfoNCE loss function is proposed, which comprehensively considers the feature distance and geographic distance for mixed-space metric learning, thus improving the ability of the model to distinguish hard negative samples. A new cross-view image sequence dataset CrossRoad-66K is established to provide more complex scenarios. Extensive experiments and visualizations on the SeqGeo and CrossRoad-66K datasets demonstrate that compared to state-of-the-art (SOTA) methods, the proposed method ASML achieves an improvement of 3.37% and 2.10% at R@1, respectively.",
+        "url": "http://arxiv.org/abs/2611.12051v1",
+        "date": "2026-11-09",
+        "author": "Nan Wu",
+        "type": "Paper"
+      }
+    ]
+  },
+  "MoE (Mixture of Experts) & Routing": {
+    "keywords": [
+      "moe",
+      "mixture of experts",
+      "mixture-of-experts",
+      "expert routing",
+      "switch transformer",
+      "deepseek-v2",
+      "deepseek-v3",
+      "token dispatch",
+      "ep parallelism",
+      "expert parallelism",
+      "fused moe"
+    ],
+    "items": [
+      {
+        "title": "Release Sooner, Expose Less: Offloading MoE Dispatch in NCCL-EP under Dual-Batch Overlap",
+        "summary": "Dual-batch overlap (DBO) hides mixture-of-experts (MoE) communication behind another microbatch's computation, but only after dispatch send releases the GPU. The time dispatch send holds the GPU therefore stays exposed, while network progress after release can be hidden. We evaluate three research configurations built on NCCL-EP that target this exposed communication time: GPI, in which the GPU constructs GPU-Friendly Descriptors (GFDs) and submits them to NIC-accessible memory for transport; GPI-MC, which describes MoE token fan-out in one GFD; and GDAKI Free Flow, which moves send progression to a host thread. On a GB300 NVL72 system, all three approaches reduce dispatch-send time relative to default GDAKI over most operating points in the evaluated parameter sweep. An experiment that inserts a GPU delay between dispatch send and receive shows that offload increases the in-flight interval. Depending on the configuration, 32 to 512 microseconds of computation or other independent work between send and receive hides the deferred progress, leaving less exposed time than default GDAKI. In disaggregated vLLM serving with DBO, these approaches lower median TPOT by 15-25% relative to NCCL-EP default GDAKI and by 16-42% relative to DeepEP v1.",
+        "url": "http://arxiv.org/abs/2611.12362v1",
+        "date": "2026-11-09",
+        "author": "Hsin-Chun Yin",
+        "type": "Paper"
+      },
+      {
+        "title": "Prune, Don't Merge: Expert Compression of Mixture-of-Experts LLMs on Multilingual Production Tasks",
+        "summary": "Mixture-of-Experts language models are cheap to run per token but expensive to hold in GPU memory, which drives the cost of serving them in production. One-shot expert compression shrinks them after a single calibration pass. Its two current state-of-the-art methods are REAP for expert pruning, which deletes the least salient experts, and REAM for expert merging, which merges them into the most salient ones. Both have been evaluated only on academic benchmarks. We compare the two on five multilingual production tasks of a web-hosting company, from classification to the generation of marketing HTML email templates, with two 30B-parameter models (Qwen3-30B-A3B-Instruct-2507 and the hybrid Mamba-attention Nemotron-3.5-Lightning) at 25% and 50% of experts removed and the same calibration data. Pruning wins: on the same rows, REAP is significantly better in 16 of 20 comparisons and REAM in 2. At 25%, REAP keeps 93.6% of Qwen3-30B's generative quality and REAM 62.5%, although on benchmarks the two are within a point for the same model. The damage concentrates in the output contract rather than the content: 89.8-95.2% of each significant loss on email templates comes from hard-gate failures such as invalid JSON, broken mobile layouts and runaway generation, and most failed non-English domain descriptions copy the prompt's English opening phrase. Cross-perplexity and logit divergence, two diagnostics from the REAP paper, also track production quality, as does the rate of repetition loops; n-gram diversity does not. We close with practical guidance for compressing MoE models for production.",
+        "url": "http://arxiv.org/abs/2611.12240v1",
+        "date": "2026-11-09",
+        "author": "Tomas Rasymas",
+        "type": "Paper"
+      }
+    ]
+  },
+  "GEMM, Tensor Cores & Low-Precision": {
+    "keywords": [
+      "gemm",
+      "matmul",
+      "matrix multiplication",
+      "tensor core",
+      "wgmma",
+      "cutlass",
+      "cute",
+      "fp8",
+      "fp4",
+      "nvfp4",
+      "mxfp4",
+      "mxfp8",
+      "quantization",
+      "awq",
+      "gptq",
+      "bitsandbytes",
+      "block scaling",
+      "sm90",
+      "sm100"
+    ],
+    "items": [
+      {
+        "title": "Correct First, Fast Second: What a Local 7B Code Model Can and Cannot Do for GPU Kernel Optimization",
+        "summary": "We study how much the interaction strategy around a fixed, locally hosted 7B-parameter code model (Qwen2.5-Coder-7B-Instruct) affects its ability to replace PyTorch operators with custom CUDA kernels. On 30 KernelBench tasks (levels 1-3, first 10 each, evaluated on a V100), we compare four regimes of increasing structure: zero-shot prompting, profiling-guided prompting, iterative refinement on execution feedback, and a multi-agent loop (analysis, retrieval, generation, evaluation, feedback triage) in which the same model fills four roles around a non-LLM evaluator. Three findings stand out. (1) Correctness, not speed, is the binding constraint: even correct generated kernels average 0.97-0.99x the speed of eager PyTorch, because a 7B model cannot out-write cuBLAS/cuDNN on dense GEMM and convolution; the only real wins are fused memory-bound epilogues. (2) The best strategy depends on difficulty: profiling-guided prompting is strongest overall (43% correct, 27% faster than baseline), but the agent loop is the only method that solves any level-2 fusion problem (3/10 vs. 0/10 for all others). (3) Naive agentic scaffolding is actively harmful: our first agent scored 3% correct, below zero-shot's 30%, and the decisive repairs were matching the agent's ambition to the model's competence and spending compute on best-of-n sampling under a real execution oracle (3% to 33% correct from n=1 to n=8), not on more reasoning steps.",
+        "url": "http://arxiv.org/abs/2611.12079v1",
+        "date": "2026-11-09",
+        "author": "Jui-Chien Tsou",
+        "type": "Paper"
+      }
+    ]
+  },
+  "Kernel Compilers & DSLs (Triton, TileLang, CUDA)": {
+    "keywords": [
+      "triton",
+      "tilelang",
+      "thunderkittens",
+      "cutedsl",
+      "tvm",
+      "halide",
+      "autotuning",
+      "kernel generation",
+      "cuda optimization",
+      "warp specialization",
+      "tma",
+      "tensor memory accelerator"
+    ],
+    "items": [
+      {
+        "title": "Exponential mixing for the randomized two-vortex model",
+        "summary": "This paper investigates the mixing of passive scalars advected by a randomized two-vortex model on $\\mathbb{T}^2$, in which the vortices interact through a regularized Biot--Savart kernel and are driven by independent Brownian motions. We establish quenched exponential mixing for the Lagrangian flow, characterized by the exponential correlation decay of mean-zero $H^s$ observables. The proof proceeds by establishing ergodicity of the associated two-point Markov process. We combine a uniform contraction estimate with controllability arguments to verify the Lyapunov drift and minorization conditions, allowing us to apply Harris-type theorem.",
+        "url": "http://arxiv.org/abs/2611.12535v1",
+        "date": "2026-11-09",
+        "author": "Yankai Shi",
+        "type": "Paper"
+      },
+      {
+        "title": "K-prop: Deep Online Learning by Backpropagating Temporal Kernels",
+        "summary": "Self-recurrence represents an important component for temporal processing in neural networks, both artificial and biological, where it appears naturally in the form of leaky integration. However, due to the complex temporal dependencies of the gradient, an efficient and effective method of online training is still lacking. Here we propose K-prop, a novel online learning method for leaky neural networks. It dramatically reduces the computational and memory cost of real time recurrent learning (RTRL) by propagating kernel gains. K-prop also outperforms existing RTRL approximations and achieves performance comparable to backpropagation through time in sequence learning, classification, and reinforcement learning tasks. We further analyze how its sole approximation affects gradient quality and identify conditions under which K-prop remains accurate and effective.",
+        "url": "http://arxiv.org/abs/2611.12530v1",
+        "date": "2026-11-09",
+        "author": "Bingkun Liu",
+        "type": "Paper"
+      },
+      {
+        "title": "Probabilistic counting of labelled trees with prescribed vertical edge profile",
+        "summary": "The vertical edge profile of a labelled plane tree $t$ is the collection of integers counting the number of oriented edges from label $i$ to label $j$ for every possible pairs of labels $(i, j)$. In a previous work by the second author, it was shown that a process constructed from the vertical edge profile forms a Markov chain for a wide class of models of random labelled plane trees where edge label increments are constrained to lie in $\\{-1, 0, 1\\}$. The purpose of this paper is twofold. First, we continue the study of Markov properties of the vertical edge profile. In particular, we derive general formulas for the transition kernel and the initial distribution of a class of Markov chains related to the vertical edge profile. Second, we apply these results to the probabilistic enumeration of trees with a prescribed vertical edge profile. These applications yield a unified probabilistic derivation of several enumeration formulas. In particular, we recover some results established Bousquet-Mélou and Chapuy for binary trees and Cayley trees. These enumeration formulas admit a remarkable factorized form, already noted in previous works. The probabilistic methods developed here explain this phenomenon by showing that these factorizations arise naturally from the Markov structure underlying the vertical edge profile.",
+        "url": "http://arxiv.org/abs/2611.12525v1",
+        "date": "2026-11-09",
+        "author": "Vanessa Dan",
+        "type": "Paper"
+      },
+      {
+        "title": "Out-of-the-Box Tabular Foundation Models for Bayesian Optimization in Materials Discovery",
+        "summary": "Bayesian optimization is widely used in active learning loops for materials science. Gaussian processes serve as the de-facto surrogate model family, but require task-dependent kernel choices and can lack the modeling capacity for complex relationships. Tabular foundation models (TFMs) have recently emerged as the state-of-the-art for predictive tasks on structured data, without requiring bespoke kernels or hyperparameter tuning. We evaluate two TFMs, TabPFN and TabICL, as out-of-the-box surrogate models on two standard materials science benchmarks, comparing against a large field of baselines encompassing Gaussian processes, random forests, and CatBoost. Our findings indicate that TFMs are highly competitive surrogate models across the two benchmarks, without task-specific training for active learning or GP kernel selection. Our results motivate developing TFMs further as surrogates for active learning in materials discovery.",
+        "url": "http://arxiv.org/abs/2611.12491v1",
+        "date": "2026-11-09",
+        "author": "Klemens Flöge",
+        "type": "Paper"
+      },
+      {
+        "title": "First-order origins of second-order supersymmetry",
+        "summary": "One-dimensional second-order supersymmetry is constructed from conserved first-order operators on a surface with a cyclic coordinate. In Witten's mechanics with two fermionic modes, a centrally extended $N=4$ algebra permits a conserved product connecting the zero- and two-fermion sectors. Cyclic reduction gives the second-order supercharge and the correlated quantum corrections in the charge and partner Hamiltonians. Isothermal coordinates identify the auxiliary Hill equation with the separated Laplace or wave equation for the gauge-transformed charge kernel, and express the correction as a Schwarzian derivative. The central momentum fixes the quadratic invariant $C$: the Riemannian construction gives $C\\leq0$, and its indefinite counterpart gives $C\\geq0$, with a separately chosen positive adjoint after reduction. Diagonalizing the one-fermion intermediate recovers real scalar factorizations for $C\\leq0$ and complex ones for $C>0$. Pauli reductions provide a second first-order mechanism; on the hyperbolic plane they reveal a curvature-dependent invariant and additional charges of a regular free-particle--Pöschl--Teller pair in a selected momentum sector. In one dimension, a formally Hermitian two-component intermediate with a positive inner product yields local first-order chains for arbitrary $C$. For a constant superpotential, a real transverse deformation on a flat cylinder also gives a first-order surface realization of $C>0$ with a positive inner product.",
+        "url": "http://arxiv.org/abs/2611.12418v1",
+        "date": "2026-11-09",
+        "author": "Stevan Cebrian",
+        "type": "Paper"
+      },
+      {
+        "title": "Vector metrics with values in pre-Riesz spaces I: transfer of order convergence along vector lattice covers",
+        "summary": "Vector metric spaces in the sense of Çevik and Altun take values in a vector lattice, but their axioms use only the order of the value space. We develop the theory for vector metrics with values in an Archimedean pre-Riesz space $E$, i.e.\\ an ordered vector space admitting a bipositive order dense embedding $i$ into a vector lattice $Y$. We ask when an $E$-valued vector metric $d$ and the vector-lattice-valued metric $i\\circ d$ have the same convergent and Cauchy nets and sequences. Relatively uniform convergence transfers along every cover. For nets, $\\mathrm{o}_3$-convergence transfers if and only if the cover has an intrinsic domination property. This property holds for pervasive covers, by a result of Kalauch and van Gaans, for uniformly dense covers and in finite dimensions; it fails for an example of Kalauch and van Gaans. Sequential convergence transfers under a countable domination property implied by uniform density, but not under pervasiveness. For uncountable $Γ$, the vector lattice $\\mathbb{R}\\mathbf 1\\oplus c_{00}(Γ)$ is pervasive in its Dedekind completion $\\ell^\\infty(Γ)$ without the transfer, while for countable $Γ$ the transfer holds; the difference is explained by order separability. In finite dimensions, with a closed generating cone, all these convergences coincide with norm convergence in every cover. For $C^1[0,1]$-valued integral metrics, positivity of the kernel on the diagonal forces all order convergences to coincide with $L^1$-convergence. For the Volterra kernel $(t-s)_+$, by contrast, $L^1$-convergence, relatively uniform convergence and order convergence are pairwise different, and we describe each explicitly.",
+        "url": "http://arxiv.org/abs/2611.12376v1",
+        "date": "2026-11-09",
+        "author": "Cüneyt Çevik",
+        "type": "Paper"
+      },
+      {
+        "title": "From Formal Methods to Fuzzing and Back",
+        "summary": "For the first twelve years of my career in computer science I mainly worked on formal methods. I had been drawn to the field as an undergraduate by its promise of a way to build software with strong, mathematically based correctness guarantees. But after many years of struggling to make formal methods scale, I was seduced by randomised testing---also known as fuzzing. Fuzzing is much less principled than formal methods, but it just works: it can be readily applied to very large systems, and it is extremely effective at finding real bugs that developers care about and fix. In this personal account I trace my path from formal methods to fuzzing, by way of the GPUVerify project on verifying GPU kernels and the GraphicsFuzz project on randomised testing of GPU compilers. I argue that the oracle problem provides an intellectual link between fuzzing and formal methods, describe my continuing, targeted uses of formal methods in the domain of GPU programming language design, and discuss work at the boundary between formal methods and fuzzing. Finally, I reflect on whether generative AI might be the missing ingredient that allows formal methods to scale, and set out my plans for large-scale formal methods via the Keystone project, through which my collaborators and I aim to find out how much of that promise can be realised in practice.",
+        "url": "http://arxiv.org/abs/2611.12338v1",
+        "date": "2026-11-09",
+        "author": "Alastair F. Donaldson",
+        "type": "Paper"
+      },
+      {
+        "title": "Tensor Network Kernel Machines for Nonlinear System Identification",
+        "summary": "Over the past ten years Tensor Network Kernel Machines have enabled efficient nonlinear system identification through the use of low-rank tensor networks. The goal of this article is to provide the reader with a basic understanding of this model class in terms of its two defining properties. Furthermore, both the optimization and regularization of such models are discussed, together with recent developments and starting points for further exploration.",
+        "url": "http://arxiv.org/abs/2611.12326v1",
+        "date": "2026-11-09",
+        "author": "Kim Batselier",
+        "type": "Paper"
+      },
+      {
+        "title": "Split Kernel Multiplication Modules",
+        "summary": "We introduce split kernel multiplication (SKM) modules, for which every submodule has the form $N=IM\\oplus\\ker f$, where $I$ is an ideal of $R$ and $f$ is an endomorphism of $M$. We study direct sums, localization, and connections with multiplication and retractability properties. For the idempotent version (ISKM), we prove that $R\\oplus k^b$ is ISKM over a local ring $(R,\\mathfrak m)$, with residue field $k$ and $b\\geq1$, if and only if $\\mathfrak m^2=0$. We also classify ISKM modules of the form $R^a\\oplus k^b$ over local rings. For commutative Noetherian rings, we show that $R^2$ is SKM if and only if $R$ is an Artinian principal ideal ring. Finally, we prove that every finitely generated $R$-module is ISKM if and only if $R$ is a finite product of fields.",
+        "url": "http://arxiv.org/abs/2611.12320v1",
+        "date": "2026-11-09",
+        "author": "Violeta Leoreanu-Fotea",
+        "type": "Paper"
+      },
+      {
+        "title": "Mitigating SM-Level Load Imbalance in 3D Gaussian Splatting on GPUs",
+        "summary": "3D Gaussian Splatting (3DGS) enables photorealistic, real-time rendering on commodity GPUs and is increasingly adopted in generative world models and autonomous driving simulators. However, existing optimizations rely on algorithmic changes that often require retraining, or on specialized accelerators that lack flexibility across evolving 3DGS variants. In this paper, we identify a fundamental inefficiency in GPU-based 3DGS rendering: severe SM-level load imbalance caused by uneven workloads across screen tiles. This imbalance creates a long execution tail, leaving most SMs idle while a few process computationally intensive tiles, particularly in large-scale urban scenes. To address this, we present a software-defined GPU scheduling approach that mitigates the execution tail. Our approach uses a persistent kernel to schedule heavy tiles first and selectively chunks outlier tiles across multiple CTAs. A lightweight per-frame policy determines when and how much to chunk using tile statistics already available in the rendering pipeline. Our approach requires neither retraining nor specialized hardware and can be applied orthogonally to existing optimizations across diverse 3DGS variants. Averaged per scene, it accelerates alpha blending by up to 2.93x on a large-scale urban scene, and by up to 5.6x on its most imbalanced frames, while retaining the original alpha blending formulation.",
+        "url": "http://arxiv.org/abs/2611.12319v1",
+        "date": "2026-11-09",
+        "author": "Junha Ryu",
+        "type": "Paper"
+      },
+      {
+        "title": "Zeta function in Coulomb background",
+        "summary": "We calculate the one-loop vacuum energy of a massive scalar field confined to the interior of a sphere with Dirichlet boundary conditions and subject to a Coulomb background potential $α/r$. The spectrum is determined by the zeros of a confluent hypergeometric (Kummer) function, and the corresponding zeta function is constructed and analytically continued to $s=-1/2$. The renormalization is performed by subtracting the divergent part of the zeta function, defined through the heat kernel expansion, which removes the non-decreasing powers of the mass and leaves a finite, physically normalized vacuum energy. While the heat kernel coefficients for the pure Bessel (Coulomb-free) case are well known, the Coulomb contributions to the coefficients are not; we determine them by matching the analytic continuation of the zeta function to the general form of the divergent part, obtaining terms proportional to $α$ and $α^2$. A key technical point is that the uniform asymptotic expansion of the mode generating function cannot be used in full; a part must be retained unexpanded, and an integral representation of the digamma function is used to carry out the analytic continuation. In the infinite-volume limit the renormalized vacuum energy tends to a constant $E_0^{ren,\\infty}(α,m)=αe(α/m)$, with a dimensionless function $e$ that depends only on the ratio $\\al/m$. This limit shows that a finite, physically meaningful renormalized vacuum energy can be defined for a massive scalar field in the background of a Coulomb source. For $m\\to\\infty$ it vanishes in accordance with the normalization condition, while for $m\\to0$ it diverges, so that the present calculation does not apply to a massless field, pointing to the need of another vacuum state in that case.",
+        "url": "http://arxiv.org/abs/2611.12294v1",
+        "date": "2026-11-09",
+        "author": "M. Bordag",
+        "type": "Paper"
+      },
+      {
+        "title": "ForgeSystem: An Architecture for Demand-Specific Artefact Production with AI Agents",
+        "summary": "General-purpose software serves many different demands, but this flexibility costs performance and efficiency on any specific demand. Software tailored to a specific demand avoids these losses, yet developing it requires substantial time and effort from human experts. AI agents offer an alternative: they can design, implement and test artefacts tailored to individual demands. We call this production paradigm Forge. Forging for a demand is economically justified when the cumulative benefit of specialisation exceeds the total cost of construction, verification and maintenance. To make Forge a repeatable production process, we propose ForgeSystem, which consists of a control layer, a forge loop and a recursive self-improvement (RSI) loop. The control layer selects which artefact serves each demand and decides which demands to forge, when to forge them and from which starting point; the forge loop iterates between production and verification until a candidate artefact passes verification; and the RSI loop draws on accumulated production records to supply starting points, refine the harness and train models. We implement ForgeSystem for training frameworks, decoding megakernels and individual computational kernels. Forged training engines reach 1.047-1.332x the model-FLOPs utilisation of their reference frameworks, forged megakernels achieve a geometric-mean decoding speedup of 1.21x over SGLang across thirteen configurations, and forged kernels match or exceed expert libraries in eighteen of twenty-two configurations, while satisfying task-specific quality requirements. Controlled comparisons show that explicit quality requirements steer agents towards optimisations that preserve training quality. We also discuss a gradual transition to Forge through service routing, and how demand-specific production may shift value accumulation and trust towards production systems.",
+        "url": "http://arxiv.org/abs/2611.12288v1",
+        "date": "2026-11-09",
+        "author": "Qingfeng He",
+        "type": "Paper"
+      },
+      {
+        "title": "Certified finite-precision readout for $p$-adic kernel aggregation",
+        "summary": "In non-archimedean numerical analysis, a verified $p$-adic approximation can determine an absolute value, and hence downstream probabilistic rankings and classification decisions, with mathematical exactness long before the underlying number is fully resolved. We turn this observation into rigorous finite-precision certificates for norm-based readouts of amplitude families. For a common error radius, a nonempty resolved set already fixes every exact maximizer, ties included, at the sharp integer absolute precision $v_*+1$, and conditioning on that set yields an exact total-variation identity separating unresolved $p$-adic mass from real rounding error. For aggregates of $p$-adic exponentials, we give a centered-moment certificate with an explicit remainder bound: on rational data it runs in exact rational arithmetic without individual exponential evaluations, attains its minimal bound at an active phase, and resolves every nonzero aggregate at high order; we also obtain an aggregate perturbation bound free of summand-count factors. For multiclass $p$-adic classifiers that decode by minimizing the norm of a class discriminant, we prove a necessary and sufficient certification condition and show that the sharp common precision threshold is $v^{(2)}+1$, governed by the second-largest discriminant valuation, so the winning discriminant need not itself be resolved. We apply these certificates to discrete $p$-adic path-integral actions on uniform affine chains, deriving explicit action centers and proving exact output-independence at zero effective quadratic coupling. Pseudocode and a reproducible reference implementation accompany the theory.",
+        "url": "http://arxiv.org/abs/2611.12254v1",
+        "date": "2026-11-09",
+        "author": "Su Hu",
+        "type": "Paper"
+      },
+      {
+        "title": "Generation of semigroups for vector-valued pseudodifferential operators on the torus with space-dependent symbols",
+        "summary": "We consider toroidal pseudodifferential operators with spatially dependent, operator-valued symbols of positive order and finite regularity. For an arbitrary complex Banach space $E$, we prove that the negative of the closure of a parabolic operator on $C^\\infty(\\mathbb T^n,E)$ generates an analytic semigroup on $W_p^k(\\mathbb T^n,E)$, where $1\\le p<\\infty$ and $k\\in\\mathbb N_0$, provided the symbol has sufficiently many spatial derivatives and discrete differences. The proof combines uniform estimates for parameter-dependent kernels with right and left parametrices. It does not require the UMD property of $E$. Real interpolation gives corresponding resolvent estimates on $B_{pq}^s(\\mathbb T^n,E)$ for $0<s<k$ and $1\\le q\\le\\infty$. The induced semigroups are strongly continuous for $q<\\infty$ and on the little Besov spaces when $q=\\infty$.",
+        "url": "http://arxiv.org/abs/2611.12221v1",
+        "date": "2026-11-09",
+        "author": "Bienvenido Barraza Martínez",
+        "type": "Paper"
+      },
+      {
+        "title": "An Empirical Evaluation of Quantum Kernel Stability in Network Intrusion Detection",
+        "summary": "Quantum kernel methods have been proposed for network intrusion detection, yet their performance limitations are often attributed to noise in current quantum hardware. This study evaluates that assumption through a controlled analysis of Pegasos-QSVC on the NSL-KDD and ToN-IoT datasets. We perform 56 quantum experiments using one exact noiseless statevector backend and three noise-simulated superconducting backends while keeping preprocessing, PCA features, data splits, and classical baselines identical. XGBoost achieves accuracies of 98.94% on NSL-KDD and 99.41% on ToN-IoT, compared with 91.80% and 82.98% for Pegasos-QSVC. The quantum model also exhibits substantially greater seed-dependent variability. Eight runs collapse into degenerate classifiers, including four recall-collapse cases and four trivial-positive classifiers. Notably, two failures occur on the noiseless backend, demonstrating that hardware noise is not a necessary condition for classi-fier collapse. Kernel Gram matrix analysis further reveals low effective rank and severe ill-conditioning even in the absence of noise, indicating intrinsic fragility in the learned quantum representation. These results show that average accuracy alone can conceal operationally unacceptable behavior and highlight the importance of reporting worst-case performance, seed-level variability, class-specific metrics, and explicit degeneracy tests in quantum intrusion detection studies.",
+        "url": "http://arxiv.org/abs/2611.12219v1",
+        "date": "2026-11-09",
+        "author": "Sreejonty Chakraborty",
+        "type": "Paper"
+      },
+      {
+        "title": "Heterogeneous Acceleration of TRIMEG++ code using OpenMP for Gyrokinetic Simulations",
+        "summary": "Turbulent transport largely determines the performance of magnetic-confinement fusion devices such as tokamaks, and gyrokinetic particle-in-cell (PIC) simulations are a principal tool to predict it. Advancing up to hundreds of millions of markers and solving large sparse field systems at every time step makes whole-device simulations among the most expensive in plasma physics. GPUs can accelerate this workload, but porting a complex code requires restructuring its parallelism and memory traffic, ideally without a separate version per vendor. In this work, the gyrokinetic code TRIMEG-C1, whose unstructured triangular mesh and high-order finite elements cover both the confined core and the open-field-line edge of the plasma, is rewritten in C++ as TRIMEG++ and fully offloaded to GPUs with OpenMP target directives, so that one portable code base runs on both AMD and NVIDIA hardware. The particle-to-grid projection is offloaded in its standard and field-aligned formulations, the PETSc-based field solver runs on the GPU through the library's backends, and, together with the previously offloaded particle pusher, every stage whose cost scales with the marker count runs on the GPU. All speedups are node-to-node comparisons against a 256-core CPU node (2x AMD EPYC 9754). On the TCV-X21 tokamak reference case, the offloaded kernels reproduce the CPU results to a relative accuracy of 1e-11, and the full simulation runs 4.1-6.1x faster on a node with two AMD MI300A and 2.1-3.0x faster on a node with four NVIDIA A100, with the speedup growing with problem size. The MI300A, with shared CPU-GPU memory, needs no explicit data transfers, whereas the A100 needs them managed by hand. These results show that directive-based offloading can accelerate a complex gyrokinetic code across GPU vendors, making whole-volume tokamak simulations with hundreds of millions of markers practical on a single GPU node.",
+        "url": "http://arxiv.org/abs/2611.12209v1",
+        "date": "2026-11-09",
+        "author": "Nicola Noventa",
+        "type": "Paper"
+      },
+      {
+        "title": "Minimum cumulative power divergence estimation with applications to copulas",
+        "summary": "Parametric inference based on distribution functions is useful when a model is naturally specified through its cumulative distribution function or when a tractable density is unavailable. We study minimum cumulative power divergence estimation, obtained by comparing a parametric distribution function with its empirical counterpart. For a fixed positive tuning parameter and a fixed finite integration measure, we establish the existence of a consistent sequence of local solutions to the estimating equations and derive its asymptotic normality. The resulting covariance has a sandwich form whose components involve derivatives of the distribution function and the covariance kernel of the multivariate empirical process. We specialize the construction to copulas using Lebesgue measure on the unit cube, and distinguish estimation with known margins from estimation based on ranks. In the latter case, the covariance incorporates the effect of estimating the marginal distributions. The relationship with the copula divergences of Eguchi and Kato is made explicit: the power loss is closely related, whereas the integration measure determines a different estimation criterion. A simulation design for Gumbel, Clayton, and Frank copulas examines the estimation of Kendall's tau under correct specification, family misspecification, and contamination by independence. The simulations show competitive clean-data accuracy but no general robustness advantage over the empirical-copula-weighted alternatives under independence contamination.",
+        "url": "http://arxiv.org/abs/2611.12203v1",
+        "date": "2026-11-09",
+        "author": "Ostap Okhrin",
+        "type": "Paper"
+      },
+      {
+        "title": "Lie-Lions brackets of nonlocal vector fields",
+        "summary": "We study nonlocal vector fields on the space of probability measures with finite second moment. Using Lions derivatives, we define their Lie-Lions bracket, which adds to the spatial Lie bracket a correction due to the evolution of the law, and prove that its vanishing is equivalent to commutation of the global flows, under first-order regularity and linear growth assumptions. We then construct a Lie algebra of complete polynomial nonlocal fields. For this class, we establish commutator and second-order Baker-Campbell-Hausdorff formulas with cubic remainders in the Wasserstein distance $W_2$, controlled by the second moment and uniform in the number of particles. The proofs rely on finite-particle realizations, which preserve the bracket and jointly determine the nonlocal field. We also obtain uniform estimates for smooth bounded kernels and a Leibniz rule for the action of polynomial fields on polynomial observables. Examples from collective dynamics show that the vanishing of the spatial bracket at a fixed law is neither necessary nor sufficient for commutation. They concern symmetries, aggregation-dependent rotation, synchronization, the transmission of a turn along a hierarchy, effective three-body interactions and occupancy-dependent circulation.",
+        "url": "http://arxiv.org/abs/2611.12108v1",
+        "date": "2026-11-09",
+        "author": "Vincent Boulard",
+        "type": "Paper"
+      },
+      {
+        "title": "Matrix-vector models for the 3D Ising CFT",
+        "summary": "The construction of three-dimensional conformal field theories (3D CFTs) using interacting fermions in the lowest Landau level on a sphere has recently proven remarkably efficient, while it differs from that of conventional field theories on the fuzzy sphere. Focusing on the 3D Ising CFT, we consider a class of models that are defined by deformed Hamiltonians specified by a function which controls how the interaction is damped at high angular momenta, and this class includes the original model. We show that each model in the class can be reformulated in a basis-independent manner as a matrix--vector quantum-mechanical model, and, upon integrating out the fermionic vectors, as a matrix model. We then focus on a Gaussian choice, for which the bosonic matrices acquire a heat-kernel propagator whose width is controlled by a parameter $ξ$. Through exact diagonalization with the number of fermions up to $16$, we find that the low-energy spectra of the deformed Hamiltonians at criticality agree with those in the 3D Ising CFT for a range of $ξ$. We thus obtain matrix-model realizations of the 3D Ising CFT that, in contrast to conventional fuzzy-sphere field theories, show no sign of UV/IR mixing in the low-lying spectrum.",
+        "url": "http://arxiv.org/abs/2611.12071v1",
+        "date": "2026-11-09",
+        "author": "Kaichi Mizohata",
+        "type": "Paper"
+      },
+      {
+        "title": "Low-rank Low Precision Training of Gaussian Processes",
+        "summary": "Training Gaussian processes (GPs) at large scale is computationally challenging because evaluating the log-marginal likelihood and its gradients involves large, dense kernel matrices. We develop a scalable low-rank GP training approach that combines AnchorNet landmark selection with a fully independent training conditional (FITC) correction. The resulting objective and its analytic gradients can be evaluated using low-rank factors, diagonal quantities, and small dense matrices, without forming the full kernel matrix or its derivatives. The complete training procedure is implemented in single precision and evaluated on nine large-scale regression datasets. Across these problems, the method reaches the reference predictive accuracy while substantially reducing training time, although the required approximation rank varies across datasets. We also study the numerical behavior of the full-kernel predictive solve and show that single precision can become limiting for ill-conditioned problems. Finally, we investigate further reducing selected matrix operations to fp16 or TF32. These lower-precision variants provide only modest additional speedups and can become unreliable when the reduced system is poorly conditioned.",
+        "url": "http://arxiv.org/abs/2611.12054v1",
+        "date": "2026-11-09",
+        "author": "Moritz Poguntke",
+        "type": "Paper"
+      },
+      {
+        "title": "Uniqueness of positive solutions of mixed Laplacian and fractional Laplacian in $\\mathbb R$",
+        "summary": "We establish the uniqueness and nondegeneracy for positive finite-energy solutions of the following one-dimensional mixed Schrödinger equation \\begin{equation}   -Q'' + (-Δ)^s Q + Q = |Q|^p Q \\quad \\text{in } \\mathbb R, \\end{equation} where $0<s<1$ and $p>0$.   For every $0<s<1, p>0$, we obtain the corresponding results for positive solutions whose linearized operators have Morse index equal to one. We extend the nodal analysis developed by Frank-Lenzmann-Silvestre to the mixed operator establishing the monotonicity of the quotient of a hypothetical nontrivial even kernel element by $-Q'$. We then combine this monotonicity with oscillation estimates to prove nondegeneracy, and uniqueness follows by continuation.   Moreover, for every $1/2\\le s<1,p>0$, both uniqueness and nondegeneracy hold for positive solutions. Our novelty is to use the properties of Green kernel of the mixed operator to derive the upper bound and lower bound on the maximum of each solution. This peak estimate allows us to prove uniqueness by direct comparison and to establish nondegeneracy.",
+        "url": "http://arxiv.org/abs/2611.12035v1",
+        "date": "2026-11-09",
+        "author": "Xifeng Su",
+        "type": "Paper"
+      }
+    ]
+  },
+  "Pre-training & Distributed Infrastructure": {
+    "keywords": [
+      "pre-training",
+      "pretraining",
+      "foundation model",
+      "megatron",
+      "deepspeed",
+      "fsdp",
+      "tensor parallel",
+      "pipeline parallel",
+      "sequence parallel",
+      "3d parallelism",
+      "context parallelism",
+      "data parallel",
+      "cluster scheduling",
+      "collective communication",
+      "nccl"
+    ],
+    "items": [
+      {
+        "title": "SPARK: Simple Post-training for Adapting pRetrained Knowledge to Robot Control",
+        "summary": "Large-scale representation learning has produced public foundation models that provide strong general-purpose visual features. However, their pretraining objectives are not designed for robot representation learning, so the resulting embeddings tend to emphasize global semantics rather than the temporally sensitive representations required for robot control. Training robot models from scratch is also undesirable due to the limited scale and high collection cost of robotics data, as well as the substantial computational burden of pre-training. In this paper, we propose SPARK (Simple Post-training for Adapting pRetrained Knowledge), a post-training method that adapts foundation models to robot control. SPARK is built on two principles: temporal abstraction, which encourages the encoder to derive compact features that preserve information essential for understanding temporal changes and action-relevant scene structure, and knowledge preservation, which aligns patch-level representations with those of the original foundation model to retain useful pretrained semantics. These objectives yield compact visual state representations that remain semantically meaningful while preserving useful prior knowledge. Experiments across multiple robotics benchmarks show that SPARK consistently improves success rates and generalization over vanilla foundation models, and further demonstrate that these gains transfer to real-world robot manipulation.",
+        "url": "http://arxiv.org/abs/2611.12102v1",
+        "date": "2026-11-09",
+        "author": "Taekyung Kim",
+        "type": "Paper"
+      },
+      {
+        "title": "Leveraging Complementary Event Frame and Voxel Representations for RGB-Guided Multimodal Pre-training",
+        "summary": "In this paper, we propose CM3AE 2.0, a unified RGB Frame and Event-Voxel/-Frame pre-training framework. By jointly learning multimodal spatiotemporal representations and exploiting latent cross-modal dependencies through cross-modal generation, the framework enhances multimodal information interaction and collaborative modeling capabilities. Specifically, we first propose an Event-aware Spatiotemporal Masked Reconstruction (ESMR) strategy to learn unified multimodal spatiotemporal representations. It leverages event responses to guide masking toward dynamically salient regions. Through spatiotemporal masked reconstruction, it learns spatial structures and their temporal variations from continuous RGB-Event observations. In addition, it incorporates multimodal fusion reconstruction and cross-modal contrastive learning to facilitate the modeling of cross-modal complementary information and the learning of shared representations. Building upon this, we further propose a Hierarchical Cross-modal Generation (HCG) strategy to learn latent cross-modal dependencies through visual and language generation. At the visual level, Event-conditioned RGB generation is performed using a pre-trained diffusion model to capture visual associations between the two modalities. At the language level, video-level text description generation based on joint RGB-Event representations establishes connections between multimodal visual features and linguistic semantics, further enriching the learning of cross-modal dependencies. Extensive experiments on four diverse downstream tasks demonstrate that CM3AE 2.0 consistently improves performance, validating the effectiveness and generalization capability of the proposed pre-training framework.",
+        "url": "http://arxiv.org/abs/2611.12040v1",
+        "date": "2026-11-09",
+        "author": "Wentao Wu",
+        "type": "Paper"
+      }
+    ]
+  },
+  "Post-training, Alignment & RL": {
+    "keywords": [
+      "post-training",
+      "post training",
+      "rlhf",
+      "dpo",
+      "ppo",
+      "grpo",
+      "reinforcement learning from human feedback",
+      "instruction tuning",
+      "sft",
+      "preference optimization",
+      "reasoning models",
+      "distillation",
+      "lora",
+      "qlora"
+    ],
+    "items": [
+      {
+        "title": "Lost in Rounding: bf16 Recurrent State Makes Hybrid Reasoning Models Think Longer",
+        "summary": "Hybrid reasoning models interleave attention with recurrent mixers such as Mamba-2 and Gated DeltaNet, whose state is cached between decoding steps. Prior work showed that storing this state in FP16 or INT8 with round-to-nearest (RTN) makes Mamba-2 and GDN hybrids more verbose, and that stochastic rounding (SR) fixes it. We study the other 16-bit format that serving engines expose, bf16, on six open hybrid reasoning models and 590 competition-math problems. With bf16 RTN state, five of six models reason longer (geometric-mean length 1.07x to 1.27x; also under greedy decoding in the two models tested) and hit the 32K token cap more often. On Qwen3.5-9B, cap hits rise from 118 to 223 and accuracy falls from 85.6% to 70.8%. On LiveCodeBench, both models tested also reason longer and lose 12.6 and 13.4 points of pass@1. Rerunning the capped items with a 128K budget halves the accuracy gap but does not close it (93.6% vs. 86.6%): bf16 runs that never finish are twice as common, and 85% of them are exact repetition loops. On Nemotron-Nano-9B-v2, by contrast, 30 of 31 extra caps finish at 128K, so the cost there is mostly extra tokens (exploratory). Same-width bf16 SR removes the length increase in four of five affected models, restores Qwen3.5-9B to 87.6% and brings code length and pass@1 near FP32 levels, so the failure is mostly rounding bias, not missing resolution. With an integer-hash random generator, SR on Qwen3.5-9B matches FP32 on cap hits and accuracy (113 vs. 118; 85.6% for both) at the memory and decoding speed of bf16 RTN. In the Nemotron-Nano-v2 lineage, SR on 25% of heads (an intermediate-decay band) removes the effect, while random heads and the top teacher-forced-KL octiles do not; in Nemotron-3 and Qwen3.5-9B the effect is spread across heads. We recommend that evaluations of hybrid models report the state dtype, cap rate and output length alongside accuracy.",
+        "url": "http://arxiv.org/abs/2611.12127v1",
+        "date": "2026-11-09",
+        "author": "Yuchuan Weng",
+        "type": "Paper"
+      }
+    ]
+  }
+}
