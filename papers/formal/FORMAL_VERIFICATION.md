@@ -26,3 +26,7 @@ Each paper's `code_attachment.zip` contains its runnable Python experiment, the 
 ## Muir readout quantization bound
 
 `MuirReadoutClaims.lean` proves that coordinate-wise error radii bound a nonnegative weighted signed sum, and that the peak-over-levels quantization bound decreases as the number of levels increases. It was checked with the repository-pinned Lean 4.35.0 / Mathlib toolchain. These lemmas formalize the algebra used by the SABQ paper; they do not prove greedy allocation optimality, code execution, empirical measurements, model quality, or hardware speed.
+
+## Robust decode-boundary regret
+
+`RobustDecodeClaims.lean` proves that if an oracle utility dominates a fixed action pointwise over a finite scenario index, then any nonnegative weighted sum of oracle utility also dominates the weighted sum for that fixed action. Checked using `/home/leesiyuan/.elan/bin/lake env lean RobustDecodeClaims.lean` from `papers/formal` with Lean 4.35.0 / Mathlib v4.35.0. The finite-action minimax selection statement in the paper follows directly from selecting an argmin of worst-case regret; the Lean lemma does not prove scenario generation, surrogate validity, practical switching value, or accelerator behavior.

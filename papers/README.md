@@ -18,6 +18,8 @@ The Noise-Aware Promotion LaTeX, Markdown, HTML, and PDF files reflect the same 
 
 | **Sensitivity-Allocated Block Quantization (SABQ)**: Error-Budgeted Matched-Filter Readout Quantization | Lee Si Yuan (Independent Researcher, `siyuanlee.cs@gmail.com`) | Gangavarapu et al. (Muir, [arXiv:2611.08376v1](https://arxiv.org/abs/2611.08376v1)) | 64-seed synthetic CPU reference; bound checked in Lean; no trained-model or GPU benchmark | [ACL LaTeX](./muir_readout_quantization/paper.tex) • [PDF](./muir_readout_quantization/paper.pdf) • [Markdown](./muir_readout_quantization/MUIR_READOUT_QUANTIZATION.md) • [Experiment](./muir_readout_quantization/experiment.py) • [Results](./muir_readout_quantization/results.json) • [Lean lemma](./formal/MuirReadoutClaims.lean) |
 
+| **Commit Now or Keep the Boundary Adjustable?**: Minimax-Regret Planning for Decode Disaggregation | Lee Si Yuan (Independent Researcher, `siyuanlee.cs@gmail.com`) | Hadidi, [Should You Split Decode?](https://arxiv.org/abs/2611.08299v1) | 20,000-seedable synthetic CPU sensitivity scenarios; expected-utility inequality checked in Lean; no calibrated hardware or GPU benchmark | [ACL LaTeX](./robust_decode_boundary/paper.tex) • [PDF](./robust_decode_boundary/paper.pdf) • [Markdown](./robust_decode_boundary/ROBUST_DECODE_BOUNDARY.md) • [Experiment](./robust_decode_boundary/experiment.py) • [Results](./robust_decode_boundary/results.json) • [Lean lemma](./formal/RobustDecodeClaims.lean) |
+
 ### Scope of reported findings
 
 - The Ada-CISA accuracy figures are seeded CPU reference simulation results with 50–60 trials per condition, not model-level retrieval benchmarks.

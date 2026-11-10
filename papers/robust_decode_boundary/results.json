@@ -1,0 +1,66 @@
+{
+  "study": "synthetic dimensionless sensitivity; not calibrated hardware results",
+  "seed": 20261110,
+  "scenario_count": 20000,
+  "sampling": "independent log-uniform resource ratios; uniform pooling loss",
+  "ranges": {
+    "kv_pressure": [
+      0.35,
+      3.0
+    ],
+    "ffn_pressure": [
+      0.35,
+      3.0
+    ],
+    "prefill_pressure": [
+      0.35,
+      3.0
+    ],
+    "memory_compute_ratio": [
+      0.4,
+      2.5
+    ],
+    "fabric_ratio": [
+      0.08,
+      2.0
+    ],
+    "pooling_loss": [
+      0.0,
+      0.25
+    ],
+    "role_specific_match_factors": [
+      0.65,
+      1.8
+    ]
+  },
+  "mean_surrogate_utility": {
+    "PD": 0.607252442734197,
+    "AFD": 0.34368712327788525
+  },
+  "fraction_best_including_ties": {
+    "PD": 0.96405,
+    "AFD": 0.14945
+  },
+  "mean_regret": {
+    "PD": 0.002341626163738628,
+    "AFD": 0.26590694562004485
+  },
+  "p95_regret": {
+    "PD": 0.0,
+    "AFD": 0.7413292444524943
+  },
+  "worst_regret": {
+    "PD": 0.5575905558792991,
+    "AFD": 2.14783646485385
+  },
+  "minimax_regret_fixed_choice": "PD",
+  "oracle_adaptive_mean_utility": 0.6095940688979297,
+  "fixed_best_mean_utility": 0.607252442734197,
+  "oracle_minus_fixed_mean": 0.0023416261637326796,
+  "tie_count": 2270,
+  "assertions": [
+    "nonnegative regret",
+    "minimax regret no worse than alternatives",
+    "scenario oracle no worse than fixed policy"
+  ]
+}
