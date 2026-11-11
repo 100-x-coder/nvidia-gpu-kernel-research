@@ -13,6 +13,7 @@ The theorems in `PaperClaims.lean` were checked with Lean 4.35.0 and Mathlib v4.
 | ACDG | `SLAClaims.scalar_decay_perturbation_bound` | A diagonal gate error bounded by `e` scales each scalar state coordinate by at most `e` in absolute value. | Coordinatewise lemma only. The finite-matrix Frobenius aggregation, Python dynamic program, and floating-point behavior are not formalized. Run `lake env lean SLAClaims.lean` from `papers/formal`. |
 | Ada-CISA | `PaperClaims.uniform_mean_separates_salient_key` | Splits one key's contribution from the background term in an arithmetic chunk mean; its coefficient is `1 / C`. | Algebra only; it does not prove that this term dominates retrieval scores or that a miss is caused by dilution. |
 | Noise-aware promotion | `PaperClaims.monotone_map_lt_iff` | A strictly monotone map preserves and reflects strict inequalities over a linear order. | Generic order fact; used to explain why a monotone transform preserves a threshold comparison. |
+| Ordered parallel splat composition | `SplatCompositionClaims.compose_assoc` | The pairwise front-to-back segment composition is associative over real arithmetic. | Exact algebra only; float32 reassociation and GPU behavior are not formalized. The identity laws are also proved. Run `PATH="$HOME/.elan/bin:$PATH" lake env lean SplatCompositionClaims.lean` from `papers/formal`. |
 
 Compile from this directory with:
 
@@ -22,6 +23,8 @@ lake build PaperClaims
 ```
 
 Each paper's `code_attachment.zip` contains its runnable Python experiment, the corresponding checked-in JSON output, and this Lean proof source/documentation. The scripts use only the Python standard library; Ada-CISA's tests use the standard-library `unittest` runner.
+
+The ordered splat composition paper uses `experiment.py` directly and does not package a code attachment.
 
 ## Muir readout quantization bound
 

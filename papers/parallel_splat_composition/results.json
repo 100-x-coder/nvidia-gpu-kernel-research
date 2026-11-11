@@ -1,0 +1,56 @@
+{
+  "experiment": "ordered_splat_composition_tree",
+  "seed": 20261111,
+  "cases": 120,
+  "chunk_counts": [
+    2,
+    3,
+    4,
+    8,
+    16,
+    32,
+    64
+  ],
+  "tile_layers": "uniform integer range [16, 256] per case",
+  "alpha_color_values": "rational multiples of 1/100 in [0,1]",
+  "exact_tree_equals_serial_checks": 840,
+  "exact_chunk_composition_equals_direct_layer_scan": true,
+  "max_float32_tree_color_abs_error_vs_exact": {
+    "2": 3.2076047928875084e-08,
+    "3": 5.027331984042149e-08,
+    "4": 3.56082846542094e-08,
+    "8": 5.923642787397654e-08,
+    "16": 5.997618246489367e-08,
+    "32": 9.168069270426571e-08,
+    "64": 1.01822403286711e-07
+  },
+  "max_float32_tree_transmittance_abs_error_vs_exact": {
+    "2": 1.8402986959027787e-13,
+    "3": 1.8402986959027787e-13,
+    "4": 7.254648321826504e-13,
+    "8": 2.7071748129618625e-13,
+    "16": 1.8402986959027787e-13,
+    "32": 1.8402986959027787e-13,
+    "64": 1.8402986959027787e-13
+  },
+  "max_float32_tree_color_delta_vs_serial_chunk_reduction": {
+    "2": 0.0,
+    "3": 2.9802322387695312e-08,
+    "4": 0.0,
+    "8": 5.960464477539063e-08,
+    "16": 1.1920928955078125e-07,
+    "32": 1.1920928955078125e-07,
+    "64": 1.7881393432617188e-07
+  },
+  "operation_model": {
+    "composition_operations": "k-1 for both serial and balanced tree",
+    "serial_dependency_depth": "k-1",
+    "balanced_tree_dependency_depth": "ceil(log2(k)) for the recursively split tree",
+    "measured_gpu_latency": null
+  },
+  "limitations": [
+    "CPU synthetic reference only; no CUDA/GPU kernel is implemented or timed.",
+    "Float32 results emulate rounding at composition operations but not device-specific compiler behavior.",
+    "The tree reduces dependency depth; the benefit depends on a GPU implementation exposing independent merges."
+  ]
+}
