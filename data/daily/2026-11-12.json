@@ -1,0 +1,522 @@
+{
+  "Attention & Sequence Kernels": {
+    "keywords": [
+      "attention",
+      "flashattention",
+      "flash-attention",
+      "ringattention",
+      "linear attention",
+      "mla",
+      "multi-head latent attention",
+      "kv cache",
+      "paged attention",
+      "vllm",
+      "flashinfer",
+      "context extension",
+      "long-context"
+    ],
+    "items": [
+      {
+        "title": "Mechanistic Interpretability Needs a Logic of Inference",
+        "summary": "Neural networks are increasingly studied not merely as predictive systems, but as complex systems whose internal computations are themselves objects of scientific inquiry. Recent progress in mechanistic interpretability (MI) has made it possible to identify neurons, features, circuits, population structures, and dynamical patterns associated with model behavior. As these tools improve, attention is shifting from what can be observed inside a model to how those observations support mechanistic explanations. We examine the parallel efforts of neuroscience and MI to address this question and identify recurring inferential bottlenecks when inferring mechanisms from complex neural systems. We propose five principles and organize them into a recursive logic for a more rigorous procedure of mechanistic inference. These principles provide a framework that supports scientific discovery in two senses: it helps turn local interpretability findings into cumulative knowledge of mechanisms within models, and it makes those mechanisms sufficiently precise to generate testable hypotheses about domains beyond the models. Evidence beyond MI is ultimately required to establish what model mechanisms reveal about the world.",
+        "url": "http://arxiv.org/abs/2611.14483v1",
+        "date": "2026-11-10",
+        "author": "Zhimin Hu",
+        "type": "Paper"
+      },
+      {
+        "title": "Auditing the Judge: Internal Signals for LLM Reasoning Assurance",
+        "summary": "Language-model systems use self-judgment to decide which answers to release, review, or recompute. Because intervention is costly, an assurance score must rank errors well at the available budget, not merely over the full ranking. We compare the judge's continuous verdict-token score with a supervised correctness probe trained on attention-head activations from the same prompt. Exact identities link fixed-budget error recall to residual risk and show that AUROC averages recall over all budgets. Across three open 7-12B models on GSM8K and MATH, the probe finds 1.3-22.5 additional percentage points of errors at 5% review in all six model-dataset settings (median 7.4 points). At 10% routing, probe-guided allocation improves accuracy over equal-cost random allocation in both GSM8K experiments, but beats judge-guided routing only for the weaker judge. Cross-dataset transfer lowers probe AUROC for every model in both directions relative to target-domain training. Because dataset, weight precision, and generation budget change together, this measures a joint protocol shift rather than a dataset-only effect. Internal signals can improve supervised, in-domain budget allocation, but are not domain-general confidence estimators.",
+        "url": "http://arxiv.org/abs/2611.14323v1",
+        "date": "2026-11-10",
+        "author": "Mayank Gulati",
+        "type": "Paper"
+      },
+      {
+        "title": "Towards a new model of the compact triple system $λ$ Tauri I. Improved periods and preliminary elements of the triple system",
+        "summary": "We analysed our new radial velocity measurements and photometric observations (covering a time interval of 46838~days and 39100~days, respectively) as well as those from previous studies to derive accurate ephemerides for both orbits of the compact triple system $λ$ Tau. In the case of the inner eclipsing subsystem, we obtained a~linear ephemeris of T min.I=HJD 2440998.86069(35)+3.952952845(81)xE, improving the accuracy of the previous solutions by more than an order of magnitude. This allowed us to reproduce well all available light curve minima, including the first one recorded in 1844. Furthermore, the period of the outer subsystem, determined from radial velocity analysis, appears to be constant over the interval of available observations, with the corresponding linear ephemeris being T periast.=HJD 2456822.5(3.6)+33.02480(28)xE. Assuming near coplanarity of the inner and outer orbits, we estimated the preliminary physical properties of the whole system. We found that the secondary of the inner subsystem is filling or nearly filling its Roche lobe. We used the long-term stability of the eclipsing subsystem period to place a strong upper limit on the rate of the proposed episodic mass transfer to its primary component. Our results constitute a preparatory step for a follow-up study that will also include an analysis of a rich collection of optical spectro-interferometric observations and use a full-fledged numerical model to describe the evolution of the orbital architecture of the system. Particular attention will be focused on determining the inner orbit forced eccentricity and understanding the absence of the apsidal advance of the outer orbit in our present solution.",
+        "url": "http://arxiv.org/abs/2611.14269v1",
+        "date": "2026-11-10",
+        "author": "P. Harmanec",
+        "type": "Paper"
+      },
+      {
+        "title": "SinkState: On-the-Fly SVD of Recurrent States for Efficient Hybrid LLM Serving",
+        "summary": "Hybrid models combine softmax attention with linear attention, which compresses history into fixed-size recurrent states to balance model quality and inference efficiency. However, linear attention has not pushed this compression to its limit: we find that the queries, keys, and values of linear layers concentrate in a stable, low-dimensional subspace, a phenomenon we call the linear attention sink, so each state is effectively low-rank, with a rank that varies across states. Yet existing serving systems keep these redundant states dense, reading and rewriting them in full at every decoding step, so their memory traffic grows with the batch size and dominates the decoding cost. Thus SinkState stores each recurrent state in an adaptive low-rank form throughout inference with buffered updates and a local SVD restricted to the top subspace. SinkState further consolidates the remaining components asynchronously on the CPU. On four hybrid models with Mamba-2 and Gated DeltaNet (GDN) layers, from 4B to 120B parameters, SinkState reduces the peak memory of recurrent states by up to 2.6x (1.9x on average) and speeds up decoding by up to 1.58x (1.25x on average) over Mamba-SSM and FLA, while maintaining accuracy.",
+        "url": "http://arxiv.org/abs/2611.14246v1",
+        "date": "2026-11-10",
+        "author": "Haolin Jiang",
+        "type": "Paper"
+      },
+      {
+        "title": "ViGA-FLAME: Aligning Latent Visual and Geometric Representations for Robust 3D Head Expression Estimation",
+        "summary": "Estimating 3D head expression from a single image requires mapping visual appearance to underlying facial geometry. We propose ViGA-FLAME, a two-stage framework that aligns semantic visual features with a structured geometric latent space. First, a Parametric-Geometric Variational Autoencoder (PG-VAE) learns a unified representation of canonical head surfaces and FLAME parameters, supporting both detailed surface reconstruction and interpretable parameter recovery. Supervision on geometry and parameters, together with consistency between the two decoding branches, connects surface detail with parametric structure. Second, a trainable Visual-Geometric Adapter (ViGA) maps features from a pretrained semantic visual encoder into this latent space. Asymmetric attention enables ViGA to align semantic image features from the visual encoder with the structured geometric information represented in the PG-VAE latent space, without altering the original visual stream. By grounding image evidence in this latent prior, ViGA-FLAME enables robust 3D head expression estimation across severe facial deformations and large viewing angles, efficiently improving robustness over competing feed-forward methods.",
+        "url": "http://arxiv.org/abs/2611.14218v1",
+        "date": "2026-11-10",
+        "author": "Wen Hao He",
+        "type": "Paper"
+      },
+      {
+        "title": "Breakdown of Autoregressive Multi-Step Reasoning Under Concentrated vs. Diffuse Attention Head Dropout",
+        "summary": "During extended wakefulness, mammalian neocortical networks experience localized periods of transient neuronal silence termed off-states. Here, we examine how analogous spatiotemporally concentrated disruptions affect sequential reasoning in autoregressive Large Language Models (LLMs). Evaluating 250 paired derivations on the GSM8K benchmark across two 8B models (Qwen3-8B and LLaMA-3.1-8B-Instruct), we contrast clustered bursts of attention head masking against budget-matched diffuse i.i.d. dropout. Concentrated bursts induce substantial reasoning degradation: at onset parameter $\\mathcal{B}=0.10$ (scheduling $\\sim 5.7\\%$ of vulnerable head-token volume), Qwen3-8B accuracy drops from $91.2\\%$ under diffuse noise to $78.8\\%$ under burst dropout ($Δ= -12.4$ percentage points [pp], exact McNemar $p = 5.5 \\times 10^{-6}$), while LLaMA-3.1-8B-Instruct drops from $84.0\\%$ to $76.8\\%$ ($Δ= -7.2$ pp, $p = 0.0198$). Conversely, dispersing the identical cumulative budget uniformly across generation steps via stratified quintile matching yields substantially milder degradation (retaining $91.2\\%$ in Qwen and $84.0\\%$ in LLaMA). In an exploratory factorial dissociation ($N=100$), single-step dropout density is associated with an acute drop in a single schedule draw ($-10.0$ pp on Qwen, $p_{\\text{holm}} = 0.0425$), while multi-token continuity exhibits an inconclusive compounding trend ($-7.0$ pp, $p_{\\text{holm}} = 0.1892$). Error analysis reveals that Qwen failures reflect derivation errors within formatted responses (conditional accuracy drop of $-11.4$ pp), whereas in LLaMA $22.2\\%$ of discordant losses lack a final answer format line (conditional gap narrows to $-5.0$ pp). These findings demonstrate that autoregressive reasoning chains are particularly vulnerable to concentrated structural disruptions, providing empirical benchmarks for fault tolerance in transformer architectures.",
+        "url": "http://arxiv.org/abs/2611.14209v1",
+        "date": "2026-11-10",
+        "author": "Karol Struniawski",
+        "type": "Paper"
+      },
+      {
+        "title": "Obscured Wildfire Flame Detection by Spatio-temporal Analysis of Smoke Patterns Using Frame-wise Transformers",
+        "summary": "In this paper, we propose a new paradigm in wildfire management for detecting both visible and obscured fire using Deep Learning (DL). The essence of our method is the joint spatial and temporal analysis of RGB videos, embracing the fact that temporal patterns of smoke motions in consecutive video frames can indicate obscured fire flames. This perspective contrasts the traditional approach of independently analyzing images and individual video frames. To this end, we propose a frame-wise transformer architecture that applies an attention mechanism between the consecutive frames while preserving spatial information within frames as opposed to regular attention mechanisms like the non-local block, which combines spatial and temporal information into a single vector. We also optimize the temporal pattern lengths under different spatial resolutions to achieve the highest performance while reducing the computational cost. To investigate the applicability of our method in aerial image processing, we applied it to a curated version of the FLAME2 dataset that includes dual-mode RGB/IR videos. The IR video feed is used to extract ground truth, while the model is trained only on RGB videos to maintain applicability to lowcost commercial drones (which are equipped only with regular cameras) and facilitate processing existing RGB-only datasets. Our proposed method achieves a Segmentation Foreground Dice score of 92.61%, an Object Detection Precision and Recall rate of 93.21% and 91.73%, and clip-level classification accuracy of 98.02%, respectively. We also investigated the efficacy and generalizability of our method through ablation study",
+        "url": "http://arxiv.org/abs/2611.14074v1",
+        "date": "2026-11-10",
+        "author": "Uma Meleti",
+        "type": "Paper"
+      },
+      {
+        "title": "Where Do Vision-Language Models Get Left and Right? Position-Code Counterfactuals in Qwen2.5-VL, Qwen3-VL and InternVL3",
+        "summary": "A vision-language model may take left-right direction from the orientation of image content within patches, its vision transformer's (ViT) position code, or token positions and order in its language model (LLM). Ablations show the ViT code is necessary; we test sufficiency by mirroring only a position code. In Qwen2.5-VL-7B, Qwen3-VL-4B and InternVL3-2B, mirroring ViT width positions reproduces the flipped-image answer on 84.3-93.2% of CV-Bench left-right questions (Qwen2.5-VL-3B: 87.5%, partly a left fallback). With two options, this also counts disruption; a half-grid shift flips most answers too. With the ViT code intact, LLM-side id and token-order mirrors change few left-right answers in all three series (a weak id test in Qwen2.5-VL). In Qwen2.5-VL-7B the effect sits in the global-attention ViT blocks, mostly the last. On What'sUp, flipping content and token order, not the position code, keeps more on/under than left-right answers at the flipped-image answer. Post hoc analyses qualify these results. On CV-Bench items with located objects, random permutations flip 18.9-31.0 points more answers when reversing the objects' order than when keeping it. On What'sUp, in Qwen2.5-VL and Qwen3-VL, the share of the left-right changes made by random permutations that land on the mirror relation is mostly below chance. Counted as returns to the original answer, the What'sUp contrast of support with left-right relations is clear only in InternVL3-2B. Most remaining errors give the same relation whichever object is asked about, suggesting that repair may target relation binding, object localization or use of the reference object.",
+        "url": "http://arxiv.org/abs/2611.14060v1",
+        "date": "2026-11-10",
+        "author": "Enhao Cui",
+        "type": "Paper"
+      },
+      {
+        "title": "Resilient Integrated Access and Backhaul Network Planning via Graph Neural Network Curriculum Learning",
+        "summary": "Integrated Access and Backhaul (IAB) is a key enabler for cost-effective millimeter-wave (mmWave) densification, yet practical deployments are strongly constrained by the spatial availability of fiber-connected IAB donors. Variations in donor topologies reshape both the initial coverage footprint and the feasible multi-hop backhaul expansion patterns, causing planning policies trained on a single topology to generalize poorly. This paper studies cross-topology generalization for resilience-aware IAB deployment under coverage and transport feasibility requirements. We formulate IAB deployment as a constrained Markov decision process that couples access coverage satisfaction with multi-hop transport feasibility, including hop-by-hop rate-budget degradation and a minimum parent-connectivity requirement for fault tolerance. To solve the resulting large discrete planning problem, we propose a graph-based actor-critic approach that uses a Graph Attention Network v2 (GATv2) encoder with Proximal Policy Optimization (PPO), and we develop a multi-stage curriculum learning strategy that progressively increases constraint difficulty and scenario diversity for stable training and transferable policies. In a 60 GHz urban simulation over a 1000 m x 1000 m area with multiple donor layouts, the trained policy satisfies the minimum coverage requirement of 98% with fewer deployed IAB nodes than learning and heuristic baselines, and maintains higher coverage under progressive backhaul failures. The results demonstrate that curriculum-trained graph-based reinforcement learning can improve deployment efficiency and resilience while transferring across heterogeneous IAB donor topologies without retraining.",
+        "url": "http://arxiv.org/abs/2611.14042v1",
+        "date": "2026-11-10",
+        "author": "Jie Zhang",
+        "type": "Paper"
+      },
+      {
+        "title": "ScaleBrain: A Scale-Consistent Framework for EEG Foundation Models",
+        "summary": "Foundation models pre-trained on large unlabeled electroencephalography (EEG) corpora have emerged as a transformative paradigm for Brain-Computer Interface (BCI) applications. Recent EEG foundation models have shown that multi-scale representations derived from fixed-length patches can improve EEG representation learning. Existing frameworks commonly construct temporal scales through feature-level operations. However, these operations leave the correspondence between learned features and scale-specific characteristics of the original EEG signals implicit. Moreover, when the self-supervised objective is not aligned with the multi-scale input representations, information at some temporal scales may receive insufficient supervision during pre-training. In light of this, we propose ScaleBrain, a scale-consistent pre-training framework that explicitly coordinates multi-scale representations of EEG from both the model input and optimization objective sides. Specifically, ScaleBrain introduces multi-scale EEG tokenization to represent the same EEG segment through analysis windows with different temporal spans and shared temporal anchors, and pairs these representations with scale-specific reconstruction to align with the multi-scale input structure and provide supervision across temporal resolutions during self-supervised learning. We further develop an axial spatio-temporal attention mechanism to contextualize the fused multi-scale representation along spatial and temporal dimensions. Extensive evaluations on six public BCI benchmarks against 12 representative baselines show that ScaleBrain achieves the highest mean Balanced Accuracy on five datasets and ranks third on the remaining one, with only 5.0M parameters, demonstrating strong performance and favorable parameter efficiency.",
+        "url": "http://arxiv.org/abs/2611.14035v1",
+        "date": "2026-11-10",
+        "author": "Minyu Zhou",
+        "type": "Paper"
+      },
+      {
+        "title": "LUMIR: Decoupled Multimodal Representation Learning from Heterogeneous Data for Next-POI Recommendation",
+        "summary": "As multimodal tourism-related information collected from heterogeneous data sources has become increasingly available, learning effective representations has attracted attention for improving recommendation performance. Existing approaches often tightly couple multimodal fusion with the architecture and optimization objective of a specific downstream model, which limits the generality and reusability of the learned representations. To address these limitations, we propose LUMIR, a decoupled multimodal representation learning framework based on contrastive learning. Multimodal information collected from heterogeneous data sources is first semantically unified into a shared textual representation space using large language models (LLMs). An interaction-aware fusion mechanism is then designed to model cross-modal interactions, while sequential signals are incorporated as a structural constraint to guide representation learning. To evaluate the learned representations, experiments are conducted on a multimodal point-of-interest (POI) dataset under the next-POI recommendation setting across multiple sequential recommendation backbones. The results show that LUMIR consistently outperforms existing multimodal fusion baselines in both accuracy-oriented and beyond-accuracy metrics, demonstrating that decoupling representation learning from downstream optimization provides an effective paradigm for learning reusable multimodal representations. The code is publicly available at https://github.com/wzehui/LUMIR.",
+        "url": "http://arxiv.org/abs/2611.14004v1",
+        "date": "2026-11-10",
+        "author": "Zehui Wang",
+        "type": "Paper"
+      },
+      {
+        "title": "Data Quality Challenges in Multimodal Tourism Recommender Systems",
+        "summary": "Modern recommender systems increasingly consider diverse data modalities to enhance model performance. However, the quality of the underlying multimodal data (e.g. data from social media platforms) has received limited attention so far. Focusing on tourism recommendation, we examine real-world challenges encountered when using datasets from Yelp and Instagram. Issues include noise from fake reviews, hallucinated content from LLMs, modality contradictions, and demographic bias. We outline future directions such as quality-aware fusion, structured and controlled LLM-based content generation to reduce hallucinations, and user group differentiation to improve the robustness and reliability of multimodal recommendation systems.",
+        "url": "http://arxiv.org/abs/2611.13972v1",
+        "date": "2026-11-10",
+        "author": "Zehui Wang",
+        "type": "Paper"
+      },
+      {
+        "title": "Rheology of Parametric Odd Materials",
+        "summary": "The design and control of rheological properties in active systems are crucial for developing functional materials with novel properties. While significant attention has been devoted to odd viscosity and odd elasticity, comprehensive odd rheological models remain scarce. Here, we introduce and characterise a platform-agnostic odd viscoelastic material, where complex responses arise from parametric control of internal rotational degrees of freedom and are triggered by coupling between normal and shear stresses. Such control can be achieved through either parametric driving or a parametric nonlinear feedback. We further show that this coupling can induce rotation-driven fluidisation, transitioning the material from an elasticity-dominated to a viscosity-dominated regime. Lastly, we show that the interplay between odd and even sectors enhances the nonlinear material response under large-amplitude oscillatory shear (LAOS). The findings outline a route to Floquet-engineered metafluids with programmable, non-reciprocal rheology.",
+        "url": "http://arxiv.org/abs/2611.13969v1",
+        "date": "2026-11-10",
+        "author": "Pedro Cosme",
+        "type": "Paper"
+      },
+      {
+        "title": "CAppleNet: A Coordinate Attention-Based YOLO11 for Real-Time Apple Stem Cavity and Calyx Detection",
+        "summary": "Automated fruit grading, sorting, and orientation systems require real-time, accurate detection of fruit-level morphological landmarks rather than the fruit boundary alone. This paper presents a custom, fully self-collected and self-annotated dataset of 1506 apple images (1054 training, 301 validation, 151 test) captured under controlled, fixed-camera conditions and annotated for three target classes: fruit body, stem cavity, and calyx. A YOLO11s detector trained with default hyperparameters is adopted as the baseline, and a systematic, one-factor-at-a-time ablation study is conducted across input resolution, data augmentation policy, optimizer configuration, and lightweight architectural enhancement to identify the factors that most improve detection of these fine-grained landmarks under high inter-cultivar color and texture variability. Neither increased input resolution, nor any of six tested augmentation variants, nor manual optimizer tuning improved on the untuned baseline (F1 = 0.9047); only a same-slot architectural substitution of the backbone's C2PSA block with Coordinate Attention (CA) matched the baseline's overall F1 (0.9038) while reducing parameter count by 10.2% and achieving the study's best mAP@0.5 (0.935) and best stem-cavity F1 (0.8217). A confidence-threshold sweep identified 0.15 as the deployment operating point for this model, and a confirmatory experiment combining the CA-swap architecture with the best-performing augmentation variant showed the two effects do not combine additively, reversing the architectural gain rather than compounding it. The resulting design recommendations --- the CA-swap architecture alone, at a 0.15 confidence threshold --- target real-time apple landmark detection for orientation-aware industrial sorting and alignment systems.",
+        "url": "http://arxiv.org/abs/2611.13920v1",
+        "date": "2026-11-10",
+        "author": "Alican Güneş",
+        "type": "Paper"
+      },
+      {
+        "title": "Spatial-Spectral Coupling as Attention: Scaling Shape Correspondence to High-Resolution Surfaces",
+        "summary": "Establishing dense correspondence between high-resolution 3D shapes remains challenging due to the spatial--spectral coupling at the core of many functional-map methods, which grows quadratically with mesh resolution. We observe that this coupling is equivalent to a scaled dot-product attention formulation, with learned descriptors serving as queries and keys and spectral basis functions as values. This connection makes efficient attention implementations directly applicable to shape matching and an effective mechanism for scaling spatial-spectral coupling. We show that optimized quadratic attention implementations can scale modern deep functional map pipelines to large mesh sizes, improving both runtime and memory consumption, while sub-quadratic methods introduce errors, particularly for non-isometric shape pairs, where an exact coupling proves most necessary. These insights motivate \\textit{Geo-FlashAttention}, which restricts the exact softmax to geometry-selected surface patches and achieves near-linear empirical scaling while preserving correspondence accuracy of exact implementations. Across six standard benchmarks and three functional-map pipelines, rigorous analysis shows that efficient couplings preserve correspondence accuracy. At $60k$ vertices, these insights reduce peak training memory from 106.08 to 5.67\\,GiB, with Geo-FlashAttention being $1.5\\times$ faster per training step than FlashAttention. This enables end-to-end learning for correspondence problems on large meshes such as cortical surfaces, where high resolution is required to preserve disease-relevant intricacies of the surface geometry. Project page available https://spatial-spectral-attention.github.io/",
+        "url": "http://arxiv.org/abs/2611.13870v1",
+        "date": "2026-11-10",
+        "author": "Bence Demeter",
+        "type": "Paper"
+      },
+      {
+        "title": "Exploiting What NVIDIA Profilers Hide: Fast and Accurate Analytical GPU Performance Modeling",
+        "summary": "GPUs have become essential to many fields, including AI and scientific computing. As GPUs grow more complex, the design space of their hardware configurations becomes increasingly large, yet cycle-level simulators remain too slow to explore it. Analytical models make this exploration much faster. However, existing GPU analytical models fall short of accurately predicting performance across hardware configurations, because they re-estimate or scale every stall of a warp on the target configuration. We observe that fixed-latency stalls stay the same across configurations, whereas queueing stalls vary with the pressure on each hardware unit. Based on this observation, we propose ForeSight, a queueing analytical model that reuses the fixed-latency stalls measured on GPU hardware and recomputes the queueing stalls of each hardware unit from its pressure. To provide ForeSight with the counter values of each hardware unit, we build UnitSight, a profiler that recovers these values, which NVIDIA's official profilers hide by aggregating across units. Our evaluation on hardware configurations of nine NVIDIA GPUs shows that ForeSight predicts kernel execution time with a mean absolute percentage error (MAPE) of 8.3%, compared with 14.1% for the best baseline. ForeSight also predicts the end-to-end execution time of LLM inference on vLLM with a MAPE of 2.0%. It runs 49x faster than the cycle-level simulator Accel-Sim and faster than interval-based models such as GCoM. With the aid of ForeSight, we explore configurations derived from the H20 GPU for LLM inference and find one with 1.78x its performance/cost.",
+        "url": "http://arxiv.org/abs/2611.13762v1",
+        "date": "2026-11-10",
+        "author": "Ziwen Wang",
+        "type": "Paper"
+      }
+    ]
+  },
+  "MoE (Mixture of Experts) & Routing": {
+    "keywords": [
+      "moe",
+      "mixture of experts",
+      "mixture-of-experts",
+      "expert routing",
+      "switch transformer",
+      "deepseek-v2",
+      "deepseek-v3",
+      "token dispatch",
+      "ep parallelism",
+      "expert parallelism",
+      "fused moe"
+    ],
+    "items": [
+      {
+        "title": "LM-SimBench: A Unified Framework, Dataset, and Benchmark for Large Language Model Training Simulation",
+        "summary": "Evaluating candidate parallelization strategies through distributed training runs makes strategy selection prohibitively expensive at scale. Performance simulation offers a lower cost alternative, yet controlled comparisons among existing simulators remain difficult because they differ in the training stages they model and the workloads on which they are evaluated. We introduce LM-SimBench, a unified framework, profiling dataset, and benchmark for evaluating LLM training simulators. The framework decomposes simulation into functional stages from model compilation to schedule level aggregation, connecting execution representations and cost estimators to measurable evaluation targets. Following this framework, we profile 23 model settings from 10 dense and Mixture-of-Experts (MoE) LLM families on an Ascend Neural Processing Unit (NPU) cluster. The resulting dataset contains 348 feasible configurations that jointly vary five parallelism dimensions and activation recomputation, with six views spanning configuration, rank, operator, event, and kernel granularity. Evaluations of representative training simulators demonstrate how LM-SimBench supports comparisons of prediction accuracy, assessment of configuration selection, and diagnosis of prediction errors. Matched GPU-NPU experiments validate the cross-platform applicability of the collection and evaluation protocol and demonstrate NPU-guided GPU configuration selection.",
+        "url": "http://arxiv.org/abs/2611.14285v1",
+        "date": "2026-11-10",
+        "author": "Yu Dong",
+        "type": "Paper"
+      },
+      {
+        "title": "Sable: A Small-Field Sumcheck Argument for Bit-Exact Inference of Large Language Models",
+        "summary": "We present Sable, an argument system and single-GPU prover for the statement that a committed, integer-quantized transformer produced a given token sequence from a given prompt, bit for bit. Sable fixes an integer function F_O with no floating-point step, in which every rounding, normalization, softmax and sampling decision is determined by its inputs, and proves it with a constraint system whose relations provably never wrap modulo the 31-bit KoalaBear prime. The proof batches zerochecks and LogUp-GKR lookups into one sumcheck per domain, and commits to every witness tensor and weight in one multilinear commitment built from Reed-Solomon codes, BLAKE3 Merkle trees and a mixed-length BaseFold opening. The prover streams the model layer by layer on one GPU. On one NVIDIA RTX PRO 6000 Blackwell GPU, Sable proves all 64 layers of Qwen2.5-32B in 92.5 s for 4,096 tokens and 398 s for 16,384 tokens, and covers Qwen3-32B and the mixture-of-experts Qwen3-30B-A3B (4,096 tokens in 121.8 and 84.7 s). A proof costs 41 to 50 times the serving time, or 6.4 cents per 4,096-token request at public GPU prices, and 40 to 64 times less time per parameter and token than zkLLM. On WikiText-2, F_O's greedy token matches the BF16 model's at 86.3% of positions; on Qwen3, F_O is within 1.6 points of BF16 on MMLU and 1.7 points on GSM8K. A verifier with a compiled core checks a proof on one CPU core in 19 to 56 s. In the random-oracle model, the interactive proof has round-by-round soundness error 2^-103. The proof is not zero-knowledge, so the system targets open-weight models. Code: https://github.com/moonmath-ai/Sable",
+        "url": "http://arxiv.org/abs/2611.14083v1",
+        "date": "2026-11-10",
+        "author": "Tomer Solberg",
+        "type": "Paper"
+      },
+      {
+        "title": "Understanding Mixture-of-Experts Language Models Beyond Expert Boundaries",
+        "summary": "In Mixture-of-Experts (MoE) models, the nature of expert specialization remains controversial. Reports of domain-associated expert preferences contrast with analyses attributing routing primarily to token identity or syntactic patterns. To clarify these differing accounts, we look beyond expert-level routing to investigate the neuron-level organization of domain-specialized computation using Routing-Aware Magnitude Profiling (RAMP), a measure developed for this analysis. Using mixed-domain calibration data, we identify domain-specialized neuron sets with 58-74% overlap across multi-source samples of the same domain, compared with 15-24% across domains. To understand how this organization evolves during training, we trace neuron importance throughout pre-training and post-training across three fully open MoE families. Neuron importance continues to reorganize between pre-training checkpoints despite comparatively stable expert-level importance rankings, while post-training largely preserves neuron rankings. Building on these neuron-level perspectives, we further introduce RAMP-based Pruning (RAMPr) to select neurons across experts for balanced multi-domain capability preservation. At 75% neuron retention, RAMPr preserves average 91-98% of original full performance across six models. At 50% retention, our pruning method can reduce resident GPU memory by 36-43% and improves batched prefill throughput by 17-39% effectively. Our code is available at https://github.com/ydyjya/Neuron-Level-Specialization-in-MoE",
+        "url": "http://arxiv.org/abs/2611.13975v1",
+        "date": "2026-11-10",
+        "author": "Zhenhong Zhou",
+        "type": "Paper"
+      }
+    ]
+  },
+  "GEMM, Tensor Cores & Low-Precision": {
+    "keywords": [
+      "gemm",
+      "matmul",
+      "matrix multiplication",
+      "tensor core",
+      "wgmma",
+      "cutlass",
+      "cute",
+      "fp8",
+      "fp4",
+      "nvfp4",
+      "mxfp4",
+      "mxfp8",
+      "quantization",
+      "awq",
+      "gptq",
+      "bitsandbytes",
+      "block scaling",
+      "sm90",
+      "sm100"
+    ],
+    "items": [
+      {
+        "title": "Swanada: Split-Encoder Capability-Routed Conformer CTC and Sub-30 MB On-Device Speech Recognition Across Twelve Scripts",
+        "summary": "Client-side automatic speech recognition (ASR) across Indic and Classical scripts eliminates cloud transcription costs, network tail latency, and server-side audio retention, yet neural exports face four systems bottlenecks in browsers and mobile runtimes: (1) monolithic per-language Conformer checkpoints require ~177 MiB per script (> 2.1 GiB across 12 scripts), exhausting CacheStorage quotas; (2) static relative positional encoding tables embed 10.2-20.5 MB of FP32 constants while 1x1 Conv1d layers trigger slow or unsupported ConvInteger kernels in WebAssembly SIMD; (3) sliding-window CTC flickers on boundary tokens; and (4) mobile WebAudio pipelines suffer 44.1/48 kHz sample-rate mismatches and silent AudioWorklet stalls under iOS WKWebView.   We present Swanada, an open-source 16 kHz streaming ASR system spanning Classical Sanskrit, Indian English, and ten Indian languages (sa, en, hi, kn, mr, bn, ta, te, ml, gu, pa, or) across browser WebAssembly, Node.js, and Python. Swanada pairs capability-routed shared INT8 Conformer encoders (a 17-layer 177.38 MiB Studio tier at $d = 512$ for desktop/servers and a distilled 14-layer 25.35 MiB Mobile tier at $d = 256$ for phones) with twelve hot-swappable 515.0 KiB native-script linear CTC heads ($257 \\times 512$), cutting 12-language storage by $11.6\\times$ (183.4 MiB) and $67.8\\times$ (31.39 MiB; 25.85 MiB first load). Runtime protobuf tail surgery exposes the shared representation in $< 2$ ms, while dynamic positional synthesis, MatMul pointwise convolutions, and post-quantization QInt8 head calibration preserve sub-30 MB accuracy. Across $N = 480$ held-out and $N = 1,280$ open public test clips (FLEURS, LibriSpeech, GLOBE, AMI, wild Sanskrit), Swanada achieves 5.43% held-out and 8.87% 12-language open CER on Studio (18.56% and 19.23% on Mobile) at $0.0097\\times$-$0.0264\\times$ RTF, with 30.6 ms median TTFT and 0.00% committed-prefix churn.",
+        "url": "http://arxiv.org/abs/2611.13814v1",
+        "date": "2026-11-10",
+        "author": "Hemanth HM",
+        "type": "Paper"
+      }
+    ]
+  },
+  "Kernel Compilers & DSLs (Triton, TileLang, CUDA)": {
+    "keywords": [
+      "triton",
+      "tilelang",
+      "thunderkittens",
+      "cutedsl",
+      "tvm",
+      "halide",
+      "autotuning",
+      "kernel generation",
+      "cuda optimization",
+      "warp specialization",
+      "tma",
+      "tensor memory accelerator"
+    ],
+    "items": [
+      {
+        "title": "TorchCurves: Differentiable Parametric Curves",
+        "summary": "We present TorchCurves, a PyTorch library that treats vector-valued parametric curves as learnable primitives. Its central operation maps batches of scalar inputs to points on curves represented in B-spline or Legendre polynomial bases, with differentiation through both inputs and coefficients. Curve coefficients can be optimized jointly with the surrounding model or produced by another network. The library provides trainable modules, reusable basis modules, and a functional interface, supporting applications ranging from continuous feature embeddings to Kolmogorov-Arnold networks and functional regression. Its implementation combines classical evaluation algorithms with vectorized PyTorch operations, emphasizing readability and maintainability without custom hardware kernels. Timing experiments compare curve evaluation against NumPy and SciPy and KAN training against EfficientKAN across a range of problem sizes. The results illustrate where this generality remains computationally practical and where overhead is substantial. Library is available on GitHub at https://github.com/alexshtf/torchcurves.",
+        "url": "http://arxiv.org/abs/2611.14516v1",
+        "date": "2026-11-10",
+        "author": "Alex Shtoff",
+        "type": "Paper"
+      },
+      {
+        "title": "AutoScaffold: AI-Guided Scaffolding for Reinforcement Learning of Language Models",
+        "summary": "Reinforcement learning with verifiable rewards (RLVR) produces rich training experience, yet outcome rewards reduce each attempt to a single number and leave most of this information unused. Training-time scaffolds, such as strategies or hints added to the prompt during training, offer a natural way to turn this information into guidance, but their design and adaptation are largely left to humans and tailored to specific domains. We introduce AutoScaffold, a unified AI-for-AI framework that turns a student's training experience into adaptive scaffolds, with minimal domain-specific information and no human intervention during training. A frozen teacher periodically examines this experience, diagnoses bottlenecks, and designs scaffolds in two forms: (i) strategies shared across a class of tasks and (ii) hints for individual hard tasks, adjusting the content and amount of support as the student learns. The scaffolds are removed at evaluation. We apply the same framework to ALFWorld, search-based QA, mathematical reasoning, and GPU kernel generation. When evaluated without scaffolds, students trained with AutoScaffold outperform those trained with the corresponding RL baselines in all four domains, with gains of 7.2 points in ALFWorld success and 4.0 points in average QA exact match. On GPU kernel generation, AutoScaffold increases the fraction of tasks with a correct kernel that runs faster than the PyTorch reference by up to 5.0 points. On math, our student surpasses QuestA's reported accuracy using approximately one-third as many student training steps. Analyses show that the teacher identifies a different failure in each task class and shifts its scaffolds from step-by-step workflows to targeted fixes as the student improves, and that its revised scaffolds help the student learn more than keeping the previous scaffold or using no scaffold.",
+        "url": "http://arxiv.org/abs/2611.14515v1",
+        "date": "2026-11-10",
+        "author": "Zijian Zhang",
+        "type": "Paper"
+      },
+      {
+        "title": "Annular Counterexamples and Skew-Shape Block Identities",
+        "summary": "We establish four connected results on weighted order ideals, cluster coefficients, and block-statistic enumerators. First, we give a counterexample to Theorem 14 of Kang, Lee and Lim (European Journal of Combinatorics, 2026): in the rank-two annular cluster model, a single bridging-lamination coefficient row produces $1+q^2$, contradicting the asserted unimodality. We identify the unsupported initial case in their published induction. Second, we refute their log-concavity Conjecture 1: the same gap example violates log-concavity, and a further single-curve computation gives the full-support polynomial $1+2q+7q^2+10q^3+9q^4+4q^5+q^6$, which also fails log-concavity. Third, we establish the skew-shape block-statistic identity proposed in Kahane's Conjecture 4.4 (arXiv:2607.11225v1) for arbitrary finite skew Young diagrams, under an explicitly specified root-exclusion convention. Its proof combines commuting tableau-transfer matrices, a connected-block inverse kernel, and finite polynomial differential equations; the corresponding mathematical statements have Lean 4/Mathlib formalizations. Fourth, we derive a bivariate block refinement whose coefficients are nonnegative after shifting the order parameter by one and, when necessary, multiplying by a monomial in the weight parameter. We specify the correction to the printed root convention, confirmed by Kahane in correspondence, and the geometric sign and specialization conventions clarified by the relevant authors for the annular examples.",
+        "url": "http://arxiv.org/abs/2611.14506v1",
+        "date": "2026-11-10",
+        "author": "Adam Tilèpe",
+        "type": "Paper"
+      },
+      {
+        "title": "SkipLane: Write-Once, Conflict-Free Accumulation for Zero-Skipping CNN Engines on FPGAs",
+        "summary": "Skipping zero activations saves multiplications in CNN accelerators, but it complicates accumulation: the products in a compressed input window belong to different output columns and must be merged. In our earlier engine, this merging was done by read-modify-write (RMW) of a row buffer, which made sparse inputs slower than dense ones even at 87% sparsity. Existing designs either merge kernel rows through RMW or reduce bank conflicts with extra hardware, without eliminating them. SkipLane makes the entire accumulation path write-once. Each kernel row is processed in its own lane, which holds partial sums in three registers and retires up to three finished columns per cycle into memory banks that cannot conflict. Lanes and input channels are summed only at readout, so no partial sum is ever read back. Multipliers left idle by zero weights compute a second filter in the same pass. In RTL simulation, the engine stays within 0.5% of its frontend bound up to 70% sparsity and is 1.10-1.26$\\times$ faster than an SCNN-style scatter accumulator with 18 banks and ideal RMW at 50-80% sparsity. Six engines meet 140 MHz on a PYNQ-Z2 using 21.1k LUTs and run LeNet-5 bit-exact on the board. For conv1, the engine needs 1.94$\\times$ fewer cycles than a dense engine (1.26$\\times$ faster end to end); for conv2, whose rows are only 13 pixels wide, it reaches 0.87$\\times$ the dense speed.",
+        "url": "http://arxiv.org/abs/2611.14495v1",
+        "date": "2026-11-10",
+        "author": "Aditya Saboo",
+        "type": "Paper"
+      },
+      {
+        "title": "Scott spectra of distributive continuous lattices",
+        "summary": "Let \\(L\\) be a distributive continuous lattice. We prove that the hull--kernel topology on \\(\\Spec(L)\\) is the Scott topology of the inclusion order if and only if \\(σ(L^{\\op})=\\upsilon(L^{\\op})\\). The necessary implication and the algebraic case are known. We prove sufficiency for arbitrary distributive continuous lattices, thereby obtaining the spectrum characterization requested by Lawson and Mislove. The proof embeds \\(L\\) into a continuous lattice that is both a frame and a coframe, and transfers the Scott topology of the spectrum along the induced map of spectra.",
+        "url": "http://arxiv.org/abs/2611.14412v1",
+        "date": "2026-11-10",
+        "author": "Yuxu Chen",
+        "type": "Paper"
+      },
+      {
+        "title": "Shape Perturbation of the Galerkin Boundary Element Dirichlet-to-Neumann Matrix on Moving Polygons",
+        "summary": "For nonlocal interface evolution problems such as the Mullins-Sekerka flow, certain parametric schemes discretize only the interface and approximate the Dirichlet-to-Neumann map by boundary elements. Their error analysis requires bounds on how this discrete operator changes as the polygon moves. In that analysis, the polygons are only Lipschitz and close to a smooth curve only in a Lipschitz norm, the perturbations are controlled only in the energy norm, and the kernels are singular on the diagonal. We study the symmetric Galerkin boundary element matrix on the polygons in a Lipschitz neighborhood of a smooth reference curve. Its first variation, tested against discrete Neumann solutions, is bounded by the energy norm of the perturbation alone. The second-order remainder of the associated mass form is bounded by the product of the energy norm and the Lipschitz norm of the perturbation, so that only one of the two factors needs a uniform bound. On the interpolating polygon, the matrix is consistent with the continuous operator without the logarithmic loss that a pointwise comparison of the kernels would suggest, and its shape derivative is consistent with that of the continuous operator. All bounds are uniform in the mesh size and depend only on the constants of the reference curve.",
+        "url": "http://arxiv.org/abs/2611.14349v1",
+        "date": "2026-11-10",
+        "author": "Tokuhiro Eto",
+        "type": "Paper"
+      },
+      {
+        "title": "Virtual Two-Step Nilpotency of the Fundamental Groups of Special Quasi-Projective Varieties",
+        "summary": "We prove that the fundamental group of every smooth connected complex quasi-projective variety that is special in the sense of Campana is virtually nilpotent of class at most two. This establishes the two-step nilpotency conjecture of Cao--Deng--Hacon--Păun, a quasi-projective analogue of Campana's almost abelian conjecture for special compact Kähler manifolds. Examples of Cadorel--Deng--Yamanoi show that the step bound is sharp. On a suitable finite etale cover, we construct a canonical second Albanese map to a torus torsor over an abelian variety. The proof reduces to showing that the kernel of the induced map on fundamental groups is finite. Using good minimal models and meridian groups of projective pairs, we show that an infinite kernel would yield a saturated rank-one subsheaf of logarithmic differentials whose Iitaka dimension contradicts specialness.",
+        "url": "http://arxiv.org/abs/2611.14283v1",
+        "date": "2026-11-10",
+        "author": "Tianshu Jiang",
+        "type": "Paper"
+      },
+      {
+        "title": "Deep Learning for Operator Maps in Optimal Liquidation",
+        "summary": "We analyze the solution map of a optimal execution problem in which price dynamics are subject to a general transient impact kernel. Given the structure of the optimal trading strategy derived by Abi Jaber and Neuman in \\cite{https://doi.org/10.1111/mafi.12465}, we show that the strategy is locally Lipschitz continuous with respect to the underlying model parameters governing temporary and transient price impact as well as the fundamental price process. Continuity of this map justifies the application of neural-net based approximations which take model parameters as inputs. We propose a method generating samples of the transient price impact kernel for the purposes of creating training data, and a method of projecting the kernel to a finite dimensional representation appropriate for input to a neural net, and a dimensional reduction based on the relationship between inventory and trade signal. We demonstrate the effectiveness of the trained neural net and use it to quantify the potential financial costs associated with misspecifying the transient impact kernel.",
+        "url": "http://arxiv.org/abs/2611.14245v1",
+        "date": "2026-11-10",
+        "author": "Ryan Donnelly",
+        "type": "Paper"
+      },
+      {
+        "title": "Verifiable Agentic Traffic Class: A Policed Quality-of-Service Mechanism for Agentic AI Traffic, Evaluated from Simulation to Real-Kernel Adversarial Testing",
+        "summary": "Software agents built on large language models generate traffic unlike human web traffic, yet routers have no class for it and cannot verify a sender's claim to be an agent. This paper proposes the Verifiable Agentic Traffic Class (VATC), which combines a reserved Differentiated Services Code Point (DSCP) value declaring agent traffic, a router-side classifier that demotes flows contradicting the declaration to a class served after best-effort traffic, and a rate-limited priority queue. VATC was compared with static Differentiated Services (DiffServ), a dedicated class that trusts the marking, and fq_codel, a per-flow fair-queuing scheduler, in two simulators and on a real Linux kernel. VATC matched DiffServ under steady load. In a constructed burst it cut mean agent queuing delay by 98% relative to DiffServ in simulation (assuming an immediate verdict), at a 12% increase in human delay; most of the gain came from the separate class. Under a spoofed flood in the kernel, the rate limit held human latency 11 times below DiffServ's. Without verification, DiffServ and a tightly configured fq_codel gave legitimate agents lower latency than VATC; a live four-feature classifier then demoted all 20 bulk-shaped spoofers and gave agents 0.30 ms, but missed six spoofers that copied the agent pattern. With emulated network delay, a timing feature of the classifier stopped separating agent from human flows. In real agent harnesses on a congested link, router queueing took 13% to 63% of task time, depending on harness and assumed model latency. The traffic was synthetic or sandbox-scale.",
+        "url": "http://arxiv.org/abs/2611.14211v1",
+        "date": "2026-11-10",
+        "author": "Naveen Babu Narayanan Nair",
+        "type": "Paper"
+      },
+      {
+        "title": "Performance Portability Explained: Insights from accelerating ICON microphysics",
+        "summary": "Scientific computing is under increasing pressure to adapt to HPC hardware that is shaped by AI workloads. In these modern ecosystems, extracting reasonable performance without investing major engineering effort is a central issue for domain scientists. Correctness constraints and intricate reference implementations represent further impediments to development. Instead of using a double-precision implementation as a reference, considering the underlying scientific problem directly opens more opportunities for performance improvements when updating and rewriting applications.   We take seven different portability frameworks---covering pragma-based, DSL, and data-centric approaches---and evaluate them on a microphysics kernel of the ICON climate model. Our performance benchmarks show that each different HPC system benefits from a different combination of optimizations, so we develop the measure of framework expressivity to gauge how easily each framework can customize portable implementations in this way.",
+        "url": "http://arxiv.org/abs/2611.14204v1",
+        "date": "2026-11-10",
+        "author": "Faveo Hörold",
+        "type": "Paper"
+      },
+      {
+        "title": "Integration by parts and DLR equations for SPDEs on the whole line",
+        "summary": "We study a stochastic reaction-diffusion equation on the whole real line, driven by space-time white noise, with a possibly nonlocal diffusion operator, such as a fractional Laplacian, and a coercive potential with polynomial growth. On the whole line, unlike on bounded intervals, its invariant measures cannot be described by an explicit density with respect to a Gaussian measure. We set the equation in suitable weighted spaces and show that invariant and infinitesimally invariant measures coincide, as do reversible measures and solutions to an integration-by-parts formula. We then show that the reversible measures are exactly the Gibbs measures defined through the Dobrushin-Lanford-Ruelle equations, without any moment condition, thanks to a priori estimates that also yield a Fernique-type theorem, uniform with respect to translations. In this way, we connect the Da Prato-Zabczyk approach to invariant measures of SPDEs with the DLR approach from statistical mechanics to Gibbs measures. Finally, we prove the existence of a reflection positive reversible measure and, in analogy with the one-dimensional long-range Ising model, we show that the reversible measure is unique, ergodic and translation invariant when the kernel of the nonlocal operator has a finite first moment, while it can be non-unique, for suitable double-well potentials, when the kernel has a power-law decay with infinite first moment.",
+        "url": "http://arxiv.org/abs/2611.14199v1",
+        "date": "2026-11-10",
+        "author": "Davide A. Bignamini",
+        "type": "Paper"
+      },
+      {
+        "title": "Asymptotically good codes from Siegel modular varieties",
+        "summary": "We construct asymptotically good codes by evaluating Siegel modular forms at superspecial points on congruence towers of Siegel modular varieties. For every genus $g\\ge2$ and every fixed weight $w\\ge g+1$, the construction gives such a family in sufficiently large characteristic, over a finite field which is independent of the level of the tower. The towers can be chosen so that this field is $\\mathbb{F}_{p^2}$. We give an explicit lower bound for the asymptotic rate. The lower bound for the relative minimum distance follows from the Pieri formula on the space of flags in the Hodge bundle and an intersection argument along its strata. We also prove that, for $p\\ge5$ and $0\\le w\\le p+1$, the kernel of evaluation in every genus consists precisely of the multiples of the ordinary Hasse invariant. For $g=2,3$, the geometry of the supersingular locus gives explicit bounds for the relative minimum distance and recovery sets whose sizes are bounded independently of the level.",
+        "url": "http://arxiv.org/abs/2611.14125v1",
+        "date": "2026-11-10",
+        "author": "Yota Maeda",
+        "type": "Paper"
+      },
+      {
+        "title": "Discrete-Time Stochastic Control Beyond i.i.d. Noise",
+        "summary": "We study discrete-time stochastic control problems where the noise driving the state dynamics is a stationary infinite-order chain rather than an i.i.d. sequence. We formulate the problem as a controlled Markov process by enlarging the state space to include the posterior distribution of the noise given the state-action history. Assuming that the sensitivity of the noise transition kernel to past noise values decays exponentially, we show that the expected total variation distance between the full-history and finite-memory noise filters decays at rate $\\sqrt{N}ρ^{\\sqrt{N}}$. We use this result to construct finite-memory control models and establish explicit near-optimality bounds for their policies. Finally, under suitable ergodicity conditions, we show that Q-learning converges to the optimal solution of the approximate model, so the same performance bounds apply to the learned policies.",
+        "url": "http://arxiv.org/abs/2611.14088v1",
+        "date": "2026-11-10",
+        "author": "Reyajul Hasan Leon",
+        "type": "Paper"
+      },
+      {
+        "title": "Sharp Proximity Bounds for Integer Programs with Few Rows",
+        "summary": "We study the proximity between an optimal vertex of a standard form linear program with constraint matrix $A\\in\\mathbb{Z}^{m\\times n}$ and an optimal integer solution. When $m = 2$, we prove the sharp infinity-norm bound $Δ-1$, where $Δ$ is the largest absolute maximal minor of $A$. When $m = 1$, we express the difference between an optimal LP vertex and an optimal integer solution as a nonnegative combination of certain generators in the kernel of $A$ with a bounded coefficient sum. This implies sharp proximity bounds for all norms when $m=1$. Combining this representation with its known counterpart for Hilbert bases due to Sissokho, we develop techniques that transfer results from $m=1$ to $m=2$. Along the way, for $m=2$, we prove that such a representation exists for an extended Gomory group relaxation and obtain the sharp infinity-norm bound $Δ$ for Graver basis elements. We also present a new short proof of Sissokho's result and lower bounds on the proximity for all $m$ and $Δ$.",
+        "url": "http://arxiv.org/abs/2611.14052v1",
+        "date": "2026-11-10",
+        "author": "Stefan Kuhlmann",
+        "type": "Paper"
+      },
+      {
+        "title": "Accelerating matrix-free fast diagonalization and preconditioned linear solvers for higher-order finite element discretized elliptic problems on distributed GPUs",
+        "summary": "The time to solution of an iterative solver depends on the number of iterations and the cost per iteration. This paper develops algorithms that reduce both for elliptic problems discretized with high-order continuous finite elements on distributed GPUs, implemented in a unified matrix-free code supporting CUDA, HIP and SYCL. A distributed direct fast-diagonalization (FD) Poisson solver provides exact solutions on tensor-product meshes with direction-wise grading and coefficients varying along one coordinate direction. Its tensor data stay distributed, moved between slab layouts by collective transposes or kept in place by a Schur-complement approach. It is also an exact coarse solver. A two-level hybrid Schwarz preconditioner with FD cell solves (HS-FD) is extended to 2:1 hanging-node octrees with exact local cell inverses, while a \\(p\\)-multigrid preconditioner with Chebyshev--Jacobi smoothing (CJ-\\(p\\)MG) resolves hanging-node constraints at every level within fused kernels. Both approaches exploit FP32, where cell shapes and coefficients allow, within an FP64 conjugate-gradient iteration, adaptively select replicated or distributed coarse levels, support block solves for multiple right-hand sides and determine all parameters from the operator without case-specific tuning. Comparisons with Jacobi-preconditioned conjugate gradients (Jacobi PCG), MFEM, nekRS and deal.II span uniform, graded and octree meshes, layered coefficients, and four applications across NVIDIA, AMD and Intel GPUs. The direct solver is two to three orders of magnitude faster than Jacobi PCG on uniform meshes. HS-FD converges in 11 iterations for an octree generalized Poisson problem across 8 to 1024 MI250X graphics compute dies. The results guide solver selection by mesh structure and coefficients",
+        "url": "http://arxiv.org/abs/2611.14041v1",
+        "date": "2026-11-10",
+        "author": "Gourab Panigrahi",
+        "type": "Paper"
+      },
+      {
+        "title": "Improvement to characterizations of BMO in terms of endpoint bounds for commutators and some counterexamples",
+        "summary": "In this paper, we extend the technique of Lerner, Ombrosi and Rivera-Ríos (Bull. Lond. Math. Soc. 51(1): 107--119, 2019) for the necessity of the strong-type boundedness of commutators to the endpoint case, and give characterizations of BMO via the endpoint bounds for commutators of singular integrals with rough kernels and related operators, which improve the conditions of Accomazzo (Israel J. Math. 228(2): 787--800, 2018), Guo et al. (J. Geom. Anal. 30(4): 3995-4035, 2020). We also give a characterization of BMO via the endpoint bounds for commutators of non-degenerate Calderón-Zygmund operators by removing the real-valued restriction on pointwise multiplier, which extend the results of Hytönen (J. Math. Pures Appl. (9) 156: 351--391, 2021) to the endpoint case. Finally, we find counterexamples to illustrate that weighted endpoint estimate of commutator of fractional integral operator does not necessarily imply $b\\in{\\rm BMO}$, and two-weighted endpoint estimate of Bloom type for commutator of Hilbert transform does not hold, which are missing for a long time.",
+        "url": "http://arxiv.org/abs/2611.14012v1",
+        "date": "2026-11-10",
+        "author": "Yongming Wen",
+        "type": "Paper"
+      },
+      {
+        "title": "Beyond Fourier and Laplace: The Hankel Neural Operator for Learning Solution Operators of Differential Equations",
+        "summary": "Fourier and Laplace neural operators (FNO, LNO) learn kernel integral operators in a transform domain evaluated on a periodic grid. FNO has no explicit mechanism for boundaries, initial states or transients; LNO adds pole--residue symbols but evaluates them on the discrete Fourier grid with unconstrained poles. FNO's error is large on undamped oscillators and grows under grid refinement. We introduce the Hankel neural operator (HNO), derived from the structure of the solution operator. We prove that the solution operator of a well-posed linear constant-coefficient boundary-value problem on an interval is a Toeplitz operator with a rational kernel plus a finite-rank Hankel-type operator carrying boundary information. Classical results of Kronecker, Nehari and Adamyan--Arov--Krein characterise this kernel class: stable poles, finite Hankel rank and norm bounds independent of the interval length. HNO realises the class in three ways: a non-periodic convolution evaluated by the FFT, with a causal form; a closed-loop Lur'e operator for dynamics without fading memory; and a rational Fourier multiplier that contains FNO as a special case. Trained from data alone, HNO has the lowest mean test error on all nine LNO benchmarks and on the Burgers, Darcy and Navier--Stokes benchmarks of FNO; two of these differences, and the Navier--Stokes comparison with a parameter-matched FNO, are not statistically significant. On the six ODE problems it lowers the better baseline's mean error 2.1--5.2 times, and its Darcy error stays nearly constant from $85^2$ to $421^2$ grids, where FNO's grows eightfold. Ablations support each component. Code and data: \\hnorepo{}.",
+        "url": "http://arxiv.org/abs/2611.13989v1",
+        "date": "2026-11-10",
+        "author": "Biswanath Barman",
+        "type": "Paper"
+      },
+      {
+        "title": "WINIC: An Automatic Cycle-Accurate Multi-Platform Microbenchmarking Tool for Instruction Performance Metrics",
+        "summary": "Performance models allow developers to gain important insights into the interaction of their code with the hardware that executes it, and enable them to apply target-specific optimizations. To create in-core performance models for out-of-order processors, architecture-specific performance metrics like latency, throughput, and port binding of individual instructions are indispensable. For x86 microarchitectures, there already exist tools to automatically obtain those values; however, the extension of performance modeling tools like the Open Source Architecture Code Analyzer (OSACA) to support further architectures like RISC-V emphasizes the need for a multi-platform microbenchmarking tool. We present WINIC (What I Need Is Cycles), an automatic cross-platform microbenchmarking tool. Unlike previous tools, it can obtain throughput and operand-based latency metrics for most supported instructions of any 64-bit x86, AArch64, and RISC-V microarchitecture without the need for root permissions or extended system control levels. We cover the methodology of microbenchmarking and the approach of WINIC to collect cycle-accurate performance data for assembly instructions. We show that WINIC can be used to automatically obtain a vast number of accurate results and demonstrate for four target microarchitectures that our results match between 71% and 99% of the performance data of instructions obtained by similar tools and documentation. Furthermore, we investigate how operand-based metrics measured by WINIC can be used to improve the in-core performance predictions on selected micro-kernels, exemplarily for the Neoverse V2 microarchitecture.",
+        "url": "http://arxiv.org/abs/2611.13978v1",
+        "date": "2026-11-10",
+        "author": "Tobias Rühl",
+        "type": "Paper"
+      },
+      {
+        "title": "Lengthscale Estimation for the Gaussian Kernel and Deterministic Response Functions",
+        "summary": "The uncertainty estimates Gaussian processes output rely on the chosen covariance kernel and its hyperparameters. We study the fixed-domain asymptotics of the maximum likelihood and cross-validation estimators of the lengthscale parameter of the popular infinitely smooth Gaussian kernel when the observations are produced by a fixed univariate response function. No theoretical results for Gaussian lengthscale estimation exist in this setting. We prove lower bounds on the lengthscale estimators that depend on the regularity of the response function, as measured by the rate of decay of its Fourier transform. If the response function lives in the Hilbert space of the Gaussian kernel with lengthscale $\\ell$, the lower bounds have a straightforward dependency on $\\ell$. For bandlimited functions and functions whose Fourier transforms decay as $\\exp(-a \\lvert ω\\rvert^γ)$ for $a > 0$ and $γ> 2$, we prove that the estimators blow up essentially at least as fast as $(\\log n)^{(γ-2)/(2γ)}$ in the number of data points, $n$. Bandlimited functions are identified with $γ= \\infty$. Unlike analogous results for finitely smooth Matérn kernels, our results make no assumptions on the geometry of the observation points. Numerical experiments illustrate the results.",
+        "url": "http://arxiv.org/abs/2611.13930v1",
+        "date": "2026-11-10",
+        "author": "Subhendu Pramanick",
+        "type": "Paper"
+      },
+      {
+        "title": "Connectivity and the equilibration of Boltzmann-type equations on dense graphs",
+        "summary": "We investigate the equilibration of solutions to a homogeneous Boltzmann-type equation whose collision kernel is given by a graphon encoding the connectivity structure of interacting agents. For a broad class of Lipschitz-continuous binary interaction rules, we show that, under suitable conditions relating the interaction parameters to the connectivity properties of the graphon, solutions converge exponentially fast towards those of the classical homogeneous Boltzmann-type equation without preferential connections, and hence towards its equilibrium distributions. We then consider in detail compromise-diffusion interaction rules and establish a quasi-invariant limit leading to a Fokker-Planck-type equation parametrised by the graphon connectivity. This limiting equation allows us to characterise explicitly both connectivity-independent and connectivity-dependent equilibrium distributions.",
+        "url": "http://arxiv.org/abs/2611.13908v1",
+        "date": "2026-11-10",
+        "author": "Andrea Tosin",
+        "type": "Paper"
+      },
+      {
+        "title": "Frames Associated with $C_0$-Semigroups",
+        "summary": "A central question in dynamical frame theory asks when the orbit $\\{Λ^n f\\}_{n\\in\\mathbb{Z}_+}$ of a vector $f$ under a bounded operator $Λ$ on a separable infinite-dimensional Hilbert space $H$ is a frame. Christensen, Hasannasab and Philipp answered it, showing in particular that such an operator must be similar to the compression of the unilateral shift on $H^2(\\mathbb{T})$ to a coinvariant subspace. We prove a continuous analogue: if a $C_0$-semigroup $\\{T(t)\\}_{t\\ge0}\\subset B(H)$ generates a continuous frame $\\{T(t)\\varphi\\}_{t\\ge0}$, then the operators $T(t)$ are simultaneously similar to the compressions of the shift semigroup to a fixed coinvariant subspace. Moreover, $\\{T(t)\\varphi\\}_{t\\ge0}$ is a continuous frame if and only if $\\{C^n(I-A)^{-1}\\varphi\\}_{n\\in\\mathbb{Z}_+}$ is a frame, where $A$ is the infinitesimal generator and $C=(I+A)(I-A)^{-1}$ the cogenerator; the frame bounds of the two systems differ by a factor $2$. We also derive necessary conditions for the existence of frame vectors and discuss several examples. Finally, we show that the compressed shift on a model space $K_θ$ is the cogenerator of a $C_0$-semigroup admitting frame vectors if and only if the inner function $θ$ has a finite angular derivative at $1$; in that case we describe all frame vectors, and the boundary reproducing kernel at $1$ generates a tight continuous frame.",
+        "url": "http://arxiv.org/abs/2611.13867v1",
+        "date": "2026-11-10",
+        "author": "Victor Bailey",
+        "type": "Paper"
+      },
+      {
+        "title": "A congruence-group counterexample to Kourovka Problem 21.7",
+        "summary": "For every prime $p>24$, let $H$ be the kernel of $\\SL_2(\\Z/p^9\\Z)\\to\\SL_2(\\F_p)$. We prove that $H$ is not IYB, whereas $H\\times C_{p^8}$ is IYB. The proof excludes a pre-Lie multiplication on the rank-three Lie ring with bracket $p[x,y]$ over $\\Z/p^8\\Z$ using three trace identities. It follows that the supersoluble group $H\\times(C_{p^8}\\rtimes C_2)$, with the involution acting by inversion, has IYB Sylow subgroups and is not IYB. Its nilpotent residual is cyclic and its Sylow $p$-subgroup has nilpotency class eight. For $p=31$, an action of order three gives a supersoluble counterexample of odd order $3\\cdot31^{32}$. The same construction gives an IYB $p$-group with a specified central cyclic direct factor such that the quotient of the whole group by the unique subgroup of order $p$ in that factor is non-IYB.",
+        "url": "http://arxiv.org/abs/2611.13792v1",
+        "date": "2026-11-10",
+        "author": "Lü Gong",
+        "type": "Paper"
+      },
+      {
+        "title": "Softness is something you also need! Why compliance helps control: information metrics of a passive walker with compliant ankle",
+        "summary": "A great gap in adaptivity, flexibility, and dexterity still exists between intelligent robots, whether they are made of rigid or (partially) compliant components, and their naturally evolved animal and vegetal counterparts. One reason could be of `paradigm' nature. On the one hand, most robots (both rigid and soft) are still designed by following a `Cartesian' approach, with top-down control and a clear mind-body separation. Designing artificial agents on the basis of the principles that we observe in biology is not an easy task. The principles of organization of animals and plants rely on morphological computation and emergence of fit behaviors from loosely coupled networks of embodied agents.   Modeling and control require radically new approaches. In this paper we briefly recall and explain some seminal mathematical results linking information metrics and dynamics of the agents, already published years ago; we integrate them with some recent methods developed by us and by the community, we highlight some brief remarks about their relevance and we hint to our current and near future work towards finding concrete and efficient ways for the modeling and control of completely or partially compliant artificial agents and for a better understanding of physical intelligence in nature. We present a technical note summarizing phase-space volume calculations for inverted-pendulum and passive-dynamic walking models, following our proposed framework. Starting from the McGeer compass gait, we introduce knee-ankle compliance, foot-rocker effects, and a Ruina-style compass gait with distributed leg inertia. Standard heel-strike maps are derived and used in the estimation of viable phase-space volumes $W(γ)$, based on a state-dependent Monte-Carlo and Reproducing Kernel Hilbert Spaces methods. We show how the methods based on RKHS allow deeper and more subtle analysis.",
+        "url": "http://arxiv.org/abs/2611.13779v1",
+        "date": "2026-11-10",
+        "author": "Fabio Bonsignorio",
+        "type": "Paper"
+      },
+      {
+        "title": "FAME-QP: A GPU-Accelerated Quadratic-Programming Solver for Real-Time Model Predictive Control",
+        "summary": "We present FAME-QP, a GPU-accelerated solver for dense quadratic programs arising in linear model predictive control. FAME-QP combines constraint-dependent operator representations with fused single- and two-kernel iterations replayed through CUDA graphs, automatically selecting the execution configuration through device calibration and problem-specific timing. It probes a cached operator bank to select the initial penalty and updates operators lazily when problem matrices change. Numerical benchmarks and simulated humanoid and quadrotor control experiments demonstrate reduced latency relative to competing GPU solvers while maintaining solution accuracy and control performance.",
+        "url": "http://arxiv.org/abs/2611.13766v1",
+        "date": "2026-11-10",
+        "author": "Santosh Mohan Rajkumar",
+        "type": "Paper"
+      }
+    ]
+  },
+  "Pre-training & Distributed Infrastructure": {
+    "keywords": [
+      "pre-training",
+      "pretraining",
+      "foundation model",
+      "megatron",
+      "deepspeed",
+      "fsdp",
+      "tensor parallel",
+      "pipeline parallel",
+      "sequence parallel",
+      "3d parallelism",
+      "context parallelism",
+      "data parallel",
+      "cluster scheduling",
+      "collective communication",
+      "nccl"
+    ],
+    "items": [
+      {
+        "title": "HaiRuo: Forecasting Ocean Eddies as Fields and Objects with a Satellite-Altimetry Foundation Model",
+        "summary": "Mesoscale eddies carry most of the ocean's kinetic energy and move heat, salt and nutrients across basins, yet where an eddy will be two weeks ahead is still read off ocean models with post-hoc tracking heuristics. We introduce HaiRuo, which forecasts eddies as fields and as objects at once: from 30 days of satellite sea-level maps, one forward pass returns 15 days of sea level and geostrophic velocity, daily eddy masks and the trajectory of every eddy alive today. HaiRuo pairs two components with a clear division of labour: (1) HaiRuo-1B, an open-weight 1.05-billion-parameter foundation model pretrained without labels on 24 years of global satellite-altimetry observations, which supplies the 15-day physical fields and masks (+0.14 field skill and +1.1 mIoU points under the same decoder) and further lowers 15-day centre error by 1.2 km frozen (1.35 km over training from scratch); and (2) XuanJi, a Lagrangian object decoder that samples the evolving forecast in each eddy's co-moving polar frame and refines the 15-day path across three look-ahead rounds, removing 2.5 km on HaiRuo-1B (2.9 km with joint fine-tuning) and 2.5-3.3 km via its object attention across six published backbones. Under one pre-registered global evaluation over the whole ocean, HaiRuo improves on fourteen methods on every endpoint (25.2 vs. 30.6 km 15-day centre error, -18%), holding its margin outside the labelled regions and through both phases of the El Nino-Southern Oscillation (ENSO), while reproducing westward drift, 50-60 deg S eastward reversal and poleward cyclone-anticyclone deflection. Over ten days through one fixed tracker, HaiRuo's forecast field cuts the eddy-centre error of WenHai and XiHe by 37-43% (-2.8 km vs. day 0 while they degrade +4.3-8.7 km), and its object trajectories cut pipeline error by 77-78% globally. Open-weight checkpoints, code and project page: https://github.com/xkqin/HaiRuo",
+        "url": "http://arxiv.org/abs/2611.14136v1",
+        "date": "2026-11-10",
+        "author": "Xukun Qin",
+        "type": "Paper"
+      },
+      {
+        "title": "Satellite Pretraining Is Not One Thing: A Matched-Pair Study of Generic and Earth-Observation Foundation Models for Scene Classification",
+        "summary": "Geospatial foundation models are pretrained on satellite and aerial imagery, but whether such an encoder beats a strong generic one for few-label land-use/land-cover mapping remains unclear, as prior comparisons rarely isolate the pretraining data. We study five matched pairs of Earth-observation (EO) and generic encoders sharing objective and architecture (DINO/SatDINO, DINOv3/DINOv3-SAT, MAE/SatMAE, MAE/Scale-MAE, CLIP/RemoteCLIP) within a benchmark of 14 frozen encoders on five RGB scene-classification datasets (0.06-30 m GSD). With native preprocessing, we evaluate k-NN, linear and attentive probes and image retrieval over six low-label splits, using paired per-image significance tests. EO pretraining is not uniformly helpful: on most datasets and metrics, it significantly improves three pairs (SatDINO, Scale-MAE, RemoteCLIP, the latter evaluated only on unseen datasets) and significantly hurts two (linear probe: DINOv3-SAT by up to 22.5 points, SatMAE by up to 8.8), with opposite outcomes even for two MAEs pretrained on the same fMoW-RGB imagery. These effects are robust to patch-token pooling and attentive probing, concentrate on small man-made objects, and are largest with 1-5% labels. Across encoders, the silhouette score of frozen embeddings predicts k-NN accuracy and retrieval mAP almost perfectly (Spearman $ρ\\geq 0.96$ on four of five datasets). Pretraining on satellite imagery is thus not a reliable selection criterion; candidate checkpoints must be validated on target data.",
+        "url": "http://arxiv.org/abs/2611.13849v1",
+        "date": "2026-11-10",
+        "author": "Sandarbh Agrawal",
+        "type": "Paper"
+      },
+      {
+        "title": "Game-Enhanced Embodied Learning with Event and Foresight Pretraining",
+        "summary": "Human gameplay supplies paired observations, actions, and visual consequences that can supplement robot-policy training. We study event-and-foresight pretraining for InternVLA-A1.5, combining recorded keyboard/mouse event prediction with history-conditioned visual supervision through a frozen video model. Coverage-preserving anchor selection constructs one-second targets, and an attention mask prevents teacher-forced future actions from entering foresight queries. The selected corpus contains 394 recordings across 20 games, with 223.36 hours of recorded timestamp span and 2,072,084 training anchors. After 12,400 game-pretraining updates, we compare the resulting initialization with the public base under the same suite-specific robot fine-tuning protocol. Across four LIBERO suites, aggregate success increases from 1,718/2,000 (85.90%) to 1,811/2,000 (90.55%), a gain of 4.65 percentage points. Suite gains are 9.2, 6.8, 0.2, and 2.4 points on Spatial, Object, Goal, and Long. The 40-task breakdown shows 24 improvements, 10 declines, and six ties. These results support the practical value of the complete game-pretraining stage in this evaluated setting, while revealing heterogeneous task outcomes. The comparison includes additional optimization and does not isolate the effects of game data, the two objectives, or training variability.",
+        "url": "http://arxiv.org/abs/2611.13819v1",
+        "date": "2026-11-10",
+        "author": "Lianlei Shan",
+        "type": "Paper"
+      }
+    ]
+  },
+  "Post-training, Alignment & RL": {
+    "keywords": [
+      "post-training",
+      "post training",
+      "rlhf",
+      "dpo",
+      "ppo",
+      "grpo",
+      "reinforcement learning from human feedback",
+      "instruction tuning",
+      "sft",
+      "preference optimization",
+      "reasoning models",
+      "distillation",
+      "lora",
+      "qlora"
+    ],
+    "items": [
+      {
+        "title": "A Theory of Policy Optimization in Post-Training: Coverage Collapse and Reference Resets",
+        "summary": "Policy optimization is central to language model post-training, yet principled guidance remains limited. We revisit its theoretical foundations to identify algorithms that learn near-optimal policies using total samples and gradient steps governed by the base model's response coverage, a measure of how readily it generates optimal responses. We call such algorithms coverage-preserving. This guarantee captures the goal of amplifying capabilities accessible through sampling from the base model.   (1) Coverage collapse. REINFORCE, the basis for PPO and GRPO, can drive the probability of optimal responses to near zero, even as reward improves. This coverage collapse stalls optimization, and convergence can require exponentially many steps despite good initial coverage. The failure arises even with exact gradients and persists under KL regularization to the base model.   (2) Reference resets. We show that repeatedly resetting the KL reference to the most recent policy mitigates coverage collapse. We formalize this intervention in Approximate Policy Mirror Descent (APMD), a meta-algorithm that approximately solves a sequence of KL-regularized RL subproblems. APMD enables stronger regularization, making each subproblem easier to solve, while reference resets allow convergence to global optimality.   (3) Coverage-preserving algorithms. For softmax linear policies over pretrained features, we use APMD to establish the first global convergence guarantees showing that widely used families of post-training algorithms are coverage-preserving. These include stylized PPO and GRPO variants with explicit KL regularization and reference resets, and squared-loss algorithms that implement them implicitly, including those used to train the Kimi models.   These results clarify how regularization, clipping, and objective choice affect the sampling and optimization costs of post-training.",
+        "url": "http://arxiv.org/abs/2611.14467v1",
+        "date": "2026-11-10",
+        "author": "Audrey Huang",
+        "type": "Paper"
+      },
+      {
+        "title": "From Search to Decision: How Post-Training Shapes Information-Seeking Capabilities in Large Language Models",
+        "summary": "Information seeking in large language model (LLM) systems increasingly involves decisions about when to acquire information, where to search, and how to evaluate and use evidence. Recent post-training methods have improved several such behaviors, but their objectives and evaluations span different tasks and system settings. This paper organizes research around six interrelated information-seeking capabilities and examines the learning signals, optimization methods, update loci, and credit-assignment mechanisms used to develop them. We synthesize empirical progress in targeted behaviors, end-to-end performance, search control, and generalization. Existing studies report gains in retrieval routing, query refinement, multi-tool exploration, evidence-grounded reasoning, and resource-aware search, although the scope of behavioral evidence varies across capabilities. We identify open challenges in estimating prospective retrieval utility, coordinating information-seeking decisions, and adapting to unfamiliar retrieval environments, and discuss evaluation practices for interpreting future progress.",
+        "url": "http://arxiv.org/abs/2611.14149v1",
+        "date": "2026-11-10",
+        "author": "Haohang Huang",
+        "type": "Paper"
+      },
+      {
+        "title": "Coding Agent Memory Post-Training II: Unlocking the Memory Potential of Pre-trained File Operations for Long-Horizon Tasks via On-Policy Distillation",
+        "summary": "Language-model agents increasingly tackle long-horizon tasks whose interaction histories exceed the model's active context. They must therefore decide what to write down and what to read back, and when to do either. Recent work has begun to use on-policy distillation (OPD) to make memory control part of the policy, relying on memory tools and compaction protocols that lie outside either model's pre-training. However, this weakens the distillation on both sides: the teacher cannot give useful guidance on an interface it has never used, and the student samples too few meaningful memory actions for that guidance to take effect. To study this problem, we introduce Coding Agent Memory Gym II (CAMG-II), a suite of long-horizon agentic-RL environments spanning Shop, Coding, AutoResearch, General, and Visual. Alongside each environment's native task interface, CAMG-II provides ordinary Bash access and an episode-persistent workspace, enabling the policy to create, revise, search, and reuse files as memory across context replacements. We also introduce Coding Agent Memory Post-Training II (CAMP-II), which trains a single policy jointly across all five environments with fully asynchronous OPD to learn this file-based memory behavior directly from a frozen teacher with a prior for file operations. On CAMG-II, CAMP-II obtains 2.97 times the gain of the strongest OPD baseline. The memory behavior CAMP-II learns generalizes to two external benchmarks, Terminal-Bench 2.1 and SWE-Bench Pro V2, with improved success rates.",
+        "url": "http://arxiv.org/abs/2611.14009v1",
+        "date": "2026-11-10",
+        "author": "Lirui Luo",
+        "type": "Paper"
+      }
+    ]
+  }
+}
