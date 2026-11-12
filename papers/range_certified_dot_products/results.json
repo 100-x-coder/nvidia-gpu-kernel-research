@@ -1,0 +1,35 @@
+{
+  "study": "synthetic interval-planner evaluation; not a GPU benchmark",
+  "seed": 20261112,
+  "prime": 2130706433,
+  "hardware_accumulator": "signed int32",
+  "reduction_length": 100000,
+  "output_rows": 512,
+  "activation_interval": [
+    -127,
+    127
+  ],
+  "global_weight_interval": [
+    -127,
+    127
+  ],
+  "global_safe_chunk_length": 66052,
+  "per_row_safe_chunk_length_min": 66052,
+  "per_row_safe_chunk_length_median": 100000,
+  "per_row_safe_chunk_length_max": 100000,
+  "rows_safe_without_split": 329,
+  "baseline_row_chunk_count": 1024,
+  "interval_aware_row_chunk_count": 695,
+  "chunk_count_reduction_fraction": 0.3212890625,
+  "strict_wrap_boundary_chunk_length": 66052,
+  "checks": [
+    "interval corner products",
+    "strict modular-wrap boundary",
+    "int32 accumulator bounds",
+    "4096 deterministic concrete dot-product terms; modular aliases excluded"
+  ],
+  "limitations": [
+    "synthetic declared channel ranges; real ranges must be enforced by the proof circuit",
+    "no GPU kernel, prover, end-to-end model, or latency evaluation"
+  ]
+}

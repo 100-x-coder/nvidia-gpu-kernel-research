@@ -13,6 +13,7 @@ The theorems in `PaperClaims.lean` were checked with Lean 4.35.0 and Mathlib v4.
 | ACDG | `SLAClaims.scalar_decay_perturbation_bound` | A diagonal gate error bounded by `e` scales each scalar state coordinate by at most `e` in absolute value. | Coordinatewise lemma only. The finite-matrix Frobenius aggregation, Python dynamic program, and floating-point behavior are not formalized. Run `lake env lean SLAClaims.lean` from `papers/formal`. |
 | Ada-CISA | `PaperClaims.uniform_mean_separates_salient_key` | Splits one key's contribution from the background term in an arithmetic chunk mean; its coefficient is `1 / C`. | Algebra only; it does not prove that this term dominates retrieval scores or that a miss is caused by dilution. |
 | Noise-aware promotion | `PaperClaims.monotone_map_lt_iff` | A strictly monotone map preserves and reflects strict inequalities over a linear order. | Generic order fact; used to explain why a monotone transform preserves a threshold comparison. |
+| Range-certified dot-product tiling | `RangeCertifiedDotClaims.no_modular_alias`, `interval_residual_bound`, `interval_field_equality` | Endpoint bounds put the integer residual strictly inside `(-p,p)`; a modular equality then implies integer equality. | The proof assumes circuit-enforced sum/output intervals and a positive modulus; it does not verify that a circuit enforces those intervals, that model metadata is bound, or GPU arithmetic. From `papers/formal`, run `lake build Mathlib.Tactic.Linarith` followed by `lake env lean RangeCertifiedDotClaims.lean`. |
 | Ordered parallel splat composition | `SplatCompositionClaims.compose_assoc` | The pairwise front-to-back segment composition is associative over real arithmetic. | Exact algebra only; float32 reassociation and GPU behavior are not formalized. The identity laws are also proved. Run `PATH="$HOME/.elan/bin:$PATH" lake env lean SplatCompositionClaims.lean` from `papers/formal`. |
 
 Compile from this directory with:
@@ -33,3 +34,7 @@ The ordered splat composition paper uses `experiment.py` directly and does not p
 ## Robust decode-boundary regret
 
 `RobustDecodeClaims.lean` proves that if an oracle utility dominates a fixed action pointwise over a finite scenario index, then any nonnegative weighted sum of oracle utility also dominates the weighted sum for that fixed action. Checked using `/home/leesiyuan/.elan/bin/lake env lean RobustDecodeClaims.lean` from `papers/formal` with Lean 4.35.0 / Mathlib v4.35.0. The finite-action minimax selection statement in the paper follows directly from selecting an argmin of worst-case regret; the Lean lemma does not prove scenario generation, surrogate validity, practical switching value, or accelerator behavior.
+
+## Range-certified dot-product tiling
+
+`RangeCertifiedDotClaims.lean` proves that a field equality lifts to integer equality when the full residual interval is strictly within the field modulus. Checked with the repository-pinned Lean 4.35.0 / Mathlib v4.35.0. The experiment uses synthetic operand ranges and does not establish circuit enforcement or accelerator behavior.
