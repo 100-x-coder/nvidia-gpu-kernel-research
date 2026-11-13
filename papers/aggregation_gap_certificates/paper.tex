@@ -1,0 +1,38 @@
+\documentclass[11pt]{article}
+\usepackage[final]{acl}
+\usepackage{times,latexsym}
+\usepackage{amsmath,amssymb,booktabs}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype,inconsolata}
+\title{Second-Moment Certificates for Aggregation-Induced GPU Load Blind Spots}
+\author{Lee Si Yuan \\
+  Independent Researcher \\
+  \texttt{siyuanlee.cs@gmail.com}}
+\begin{document}\maketitle
+\begin{abstract}
+Analytical GPU performance models need to distinguish fixed-latency stalls from queueing stalls and account for demand on individual hardware units. ForeSight addresses the latter by recovering per-unit counters with UnitSight. We add a lightweight diagnostic to that per-unit demand vector: for nonnegative loads $x_i$, $C=\sum_i x_i^2/\sum_i x_i$ is a certified lower bound on the maximum unit load. Unlike the mean $\sum_i x_i/n$, this certificate increases with concentration and is exact when all demand is on one unit. A Lean 4 proof checks the two-unit natural-number case and an equal-aggregate counterexample. In 10,000 seeded synthetic eight-unit log-normal workloads, the mean ratio of actual maximum to certificate was 1.56, compared with 2.90 for the mean-load baseline, with no observed bound violations. This CPU-only experiment establishes neither GPU accuracy nor queueing-delay prediction. The result is an exploratory diagnostic, not a replacement for schedule replay or a queueing model.
+\end{abstract}
+\section{Motivation and scope}
+ForeSight observes that queueing stalls vary with pressure on each hardware unit, and UnitSight recovers per-unit counters that ordinary profiler outputs aggregate. Wang et al. (2026) report an 8.3\% kernel-time MAPE across configurations of nine NVIDIA GPUs and 2.0\% end-to-end MAPE for evaluated vLLM inference. We ask a narrower question: given nonnegative per-unit demand, can a scalar concentration statistic provide a cheap, safe diagnostic of load imbalance?
+
+For $n$ units with $x_i\ge0$ and nonzero total $S=\sum_i x_i$, define $C=\sum_i x_i^2/S$, mean $\mu=S/n$, and maximum $M=\max_i x_i$. Since $x_i\le M$, $x_i^2\le Mx_i$. Summing gives $C\le M$. Cauchy--Schwarz gives $S^2\le n\sum_i x_i^2$, so $\mu\le C$. Hence $\mu\le C\le M$. This is a load-domain bound, not a runtime or queueing-delay predictor.
+
+The source identifier arXiv:2611.13762v1 was absent from prior paper artifacts and paper-specific commits before its first appearance in the 2026-11-11 daily feed. The `latest` entry is an alias of that snapshot. This audit covers repository history and available session context only. The source v1 text was consulted for this study.
+\section{Synthetic CPU experiment}
+The standard-library script uses seed 20261113 to generate 10,000 independent eight-unit vectors with Python's \texttt{random.lognormvariate(0,1)}. It compares the aggregate mean bound $\mu$ and second-moment certificate $C$ against the synthetic maximum $M$. Ratios $M/$bound closer to one indicate tighter lower bounds.
+\begin{table}[t]\centering\small
+\begin{tabular}{lrrr}\toprule Bound & Mean ratio & Median & 95th pct.\\\midrule
+Aggregate mean $\mu$ & 2.898 & 2.691 & 4.786\\
+Second moment $C$ & 1.561 & 1.569 & 1.780\\\bottomrule\end{tabular}
+\caption{Synthetic CPU load experiment; not GPU timings.}\end{table}
+There were zero numerical violations in 10,000 trials. Vectors $(10,0)$ and $(5,5)$ have the same mean 5 but maxima and certificates of 10 and 5. No GPU kernel, profiler, or queueing simulator was run.
+\section{Formal scope and limitations}
+\texttt{AggregationGapClaims.lean} compiles with Lean 4.35.0 and proves the equal-sum/different-maximum example and the two-unit natural-number inequality $x^2+y^2\le\max(x,y)(x+y)$. The general finite-vector argument above is not formalized in Lean. The proof does not validate counters, service rates, or execution time.
+
+The experiment assumes synthetic i.i.d. loads and equal capacities. A hardware study should compute the statistic from validated per-unit counters, then test whether it predicts held-out imbalance or calibrates an existing runtime model. This environment has no available NVIDIA GPU; no hardware result is claimed.
+\section*{Reproducibility}
+Run \texttt{python3 experiment.py} here and \texttt{lake env lean AggregationGapClaims.lean} from \texttt{papers/formal}.
+\begin{thebibliography}{1}
+\bibitem[Wang et al.(2026)]{wang2026foresight} Ziwen Wang, Qi Luo, Kunlin Li, Changxi Liu, Dongsheng Wang, and Yun Chen. 2026. Exploiting What NVIDIA Profilers Hide: Fast and Accurate Analytical GPU Performance Modeling. arXiv:2611.13762v1. \url{https://arxiv.org/abs/2611.13762v1}.
+\end{thebibliography}\end{document}

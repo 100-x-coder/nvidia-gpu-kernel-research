@@ -38,3 +38,7 @@ The ordered splat composition paper uses `experiment.py` directly and does not p
 ## Range-certified dot-product tiling
 
 `RangeCertifiedDotClaims.lean` proves that a field equality lifts to integer equality when the full residual interval is strictly within the field modulus. Checked with the repository-pinned Lean 4.35.0 / Mathlib v4.35.0. The experiment uses synthetic operand ranges and does not establish circuit enforcement or accelerator behavior.
+
+## Aggregation-gap certificate
+
+`AggregationGapClaims.lean` was checked with Lean 4.35.0. It proves that the two load vectors `(10, 0)` and `(5, 5)` have equal sums but different maxima, and proves `x^2 + y^2 ≤ max(x,y) * (x+y)` for natural-number `x,y`. The paper gives a direct termwise derivation of the corresponding finite nonnegative-vector lower bound; that general statement is not formalized in Lean. No hardware counters, queueing delay, or GPU runtime are verified. Run `~/.elan/bin/lake env lean AggregationGapClaims.lean` from this directory.

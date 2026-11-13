@@ -1,0 +1,40 @@
+{
+  "experiment": "synthetic independent per-unit service loads; not GPU execution",
+  "seed": 20261113,
+  "trials": 10000,
+  "units": 8,
+  "load_distribution": "Python random.lognormvariate(mu=0, sigma=1)",
+  "mean_load_baseline": {
+    "mean_actual_over_bound": 2.8984912328105996,
+    "median_actual_over_bound": 2.6914538760531066,
+    "p95_actual_over_bound": 4.786180707317705
+  },
+  "second_moment_certificate": {
+    "formula": "sum(load_i^2)/sum(load_i)",
+    "violations": 0,
+    "mean_actual_over_bound": 1.5613510544183415,
+    "median_actual_over_bound": 1.5691227196936137,
+    "p95_actual_over_bound": 1.779831153462794
+  },
+  "paired_examples": [
+    {
+      "loads": [
+        10,
+        0
+      ],
+      "aggregate_mean": 5,
+      "actual_max": 10,
+      "certificate": 10
+    },
+    {
+      "loads": [
+        5,
+        5
+      ],
+      "aggregate_mean": 5,
+      "actual_max": 5,
+      "certificate": 5
+    }
+  ],
+  "interpretation": "The certificate is a lower bound on maximum load, not a point predictor; ratios quantify looseness."
+}
