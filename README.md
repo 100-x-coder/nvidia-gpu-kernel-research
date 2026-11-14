@@ -24,6 +24,12 @@ A curated map of research and open-source implementations for high-performance k
 | [FlashAttention-4 (2026)](https://arxiv.org/abs/2603.05451) | Co-designs the attention algorithm and kernel pipeline for asymmetric hardware scaling; targets newer GPU generations. | [Dao-AILab/flash-attention](https://github.com/Dao-AILab/flash-attention) |
 | [TileLang: Bridge Programmability and Performance in Modern Neural Kernels (ICLR 2026)](https://proceedings.iclr.cc/paper_files/paper/2026/hash/76fb92288bf90360c527efb0d1c2aba6-Abstract-Conference.html) | Evaluates a composable tiled DSL across neural-kernel workloads, including attention. | [tile-ai/tilelang](https://github.com/tile-ai/tilelang) |
 
+### Research extensions
+
+| Work | Contribution | Artifacts |
+|---|---|---|
+| [Decay-Aware Error Budgets for Recurrent-State SVD](./papers/decay_budgeted_sinkstate/paper.pdf) | Lee Si Yuan, Independent Researcher. Derives and Lean-checks a scalar-decay Frobenius error recurrence for exact SVD truncation, with an exact-rational CPU check on synthetic diagonal states. It does not benchmark SinkState, a language model, or a GPU. | [ACL LaTeX](./papers/decay_budgeted_sinkstate/paper.tex) • [Markdown](./papers/decay_budgeted_sinkstate/DECAY_BUDGETED_SINKSTATE.md) • [Experiment and results](./papers/decay_budgeted_sinkstate/) • [Lean lemma](./papers/formal/DecayBudgetClaims.lean) |
+
 ### Kernel programming models and abstractions
 
 | Work | Contribution | Code / resources |

@@ -1,0 +1,34 @@
+{
+  "study": "decay-aware Frobenius truncation budget for diagonal recurrent states",
+  "execution": "exact Python Fraction arithmetic on CPU; no GPU, SVD, or language model",
+  "seed": 20261114,
+  "trials": 32,
+  "steps_per_trial": 160,
+  "width": 16,
+  "baseline": {
+    "name": "relative singular-value threshold",
+    "epsilon": "1/10"
+  },
+  "proposed": {
+    "name": "decay-aware cumulative Frobenius-error budget",
+    "state_error_budget": "1/2"
+  },
+  "transition": "H_t = alpha_t H_(t-1) + u_t v_t^T; diagonal rank-one updates only",
+  "invariant": "||H_t - Hhat_t||_F <= B; local discarded Frobenius norm <= B*(1-alpha_t)",
+  "results": {
+    "checks": 5120,
+    "budget_bound_violations": 0,
+    "threshold_mean_retained_rank": 10.789453125,
+    "budget_mean_retained_rank": 12.2814453125,
+    "threshold_mean_worst_coordinate_readout_error": 3.428125,
+    "budget_mean_worst_coordinate_readout_error": 0.11616235039253163,
+    "budget_max_observed_readout_error": 0.12957587726370734,
+    "maximum_certificate": "1/2"
+  },
+  "limitations": [
+    "diagonal matrices make singular values exact absolute diagonal entries; this is not a general SVD implementation",
+    "updates are synthetic rank-one writes and do not model Mamba, GDN, or KDA data",
+    "rank counts omit factor storage, compaction overhead, numerical roundoff, and kernel launch costs",
+    "the certificate assumes scalar decay 0 <= alpha <= 1 and an exact best low-rank truncation"
+  ]
+}

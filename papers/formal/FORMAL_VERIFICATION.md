@@ -42,3 +42,7 @@ The ordered splat composition paper uses `experiment.py` directly and does not p
 ## Aggregation-gap certificate
 
 `AggregationGapClaims.lean` was checked with Lean 4.35.0. It proves that the two load vectors `(10, 0)` and `(5, 5)` have equal sums but different maxima, and proves `x^2 + y^2 ≤ max(x,y) * (x+y)` for natural-number `x,y`. The paper gives a direct termwise derivation of the corresponding finite nonnegative-vector lower bound; that general statement is not formalized in Lean. No hardware counters, queueing delay, or GPU runtime are verified. Run `~/.elan/bin/lake env lean AggregationGapClaims.lean` from this directory.
+
+## Decay-aware recurrent-state error budget
+
+`DecayBudgetClaims.lean` checks the scalar step rule and by induction the invariant `e_t ≤ B` for `e_t ≤ α_t e_(t-1) + δ_t`, with `0 ≤ α_t ≤ 1` and `0 ≤ δ_t ≤ B(1-α_t)`. This proves only the real-number recurrence. It does not formalize the matrix Frobenius norm, SVD tail residual, floating-point effects, or SinkState's local/frozen update. Run `~/.elan/bin/lake env lean DecayBudgetClaims.lean` from this directory using Lean 4.35.0 / Mathlib 4.35.0.

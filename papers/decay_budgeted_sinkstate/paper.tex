@@ -1,0 +1,79 @@
+\documentclass[11pt]{article}
+\usepackage[final]{acl}
+\usepackage{times,latexsym}
+\usepackage{amsmath,amssymb,booktabs}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype,inconsolata}
+\title{Decay-Aware Error Budgets for Recurrent-State SVD}
+\author{Lee Si Yuan \\
+  Independent Researcher \\
+  \texttt{siyuanlee.cs@gmail.com}}
+\begin{document}
+\maketitle
+\begin{abstract}
+SinkState stores linear-attention recurrent states in adaptive low-rank form and truncates components with a relative singular-value threshold. Such a threshold does not directly bound state or readout error accumulated across updates. We extend the scalar-decay recurrence with a certified Frobenius-error budget: if the current error bound is $b_{t-1}$, decay is $\alpha_t\in[0,1]$, and truncation residual is at most $\delta_t$, then $b_t=\alpha_tb_{t-1}+\delta_t$ is a bound. Choosing a rank with $\delta_t\le B-\alpha_tb_{t-1}$ preserves a fixed budget $B$ and bounds each readout error by $B\|q_t\|_2$. An exact-rational CPU experiment checks 5,120 synthetic diagonal-state steps with zero violations. The experiment does not validate model quality, GPU speed, or the exact-truncation premise for SinkState's local/frozen update.
+\end{abstract}
+
+\section{Introduction}
+Linear-attention systems update a recurrent matrix state and read it with the current query. SinkState observes low effective rank in such states and maintains adaptive low-rank factors using buffered updates, local SVD, and asynchronous consolidation \citep{jiang2026sinkstate}. Its design truncates components relative to the largest singular value. A relative threshold is a rank rule, but does not itself state a cumulative error budget for a long sequence of updates.
+
+We derive a simple state-error certificate for scalar decay and exact low-rank truncation, then test it using exact rational arithmetic on a deliberately restricted diagonal recurrence. The extension exposes a trade-off: a guaranteed error budget may retain more components than a relative threshold. It does not show that the guarantee can be added to SinkState's local/frozen algorithm without further residual accounting.
+
+The source arXiv:2611.14246v1 first appears in the 2026-11-11 daily feed and is carried into the November 12 snapshot. Its identifier and title were absent from prior paper artifacts and paper-specific Git history before this work. The feed contained title/abstract metadata; the full v1 paper was consulted. This audit covers repository history and available session context, not external access logs.
+
+\section{Decay-aware truncation certificate}
+Let the exact state follow
+\begin{equation}
+ H_t=\alpha_tH_{t-1}+u_tv_t^\top,\qquad 0\le\alpha_t\le1,
+\end{equation}
+and let the compressed state start from $\widehat H_{t-1}$. Before truncation, apply the same decay and rank-one update to obtain $\widetilde H_t=\alpha_t\widehat H_{t-1}+u_tv_t^\top$. Thus
+\begin{equation}
+ \|H_t-\widetilde H_t\|_F=\alpha_t\|H_{t-1}-\widehat H_{t-1}\|_F.
+\end{equation}
+Let the truncation be $\widehat H_t=\widetilde H_t-R_t$, with $\|R_t\|_F\le\delta_t$. The triangle inequality yields
+\begin{equation}\label{eq:recurrence}
+ \|H_t-\widehat H_t\|_F\le \alpha_t\|H_{t-1}-\widehat H_{t-1}\|_F+\delta_t.
+\end{equation}
+If $b_0$ bounds initial error and $b_t=\alpha_tb_{t-1}+\delta_t$, induction gives $\|H_t-\widehat H_t\|_F\le b_t$. For a fixed target $B$, it suffices to choose truncation residual
+\begin{equation}
+ \delta_t\le B-\alpha_tb_{t-1}.
+\end{equation}
+For an exact SVD of $\widetilde H_t$, rank selection uses the tail certificate $\sum_{i>r}\sigma_i^2\le(B-\alpha_tb_{t-1})^2$. For any readout query $q_t$,
+\begin{equation}
+ \|(H_t-\widehat H_t)q_t\|_2\le\|H_t-\widehat H_t\|_F\|q_t\|_2\le b_t\|q_t\|_2.
+\end{equation}
+This is a state and readout bound, not an output-quality guarantee for a nonlinear model.
+
+The certificate requires scalar decay, identical updates to the exact and approximate states, and a valid upper bound on the residual created by truncation. \texttt{DecayBudgetClaims.lean} checks the scalar one-step and sequence invariant with Lean 4.35.0 and Mathlib 4.35.0. It does not formalize matrix norms, the SVD tail-residual identity, or an implementation. SinkState's local top-subspace update and frozen factors do not necessarily equal exact global truncation. Applying Equation~\ref{eq:recurrence} to that implementation requires additional certificates for local update error and frozen-tail effects.
+
+\section{Exact-rational CPU experiment}
+The standard-library script uses $32$ trials of $160$ steps at width $16$, seed 20261114. States are diagonal; each update is a rank-one write on a single diagonal coordinate. Decays alternate between $3/4$ and $9/10$, and writes are seeded signed rationals. Thus singular values are exact absolute diagonal entries, and all truncation and norm comparisons use \texttt{fractions.Fraction}. The relative-threshold baseline drops values below $0.1$ of the largest. The proposed policy uses $B=1/2$ and drops the largest tail allowed by $B(1-\alpha_t)$, which is the fixed-budget rule when the previous certificate is $B$.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{p{4.0cm}rr}\toprule
+Measure & Relative & Budget \\\midrule
+Mean retained rank & 10.79 & 12.28 \\
+Mean trial max readout error & 3.428 & 0.116 \\
+Maximum observed proposed-policy error & -- & 0.130 \\
+Checked steps & -- & 5,120 \\
+Certificate violations & -- & 0 \\\bottomrule
+\end{tabular}
+\caption{Exact-rational diagonal surrogate.}
+\label{tab:results}
+\end{table}
+
+For diagonal error matrices, the maximum coordinate error equals the spectral norm and is bounded by the Frobenius norm. The script checks the actual exact state error against $B$ at every proposed-policy step. The relative-threshold baseline is not constrained by this budget. Results are deterministic and reproducible by running \texttt{python3 experiment.py}.
+
+\section{Limitations}
+This experiment is not a general SVD, a model inference run, or a GPU benchmark. The diagonal state makes spectral truncation exact and omits randomized SVD approximation, floating-point roundoff, buffered updates, local/frozen-factor drift, factor storage, and compaction cost. Lean checks the scalar recurrence invariant, not the matrix/SVD premises or paper experiment. The available hardware is an Apple M2 without NVIDIA GPU or CUDA. A next study should measure certified residuals inside SinkState's actual local/frozen update and test accuracy, rank, memory, and latency on its recurrent model checkpoints.
+
+\section*{Reproducibility}
+Run \texttt{python3 experiment.py} in this directory. It writes \texttt{results.json}. From \texttt{papers/formal}, run \texttt{lake env lean DecayBudgetClaims.lean}. The experiment uses only the Python standard library and exact rational arithmetic.
+
+\begin{thebibliography}{1}
+\bibitem[Jiang et al.(2026)]{jiang2026sinkstate}
+Haolin Jiang, Weihang Li, Zhongzhu Zhou, Jinwen Pan, Santosh Pandey, and Hang Liu. 2026. SinkState: On-the-Fly SVD of Recurrent States for Efficient Hybrid LLM Serving. arXiv:2611.14246v1. \url{https://arxiv.org/abs/2611.14246v1}.
+\end{thebibliography}
+\end{document}
