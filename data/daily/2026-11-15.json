@@ -1,0 +1,521 @@
+{
+  "Attention & Sequence Kernels": {
+    "keywords": [
+      "attention",
+      "flashattention",
+      "flash-attention",
+      "ringattention",
+      "linear attention",
+      "mla",
+      "multi-head latent attention",
+      "kv cache",
+      "paged attention",
+      "vllm",
+      "flashinfer",
+      "context extension",
+      "long-context"
+    ],
+    "items": [
+      {
+        "title": "TTB: Test-time Baking for Efficient Rendering of Decoder-only View Synthesis Models",
+        "summary": "Decoder-only Large View Synthesis Models (LVSMs) with KV-cache have recently achieved state-of-the-art quality by regressing novel views from neural networks without reconstructing 3D geometry, while Test-Time Training (TTT) layers save computation but sacrifice quality. We propose Test-Time Baking (TTB), a strategy that learns to bake global scene information from cross-view attention into a lightweight MLP, enabling fast and high-fidelity novel-view decoding. The first key is to repurpose the fast-weight MLP of TTT to learn the cross-view attention mapping explicitly from its input-output pairs, rather than replacing attention entirely, achieving the same rendering efficiency as TTT while delivering substantially higher quality. The second key addresses a modality misalignment between context prefilling and novel-view rendering: we disentangle context tokens into camera-only context rendering tokens to serve as TTB input, and context ground-truth tokens with image content to serve as the TTB mapping target, ensuring the baked MLPs are relieved of the modality generalization challenge between context and novel-view processing. Our method achieves up to **23x** rendering speedup with quality on par with the state-of-the-art across several benchmarks. Project page: https://test-time-baking.github.io",
+        "url": "http://arxiv.org/abs/2611.17331v1",
+        "date": "2026-11-12",
+        "author": "Chin-Yang Lin",
+        "type": "Paper"
+      },
+      {
+        "title": "Consistent Video-to-Video Translation via Explicit Correspondences",
+        "summary": "Interactive video-to-video applications require real-time generation while maintaining long-range temporal consistency. However, recent methods achieve speed by restricting attention to a fixed-length causal window. This limits long-range consistency whenever relevant history falls outside the context window. To address this limitation, we introduce vid2vid-long, a correspondence-based approach grounded in a simple observation. Video-to-video translation provides an explicit cross-frame reference: the regions that match in the input video should match in the output video too. Concretely, we compute patch-level correspondences in the input, guiding retrieval of previously generated outputs in the corresponding regions, and condition the model on these patches through correspondence cross-attention. Our experiments demonstrate that vid2vid-long consistently improves long-range temporal consistency across recent video models while preserving generation quality and real-time performance.",
+        "url": "http://arxiv.org/abs/2611.17298v1",
+        "date": "2026-11-12",
+        "author": "Gaurav Parmar",
+        "type": "Paper"
+      },
+      {
+        "title": "Goal Encoding in LLMs",
+        "summary": "We investigate whether and how LLMs encode goals: internal neural representations that precede and guide action, and that are flexible enough to be realized through many different execution paths. We construct a coding setting with multiple sub-tasks that allows us to evaluate goal-seeking behavior and the selection of sub-goals. In this setting, we localize an encoding of the next sub-goal in the outputs of a sparse set of attention heads. The same heads can be used to decode the LM's future actions in natural language (e.g., \"I'm checking if a word is a palindrome\"). We verify that this encoding is causal for next action and is plastic: transplanting it into a different environment, e.g., another programming language, triggers the same operation realized with a different sequence of tokens. The LM also sustains the encoding throughout the action's execution, which is puzzling because a transformer LM without recurrence cannot carry a state forward for more tokens than it has layers left. We propose that it does not need to. Under a non-recurrent goal-seeking (NRGS) account, the LM frequently re-reads the goal from the task specification, compares it with the progress visible in the growing context, and pursues what remains. We test the predictions of this account with targeted causal interventions.",
+        "url": "http://arxiv.org/abs/2611.17297v1",
+        "date": "2026-11-12",
+        "author": "Arnab Sen Sharma",
+        "type": "Paper"
+      },
+      {
+        "title": "Objects as Addresses: Instance Binding in Vision Transformer Attention",
+        "summary": "Humans naturally parse visual scenes into coherent individual objects rather than scattered features, a capability cognitive science calls object binding. While recent work shows that pretrained Vision Transformers (ViTs) intrinsically acquire this ability, how native self-attention computations mechanistically keep object instances separate remains unresolved. By studying this across eight pretrained ViTs, we found that instance separation is expressed more strongly in attention routing than in token content: selected query-key relations distinguish individual objects more reliably than value similarity or residual representations. Inside heads, patches belonging to one individual tend to read from a common image region, which we term their attention address. Visually distinct parts of one person share an address, whereas identical duplicated instances receive separate, movable addresses. These shared destinations arise in part because query interactions with the spatial structure of keys direct attention toward consistent regions for one object and elsewhere for another. In DINOv2 and most other backbones we tested, editing this query component at the selected head redirects its attention address toward another individual. Grouping patches by this query component separates same-category instances, reaching .615 FG-ARI versus .289 for the same clustering of final-layer features, which tend to merge them.",
+        "url": "http://arxiv.org/abs/2611.17240v1",
+        "date": "2026-11-12",
+        "author": "Khalil Sabri",
+        "type": "Paper"
+      },
+      {
+        "title": "MALNISI-Infused Graph Construction and Weighted Contrastive Loss based GAT for Unsupervised Representation Learning in HSI",
+        "summary": "Hyperspectral images (HSI) possess discriminating spectral characteristics with respect to land utilization due to high-dimensional information. Recently, unsupervised representation learning using graph neural networks has unveiled these utilization-specific complex spectral relations. This article has three main contributions. First, it proposes an index, the Mean Absolute Local Neighborhood Inverse Spectral Index (MALNISI), which measures the similarity between two pixels based on their neighborhood information. The index is used to construct a weighted adjacency matrix, giving the HSI a graph structure. Second, it proposes an upgraded Graph Attention Network that learns compact latent representations of hyperspectral data from the constructed graph. In this network, an enhanced multi-head attention mechanism incorporates the MALNISI weights as an auxiliary feature to emphasize learned attention between neighboring pixels. To alleviate over-smoothing and preserve fine-grained spectral details, the architecture integrates residual connections, skip projections, and feature normalization, which together enhance representation capability, stabilize learning, and accelerate convergence. Third, it proposes a weighted contrastive loss function that incorporates neighborhood-aware MALNISI between connected pixels, encouraging strongly connected pixels in the high-dimensional space to remain close in the latent space, and weakly connected pixels to stay apart. The resulting discriminative low-dimensional embeddings are then clustered using spectral clustering. Experimental analysis on six benchmark HSI datasets demonstrates the efficiency and necessity of the three aforementioned contributions, and the comparative study highlights superior performance over fourteen state-of-the-art approaches.",
+        "url": "http://arxiv.org/abs/2611.17199v1",
+        "date": "2026-11-12",
+        "author": "Soumi Sarkar",
+        "type": "Paper"
+      },
+      {
+        "title": "Enhancing Preference Detection using Eye Movement Cascade and Multilayer Combinatorial Fusion",
+        "summary": "Understanding how visual attention influences human preference formation is a fundamental problem in consumer behavior and cognitive science. In this work, we investigate how eye movement patterns can be used to predict preference decisions when subjects compare two alternatives. To address this problem, we analyze an eye-tracking dataset, where subjects view pairs of face images and their gaze behavior is recorded throughout the decision process. We model this problem using multiple machine learning classifiers and apply the Multi-layer Combinatorial Fusion (MCF) framework to iteratively combine diverse models. The MCF framework expands models to a large pool of model fusions and then reduces them based on cognitive diversity, repeating this process across layers until diversity diminishes. Experimental results show that MCF significantly improves performance over individual models. The best single model achieves a Pre@k of 0.90, which is improved to 0.9143 after the first layer of MCF, and further increased to 0.9286 in the second layer. This progression demonstrates that the second layer not only surpasses the performance of the first layer but also outperforms the best individual model, highlighting the effectiveness of leveraging diversity through multi-layer fusion.",
+        "url": "http://arxiv.org/abs/2611.17145v1",
+        "date": "2026-11-12",
+        "author": "Yuanhong Wu",
+        "type": "Paper"
+      },
+      {
+        "title": "ISLA: A Coordinate-Free, Measure-Weighted Transformer for Boundary-Driven PDEs",
+        "summary": "A foundational principle of physics is that all coordinate systems are equally valid: the behavior of a PDE-governed system does not depend on the origin or orientation of the frame, nor on the units or mesh used to write it down, and neither should a surrogate model. Yet the neural surrogates with the lowest errors on today's aerodynamics benchmarks lack these invariances and fail under simple transformations of the same problem: for models trained on PDEs of cars in one pose (i.e., translation and rotation) and from one mesher, rotating the full PDE raises the surface-pressure error from 4% to more than 100%, and re-sampling its boundary raises it to about 30%. We introduce ISLA (Invariant Slice Attention), a slice-attention transformer for steady, boundary-driven PDEs in which no learned operation receives a coordinate and every sum over the boundary is a quadrature. Positions enter only as distances and relative angles to learned slice anchors, lengths are measured in a unit computed from the boundary, and interior points query the boundary through a tree-accelerated learned kernel without influencing one another. With every boundary cell a token and an exact boundary read, ISLA is equivariant to rigid motions and reflections, invariant to the units of its declared data, and consistent under mesh refinement, while at every setting each query is independent of all other queries. On AeroZoo, 2,816 flows that vary in shape, size, speed, and boundary conditions, its mean reference-scaled velocity and pressure errors are at least 3.1 and 3.3 times lower than any baseline's. On AirfRANS its errors are second only to those of a boundary-integral model (GLOBE) and at least 1.6 times lower than those of Transolver and GeoTransolver.",
+        "url": "http://arxiv.org/abs/2611.17141v1",
+        "date": "2026-11-12",
+        "author": "Peter Sharpe",
+        "type": "Paper"
+      },
+      {
+        "title": "Predicting Ethanol Drinking Status from Nonhuman Primate Liver Histology: A Proof of Concept for Parameter-efficient Fine-tuning in Few-Shot Vision-Language Modeling",
+        "summary": "Combining vision-language models (VLMs) with parameter-efficient fine-tuning (PEFT) offers a promising approach to few-shot whole-slide image (WSI) classification in computational pathology. This study evaluates this approach for predicting ethanol drinking status from nonhuman primate liver histology. Adapters are evaluated against non-PEFT configurations on a subset of the Monkey Alcohol Tissue Research Resource (MATRR). All evaluated PEFT configurations achieve higher mean balanced accuracy than the non-PEFT baselines. For example, in the four-shot setting, attention-based multiple instance learning (ABMIL) alone achieves 43.5% mean balanced accuracy, compared with 78.1% after adding an adapter. Qualitative attention analysis shows that textual pathway adaptations produce localized attention heatmaps, while visual pathway adaptations produce more diffuse ones. A pathologist's review identified similar histological features across adaptations.",
+        "url": "http://arxiv.org/abs/2611.17105v1",
+        "date": "2026-11-12",
+        "author": "Amirmohammad Mohammadi",
+        "type": "Paper"
+      },
+      {
+        "title": "Theory of critical behavior at non-polar structural phase transitions from functional renormalization",
+        "summary": "$O(N)$ models provide a versatile framework for describing continuous phase transitions in a wide variety of physical systems. We investigate an extension of these models arising from order parameters that transform under interlocked internal and spatial symmetries which describe transitions towards non-polar structural order. Such order occurs, for instance, in dipolar antiferromagnets, spin-orbit-coupled magnets, non-polar ferroics, and certain nematic systems. The resulting effective theory is an $O(d)$ model with an additional symmetry-allowed kinetic term $h(\\partial_iφ_i)^2$, which modifies the relative stiffness of longitudinal and transverse fluctuations. We study both thermal and quantum phase transitions within this $O(d)$ model using the functional renormalization group (FRG). In contrast to conventional $O(N)$ models, the interlocking of internal and spatial symmetries distinguishes spatial and imaginary-time derivatives, such that the quantum model is not simply obtained from the thermal one by a dimensional extension $d\\rightarrow d+1$. We derive and analyze the corresponding FRG flow equations, paying particular attention to the tensor structure of the two-point function, which is essential for consistently extracting the flow of the kinetic terms. Our analysis shows that the additional kinetic coupling is irrelevant at the $O(d)$ Wilson-Fisher fixed point in both thermal and quantum cases, where quantum-to-classical correspondence thus re-emerges. However, its small but sizable correction-to-scaling exponent gives rise to substantial corrections to scaling in the vicinity of the critical point.",
+        "url": "http://arxiv.org/abs/2611.17081v1",
+        "date": "2026-11-12",
+        "author": "Max Fornoville",
+        "type": "Paper"
+      },
+      {
+        "title": "Exploring Socially Acceptable 3D Feedback Design for Inclusive Small-Group Conversation",
+        "summary": "Prior research has shown that providing feedback on group dynamics can improve the quality of small-group conversations. However, publicly delivered feedback that targets specific individuals may reduce social acceptability due to negative experiences such as social pressure, embarrassment, and resistance. This work investigates how public feedback can be designed to remain socially acceptable while maintaining its effectiveness in XR-based small-group conversations. Informed by social science and HCI literature, we identified three design strategies (incorporate humor, reduce social attention, and use indirectness) and proposed a set of metaphor- and agent-based 3D feedback probes. We then conducted a two-phase study: (1) an online survey with 50 participants to examine how such feedback designs are perceived under public and private delivery, and (2) follow-up interviews with 14 participants who completed the survey to better understand their interpretations and elicit additional insights. Results show that metaphor- and agent-based feedback can reduce social discomfort while maintaining effectiveness. Interview findings further highlighted the role of three strategies in making feedback easier to accept, while requiring careful balance. We also discussed design implications for creating socially acceptable 3D feedback to support inclusive small-group conversations in XR.",
+        "url": "http://arxiv.org/abs/2611.17018v1",
+        "date": "2026-11-12",
+        "author": "Qianjie Wei",
+        "type": "Paper"
+      },
+      {
+        "title": "ElasticDino: Dense Semantic Features Using Elastic Deformations",
+        "summary": "Vision transformers (ViTs) serve as the backbone for countless vision tasks, including dense prediction tasks, such as segmentation and depth estimation, even though the quadratic complexity of self-attention severely limits feature resolution and induces spatial artifacts. In this work, we introduce ElasticDino, a lightweight adapter which produces high-resolution feature maps, adhering to the fine details of the input image. As a key insight, we observe the consistency of artifacts across channels, and simultaneously resolve them to match the input image structure. Using a slim architecture based on spatial deformations, ElasticDino produces pixel-aligned, high-resolution feature maps efficiently. Leveraging deformations allows strictly preserving sharp semantics, and thereby avoiding the smoothness biases inherent to alternative approaches. Due to the absence of ground truth, we employ pixel-level semantic segmentation and depth estimation with linear heads to predict a set of downstream dense tasks, guiding the deformation process without leaking task-specific semantics into the model. We demonstrate superior accuracy over current methods on a range of popular dense task benchmarks, with better computational performance.",
+        "url": "http://arxiv.org/abs/2611.16984v1",
+        "date": "2026-11-12",
+        "author": "Ulysse Mizrahi",
+        "type": "Paper"
+      },
+      {
+        "title": "Ramsey numbers of loose triangles versus cliques",
+        "summary": "An $r$-uniform loose triangle $C_3$ consists of three edges that intersect pairwise in exactly one vertex and have no vertex common to all three. For graphs, this is the usual triangle, and the Ramsey number $R(C_3,K_t)$ has order of magnitude $t^2/\\log t$ by celebrated results of Ajtai, Komlós, and Szemerédi and of Kim.   Kostochka, Mubayi, and Verstraëte proved that $R(C_3,K_t^{(r)})=O_r(t^{3/2})$ for every fixed $r\\ge3$ and showed that this bound is sharp up to a logarithmic factor. Motivated by the logarithmic saving in the graph case, they conjectured in 2013 that the upper bound could be improved to $o(t^{3/2})$.This conjecture has since received significant attention and has been reiterated in several papers. We prove the conjecture by showing that, for every fixed $r\\ge3$, \\[   R(C_3,K_t^{(r)})   =O_r\\left(\\frac{t^{3/2}}{\\sqrt{\\log\\log t}}\\right). \\]",
+        "url": "http://arxiv.org/abs/2611.16957v1",
+        "date": "2026-11-12",
+        "author": "Ayush Basu",
+        "type": "Paper"
+      },
+      {
+        "title": "Time Flies When You Parallelise: Pareto-efficient Time Series Foundation Models with Linear Recurrences",
+        "summary": "Time series foundation models have demonstrated strong zero-shot forecasting performance, but computational efficiency remains a central architectural challenge. Temporal self-attention incurs quadratic cost in the number of temporal tokens, while nonlinear recurrent state transitions restrict parallel computation along the temporal dimension. We introduce ci-proto, a family of time series foundation models based on Mamba-3, whose linear state recurrences support chunk-wise parallel-in-time computation during training, and inference costs that scale linearly with sequence length. The architecture alternates recurrent temporal processing with cross-variate attention, supporting multivariate probabilistic forecasting with past-only and future-known covariates. Across fev-bench's 100 forecasting tasks, ci-proto XL sets a new state of the art among time series foundation models. The five ci-proto variants also make up the entire Pareto frontier for mean scaled quantile loss and mean absolute scaled error against both parameter count and median runtime.",
+        "url": "http://arxiv.org/abs/2611.16934v1",
+        "date": "2026-11-12",
+        "author": "Torben Berndt",
+        "type": "Paper"
+      },
+      {
+        "title": "Uncertainty-aware quantum machine learning based on Dempster-Shafer theory",
+        "summary": "A large body of work in quantum machine learning has centered on characterizing the expressivity and performance of quantum models. In contrast, little attention has been paid to the reliability of predictions beyond average performance measures such as accuracy. In this work, we introduce an uncertainty-aware quantum classification framework based on Dempster-Shafer theory. This theory allows to express uncertainty through weights assigned not only to individual classification labels but to sets of labels. We introduce a training strategy that enables parameterized quantum circuits to learn such assignments directly from data. This provides an efficient way to prepare the corresponding quantum states and enables the application of different post-processing strategies. In particular, it offers a practical setting for quantum Dempster-Shafer fusion procedures with polynomial resource requirements, even when the corresponding mass functions are defined over exponentially many subsets. Overall, our work represents a step toward enabling quantum models to express uncertainty about their predictions, thereby extending the evaluation of quantum models beyond predictive performance alone.",
+        "url": "http://arxiv.org/abs/2611.16903v1",
+        "date": "2026-11-12",
+        "author": "Marie Kempkes",
+        "type": "Paper"
+      },
+      {
+        "title": "TokenStream: Multi-Subject Personalized Video Generation with Token-wise LoRA and Guided Attention",
+        "summary": "We introduce TokenStream, an optimization-based framework that composes independently learned subject identities in text-to-video generation without a reference-video training dataset or joint optimization of each new subject combination. Learning from a single reference image makes subject appearance difficult to separate from static-image bias, while merging independently trained adapters can mix identities. Token-wise LoRA (ToRA) restricts low-rank updates to the cross-attention value projections of subject-associated text tokens, providing a separate adaptation path for each subject. A T2V-guided stream copies queries and keys from the frozen base model during early denoising to reuse its layout and motion priors while retaining personalized values. We also introduce Multi-DB, a 30-subject, 122-prompt benchmark with appearance-free prompts and varied interactions. On Multi-DB at 1.3B, TokenStream improves identity preservation from 0.422 for DreamBooth to 0.467 and textual alignment from 0.652 to 0.688.",
+        "url": "http://arxiv.org/abs/2611.16897v1",
+        "date": "2026-11-12",
+        "author": "Hung Nguyen",
+        "type": "Paper"
+      },
+      {
+        "title": "On the quasi-static growth of cavities in incompressible elastomers",
+        "summary": "For a variational model of incompressible elastomers exhibiting cavitation, we establish the existence of irreversible quasi-static evolutions driven by time-dependent boundary conditions. Our result extends previous work by Mora-Corral (2014) to incompressible materials under weaker regularity assumptions on the boundary datum. The proof employs the multiplicative splitting introduced by Francfort and Mielke (2006) to reduce the problem to time-independent boundary conditions and then invokes abstract results on the existence of energetic solutions to rate-independent systems. Specifically, the construction of mutual recovery sequences requires particular attention to accommodate the incompressibility constraint: to this end we employ the method by Moser (1965) to exhibit incompressible diffeomorphisms interpolating between localized translations and the identity.",
+        "url": "http://arxiv.org/abs/2611.16854v1",
+        "date": "2026-11-12",
+        "author": "Marco Bresciani",
+        "type": "Paper"
+      },
+      {
+        "title": "Safe and Efficient Navigation Considering Texting Pedestrians via Attention-Aware Cost-map Tuning",
+        "summary": "Smartphone-distracted pedestrians deviate from social norms unpredictably and cannot be relied upon to yield to approaching robots -- a safety challenge that existing navigation methods are poorly equipped to handle, since they treat all pedestrians uniformly regardless of attention state. We propose an attention-aware navigation framework that classifies each pedestrian as attentive or distracted in real-time using 3D skeletal features and a Random Forest classifier, then dynamically widens cost-map safety margins around distracted individuals to drive proactive avoidance. A within-subjects user study with 12 participants across 252 trials demonstrates significant improvements in perceived smoothness (p = 0.003) and predictability (p = 0.034) over both a LiDAR-only baseline and a trajectory-prediction-only method, without any increase in travel time. Notably, trajectory prediction alone does not improve subjective navigation quality unless coupled with attention-state-aware cost adjustment -- confirming that appropriately responding to who is in front of the robot can matter more than trajectory smoothness alone.",
+        "url": "http://arxiv.org/abs/2611.16725v1",
+        "date": "2026-11-12",
+        "author": "Shunya Tadano",
+        "type": "Paper"
+      },
+      {
+        "title": "MusicRWKV: A Multimodal RWKV Framework for Music Representation Learning",
+        "summary": "Recent music foundation models have achieved remarkable progress in music representation learning, yet most existing approaches rely on Transformer architectures whose quadratic attention complexity introduces substantial computational and memory overhead when modeling long-duration music recordings. In this work, we propose MusicRWKV, a multimodal music representation learning framework built upon the RWKV architecture. MusicRWKV jointly models waveform, spectrogram, and metadata information within a unified self-supervised learning framework. To improve efficiency for long musical sequences, we introduce an invertible compression module that reduces sequence length while preserving reconstruction capability. A FiLM-based conditioning strategy is employed to facilitate modality-aware representation learning without introducing expensive cross-attention operations. We further investigate the integration of Soft ROSA as a differentiable retrieval mechanism for neural-symbolic interaction. Experimental evaluation across a diverse collection of Music Information Retrieval (MIR) benchmarks demonstrates that the proposed RWKV-based architecture can be effectively adapted to heterogeneous music understanding tasks. A controlled pretraining ablation shows that Soft ROSA improves validation performance, while layer-wise telemetry analysis reveals a progressive transition from distributed retrieval to selective retrieval in deeper network layers. These results suggest that RWKV provides a promising architectural alternative to Transformer-based models for multimodal music understanding.",
+        "url": "http://arxiv.org/abs/2611.16718v1",
+        "date": "2026-11-12",
+        "author": "Terry Tan",
+        "type": "Paper"
+      },
+      {
+        "title": "PIM: A Physical Intuition Model for Low-Latency Prediction of Object Interaction Outcomes",
+        "summary": "Predicting object interaction outcomes from initial conditions is a central problem in data-driven physical reasoning. Existing methods often use rigid-body-level states or predict the evolution through autoregressive rollouts. Coarse representations cannot represent local deformation, while rollout errors may compound over long prediction horizons. Instead, we introduce PIM, a Physical Intuition Model that directly predicts a physical system's equilibrium state from its initial mesh geometry, kinematics, and physical attributes. PIM combines local k-nearest-neighbor (KNN) attention to encode intra-object geometry, anchor-based cross-object attention to model interactions, and a dual-branch decoder that predicts object-level translations and per-vertex residual displacements. Across MuJoCo scenarios involving both rigid and deformable interactions, PIM achieves lower vertex and centroid errors than the evaluated baselines. By predicting complete equilibrium states in a single forward pass, PIM substantially reduces latency relative to autoregressive learned models and MuJoCo rollouts under the evaluated protocols, enabling low-latency inference when only the final outcome is required.",
+        "url": "http://arxiv.org/abs/2611.16673v1",
+        "date": "2026-11-12",
+        "author": "Tangwen Luo",
+        "type": "Paper"
+      },
+      {
+        "title": "When Chekhov's Gun Fires Anyway: Over-Realization in Text-to-Image Models",
+        "summary": "In text-to-image generation, a target that the prompt mentions often appears in the generated image in a way the prompt does not call for. We call this failure over-realization. Mental-spaces theory points to the situations where it can happen: under a negation, inside what a character believes or imagines, as the vehicle of a figurative comparison, or behind a viewpoint that hides the target. Prior work has studied only negation in depth, and the conventional alignment and preference metrics do not penalize the failure. We build OverReal to measure it: OverReal-Gen, 698 prompts covering the four situations, on which we measure each generator's over-realization rate; and OverReal-Det, 2,841 generated images human-labeled for whether and how the target is over-realized, on which we verify the automatic judge that produces this rate. Our evaluation of eight text-to-image systems reveals that all of them over-realize, and that conventional metrics such as CLIPScore reward the failure rather than penalize it. Prompt expansion only partly mitigates the failure. Inside the generator, the diffusion backbone attends to a mentioned target almost as much as to a requested one. The cue words that should hold the target back receive less attention than ordinary words.",
+        "url": "http://arxiv.org/abs/2611.16630v1",
+        "date": "2026-11-12",
+        "author": "Jiahao Huang",
+        "type": "Paper"
+      },
+      {
+        "title": "Studies on Sign Language Retrieval in Low-Resource Dictionary Settings",
+        "summary": "Most sign languages have no annotated corpus, only small dictionaries with one or a few example videos per sign. This study examines how well a pose encoder trained on a single sign language serves such languages without any target-language training.   An encoder trained with metric learning on American Sign Language (ASL-Citizen) is evaluated frozen on six datasets of Turkish, Russian, Indian, Argentinian, Pakistani and Sri Lankan sign languages, with one or four clips per sign enrolled and, where   signer identities are available, the query's signer excluded from the gallery. With one enrolled clip, the encoder retrieves the correct sign first in 36.4-80.7 % of queries, against 16.0-69.6 % for the best learning-free method (angle-based dynamic   time warping) and a six-target mean of 39.3 % for an ASL-trained OpenHands graph network. In a crossed ablation of the encoder (embedding geometry, aggregation of body and hand embeddings, training objective, and attention between articulators), two   choices matter: a per-pair InfoNCE objective outperforms supervised contrastive and cross-entropy training, and blocking attention between body, left hand and right hand inside the encoder raises accuracy by up to 5.1 points. The best configuration   reaches 68.0 % one-shot accuracy (59.0 % for the reference encoder). On CISLR, an Indian Sign Language dictionary of 4,765 words with one video per word, the encoders find the correct word first for 17.3-19.0 % of queries, above the 16.8 % of the   original RGB baseline. Over eight seeds with the joint encoder, spherical, Euclidean and hyperbolic embedding spaces differ by at most 1.6 points, except the hyperbolic token-attention head trained with InfoNCE, which is 1.4-2.0 points worse, so the   geometry is a minor factor.",
+        "url": "http://arxiv.org/abs/2611.16621v1",
+        "date": "2026-11-12",
+        "author": "Ushnish Sarkar",
+        "type": "Paper"
+      }
+    ]
+  },
+  "MoE (Mixture of Experts) & Routing": {
+    "keywords": [
+      "moe",
+      "mixture of experts",
+      "mixture-of-experts",
+      "expert routing",
+      "switch transformer",
+      "deepseek-v2",
+      "deepseek-v3",
+      "token dispatch",
+      "ep parallelism",
+      "expert parallelism",
+      "fused moe"
+    ],
+    "items": [
+      {
+        "title": "Broadcast, Don't Replicate: Eliminating Weight HBM in Datacenter LLM Serving",
+        "summary": "Large language model (LLM) inference at datacenter scale is fundamentally bottlenecked by memory capacity and bandwidth limits. Because model weights are read-only and identical across instances, conventional architectures that replicate these parameters across the local DRAM of tens of thousands of accelerators incur massive capital expenditures, significant static power dissipation, and redundant memory-fetch energy. A recent proposal to use optical fiber loops as delay-line memory alleviates these issues, but its recirculating loop must hold the whole model: loop length grows with model size, slack is fixed when the ring is built, and the layouts that serve modern Mixture of Experts (MoE) models efficiently do not fit in it.   We propose Optical Broadcast Memory (OBM), an open-ended hierarchical Tap-and-Amplify fiber architecture that generalizes and replaces the optical ring paradigm. A centralized memory server continuously broadcasts weights to distributed inference nodes that passively tap the data stream using receive-only co-packaged optics, delivering parameters directly to compute units without intermediate buffering. To overcome the limitations of continuous weight streaming, we use dynamically-sized slack to accommodate large and variable context lengths. We show how removing the restrictions of the optical ring allows OBM to efficiently serve MoE models. Evaluated at a datacenter scale of 80,000 accelerators, OBM eliminates petabytes of HBM while being competitive or better in throughput and energy per token than an HBM-based system.",
+        "url": "http://arxiv.org/abs/2611.17097v1",
+        "date": "2026-11-12",
+        "author": "Hannah Atmer",
+        "type": "Paper"
+      },
+      {
+        "title": "Lara Mini Base: Language Diversity as a Resource, Not a Trade-off",
+        "summary": "General-purpose language models are trained mostly on English: over open models we review, at most, non-English pretraining data makes up only a 12% share. Models built for European languages give them far more, but score well below general-purpose models of the same size. A common concern is that, in small models, languages compete for capacity. We present Lara Mini base, a model trained from scratch on 6T tokens in English and 44 other languages, which together cover all 24 official languages of the European Union. As training progresses, the 44 other languages together come to outweigh English. To give these languages enough capacity at low cost, Lara Mini base uses a mixture of experts architecture with 7.2B total and 0.6B active parameters. Among open base models with up to 2B active parameters, it achieves the highest average score across standard English, multilingual, math, and code benchmarks, ahead of models trained on 4 to 6 times as many tokens. Its margin is largest on multilingual benchmarks in the languages it supports and on math benchmarks. It supports contexts of up to 128k tokens. We find that our MoE architecture reduces capacity competition between languages. For a single user on one GPU, without quantization, it generates text at least 1.8 times faster than any model with a higher average score. We release the weights of Lara Mini base under the CC BY-NC-SA 4.0 license. In addition, we will release T-HellaSwag, a higher-quality machine translation of the commonsense reasoning benchmark HellaSwag into 110 language variants.",
+        "url": "http://arxiv.org/abs/2611.16956v1",
+        "date": "2026-11-12",
+        "author": " Translated",
+        "type": "Paper"
+      }
+    ]
+  },
+  "GEMM, Tensor Cores & Low-Precision": {
+    "keywords": [
+      "gemm",
+      "matmul",
+      "matrix multiplication",
+      "tensor core",
+      "wgmma",
+      "cutlass",
+      "cute",
+      "fp8",
+      "fp4",
+      "nvfp4",
+      "mxfp4",
+      "mxfp8",
+      "quantization",
+      "awq",
+      "gptq",
+      "bitsandbytes",
+      "block scaling",
+      "sm90",
+      "sm100"
+    ],
+    "items": [
+      {
+        "title": "LazyWeights: Decode-on-Demand Edge LLMs",
+        "summary": "Memory decides which LLMs an edge device runs, and how fast: capacity on a $4$ GB Jetson Nano, bandwidth on an $8$ GB Jetson Orin Nano Super. Deployed formats (GPTQ, AWQ, $\\texttt{llama.cpp}$'s K- and I-quants) spend equal bits on every integer code of a matrix, although the codes are far from uniform. $\\texttt{LazyWeights}$ keeps these formats but tunes GPTQ so the codes compress, Huffman-codes them losslessly in interleaved lanes, and decodes them on demand in a small unit between DRAM and L2, so GPU kernels run unchanged and DRAM moves only coded bytes. At $1\\%$ and $3.5\\%$ perplexity budgets, coded Phi-3-mini, Mistral-7B and SmolLM-1.7B are $5.7-31.4\\%$ smaller than the best $\\texttt{llama.cpp}$ format. A bit-exact $0.21$ mm$^2$ ASIC decoder unit ($1$ GHz, $7$ nm) cuts Orin latency and energy per token by up to $36\\%$ and $38\\%$ ($54\\%$ and $44\\%$ with prompt-lookup speculation). On the Nano, $\\texttt{LazyWeights}$ needs $58-64\\%$ less time and $53-57\\%$ less energy per token than CPU $\\texttt{llama.cpp}$, and runs a streamed Mistral-7B 6.6$\\times$ faster at $3.89$ bits per weight. A Huffman decoder beats an rANS decoder in rate and area at equal throughput; the ASIC decoder unit runs bit-exact on a Zynq UltraScale+ FPGA (AMD ZCU102).",
+        "url": "http://arxiv.org/abs/2611.17108v1",
+        "date": "2026-11-12",
+        "author": "Arnab Sanyal",
+        "type": "Paper"
+      }
+    ]
+  },
+  "Kernel Compilers & DSLs (Triton, TileLang, CUDA)": {
+    "keywords": [
+      "triton",
+      "tilelang",
+      "thunderkittens",
+      "cutedsl",
+      "tvm",
+      "halide",
+      "autotuning",
+      "kernel generation",
+      "cuda optimization",
+      "warp specialization",
+      "tma",
+      "tensor memory accelerator"
+    ],
+    "items": [
+      {
+        "title": "Metal Sandbox: Isolated Execution and Command Scheduling for GPU Coding Agents on Apple Silicon",
+        "summary": "On-device inference requires kernels that make effective use of local accelerators. Efficient training and evaluation of models that generate Apple Metal kernels benefit from native macOS tools and concurrent agent sessions. These sessions alternate between model requests, development commands, and GPU execution, leaving GPU capacity idle for much of a rollout. We present Metal Sandbox, infrastructure that combines restricted per-instance file access, native command execution, and command-level scheduling across interconnected Macs. Each agent retains its workspace and private development environment. Parallel commands can run concurrently, while serial commands share one execution slot per node; eligible waiting commands can migrate to available Macs and return results to the original agent. Integration with Harbor supports task execution, automatic verification, and rollout collection through a common workflow. Controlled experiments on four Mac mini M4 nodes achieve $1.68\\times$--$2.05\\times$ gains in command throughput under concentrated demand. Sixteen static agent traces give an estimated $2.14\\times$ sustained-throughput gain for four sessions per node versus one, assuming continuously replenished sessions and unchanged mean durations. Replaying these measured traces under dynamic scheduling reduces mean tool waiting by 18.8% and batch elapsed time by 22.3%, assuming unchanged phase durations. Metal Sandbox and its Harbor integration are open-source on GitHub.",
+        "url": "http://arxiv.org/abs/2611.17294v1",
+        "date": "2026-11-12",
+        "author": "Haozhe Wang",
+        "type": "Paper"
+      },
+      {
+        "title": "A counterexample to fixed-profile soliton resolution for the three-dimensional quintic wave equation",
+        "summary": "We consider the three-dimensional focusing energy-critical wave equation. We construct a bounded forward-global solution which starts arbitrarily close to a sign-changing stationary state and is asymptotic to a varying stationary profile plus one free wave. The core has two limits in distinct similarity orbits. A single energy-space norm identity identifies the radiation and reduces every competing fixed list to one profile; the two limits then give a contradiction. The construction uses summable radiation packets whose quadratic impulses produce fixed shape displacements on increasing time scales. We control the nonlinear error uniformly over these intervals and select the endpoints by a compact fixed-point map. A computer-assisted certificate validates the stationary state and its complete odd energy kernel.",
+        "url": "http://arxiv.org/abs/2611.17291v1",
+        "date": "2026-11-12",
+        "author": "Xuwen Chen",
+        "type": "Paper"
+      },
+      {
+        "title": "Toward the abelian category of positive Lagrangians",
+        "summary": "We introduce a geometric construction whose terminal configuration determines the kernel and cokernel of a morphism between positive Lagrangian branes in the derived Fukaya category of a Calabi-Yau manifold. Thus, if the construction always terminates, the full subcategory of positive Lagrangian branes is abelian, as conjectured by Joyce. We show that this abelian category admits Harder-Narasimhan filtrations with respect to the central charge defined by the holomorphic volume form. Under appropriate split-generation assumptions, we construct a Bridgeland stability condition whose stable objects are isomorphic to special Lagrangian branes, as predicted by the Thomas-Yau conjecture.   The geometric construction is based on a one-parameter family of special Lagrangian submanifolds with boundary. One part of the boundary is contained in the Lagrangian underlying the domain of the morphism and the other in the Lagrangian underlying the codomain. Surgeries occur as the family encounters singularities or obstruction walls. We prove that the construction always terminates for the two-torus and provide higher dimensional examples.",
+        "url": "http://arxiv.org/abs/2611.17282v1",
+        "date": "2026-11-12",
+        "author": "Asaf Kapota",
+        "type": "Paper"
+      },
+      {
+        "title": "Quantum Boltzmann Equation for Static Correlation with Cumulant Kernel Closure",
+        "summary": "We present a Quantum Boltzmann Equation for static correlation by mapping the Bogoliubov-Born-Green-Kirkwood-Yvon hierarchy to discrete atomic-orbital matrix mechanics via the Wigner-Weyl isomorphism to evaluate scattering of the correlated two-body cumulant. This Quantum Boltzmann Equation converges to the active-space static correlation limit and preserves pure $N$-representability constraints during the kinetic relaxation. To resolve scaling bottlenecks of explicit two-body cumulant methods, we project the two-body cumulant onto its lowest unitary invariant and evaluate a susceptibility-windowed orbital scattering scale via a single Coulomb-exchange contraction. Relaxing onto a hyperbolic-tangent cumulant attractor through Markovian collisional relaxation yields a parameter-free Quantum Boltzmann Equation Cumulant-Kernel that regularizes derivative cusps without thermal smearing. Using the collinear $\\mathrm{H}_3$ exchange reaction, the symmetric $D_{4h}$ square $\\mathrm{H}_4$ dissociation, the non-adiabatic avoided crossing in $\\mathrm{BeH}_2$, the symmetric bond cleavage of $\\mathrm{H}_2\\mathrm{O}$, the triple-bond dissociation of $\\mathrm{N}_2$, the 11-molecule MR-MGN-BE17 dissociation test set, and the singlet diradical isomers of benzyne as case studies, we show that this kinetic relaxation resolves strong static correlation at zero electronic temperature.",
+        "url": "http://arxiv.org/abs/2611.17245v1",
+        "date": "2026-11-12",
+        "author": "Romit Chakraborty",
+        "type": "Paper"
+      },
+      {
+        "title": "Mean-field Fluctuations for First-Passage Percolation with Symmetric Kernels",
+        "summary": "We study first-passage percolation on finite weighted graphs whose normalized Weibull edge hazards form a symmetric Markov kernel on $N$ vertices. We prove that a uniform absolute spectral gap and an $O(N^{-1})$ bound on a fixed even-step return probability imply the stochastic mean-field passage-time limit and an independent Gaussian hopcount limit. Jointly with these quantities, the entire geodesic from an arbitrary source to an independent uniform target is approximated in total variation by an independent Markov chain stopped at the hopcount. This comparison yields laws of large numbers for fixed-length path segments and joint central limit theorems for bounded additive observables. The results extend to edge laws with a uniform relative hazard error $o(1/\\log N)$, including common noise distributions with a power-law hazard and a positive-power error near zero. Applications include integrable singular torus kernels, macroscopic spread-out graphs, non-transitive regular graphs, finite groups, and discretizations of symmetric continuum kernels.",
+        "url": "http://arxiv.org/abs/2611.17234v1",
+        "date": "2026-11-12",
+        "author": "Partha S. Dey",
+        "type": "Paper"
+      },
+      {
+        "title": "Peak Performance in Matched Filtering: Fused Correlation and Statistically Controlled Screening on CPUs and GPUs",
+        "summary": "Batched matched filtering and cross-correlation over large template banks are a primary computational cost in gravitational-wave astronomy, seismology, and radio transient searches. Standard pipelines pair a general-purpose inverse Fast Fourier Transform (FFT) with separate multiplication and peak-finding kernels, writing intermediate spectra and full correlation series to memory for every template. We fuse the conjugate product into the first inverse-transform butterflies and the peak reduction into the last so only candidate peaks leave processor registers, and tile batches in 2D so $K^2$ correlations reuse $2K$ cached spectra. This shifts filtering from a DRAM-bandwidth-bound to an on-chip cache-bandwidth-bound regime. In some situations, the signal-to-noise ratio (SNR) is concentrated toward lower frequencies while higher frequencies dominate the transform length. We develop a hierarchical screening method that exploits this via a sequence of short low-frequency transforms before evaluating the full band, deriving stage thresholds from the spectral power profile and matched-filter noise autocovariance to target a specified false-dismissal probability. We demonstrate these methods in the open-source matchedfilter library across eight CPU architectures and two integrated GPUs (AMD Radeon 8060S via Vulkan and Apple M2 via Metal). On an AMD Ryzen AI Max+ 395 at $N=4096$, fused peak-only filtering is $1.4\\times$ faster than a standalone AOCL-FFTW inverse transform on one CPU core and $6.2\\times$ faster than rocFFT on its Radeon 8060S GPU ($3.1\\times$ over MLX FFT on the M2 GPU). For a fiducial gravitational-wave search ($ρ_\\mathrm{th}=5.5$, $10^{-2}$ false-dismissal target), hierarchical screening yields a $26\\times$ speedup over AOCL-FFTW on CPU, $21\\times$ over rocFFT on the 8060S GPU, and $19\\times$ over MLX FFT on the M2 GPU.",
+        "url": "http://arxiv.org/abs/2611.17229v1",
+        "date": "2026-11-12",
+        "author": "Alexander H. Nitz",
+        "type": "Paper"
+      },
+      {
+        "title": "Theoretical and Empirical Analysis of Sparse Convolution",
+        "summary": "Deep neural networks for image processing are increasingly deployed on resource-constrained edge devices such as drones, medical systems, and smartphones, where limited computational resources and memory bandwidth pose significant challenges for efficient inference. Pruning during training often produces highly sparse convolutional kernels, offering the potential to significantly reduce computation and memory requirements. However, exploiting this sparsity efficiently at runtime remains challenging due to irregular memory access patterns and workload imbalance across processing elements. In this work, we investigate the standard convolution with sparse weights and analyze its performance characteristics through roofline analysis, showing that a 3 x 3 sparse convolution achieves an arithmetic intensity of approximately 10 FLOP/byte compared to roughly 96 FLOP/byte for its dense counterpart. We propose techniques for an efficient sparse convolution at high sparsities. Preliminary results demonstrate that our approach achieves upto 1.65x speedup as compared to dense convolution on NVIDIA A100 and upto 1.52x on NVIDIA Jetson Nano (Tegra X1) , motivating further exploration of direct convolution as a practical path to efficient sparse inference on modern accelerators/edge devices.",
+        "url": "http://arxiv.org/abs/2611.17212v1",
+        "date": "2026-11-12",
+        "author": "Keshvi Tuteja",
+        "type": "Paper"
+      },
+      {
+        "title": "PACER: GPU Excursion Management for ML Workloads",
+        "summary": "Variability is an inherent characteristic of modern GPU systems, arising from a combination of process variation, dynamic environmental conditions, and power management decisions. Prior work has characterized inter-GPU variability and found consistent performance differences across GPUs. However, we observe that modern workloads, particularly large language models (LLMs), exhibit significant intra-GPU variability. Their short-running kernels interact poorly with the coarse granularity of dynamic power management mechanisms, leading to unpredictable performance.   A key source of this intra-GPU transient variability is power excursions, also referred to as electrical design power peaks (EDP$_{p}$), where power temporarily exceeds the GPU's rated power limits. While power management mechanisms are designed to ensure reliable operation despite the presence of EDP$_{p}$ sustained power peaks cause throttling that detrimentally impacts overall application performance. To the best of our knowledge, our work is the first to characterize the magnitude and frequency of EDP$_{p}$, showing that frequent, significant power overshoots are especially common in ML workloads, which combine high power draw, short kernels, and rapidly changing compute demands. To address this, we design and leverage hardware and firmware mechanisms to provide consistent power management behavior that reduces intra-GPU variability due to EDP$_{p}$ and improves overall performance. We evaluate our techniques across a range of popular workloads. Our approach improves performance by 3-12% over state-of-the-art GPU power management and comes within 3% of an oracular solution.",
+        "url": "http://arxiv.org/abs/2611.17206v1",
+        "date": "2026-11-12",
+        "author": "Rutwik Jain",
+        "type": "Paper"
+      },
+      {
+        "title": "Learning Dynamics of the Influencer's Game in Resource Landscapes",
+        "summary": "Across domains as varied as ecology, economics, and online platforms, individuals are incentivized to position themselves within resource-rich strategy spaces. In this work we introduce a new spatial game framework called the influencer's game. Within this new framework players' strategies are represented as positions within a trait space. Players then receive a share of a portion of a resource based on their relative influence at that resource's points traits. For the influencer's game, we show that there is a unique symmetric Nash equilibrium that exists under strict log-concavity of the influence kernel. Using the unique equilibrium we show that the stability of the system depends on the influence kernel's parameters, number of players, and the resource distribution shape. For any dimension we demonstrate a stability threshold that depends on both the scatter and curvature of the players. When this threshold is crossed, the symmetric equilibrium destabilizes and gives way to a variety of bifurcation types; including, specialist clusters, limit cycles, and sub-games that reproduce the larger game's structure. We ground these results using real-world data for resources as a demonstration of the game's application. Finally we extend the game dynamics to use multi-agent reinforcement learning and further show that the predicted bifurcation structure persists under partial observability and discretized strategy spaces. In all, the influencer's game provides a novel framework for predicting when competitive pressure drives convergence versus fragmentation with possible applications across domains.",
+        "url": "http://arxiv.org/abs/2611.17148v1",
+        "date": "2026-11-12",
+        "author": "Mark Lovett Feng Fu",
+        "type": "Paper"
+      },
+      {
+        "title": "Hardy Spaces and Toeplitz operators on the Hexablock",
+        "summary": "The hexablock is a domain in $\\mathbb{C}^4$ given by   \\[   \\mathbb{H}=\\left\\{(a,x_1,x_2,x_3)\\in \\mathbb{C}\\times\\mathbb{E}:   \\sup_{z_1,z_2\\in\\mathbb{D}}   \\left|   \\frac{a\\sqrt{(1-|z_1|^2)(1-|z_2|^2)}}   {1-x_1z_1-x_2z_2+x_3z_1z_2}   \\right|<1   \\right\\},   \\] where $\\mathbb{E}=\\left\\{(x_1,x_2,x_3)\\in\\mathbb{C}^{3}: 1-x_1z_1-x_2z_2+x_3z_1z_2\\neq 0   \\ \\text{for all}\\ z_1,z_2\\in\\overline{\\mathbb D}\\right\\}$ is the tetrablock. We introduce a Hardy space $H^2(\\mathbb H)$ associated with a canonical measure $μ_{\\mathbb H}$ on the distinguished boundary $b\\mathbb H$ of the hexablock. We identify $H^2(\\mathbb H)$ with a closed subspace of $L^2(b\\mathbb H,μ_{\\mathbb H})$ and show that it is a reproducing kernel Hilbert space. We prove that $\\mathbb H$ is the interior of the polynomial convex hull of $Ψ_{\\mathbb H}(\\overline{\\mathbb D}^4)$, where \\[   Ψ_{\\mathbb H}(ξ_1, ξ_2,λ_1,λ_2)   =   \\left(\\frac{λ_1(ξ_1-1)}{2},   \\frac{ξ_2(ξ_1+1)}{2}, \\   \\frac{λ_1λ_2(ξ_1+1)}{2}, \\   ξ_1 ξ_2λ_1λ_2   \\right). \\] We obtain a Brown-Halmos type characterization of Toeplitz operators on $H^2(\\mathbb H)$ and a commutant lifting theorem for $\\mathbb H$-isometries. We characterize $\\mathbb H$-unitaries as the images of commuting quadruples of unitaries under $Ψ_{\\mathbb H}$ and present a class of $\\mathbb H$-contractions from commuting quadruples having $\\overline{\\mathbb D}^4$ as a spectral set. We prove an analogous characterization of $\\mathbb E$-unitaries and present a class of $\\mathbb E$-contractions arising from commuting triples of contractions having $\\overline{\\mathbb D}^3$ as a spectral set. En route, we also study a weighted Hardy space on the hexablock.",
+        "url": "http://arxiv.org/abs/2611.17140v1",
+        "date": "2026-11-12",
+        "author": "Sourav Pal",
+        "type": "Paper"
+      },
+      {
+        "title": "Universal sampling rules for the signed friendship paradox",
+        "summary": "The friendship paradox describes a bias in mean degree induced by neighbour sampling. We study signed weighted networks, with transitions proportional to edge magnitudes and signed strength as the vertex score. We characterize all positive initial weights, depending on total strength and score, that guarantee a nonnegative one-step mean change on every connected graph. Without regularity assumptions, the same condition yields stochastic dominance at every fixed time. Continuous admissible rules are precisely total strength multiplied by a positive continuous nonincreasing function of the score. It is enough to test connected graphs with at most five vertices and two vertex types. The bound of five is optimal even for continuous rules; the proof uses a sharp four-vertex energy inequality. The complete score vector alone cannot determine a universally valid initial law with full support. Under marked local convergence and suitable integrability assumptions, we also obtain joint limits for local conditional mean score increments and compute an explicit limiting law and mean for independently signed random regular graphs. Under joint cut-norm convergence of the magnitude and signed kernels and uniformly bounded normalized strengths, we also obtain Wasserstein convergence of the sampling-weighted distributions of normalized local biases and convergence of their means.",
+        "url": "http://arxiv.org/abs/2611.17118v1",
+        "date": "2026-11-12",
+        "author": "Michail Louvaris",
+        "type": "Paper"
+      },
+      {
+        "title": "Bellman Contraction under MMD: A Unified Framework",
+        "summary": "We introduce a mathematical framework for studying contraction of the distributional Bellman operator under Maximum Mean Discrepancy (MMD). We show that contraction reduces to conditional positive definiteness of an associated kernel constructed from the base kernel, which we call the Bellman difference kernel. Focusing on radial kernels, we use Schoenberg's theorem to connect this condition to Bernstein functions. This gives contraction criteria that hold in any dimension and can be verified analytically or tested numerically. Our framework unifies known results for the Gaussian RBF, power-distance, and multiquadric kernels. A numerical search identifies 11 new kernels that induce contraction. We also propose chaining, a general construction that produces kernels inducing contraction with any prescribed factor. To reconcile theory with practice, we show that contraction on a set only requires conditional positive definiteness on that set. This explains why the RBF kernel can remain a valid choice when rewards are bounded, despite its lack of global contraction. Finally, we identify a fundamental tradeoff between contraction rate and discriminative power, where kernels that contract faster tend to discriminate less between distributions. Code is available at https://github.com/BaptisteDebes/BellmanContractionMMD",
+        "url": "http://arxiv.org/abs/2611.17116v1",
+        "date": "2026-11-12",
+        "author": "Baptiste Debes",
+        "type": "Paper"
+      },
+      {
+        "title": "The astrometric precision of incoherent pulsar timing arrays",
+        "summary": "We address the astrometric precision with which a pulsar timing array (PTA) can localize a single astrophysical gravitational-wave source, in the regime where pulsar distances are poorly constrained compared to the gravitational wavelength. Using simple matched-filter, map-making simulations, we calculate the astrometric precision of the intrinsic PTA residual response as a function of the signal-to-noise ratio (SNR), where the SNR is that of the source in the matched-filter map, and find that the median angular error decreases as $\\sqrt{\\ln 2/3}\\,/[\\mathrm{SNR}\\sqrt{\\ln\\mathrm{SNR}}]$ over the relevant SNR range, with a pre-factor we derive from first principles. At an SNR of 6, this log term coming from the singular core of the convolution kernel produces an angular error approximately $1.4$ times smaller than for a Gaussian beam. We compare this sky-averaged maximum precision with the precision achieved across the sky by the pulsars of the International Pulsar Timing Array (IPTA) DR2. For a map with SNR of 6, the intrinsic array precision is $3.3^\\circ$. For the IPTA configuration at the same SNR, the median precision over the sky is worse due to sparse sampling of the underlying pulsar residual response, approximately $8.9^\\circ$; however, for sources in $14\\%$ of the sky, the high local pulsar density yields a precision better than $3.3^\\circ$.",
+        "url": "http://arxiv.org/abs/2611.17069v1",
+        "date": "2026-11-12",
+        "author": "Anna C. Tsai",
+        "type": "Paper"
+      },
+      {
+        "title": "Infrastructure for Verifiable AI: Where Proof Costs Go and How Hardware Can Help",
+        "summary": "Users of artificial intelligence services, including those powered by large language models and other transformer-based models, need assurance that inference and training follow the declared computation without exposing private models or data. Zero-knowledge proofs can provide this assurance, but proof generation remains expensive. Hardware acceleration research often reports gains for individual cryptographic operations, leaving their effect on the full cost of proving neural-network workloads, particularly large transformer models, unclear. We introduce a four-layer framework linking verifiable AI workloads, proof systems, cryptographic kernels and hardware platforms, use it to review the literature, and add original measurements of six provers and seven kernels to identify which costs matter in practice. Our measurements show that the dominant cost changes with the proof system and input length. In low-rank fine-tuning, the cost of opening commitments to fixed model weights remains nearly constant across input lengths from 64 to 2048, while the work associated with intermediate values grows. A 13-billion-parameter fine-tuning configuration exceeds the capacity of a 40-gigabyte graphics processor but completes on an 80-gigabyte device, showing why capacity must be assessed alongside execution time. Our kernel profiling further identifies instruction issue and synchronization limits that a bandwidth-only model misses. We use these findings to assess graphics processors, reconfigurable logic, custom chips and existing artificial intelligence accelerators. The resulting research agenda connects proof-friendly numeric formats, reuse of fixed-weight commitments, heterogeneous execution and shared benchmarks to the measured bottlenecks. Effective acceleration requires selecting hardware and proof-system optimizations around the cost profile of the target workload.",
+        "url": "http://arxiv.org/abs/2611.17042v1",
+        "date": "2026-11-12",
+        "author": "Yihan Xia",
+        "type": "Paper"
+      },
+      {
+        "title": "Sticky Manifold Piecewise Deterministic Monte Carlo for Bayesian Model Averaging",
+        "summary": "Assigning positive prior probability to lower-dimensional submodels enriches the range of uncertainty that Bayesian models can represent. The resulting posterior distributions combine continuous parameter uncertainty with discrete model uncertainty. Efficient movement between these submodels, however, can be difficult to design. We propose the sticky manifold construction as a principled, modular framework for combining piecewise deterministic Markov processes (PDMPs) across different submodels. The integration is rejection-free, requires no additional likelihood evaluations, and retains the non-reversible and ballistic nature of the component PDMP dynamics. We prove that the resulting process leaves the intended mixed-dimensional target invariant. We also develop a manifold PDMP algorithm based on coordinate charts to provide the within-submodel dynamics and a blow-up procedure that resolves singular sets into codimension-one sticky boundaries. This geometric construction makes the remaining design choices explicit; component dynamics and unsticking kernels can be chosen freely, subject to easily verifiable velocity compatibility conditions. Finally, we demonstrate the sticky manifold algorithms in Bayesian model averaging examples, propagating uncertainty over pure versus mixed states in quantum state tomography, rank in Bayesian principal component analysis, and parametric families in survival extrapolation.",
+        "url": "http://arxiv.org/abs/2611.17008v1",
+        "date": "2026-11-12",
+        "author": "Hirofumi Shiba",
+        "type": "Paper"
+      },
+      {
+        "title": "Dynamical mean-field theory of latching Potts networks",
+        "summary": "Spontaneous transitions between memories, as observed in internally generated cognition such as mind-wandering and free association, require neural dynamics capable of destabilizing one attractive memory state and moving towards another. We ask what minimal representational structure is required for such transitions to emerge in random associative networks. To address this question, we study Potts associative networks with $S$ active states per unit and slow adaptive thresholds. The $S=1$ case can model a standard Hopfield-like network of binary units. We employ dynamical mean-field theory in the extensive-load regime, where the number of stored patterns scales linearly with network size and connectivity, and we focus on transitions between two condensed memories, which are singled out in the connectivity matrix. In the finite-load regime, we show that transitions are governed by an effective drive term, whose sign and temporal evolution distinguish high-latching (structured), low-latching (random), and non-latching regimes. The resulting phase diagram shows that adaptation alone is not sufficient: transitions only occur within certain ranges of the overlap between the two memories. In the binary case $S=1$, in particular, no unit can be active in both memories but in different Potts states, thus strongly supressing the high-latching, structured transitions that exist for $S>1$. In the extensive-load regime, non-condensed memories generate colored fluctuations and retarded self-interactions through an effective memory kernel. We find that latching trajectories change the effective timescale of this kernel, a dynamical signature of transitions in the extensive-load regime. These results indicate that multi-state Potts-like representations are essential for structured memory-to-memory transitions, a hallmark of spontaneous thought.",
+        "url": "http://arxiv.org/abs/2611.16999v1",
+        "date": "2026-11-12",
+        "author": "Anindita Basu",
+        "type": "Paper"
+      },
+      {
+        "title": "Identifiability and partial identification under spatial confounding in additive risk models",
+        "summary": "In spatial risk attribution, continuous environmental exposures and unmeasured background factors often co-vary across broad geographic scales, making it difficult to separate true exposure effects from spatial confounding using finite disease counts. Existing remedies typically project out or penalize shared spatial trends, leaving unclear whether estimation instability stems from the overall capacity of the latent random field or from its directional alignment with exposure. By decomposing the Fisher-weighted smoothing operator of an additive Poisson point process model, we show that while effective degrees of freedom measure total smoothing capacity, the relative loss of Fisher information for the exposure coefficient is governed solely by a distinct directional quantity that we call penalized collinear overlap. Rotating the spatial kernel alters this information loss while holding total capacity fixed, implying that no single smoothing scale is universally optimal. Because real-world confounding combines smooth regional trends with sharp local jumps that escape any moderate basis dictionary, point identification remains fragile. We therefore develop a partial identification framework that bounds residual confounding bias using an observable benchmark covariate. Projecting a joint spatial confidence ellipse yields valid intervals even under weak benchmarks, while incorporating a negative control outcome sharpens the bounds and flags assumption violations. Simulation studies and an analysis of childhood respiratory mortality across England demonstrate the method.",
+        "url": "http://arxiv.org/abs/2611.16994v1",
+        "date": "2026-11-12",
+        "author": "Sheng Pan",
+        "type": "Paper"
+      },
+      {
+        "title": "Stochastic Kernel Mode Decomposition: Information, Uncertainty, and Conditional Regime Inference",
+        "summary": "When do mode energies preserve regime information as measurement quality changes? Stochastic Kernel Mode Decomposition (sKMD) fits joint regime laws on signed KMD mode coordinates and transfers the reference mode posterior to regime probabilities and conditional reconstructions. For centered Gaussian regimes with independently varying known noise variances, fixed coordinate energies retain the full regime posterior precisely when all classes share their cross-covariances and class variances can differ only at isolated vertices of the covariance graph. We extend the characterization to nonzero means and show that freely varying correlated noise forces a fixed linear log-odds decoder to retain the full quadratic feature span even for two distinct centered regimes. At fixed quality, a three-regime example has no sufficient two-energy basis. Its smallest Bayes log-loss gap over bases of condition number at most $κ$ has sharp order $κ^{-1}$. Exact Bayes energy posteriors supply numerical gap estimates for specified bases. Additional bounds relate feature compression, independently learned mode spans and sensor-noise error to log loss. Two controlled experiments with 64 independent panels each show that signed information can improve prediction over energy summaries, while integration gives small gains over strong signed controls and depends on how the competing point rule is calibrated and how accurately observation noise is measured.",
+        "url": "http://arxiv.org/abs/2611.16874v1",
+        "date": "2026-11-12",
+        "author": "Boumediene Hamzi",
+        "type": "Paper"
+      },
+      {
+        "title": "Modular representations of reductive $p$-adic groups and the kernel of the trace map",
+        "summary": "The trace map of a finite group gives a perfect duality between conjugacy classes and irreducible complex representations. For reductive $p$-adic groups, an analogous duality holds due to the classical work of Bernstein, Deligne and Kazhdan. In this paper, we study this trace map for modular representations of reductive $p$-adic groups in characteristic $\\ell\\ne p$. The failure of the duality is measured by the kernel of the trace map on the cocenter of the ``big Hecke algebra''.   Our main theorem expresses this kernel in terms of corresponding kernels for finite-dimensional Hecke algebras associated with normalizers of parahoric subgroups in suitable central quotients of Levi subgroups, reducing a problem on infinite-dimensional algebras to finite-dimensional ones. We also show that projective representations provide a natural complementary subspace on the compact part of the cocenter.   For affine Hecke algebras, we prove the naive-kernel conjecture over algebraically closed fields of arbitrary characteristic and for arbitrary compatible nonzero parameters, including unequal parameters and roots of unity.",
+        "url": "http://arxiv.org/abs/2611.16847v1",
+        "date": "2026-11-12",
+        "author": "Xuhua He",
+        "type": "Paper"
+      },
+      {
+        "title": "Structure-Preserving Learning for Nonlinear Nonholonomic Dynamics",
+        "summary": "Learning the dynamics of mechanical systems subject to nonlinear nonholonomic constraints is challenging, as data-driven models may violate the underlying physical constraints, leading to inconsistent predictions. To address this problem, we develop a constraint-preserving learning framework based on the Lagrange-d'Alembert-Chetaev equations and tangency to the constraint submanifold, which together define an affine space of admissible accelerations. Using the kinetic-energy metric and the Moore-Penrose pseudoinverse, we construct a metric projector and the corresponding Chetaev correction. Embedding this geometric structure directly into a Gaussian process prior ensures that both prior and posterior dynamics satisfy the acceleration constraints exactly. We characterize the resulting reproducing kernel Hilbert space (RKHS), derive an adapted-coordinate representation, and establish nonexpansiveness and consistency transfer. Numerical experiments on a three-dimensional directional flocking system with up to 50 agents demonstrate exact constraint preservation and robustness to constraint-incompatible observations.",
+        "url": "http://arxiv.org/abs/2611.16796v1",
+        "date": "2026-11-12",
+        "author": "Thomas Beckers",
+        "type": "Paper"
+      },
+      {
+        "title": "Normal Squeezing and Strict Pseudoconvexity",
+        "summary": "We prove that a boundary point $p$ of a bounded pseudoconvex domain in $\\mathbb{C}^n$, $n\\ge2$, is strictly pseudoconvex if the boundary is locally $C^{2,α}$ near $p$, $0<α\\le1$, and the squeezing function tends to one along the inward normal. Neither finite type nor convexity is assumed. Under local $C^2$ regularity alone, the same limit gives the normal logarithmic Bergman-kernel growth exponent $n+1$. The proof uses normalized Bergman-kernel profiles and holomorphic translation semigroups on the ball.",
+        "url": "http://arxiv.org/abs/2611.16703v1",
+        "date": "2026-11-12",
+        "author": "Xiangsen Qin",
+        "type": "Paper"
+      },
+      {
+        "title": "The coercivity conjecture for nonlocal energies",
+        "summary": "The coercivity conjecture for nonlocal energies asks whether uniform ellipticity implies $H^s$-coercivity for symmetric nonlocal kernels of order $2s$, with $0<s<1$. We show that the conjecture fails whenever $n>2s$ for every $s \\in (0,1)$ and $n \\geq 1$, even for smooth compactly supported test functions; for $n=1$ and $s>1/2$, we show that it holds. The construction also gives bounded discontinuous weak solutions in $H^s_{\\rm loc}$ to nonlocal equations in divergence form with kernels in this class. Despite the failure, we show that the conjecture holds for several important classes of kernels. We establish a general local coercivity criterion based on annular cancellation, which applies in particular to kernels satisfying both divergence- and nondivergence-form symmetry. The criterion also allows us to treat kernels comparable to stable kernels with bounded measurable coefficients, as well as non-cutoff Boltzmann kernels under a geometric nonconcentration assumption. As an application, we obtain a short and self-contained proof of the Gressman--Strain anisotropic coercivity estimate. Furthermore, by combining our new criterion with existing regularity results, we obtain Hölder estimates under ellipticity and cancellation assumptions.",
+        "url": "http://arxiv.org/abs/2611.16682v1",
+        "date": "2026-11-12",
+        "author": "Linus Behn",
+        "type": "Paper"
+      },
+      {
+        "title": "Rethinking Actions: Continuity-Aware Priors for World-Model Planning",
+        "summary": "Actions in expert demonstrations exhibit temporal structure. An ordered-versus-shuffled analysis across five environments confirms this dependence. We ask whether action proposals that better reflect expert continuity can improve visual world-model planning. Rather than imposing generic smoothness, we learn continuations from the temporal structure of demonstrated actions. Our locality-gated deep-kernel Gaussian-process prior, LG-DKGP, combines recent and longer-range executed action history, predicts a neural continuation, and learns a temporal Gaussian-process (GP) residual. A training-derived exploration scale initializes search around the corrected mean; a frozen world model evaluates progress toward the goal. Training first fits the neural mean, then jointly optimizes the prior with the GP residual using expert future actions. The resulting planner achieves 87.07\\% macro success across five simulated tasks spanning native and fragment-level goal attainment, compared with 71.03\\% for INTACT, 61.66\\% for PRISM, and 58.66\\% for LeWM. Component interventions and expert-relative action-structure comparisons support demonstration-informed continuations and reveal task-dependent effects of visual conditioning, history length, and planning horizon.",
+        "url": "http://arxiv.org/abs/2611.16645v1",
+        "date": "2026-11-12",
+        "author": "Shaobo Yang",
+        "type": "Paper"
+      },
+      {
+        "title": "Quantitative flocking of Cucker-Smale flocks under time-delay and noise",
+        "summary": "We study the asymptotic flocking dynamics of the delayed stochastic Cucker-Smale (in short, DSCS) model driven by agent-wise independent, component-wise multiplicative Brownian noise. The simultaneous interplay of stochastic perturbations and time delay yields fundamental challenges to asymptotic stochastic flocking analysis, as the communication weight may lose a uniform positive lower bound, while the velocity moment is no longer monotone. To overcome these difficulties, we present a sufficient framework and an analytical tool combining the method of time-varying effective region and Lyapunov functional approach with time-delay corrections. This approach avoids any reliance on uniformly positive communication weights or monotone velocity moments. The proposed approach recovers sufficiently strong effective velocity alignment despite stochastic fluctuations and delay effects. As a consequence, we establish the mean-square stochastic flocking with an explicit polynomial convergence rate. The admissible decay exponent is determined by the communication kernel exponent and the orders of the spatial and velocity history moments. These results establish a quantitative theory for long-time stochastic flocking under simultaneous delay and multiplicative noise, and we provide a positive answer to an open problem raised by~[R. Erban, J. Haskovec, Y. Sun, SIAM J. Appl. Math., 76, 1535--1557 (2016)]. We also develop robust analytical tools applicable to delayed stochastic collective dynamics with degenerate communications.",
+        "url": "http://arxiv.org/abs/2611.16613v1",
+        "date": "2026-11-12",
+        "author": "Seung-Yeal Ha",
+        "type": "Paper"
+      },
+      {
+        "title": "Unibuc - NLP at \"Voight-Kampff\" Generative AI Detection PAN 2025",
+        "summary": "This paper describes the approach of the Unibuc - NLP team in tackling the \"Voight-Kampff\" Generative AI Detection task from PAN at CLEF 2025. In the Subtask 1: Voight-Kampff AI Detection Sensitivity we have explored different approaches of leveraging embeddings extracted from LLMs, using either classical ML models or further fine-tuning LLMs with a classification head for the downstream binary classification task. Our experiments showed that using a majority vote ensemble of classical ML models (Light GBM, XGB, Logistic Regression and SVM) is comparable with fine-tuning for downstream task achieving around 99.4% F1 score. For the Subtask 2: Human-AI Collaborative Text Classification we explored a way of combining features at different layers extracted using transformer backbone with layer-wise projection and attentive pooling which proved modest results.",
+        "url": "http://arxiv.org/abs/2611.16612v1",
+        "date": "2026-11-12",
+        "author": "Teodor Marchitan",
+        "type": "Paper"
+      }
+    ]
+  },
+  "Pre-training & Distributed Infrastructure": {
+    "keywords": [
+      "pre-training",
+      "pretraining",
+      "foundation model",
+      "megatron",
+      "deepspeed",
+      "fsdp",
+      "tensor parallel",
+      "pipeline parallel",
+      "sequence parallel",
+      "3d parallelism",
+      "context parallelism",
+      "data parallel",
+      "cluster scheduling",
+      "collective communication",
+      "nccl"
+    ],
+    "items": []
+  },
+  "Post-training, Alignment & RL": {
+    "keywords": [
+      "post-training",
+      "post training",
+      "rlhf",
+      "dpo",
+      "ppo",
+      "grpo",
+      "reinforcement learning from human feedback",
+      "instruction tuning",
+      "sft",
+      "preference optimization",
+      "reasoning models",
+      "distillation",
+      "lora",
+      "qlora"
+    ],
+    "items": [
+      {
+        "title": "Human or Synthetic? What a Fixed Budget Buys for Post-Training",
+        "summary": "Post-training of large language models typically combines supervised fine-tuning (SFT) with preference-based fine-tuning such as Direct Preference Optimization (DPO). Human-annotated and synthetically generated preference data differ substantially in per-sample cost, but prior work typically holds sample count fixed when comparing the two. In this work, we explicitly study the interplay between cost and performance by comparing the effect of post-training with human and synthetic preference data under a fixed, dollar-matched annotation budget. We train and evaluate multiple base model families across helpfulness and summarization tasks. We find that synthetic data is far more cost-efficient at low-to-moderate budgets, achieving high win rates with as little as \\$200--\\$400. On helpfulness, human data closes the gap only at budgets roughly two orders of magnitude larger; on summarization, it does not close the gap at any tested budget. We also find that human-annotated data varies in reliability: one widely used human preference source substantially underperforms another, and the gap persists even after standard remedies such as domain restriction and deduplication.",
+        "url": "http://arxiv.org/abs/2611.16895v1",
+        "date": "2026-11-12",
+        "author": "Shourik Banerjee",
+        "type": "Paper"
+      }
+    ]
+  }
+}
