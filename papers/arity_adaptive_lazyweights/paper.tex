@@ -1,0 +1,70 @@
+\documentclass[11pt]{article}
+\usepackage[final]{acl}
+\usepackage{times,latexsym}
+\usepackage{amsmath,amssymb,booktabs}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype,inconsolata}
+\title{Arity Selection for Huffman-Coded Quantized Weights}
+\author{Lee Si Yuan \\
+  Independent Researcher \\
+  \texttt{siyuanlee.cs@gmail.com}}
+\begin{document}
+\maketitle
+\begin{abstract}
+LazyWeights combines entropy-shaped quantized codes, matrix-level Huffman coding, and 32 interleaved decode lanes. Its released design pairs 4-bit codes into one Huffman symbol, while wider code alphabets use single codes. We study a small extension: choose scalar or pair symbols per matrix by comparing the complete modeled storage cost, subject to the existing 11-bit maximum codeword constraint. The selector includes Huffman payload bits, a canonical-table representation, 32-bit lane padding, and lane-offset metadata. A standard-library CPU experiment evaluates seeded stationary Markov streams over 16-, 32-, and 64-symbol alphabets, four correlation levels, three matrix sizes, and four repeats per condition. At 262,144 symbols, pair mode is selected in all four runs for a 16-symbol alphabet at persistence 0.5 and 0.8, reducing modeled rate from 4.005 to 3.444 and 2.766 bits per weight. Pair mode is rejected at persistence 0.95 because unconstrained Huffman trees violate the 11-bit limit; it is also rejected in every tested 64-symbol case. This supports a guarded per-matrix choice in this synthetic model, not a measured model-compression or hardware-speed claim.
+\end{abstract}
+
+\section{Introduction}
+LazyWeights shapes quantized weight codes, Huffman-codes them in independently decodable lanes, and places a decoder between DRAM and L2 so the GPU receives the original fixed-width values \citep{sanyal2026lazyweights}. The design pairs 4-bit codes into one Huffman symbol. Wider code alphabets are coded one at a time. This leaves a practical design question: when does the larger pair alphabet pay off after accounting for decode-window limits and the table and lane metadata?
+
+We evaluate a per-matrix arity selector between scalar codes and adjacent code pairs. It chooses the lower modeled storage cost among codebooks whose maximum codeword is at most 11 bits. The study is a CPU-side synthetic rate experiment; it does not reproduce the source paper's model quantization or hardware.
+
+\section{Source and prior-access audit}
+The source is Sanyal et al., \emph{LazyWeights: Decode-on-Demand Edge LLMs}, arXiv:2611.17108v1, submitted 12 November 2026. The title and abstract appeared in the daily feed. Before this extension, the identifier was absent from repository paper artifacts and paper-specific Git history. The full v1 text was fetched and read for this work. The audit covers repository history and available session context, not personal or external access logs.
+
+The source already uses pair coding for 4-bit codes and length-limits canonical Huffman words to an 11-bit decoder window. Our extension is the explicit arity-selection rule with table, padding, and feasibility costs across alphabet sizes; pair coding itself is not presented as new.
+
+\section{Method}
+For a code alphabet of size $A$, we compare arities $a\in\{1,2\}$. Pair mode maps each consecutive pair $(x,y)$ to the product-alphabet symbol $xA+y$. Codes are partitioned into 32 contiguous lane segments before pairing. All tested matrix sizes are divisible by 64, so every lane has an even number of codes.
+
+For each candidate, a binary Huffman tree is built from the histogram of the complete synthetic matrix. The sum of integer code lengths gives payload bits. A candidate with maximum codeword length above 11 is infeasible. Modeled total storage also includes one byte per used code length, the minimum-width symbol ID, 32 four-byte lane offsets, an eight-byte header, and padding each lane to a 32-bit boundary. The selector takes the lower total of the feasible scalar and pair candidates. Scalar mode is feasible for every tested case. A Lean lemma checks that this guarded selector never exceeds the feasible scalar candidate's modeled bit count.
+
+We generate stationary uniform-marginal Markov sequences. Each next symbol repeats the previous one with probability $p$; otherwise it is drawn uniformly from $A$ symbols. We use $A\in\{16,32,64\}$, $p\in\{0,0.5,0.8,0.95\}$, lengths 4,096, 65,536, and 262,144, four repeats, and seed 20261115. The script uses Python's standard library. A decode-work proxy counts the maximum number of symbols assigned to any lane, assuming one symbol per lane per cycle; it does not model memory stalls or actual device timing.
+
+\section{Results}
+Table~\ref{tab:rates} gives the largest tested matrix. Values are means over four repeats. A star marks the unconstrained pair estimate when one or more trees violate the 11-bit rule; such candidates cannot be selected.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{crrrc}
+\toprule
+$A$ & $p$ & Scalar & Pair & Pair feasible/selected \\
+\midrule
+16 & 0.00 & 4.005 & 4.020 & 4/4, 0/4 \\
+16 & 0.50 & 4.005 & 3.444 & 4/4, 4/4 \\
+16 & 0.80 & 4.005 & 2.766 & 4/4, 4/4 \\
+16 & 0.95 & 4.005 & 2.257$^*$ & 0/4, 0/4 \\
+32 & 0.50 & 5.006 & 4.301$^*$ & 3/4, 3/4 \\
+64 & 0.50 & 6.008 & 5.345$^*$ & 0/4, 0/4 \\
+\bottomrule
+\end{tabular}
+\caption{Modeled bits per weight at 262,144 codes. Pair feasibility is evaluated separately for each repeat.}
+\label{tab:rates}
+\end{table}
+
+For 16-symbol codes, the selector chooses pairs in all repeats at $p=0.5$ and $p=0.8$, lowering modeled rate by 14.0\% and 30.9\%, respectively. At $p=0$, metadata makes pairs slightly larger. At $p=0.95$, the unconstrained rate appears favorable, but all four pair trees exceed the supported code length; the selector falls back to scalar mode. At $A=32,p=0.5$, one of four pair candidates is infeasible and the other three are selected. None of the 64-symbol pair candidates fits the 11-bit window in these runs.
+
+The per-lane symbol-work proxy halves under pair mode for evenly sized segments. This is only an operation-count comparison. Small matrices pay a larger table cost: for 4,096 codes, the 16-symbol pair candidate is not selected at $p=0.5$ but is selected at $p=0.8$ and $p=0.95$. The threshold therefore depends on total serialized cost, not entropy alone.
+
+\section{Limitations}
+These generated sequences are not quantized LLM weights and do not measure perplexity or downstream quality. The serialization accounting is an explicit model, not a byte-for-byte LazyWeights bundle. We measure ordinary Huffman trees and reject trees exceeding 11 bits; a length-limited optimizer could make some rejected pair candidates feasible, but is not implemented here. The decoder-work proxy excludes shared-port stalls, code-table lookup cost, and pipeline behavior. No GPU, FPGA, or ASIC was available or benchmarked. The findings motivate evaluating this selector on real quantized matrices; they do not establish end-to-end size or speed gains.
+
+\section*{Reproducibility}
+Run \texttt{python3 experiment.py} in this paper directory. The script writes \texttt{results.json} and uses only the Python standard library. From \texttt{papers/formal}, check the selector lemma with \texttt{\string~/.elan/bin/lean AritySelectionClaims.lean}; it uses Lean 4.35.0 core.
+
+\begin{thebibliography}{1}
+\bibitem[Sanyal et al.(2026)]{sanyal2026lazyweights}
+Arnab Sanyal, Gourav Datta, and Sandeep P. Chinchali. 2026. \newblock LazyWeights: Decode-on-Demand Edge LLMs. \newblock arXiv:2611.17108v1. \url{https://arxiv.org/abs/2611.17108v1}.
+\end{thebibliography}
+\end{document}

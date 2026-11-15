@@ -1,0 +1,4715 @@
+{
+  "study": "Arity selection for Huffman-coded quantized codes",
+  "source_paper": "arXiv:2611.17108v1",
+  "seed": 20261115,
+  "repeats_per_condition": 4,
+  "decoder_lanes": 32,
+  "word_alignment_bits": 32,
+  "maximum_supported_codeword_bits": 11,
+  "alphabet_sizes": [
+    16,
+    32,
+    64
+  ],
+  "persistence_probabilities": [
+    0.0,
+    0.5,
+    0.8,
+    0.95
+  ],
+  "matrix_code_counts": [
+    4096,
+    65536,
+    262144
+  ],
+  "synthetic_source": "stationary uniform-marginal Markov chain; retain previous code with probability p, else draw uniformly",
+  "metadata_assumption": "one byte per used code length plus minimum-width symbol ID; 32 four-byte lane offsets and an eight-byte header; both arities charged equally for lane layout",
+  "limitations": [
+    "synthetic integer sequences, not quantized checkpoint weights",
+    "cycle proxy counts decoder symbols per lane only and is not a hardware timing result",
+    "no GPU or ASIC decoder was available",
+    "pair codebooks exceeding the 11-bit lookup window are marked ineligible"
+  ],
+  "records": [
+    {
+      "alphabet_size": 16,
+      "persistence_probability": 0.0,
+      "weights": 4096,
+      "repeats": [
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 16384,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 17728,
+            "bits_per_weight": 4.328125,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 9,
+            "codeable_at_11_bits": true,
+            "payload_bits": 16293,
+            "lane_padding_bits": 283,
+            "codebook_bytes": 512,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 21760,
+            "bits_per_weight": 5.3125,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 16384,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 17728,
+            "bits_per_weight": 4.328125,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 10,
+            "codeable_at_11_bits": true,
+            "payload_bits": 16238,
+            "lane_padding_bits": 274,
+            "codebook_bytes": 510,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 21680,
+            "bits_per_weight": 5.29296875,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 16384,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 17728,
+            "bits_per_weight": 4.328125,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 16270,
+            "lane_padding_bits": 274,
+            "codebook_bytes": 512,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 21728,
+            "bits_per_weight": 5.3046875,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 16384,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 17728,
+            "bits_per_weight": 4.328125,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 10,
+            "codeable_at_11_bits": true,
+            "payload_bits": 16264,
+            "lane_padding_bits": 184,
+            "codebook_bytes": 512,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 21632,
+            "bits_per_weight": 5.28125,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        }
+      ],
+      "pair_selected_count": 0,
+      "pair_ineligible_count": 0,
+      "mean_scalar_bits_per_weight": 4.328125,
+      "mean_pair_bits_per_weight": 5.2978515625,
+      "mean_eligible_pair_bits_per_weight": 5.2978515625,
+      "mean_selected_bits_per_weight": 4.328125,
+      "mean_selected_decoder_work_cycles_proxy": 128.0
+    },
+    {
+      "alphabet_size": 16,
+      "persistence_probability": 0.0,
+      "weights": 65536,
+      "repeats": [
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 262144,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 263488,
+            "bits_per_weight": 4.0205078125,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 8,
+            "codeable_at_11_bits": true,
+            "payload_bits": 262144,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 512,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 267328,
+            "bits_per_weight": 4.0791015625,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 262144,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 263488,
+            "bits_per_weight": 4.0205078125,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 8,
+            "codeable_at_11_bits": true,
+            "payload_bits": 262144,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 512,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 267328,
+            "bits_per_weight": 4.0791015625,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 262144,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 263488,
+            "bits_per_weight": 4.0205078125,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 8,
+            "codeable_at_11_bits": true,
+            "payload_bits": 262144,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 512,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 267328,
+            "bits_per_weight": 4.0791015625,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 262144,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 263488,
+            "bits_per_weight": 4.0205078125,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 8,
+            "codeable_at_11_bits": true,
+            "payload_bits": 262144,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 512,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 267328,
+            "bits_per_weight": 4.0791015625,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        }
+      ],
+      "pair_selected_count": 0,
+      "pair_ineligible_count": 0,
+      "mean_scalar_bits_per_weight": 4.0205078125,
+      "mean_pair_bits_per_weight": 4.0791015625,
+      "mean_eligible_pair_bits_per_weight": 4.0791015625,
+      "mean_selected_bits_per_weight": 4.0205078125,
+      "mean_selected_decoder_work_cycles_proxy": 2048.0
+    },
+    {
+      "alphabet_size": 16,
+      "persistence_probability": 0.0,
+      "weights": 262144,
+      "repeats": [
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1048576,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1049920,
+            "bits_per_weight": 4.005126953125,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 8,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1048576,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 512,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1053760,
+            "bits_per_weight": 4.019775390625,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1048576,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1049920,
+            "bits_per_weight": 4.005126953125,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 8,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1048576,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 512,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1053760,
+            "bits_per_weight": 4.019775390625,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1048576,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1049920,
+            "bits_per_weight": 4.005126953125,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 8,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1048576,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 512,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1053760,
+            "bits_per_weight": 4.019775390625,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1048576,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1049920,
+            "bits_per_weight": 4.005126953125,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 8,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1048576,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 512,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1053760,
+            "bits_per_weight": 4.019775390625,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        }
+      ],
+      "pair_selected_count": 0,
+      "pair_ineligible_count": 0,
+      "mean_scalar_bits_per_weight": 4.005126953125,
+      "mean_pair_bits_per_weight": 4.019775390625,
+      "mean_eligible_pair_bits_per_weight": 4.019775390625,
+      "mean_selected_bits_per_weight": 4.005126953125,
+      "mean_selected_decoder_work_cycles_proxy": 8192.0
+    },
+    {
+      "alphabet_size": 16,
+      "persistence_probability": 0.5,
+      "weights": 4096,
+      "repeats": [
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 16384,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 17728,
+            "bits_per_weight": 4.328125,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 13925,
+            "lane_padding_bits": 539,
+            "codebook_bytes": 496,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 19520,
+            "bits_per_weight": 4.765625,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 16384,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 17728,
+            "bits_per_weight": 4.328125,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 13797,
+            "lane_padding_bits": 539,
+            "codebook_bytes": 500,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 19424,
+            "bits_per_weight": 4.7421875,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 16384,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 17728,
+            "bits_per_weight": 4.328125,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 13756,
+            "lane_padding_bits": 516,
+            "codebook_bytes": 500,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 19360,
+            "bits_per_weight": 4.7265625,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 16384,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 17728,
+            "bits_per_weight": 4.328125,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 13797,
+            "lane_padding_bits": 411,
+            "codebook_bytes": 502,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 19312,
+            "bits_per_weight": 4.71484375,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        }
+      ],
+      "pair_selected_count": 0,
+      "pair_ineligible_count": 0,
+      "mean_scalar_bits_per_weight": 4.328125,
+      "mean_pair_bits_per_weight": 4.7373046875,
+      "mean_eligible_pair_bits_per_weight": 4.7373046875,
+      "mean_selected_bits_per_weight": 4.328125,
+      "mean_selected_decoder_work_cycles_proxy": 128.0
+    },
+    {
+      "alphabet_size": 16,
+      "persistence_probability": 0.5,
+      "weights": 65536,
+      "repeats": [
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 262144,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 263488,
+            "bits_per_weight": 4.0205078125,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 9,
+            "codeable_at_11_bits": true,
+            "payload_bits": 224137,
+            "lane_padding_bits": 471,
+            "codebook_bytes": 512,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 229792,
+            "bits_per_weight": 3.50634765625,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 2
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 262144,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 263488,
+            "bits_per_weight": 4.0205078125,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 9,
+            "codeable_at_11_bits": true,
+            "payload_bits": 224340,
+            "lane_padding_bits": 556,
+            "codebook_bytes": 512,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 230080,
+            "bits_per_weight": 3.5107421875,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 2
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 262144,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 263488,
+            "bits_per_weight": 4.0205078125,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 9,
+            "codeable_at_11_bits": true,
+            "payload_bits": 223757,
+            "lane_padding_bits": 563,
+            "codebook_bytes": 512,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 229504,
+            "bits_per_weight": 3.501953125,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 2
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 262144,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 263488,
+            "bits_per_weight": 4.0205078125,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 9,
+            "codeable_at_11_bits": true,
+            "payload_bits": 223941,
+            "lane_padding_bits": 475,
+            "codebook_bytes": 512,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 229600,
+            "bits_per_weight": 3.50341796875,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 2
+        }
+      ],
+      "pair_selected_count": 4,
+      "pair_ineligible_count": 0,
+      "mean_scalar_bits_per_weight": 4.0205078125,
+      "mean_pair_bits_per_weight": 3.505615234375,
+      "mean_eligible_pair_bits_per_weight": 3.505615234375,
+      "mean_selected_bits_per_weight": 3.505615234375,
+      "mean_selected_decoder_work_cycles_proxy": 1024.0
+    },
+    {
+      "alphabet_size": 16,
+      "persistence_probability": 0.5,
+      "weights": 262144,
+      "repeats": [
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1048576,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1049920,
+            "bits_per_weight": 4.005126953125,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 9,
+            "codeable_at_11_bits": true,
+            "payload_bits": 898445,
+            "lane_padding_bits": 499,
+            "codebook_bytes": 512,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 904128,
+            "bits_per_weight": 3.448974609375,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 2
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1048576,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1049920,
+            "bits_per_weight": 4.005126953125,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 9,
+            "codeable_at_11_bits": true,
+            "payload_bits": 897763,
+            "lane_padding_bits": 445,
+            "codebook_bytes": 512,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 903392,
+            "bits_per_weight": 3.4461669921875,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 2
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1048576,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1049920,
+            "bits_per_weight": 4.005126953125,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 9,
+            "codeable_at_11_bits": true,
+            "payload_bits": 896045,
+            "lane_padding_bits": 531,
+            "codebook_bytes": 512,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 901760,
+            "bits_per_weight": 3.43994140625,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 2
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1048576,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1049920,
+            "bits_per_weight": 4.005126953125,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 9,
+            "codeable_at_11_bits": true,
+            "payload_bits": 896510,
+            "lane_padding_bits": 514,
+            "codebook_bytes": 512,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 902208,
+            "bits_per_weight": 3.441650390625,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 2
+        }
+      ],
+      "pair_selected_count": 4,
+      "pair_ineligible_count": 0,
+      "mean_scalar_bits_per_weight": 4.005126953125,
+      "mean_pair_bits_per_weight": 3.444183349609375,
+      "mean_eligible_pair_bits_per_weight": 3.444183349609375,
+      "mean_selected_bits_per_weight": 3.444183349609375,
+      "mean_selected_decoder_work_cycles_proxy": 4096.0
+    },
+    {
+      "alphabet_size": 16,
+      "persistence_probability": 0.8,
+      "weights": 4096,
+      "repeats": [
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 16334,
+            "lane_padding_bits": 434,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 18112,
+            "bits_per_weight": 4.421875,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 11097,
+            "lane_padding_bits": 487,
+            "codebook_bytes": 426,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 16080,
+            "bits_per_weight": 3.92578125,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 2
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 16384,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 17728,
+            "bits_per_weight": 4.328125,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 10893,
+            "lane_padding_bits": 467,
+            "codebook_bytes": 406,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 15696,
+            "bits_per_weight": 3.83203125,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 2
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 16384,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 17728,
+            "bits_per_weight": 4.328125,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 11210,
+            "lane_padding_bits": 566,
+            "codebook_bytes": 440,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 16384,
+            "bits_per_weight": 4.0,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 2
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 16384,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 17728,
+            "bits_per_weight": 4.328125,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 10830,
+            "lane_padding_bits": 498,
+            "codebook_bytes": 410,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 15696,
+            "bits_per_weight": 3.83203125,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 2
+        }
+      ],
+      "pair_selected_count": 4,
+      "pair_ineligible_count": 0,
+      "mean_scalar_bits_per_weight": 4.3515625,
+      "mean_pair_bits_per_weight": 3.8974609375,
+      "mean_eligible_pair_bits_per_weight": 3.8974609375,
+      "mean_selected_bits_per_weight": 3.8974609375,
+      "mean_selected_decoder_work_cycles_proxy": 64.0
+    },
+    {
+      "alphabet_size": 16,
+      "persistence_probability": 0.8,
+      "weights": 65536,
+      "repeats": [
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 262144,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 263488,
+            "bits_per_weight": 4.0205078125,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 178594,
+            "lane_padding_bits": 446,
+            "codebook_bytes": 512,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 184224,
+            "bits_per_weight": 2.81103515625,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 2
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 262144,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 263488,
+            "bits_per_weight": 4.0205078125,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 12,
+            "codeable_at_11_bits": false,
+            "payload_bits": 178807,
+            "lane_padding_bits": 457,
+            "codebook_bytes": 512,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 184448,
+            "bits_per_weight": 2.814453125,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 262144,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 263488,
+            "bits_per_weight": 4.0205078125,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 12,
+            "codeable_at_11_bits": false,
+            "payload_bits": 178213,
+            "lane_padding_bits": 475,
+            "codebook_bytes": 512,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 183872,
+            "bits_per_weight": 2.8056640625,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 262144,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 263488,
+            "bits_per_weight": 4.0205078125,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 12,
+            "codeable_at_11_bits": false,
+            "payload_bits": 179933,
+            "lane_padding_bits": 547,
+            "codebook_bytes": 512,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 185664,
+            "bits_per_weight": 2.8330078125,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        }
+      ],
+      "pair_selected_count": 1,
+      "pair_ineligible_count": 3,
+      "mean_scalar_bits_per_weight": 4.0205078125,
+      "mean_pair_bits_per_weight": 2.8160400390625,
+      "mean_eligible_pair_bits_per_weight": 2.81103515625,
+      "mean_selected_bits_per_weight": 3.7181396484375,
+      "mean_selected_decoder_work_cycles_proxy": 1792.0
+    },
+    {
+      "alphabet_size": 16,
+      "persistence_probability": 0.8,
+      "weights": 262144,
+      "repeats": [
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1048576,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1049920,
+            "bits_per_weight": 4.005126953125,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 718815,
+            "lane_padding_bits": 609,
+            "codebook_bytes": 512,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 724608,
+            "bits_per_weight": 2.76416015625,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 2
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1048576,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1049920,
+            "bits_per_weight": 4.005126953125,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 720037,
+            "lane_padding_bits": 507,
+            "codebook_bytes": 512,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 725728,
+            "bits_per_weight": 2.7684326171875,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 2
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1048576,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1049920,
+            "bits_per_weight": 4.005126953125,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 718817,
+            "lane_padding_bits": 511,
+            "codebook_bytes": 512,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 724512,
+            "bits_per_weight": 2.7637939453125,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 2
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1048576,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1049920,
+            "bits_per_weight": 4.005126953125,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 719760,
+            "lane_padding_bits": 464,
+            "codebook_bytes": 512,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 725408,
+            "bits_per_weight": 2.7672119140625,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 2
+        }
+      ],
+      "pair_selected_count": 4,
+      "pair_ineligible_count": 0,
+      "mean_scalar_bits_per_weight": 4.005126953125,
+      "mean_pair_bits_per_weight": 2.765899658203125,
+      "mean_eligible_pair_bits_per_weight": 2.765899658203125,
+      "mean_selected_bits_per_weight": 2.765899658203125,
+      "mean_selected_decoder_work_cycles_proxy": 4096.0
+    },
+    {
+      "alphabet_size": 16,
+      "persistence_probability": 0.95,
+      "weights": 4096,
+      "repeats": [
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 16278,
+            "lane_padding_bits": 458,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 18080,
+            "bits_per_weight": 4.4140625,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 8979,
+            "lane_padding_bits": 461,
+            "codebook_bytes": 202,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 12144,
+            "bits_per_weight": 2.96484375,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 2
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 15830,
+            "lane_padding_bits": 394,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 17568,
+            "bits_per_weight": 4.2890625,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 8575,
+            "lane_padding_bits": 513,
+            "codebook_bytes": 178,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 11600,
+            "bits_per_weight": 2.83203125,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 2
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 16220,
+            "lane_padding_bits": 388,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 17952,
+            "bits_per_weight": 4.3828125,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 8933,
+            "lane_padding_bits": 507,
+            "codebook_bytes": 206,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 12176,
+            "bits_per_weight": 2.97265625,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 2
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 16217,
+            "lane_padding_bits": 519,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 18080,
+            "bits_per_weight": 4.4140625,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 8925,
+            "lane_padding_bits": 611,
+            "codebook_bytes": 204,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 12256,
+            "bits_per_weight": 2.9921875,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 2
+        }
+      ],
+      "pair_selected_count": 4,
+      "pair_ineligible_count": 0,
+      "mean_scalar_bits_per_weight": 4.375,
+      "mean_pair_bits_per_weight": 2.9404296875,
+      "mean_eligible_pair_bits_per_weight": 2.9404296875,
+      "mean_selected_bits_per_weight": 2.9404296875,
+      "mean_selected_decoder_work_cycles_proxy": 64.0
+    },
+    {
+      "alphabet_size": 16,
+      "persistence_probability": 0.95,
+      "weights": 65536,
+      "repeats": [
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 262144,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 263488,
+            "bits_per_weight": 4.0205078125,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 15,
+            "codeable_at_11_bits": false,
+            "payload_bits": 146031,
+            "lane_padding_bits": 497,
+            "codebook_bytes": 512,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 151712,
+            "bits_per_weight": 2.31494140625,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 262144,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 263488,
+            "bits_per_weight": 4.0205078125,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 15,
+            "codeable_at_11_bits": false,
+            "payload_bits": 146537,
+            "lane_padding_bits": 535,
+            "codebook_bytes": 512,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 152256,
+            "bits_per_weight": 2.3232421875,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 262144,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 263488,
+            "bits_per_weight": 4.0205078125,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 15,
+            "codeable_at_11_bits": false,
+            "payload_bits": 146071,
+            "lane_padding_bits": 617,
+            "codebook_bytes": 512,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 151872,
+            "bits_per_weight": 2.3173828125,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 262144,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 263488,
+            "bits_per_weight": 4.0205078125,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 16,
+            "codeable_at_11_bits": false,
+            "payload_bits": 146176,
+            "lane_padding_bits": 512,
+            "codebook_bytes": 510,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 151856,
+            "bits_per_weight": 2.317138671875,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        }
+      ],
+      "pair_selected_count": 0,
+      "pair_ineligible_count": 4,
+      "mean_scalar_bits_per_weight": 4.0205078125,
+      "mean_pair_bits_per_weight": 2.31817626953125,
+      "mean_eligible_pair_bits_per_weight": 0.0,
+      "mean_selected_bits_per_weight": 4.0205078125,
+      "mean_selected_decoder_work_cycles_proxy": 2048.0
+    },
+    {
+      "alphabet_size": 16,
+      "persistence_probability": 0.95,
+      "weights": 262144,
+      "repeats": [
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1048576,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1049920,
+            "bits_per_weight": 4.005126953125,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 14,
+            "codeable_at_11_bits": false,
+            "payload_bits": 585955,
+            "lane_padding_bits": 541,
+            "codebook_bytes": 512,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 591680,
+            "bits_per_weight": 2.257080078125,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1048576,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1049920,
+            "bits_per_weight": 4.005126953125,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 14,
+            "codeable_at_11_bits": false,
+            "payload_bits": 586185,
+            "lane_padding_bits": 567,
+            "codebook_bytes": 512,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 591936,
+            "bits_per_weight": 2.258056640625,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1048576,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1049920,
+            "bits_per_weight": 4.005126953125,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 14,
+            "codeable_at_11_bits": false,
+            "payload_bits": 584832,
+            "lane_padding_bits": 448,
+            "codebook_bytes": 512,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 590464,
+            "bits_per_weight": 2.25244140625,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 4,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1048576,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 32,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1049920,
+            "bits_per_weight": 4.005126953125,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 14,
+            "codeable_at_11_bits": false,
+            "payload_bits": 587113,
+            "lane_padding_bits": 407,
+            "codebook_bytes": 512,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 592704,
+            "bits_per_weight": 2.260986328125,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        }
+      ],
+      "pair_selected_count": 0,
+      "pair_ineligible_count": 4,
+      "mean_scalar_bits_per_weight": 4.005126953125,
+      "mean_pair_bits_per_weight": 2.25714111328125,
+      "mean_eligible_pair_bits_per_weight": 0.0,
+      "mean_selected_bits_per_weight": 4.005126953125,
+      "mean_selected_decoder_work_cycles_proxy": 8192.0
+    },
+    {
+      "alphabet_size": 32,
+      "persistence_probability": 0.0,
+      "weights": 4096,
+      "repeats": [
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 20480,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 22080,
+            "bits_per_weight": 5.390625,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 19657,
+            "lane_padding_bits": 727,
+            "codebook_bytes": 2652,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 42688,
+            "bits_per_weight": 10.421875,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 20480,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 22080,
+            "bits_per_weight": 5.390625,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 19710,
+            "lane_padding_bits": 642,
+            "codebook_bytes": 2667,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 42776,
+            "bits_per_weight": 10.443359375,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 20480,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 22080,
+            "bits_per_weight": 5.390625,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 19707,
+            "lane_padding_bits": 709,
+            "codebook_bytes": 2661,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 42792,
+            "bits_per_weight": 10.447265625,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 20480,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 22080,
+            "bits_per_weight": 5.390625,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 19736,
+            "lane_padding_bits": 712,
+            "codebook_bytes": 2676,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 42944,
+            "bits_per_weight": 10.484375,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        }
+      ],
+      "pair_selected_count": 0,
+      "pair_ineligible_count": 0,
+      "mean_scalar_bits_per_weight": 5.390625,
+      "mean_pair_bits_per_weight": 10.44921875,
+      "mean_eligible_pair_bits_per_weight": 10.44921875,
+      "mean_selected_bits_per_weight": 5.390625,
+      "mean_selected_decoder_work_cycles_proxy": 128.0
+    },
+    {
+      "alphabet_size": 32,
+      "persistence_probability": 0.0,
+      "weights": 65536,
+      "repeats": [
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 327680,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 329280,
+            "bits_per_weight": 5.0244140625,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 327535,
+            "lane_padding_bits": 305,
+            "codebook_bytes": 3072,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 353504,
+            "bits_per_weight": 5.39404296875,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 327680,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 329280,
+            "bits_per_weight": 5.0244140625,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 327549,
+            "lane_padding_bits": 355,
+            "codebook_bytes": 3072,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 353568,
+            "bits_per_weight": 5.39501953125,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 327680,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 329280,
+            "bits_per_weight": 5.0244140625,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 327541,
+            "lane_padding_bits": 427,
+            "codebook_bytes": 3072,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 353632,
+            "bits_per_weight": 5.39599609375,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 327680,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 329280,
+            "bits_per_weight": 5.0244140625,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 327568,
+            "lane_padding_bits": 432,
+            "codebook_bytes": 3072,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 353664,
+            "bits_per_weight": 5.396484375,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        }
+      ],
+      "pair_selected_count": 0,
+      "pair_ineligible_count": 0,
+      "mean_scalar_bits_per_weight": 5.0244140625,
+      "mean_pair_bits_per_weight": 5.3953857421875,
+      "mean_eligible_pair_bits_per_weight": 5.3953857421875,
+      "mean_selected_bits_per_weight": 5.0244140625,
+      "mean_selected_decoder_work_cycles_proxy": 2048.0
+    },
+    {
+      "alphabet_size": 32,
+      "persistence_probability": 0.0,
+      "weights": 262144,
+      "repeats": [
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1310720,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1312320,
+            "bits_per_weight": 5.006103515625,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 10,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1310720,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 3072,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1336384,
+            "bits_per_weight": 5.097900390625,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1310720,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1312320,
+            "bits_per_weight": 5.006103515625,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 10,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1310720,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 3072,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1336384,
+            "bits_per_weight": 5.097900390625,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1310720,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1312320,
+            "bits_per_weight": 5.006103515625,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 10,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1310720,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 3072,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1336384,
+            "bits_per_weight": 5.097900390625,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1310720,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1312320,
+            "bits_per_weight": 5.006103515625,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 10,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1310720,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 3072,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1336384,
+            "bits_per_weight": 5.097900390625,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        }
+      ],
+      "pair_selected_count": 0,
+      "pair_ineligible_count": 0,
+      "mean_scalar_bits_per_weight": 5.006103515625,
+      "mean_pair_bits_per_weight": 5.097900390625,
+      "mean_eligible_pair_bits_per_weight": 5.097900390625,
+      "mean_selected_bits_per_weight": 5.006103515625,
+      "mean_selected_decoder_work_cycles_proxy": 8192.0
+    },
+    {
+      "alphabet_size": 32,
+      "persistence_probability": 0.5,
+      "weights": 4096,
+      "repeats": [
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 20480,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 22080,
+            "bits_per_weight": 5.390625,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 16335,
+            "lane_padding_bits": 529,
+            "codebook_bytes": 1953,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 33576,
+            "bits_per_weight": 8.197265625,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 20468,
+            "lane_padding_bits": 332,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 22400,
+            "bits_per_weight": 5.46875,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 16514,
+            "lane_padding_bits": 446,
+            "codebook_bytes": 2019,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 34200,
+            "bits_per_weight": 8.349609375,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 20480,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 22080,
+            "bits_per_weight": 5.390625,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 16479,
+            "lane_padding_bits": 417,
+            "codebook_bytes": 1971,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 33752,
+            "bits_per_weight": 8.240234375,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 20480,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 22080,
+            "bits_per_weight": 5.390625,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 16445,
+            "lane_padding_bits": 451,
+            "codebook_bytes": 2013,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 34088,
+            "bits_per_weight": 8.322265625,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        }
+      ],
+      "pair_selected_count": 0,
+      "pair_ineligible_count": 0,
+      "mean_scalar_bits_per_weight": 5.41015625,
+      "mean_pair_bits_per_weight": 8.27734375,
+      "mean_eligible_pair_bits_per_weight": 8.27734375,
+      "mean_selected_bits_per_weight": 5.41015625,
+      "mean_selected_decoder_work_cycles_proxy": 128.0
+    },
+    {
+      "alphabet_size": 32,
+      "persistence_probability": 0.5,
+      "weights": 65536,
+      "repeats": [
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 327680,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 329280,
+            "bits_per_weight": 5.0244140625,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 12,
+            "codeable_at_11_bits": false,
+            "payload_bits": 274413,
+            "lane_padding_bits": 467,
+            "codebook_bytes": 3072,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 300544,
+            "bits_per_weight": 4.5859375,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 327680,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 329280,
+            "bits_per_weight": 5.0244140625,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 13,
+            "codeable_at_11_bits": false,
+            "payload_bits": 274614,
+            "lane_padding_bits": 458,
+            "codebook_bytes": 3072,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 300736,
+            "bits_per_weight": 4.5888671875,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 327680,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 329280,
+            "bits_per_weight": 5.0244140625,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 12,
+            "codeable_at_11_bits": false,
+            "payload_bits": 274899,
+            "lane_padding_bits": 461,
+            "codebook_bytes": 3072,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 301024,
+            "bits_per_weight": 4.59326171875,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 327680,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 329280,
+            "bits_per_weight": 5.0244140625,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 12,
+            "codeable_at_11_bits": false,
+            "payload_bits": 275320,
+            "lane_padding_bits": 424,
+            "codebook_bytes": 3072,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 301408,
+            "bits_per_weight": 4.59912109375,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        }
+      ],
+      "pair_selected_count": 0,
+      "pair_ineligible_count": 4,
+      "mean_scalar_bits_per_weight": 5.0244140625,
+      "mean_pair_bits_per_weight": 4.591796875,
+      "mean_eligible_pair_bits_per_weight": 0.0,
+      "mean_selected_bits_per_weight": 5.0244140625,
+      "mean_selected_decoder_work_cycles_proxy": 2048.0
+    },
+    {
+      "alphabet_size": 32,
+      "persistence_probability": 0.5,
+      "weights": 262144,
+      "repeats": [
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1310720,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1312320,
+            "bits_per_weight": 5.006103515625,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1101239,
+            "lane_padding_bits": 521,
+            "codebook_bytes": 3072,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1127424,
+            "bits_per_weight": 4.30078125,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 2
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1310720,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1312320,
+            "bits_per_weight": 5.006103515625,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1099776,
+            "lane_padding_bits": 448,
+            "codebook_bytes": 3072,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1125888,
+            "bits_per_weight": 4.294921875,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 2
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1310720,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1312320,
+            "bits_per_weight": 5.006103515625,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 12,
+            "codeable_at_11_bits": false,
+            "payload_bits": 1101880,
+            "lane_padding_bits": 456,
+            "codebook_bytes": 3072,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1128000,
+            "bits_per_weight": 4.302978515625,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1310720,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1312320,
+            "bits_per_weight": 5.006103515625,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1102757,
+            "lane_padding_bits": 475,
+            "codebook_bytes": 3072,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1128896,
+            "bits_per_weight": 4.306396484375,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 2
+        }
+      ],
+      "pair_selected_count": 3,
+      "pair_ineligible_count": 1,
+      "mean_scalar_bits_per_weight": 5.006103515625,
+      "mean_pair_bits_per_weight": 4.30126953125,
+      "mean_eligible_pair_bits_per_weight": 4.300699869791667,
+      "mean_selected_bits_per_weight": 4.47705078125,
+      "mean_selected_decoder_work_cycles_proxy": 5120.0
+    },
+    {
+      "alphabet_size": 32,
+      "persistence_probability": 0.8,
+      "weights": 4096,
+      "repeats": [
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 20452,
+            "lane_padding_bits": 412,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 22464,
+            "bits_per_weight": 5.484375,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 12794,
+            "lane_padding_bits": 550,
+            "codebook_bytes": 1020,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 22592,
+            "bits_per_weight": 5.515625,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 20252,
+            "lane_padding_bits": 548,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 22400,
+            "bits_per_weight": 5.46875,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 12971,
+            "lane_padding_bits": 565,
+            "codebook_bytes": 1122,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 23600,
+            "bits_per_weight": 5.76171875,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 20428,
+            "lane_padding_bits": 468,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 22496,
+            "bits_per_weight": 5.4921875,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 12808,
+            "lane_padding_bits": 440,
+            "codebook_bytes": 1041,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 22664,
+            "bits_per_weight": 5.533203125,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 20394,
+            "lane_padding_bits": 502,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 22496,
+            "bits_per_weight": 5.4921875,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 12980,
+            "lane_padding_bits": 492,
+            "codebook_bytes": 1074,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 23152,
+            "bits_per_weight": 5.65234375,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        }
+      ],
+      "pair_selected_count": 0,
+      "pair_ineligible_count": 0,
+      "mean_scalar_bits_per_weight": 5.484375,
+      "mean_pair_bits_per_weight": 5.61572265625,
+      "mean_eligible_pair_bits_per_weight": 5.61572265625,
+      "mean_selected_bits_per_weight": 5.484375,
+      "mean_selected_decoder_work_cycles_proxy": 128.0
+    },
+    {
+      "alphabet_size": 32,
+      "persistence_probability": 0.8,
+      "weights": 65536,
+      "repeats": [
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 327680,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 329280,
+            "bits_per_weight": 5.0244140625,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 15,
+            "codeable_at_11_bits": false,
+            "payload_bits": 219917,
+            "lane_padding_bits": 435,
+            "codebook_bytes": 3063,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 245944,
+            "bits_per_weight": 3.7528076171875,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 327680,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 329280,
+            "bits_per_weight": 5.0244140625,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 15,
+            "codeable_at_11_bits": false,
+            "payload_bits": 219407,
+            "lane_padding_bits": 465,
+            "codebook_bytes": 3066,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 245488,
+            "bits_per_weight": 3.745849609375,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 327680,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 329280,
+            "bits_per_weight": 5.0244140625,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 15,
+            "codeable_at_11_bits": false,
+            "payload_bits": 219575,
+            "lane_padding_bits": 521,
+            "codebook_bytes": 3066,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 245712,
+            "bits_per_weight": 3.749267578125,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 327680,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 329280,
+            "bits_per_weight": 5.0244140625,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 15,
+            "codeable_at_11_bits": false,
+            "payload_bits": 219625,
+            "lane_padding_bits": 439,
+            "codebook_bytes": 3066,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 245680,
+            "bits_per_weight": 3.748779296875,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        }
+      ],
+      "pair_selected_count": 0,
+      "pair_ineligible_count": 4,
+      "mean_scalar_bits_per_weight": 5.0244140625,
+      "mean_pair_bits_per_weight": 3.749176025390625,
+      "mean_eligible_pair_bits_per_weight": 0.0,
+      "mean_selected_bits_per_weight": 5.0244140625,
+      "mean_selected_decoder_work_cycles_proxy": 2048.0
+    },
+    {
+      "alphabet_size": 32,
+      "persistence_probability": 0.8,
+      "weights": 262144,
+      "repeats": [
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1310720,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1312320,
+            "bits_per_weight": 5.006103515625,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 13,
+            "codeable_at_11_bits": false,
+            "payload_bits": 880514,
+            "lane_padding_bits": 478,
+            "codebook_bytes": 3072,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 906656,
+            "bits_per_weight": 3.4586181640625,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1310720,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1312320,
+            "bits_per_weight": 5.006103515625,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 14,
+            "codeable_at_11_bits": false,
+            "payload_bits": 881327,
+            "lane_padding_bits": 593,
+            "codebook_bytes": 3072,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 907584,
+            "bits_per_weight": 3.462158203125,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1310720,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1312320,
+            "bits_per_weight": 5.006103515625,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 14,
+            "codeable_at_11_bits": false,
+            "payload_bits": 880588,
+            "lane_padding_bits": 500,
+            "codebook_bytes": 3072,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 906752,
+            "bits_per_weight": 3.458984375,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1310720,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1312320,
+            "bits_per_weight": 5.006103515625,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 14,
+            "codeable_at_11_bits": false,
+            "payload_bits": 880226,
+            "lane_padding_bits": 510,
+            "codebook_bytes": 3072,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 906400,
+            "bits_per_weight": 3.4576416015625,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        }
+      ],
+      "pair_selected_count": 0,
+      "pair_ineligible_count": 4,
+      "mean_scalar_bits_per_weight": 5.006103515625,
+      "mean_pair_bits_per_weight": 3.4593505859375,
+      "mean_eligible_pair_bits_per_weight": 0.0,
+      "mean_selected_bits_per_weight": 5.006103515625,
+      "mean_selected_decoder_work_cycles_proxy": 8192.0
+    },
+    {
+      "alphabet_size": 32,
+      "persistence_probability": 0.95,
+      "weights": 4096,
+      "repeats": [
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 20288,
+            "lane_padding_bits": 416,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 22304,
+            "bits_per_weight": 5.4453125,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 10707,
+            "lane_padding_bits": 557,
+            "codebook_bytes": 321,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 14920,
+            "bits_per_weight": 3.642578125,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 2
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 7,
+            "codeable_at_11_bits": true,
+            "payload_bits": 19738,
+            "lane_padding_bits": 486,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 21824,
+            "bits_per_weight": 5.328125,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 10554,
+            "lane_padding_bits": 486,
+            "codebook_bytes": 369,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 15080,
+            "bits_per_weight": 3.681640625,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 2
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 7,
+            "codeable_at_11_bits": true,
+            "payload_bits": 19694,
+            "lane_padding_bits": 498,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 21792,
+            "bits_per_weight": 5.3203125,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 10577,
+            "lane_padding_bits": 495,
+            "codebook_bytes": 381,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 15208,
+            "bits_per_weight": 3.712890625,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 2
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 9,
+            "codeable_at_11_bits": true,
+            "payload_bits": 19738,
+            "lane_padding_bits": 422,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 21760,
+            "bits_per_weight": 5.3125,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 10632,
+            "lane_padding_bits": 472,
+            "codebook_bytes": 396,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 15360,
+            "bits_per_weight": 3.75,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 2
+        }
+      ],
+      "pair_selected_count": 4,
+      "pair_ineligible_count": 0,
+      "mean_scalar_bits_per_weight": 5.3515625,
+      "mean_pair_bits_per_weight": 3.69677734375,
+      "mean_eligible_pair_bits_per_weight": 3.69677734375,
+      "mean_selected_bits_per_weight": 3.69677734375,
+      "mean_selected_decoder_work_cycles_proxy": 64.0
+    },
+    {
+      "alphabet_size": 32,
+      "persistence_probability": 0.95,
+      "weights": 65536,
+      "repeats": [
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 327676,
+            "lane_padding_bits": 548,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 329824,
+            "bits_per_weight": 5.03271484375,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 15,
+            "codeable_at_11_bits": false,
+            "payload_bits": 180246,
+            "lane_padding_bits": 426,
+            "codebook_bytes": 2478,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 201584,
+            "bits_per_weight": 3.075927734375,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 327680,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 329280,
+            "bits_per_weight": 5.0244140625,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 15,
+            "codeable_at_11_bits": false,
+            "payload_bits": 179833,
+            "lane_padding_bits": 487,
+            "codebook_bytes": 2490,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 201328,
+            "bits_per_weight": 3.072021484375,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 327680,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 329280,
+            "bits_per_weight": 5.0244140625,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 15,
+            "codeable_at_11_bits": false,
+            "payload_bits": 180163,
+            "lane_padding_bits": 413,
+            "codebook_bytes": 2463,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 201368,
+            "bits_per_weight": 3.0726318359375,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 327680,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 329280,
+            "bits_per_weight": 5.0244140625,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 15,
+            "codeable_at_11_bits": false,
+            "payload_bits": 179877,
+            "lane_padding_bits": 571,
+            "codebook_bytes": 2457,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 201192,
+            "bits_per_weight": 3.0699462890625,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        }
+      ],
+      "pair_selected_count": 0,
+      "pair_ineligible_count": 4,
+      "mean_scalar_bits_per_weight": 5.0264892578125,
+      "mean_pair_bits_per_weight": 3.0726318359375,
+      "mean_eligible_pair_bits_per_weight": 0.0,
+      "mean_selected_bits_per_weight": 5.0264892578125,
+      "mean_selected_decoder_work_cycles_proxy": 2048.0
+    },
+    {
+      "alphabet_size": 32,
+      "persistence_probability": 0.95,
+      "weights": 262144,
+      "repeats": [
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1310720,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1312320,
+            "bits_per_weight": 5.006103515625,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 17,
+            "codeable_at_11_bits": false,
+            "payload_bits": 723972,
+            "lane_padding_bits": 476,
+            "codebook_bytes": 3069,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 750088,
+            "bits_per_weight": 2.861358642578125,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1310720,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1312320,
+            "bits_per_weight": 5.006103515625,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 17,
+            "codeable_at_11_bits": false,
+            "payload_bits": 723381,
+            "lane_padding_bits": 491,
+            "codebook_bytes": 3069,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 749512,
+            "bits_per_weight": 2.859161376953125,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1310720,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1312320,
+            "bits_per_weight": 5.006103515625,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 17,
+            "codeable_at_11_bits": false,
+            "payload_bits": 724674,
+            "lane_padding_bits": 542,
+            "codebook_bytes": 3072,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 750880,
+            "bits_per_weight": 2.8643798828125,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 5,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1310720,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 64,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1312320,
+            "bits_per_weight": 5.006103515625,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 17,
+            "codeable_at_11_bits": false,
+            "payload_bits": 724915,
+            "lane_padding_bits": 557,
+            "codebook_bytes": 3066,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 751088,
+            "bits_per_weight": 2.86517333984375,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        }
+      ],
+      "pair_selected_count": 0,
+      "pair_ineligible_count": 4,
+      "mean_scalar_bits_per_weight": 5.006103515625,
+      "mean_pair_bits_per_weight": 2.862518310546875,
+      "mean_eligible_pair_bits_per_weight": 0.0,
+      "mean_selected_bits_per_weight": 5.006103515625,
+      "mean_selected_decoder_work_cycles_proxy": 8192.0
+    },
+    {
+      "alphabet_size": 64,
+      "persistence_probability": 0.0,
+      "weights": 4096,
+      "repeats": [
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 24576,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 26688,
+            "bits_per_weight": 6.515625,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 21648,
+            "lane_padding_bits": 752,
+            "codebook_bytes": 4893,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 62632,
+            "bits_per_weight": 15.291015625,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 24576,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 26688,
+            "bits_per_weight": 6.515625,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 21652,
+            "lane_padding_bits": 684,
+            "codebook_bytes": 4878,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 62448,
+            "bits_per_weight": 15.24609375,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 24576,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 26688,
+            "bits_per_weight": 6.515625,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 21614,
+            "lane_padding_bits": 626,
+            "codebook_bytes": 4839,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 62040,
+            "bits_per_weight": 15.146484375,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 24576,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 26688,
+            "bits_per_weight": 6.515625,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 21540,
+            "lane_padding_bits": 604,
+            "codebook_bytes": 4743,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 61176,
+            "bits_per_weight": 14.935546875,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        }
+      ],
+      "pair_selected_count": 0,
+      "pair_ineligible_count": 0,
+      "mean_scalar_bits_per_weight": 6.515625,
+      "mean_pair_bits_per_weight": 15.15478515625,
+      "mean_eligible_pair_bits_per_weight": 15.15478515625,
+      "mean_selected_bits_per_weight": 6.515625,
+      "mean_selected_decoder_work_cycles_proxy": 128.0
+    },
+    {
+      "alphabet_size": 64,
+      "persistence_probability": 0.0,
+      "weights": 65536,
+      "repeats": [
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 393216,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 395328,
+            "bits_per_weight": 6.0322265625,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 15,
+            "codeable_at_11_bits": false,
+            "payload_bits": 391110,
+            "lane_padding_bits": 538,
+            "codebook_bytes": 12288,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 491040,
+            "bits_per_weight": 7.49267578125,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 393216,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 395328,
+            "bits_per_weight": 6.0322265625,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 15,
+            "codeable_at_11_bits": false,
+            "payload_bits": 391124,
+            "lane_padding_bits": 396,
+            "codebook_bytes": 12285,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 490888,
+            "bits_per_weight": 7.4903564453125,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 393216,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 395328,
+            "bits_per_weight": 6.0322265625,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 15,
+            "codeable_at_11_bits": false,
+            "payload_bits": 391217,
+            "lane_padding_bits": 495,
+            "codebook_bytes": 12288,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 491104,
+            "bits_per_weight": 7.49365234375,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 393216,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 395328,
+            "bits_per_weight": 6.0322265625,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 15,
+            "codeable_at_11_bits": false,
+            "payload_bits": 391122,
+            "lane_padding_bits": 462,
+            "codebook_bytes": 12288,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 490976,
+            "bits_per_weight": 7.49169921875,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        }
+      ],
+      "pair_selected_count": 0,
+      "pair_ineligible_count": 4,
+      "mean_scalar_bits_per_weight": 6.0322265625,
+      "mean_pair_bits_per_weight": 7.492095947265625,
+      "mean_eligible_pair_bits_per_weight": 0.0,
+      "mean_selected_bits_per_weight": 6.0322265625,
+      "mean_selected_decoder_work_cycles_proxy": 2048.0
+    },
+    {
+      "alphabet_size": 64,
+      "persistence_probability": 0.0,
+      "weights": 262144,
+      "repeats": [
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1572864,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1574976,
+            "bits_per_weight": 6.008056640625,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 13,
+            "codeable_at_11_bits": false,
+            "payload_bits": 1572398,
+            "lane_padding_bits": 466,
+            "codebook_bytes": 12288,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1672256,
+            "bits_per_weight": 6.379150390625,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1572864,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1574976,
+            "bits_per_weight": 6.008056640625,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 13,
+            "codeable_at_11_bits": false,
+            "payload_bits": 1572410,
+            "lane_padding_bits": 582,
+            "codebook_bytes": 12288,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1672384,
+            "bits_per_weight": 6.379638671875,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1572864,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1574976,
+            "bits_per_weight": 6.008056640625,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 13,
+            "codeable_at_11_bits": false,
+            "payload_bits": 1572452,
+            "lane_padding_bits": 508,
+            "codebook_bytes": 12288,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1672352,
+            "bits_per_weight": 6.3795166015625,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1572864,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1574976,
+            "bits_per_weight": 6.008056640625,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 13,
+            "codeable_at_11_bits": false,
+            "payload_bits": 1572438,
+            "lane_padding_bits": 426,
+            "codebook_bytes": 12288,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1672256,
+            "bits_per_weight": 6.379150390625,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        }
+      ],
+      "pair_selected_count": 0,
+      "pair_ineligible_count": 4,
+      "mean_scalar_bits_per_weight": 6.008056640625,
+      "mean_pair_bits_per_weight": 6.379364013671875,
+      "mean_eligible_pair_bits_per_weight": 0.0,
+      "mean_selected_bits_per_weight": 6.008056640625,
+      "mean_selected_decoder_work_cycles_proxy": 8192.0
+    },
+    {
+      "alphabet_size": 64,
+      "persistence_probability": 0.5,
+      "weights": 4096,
+      "repeats": [
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 7,
+            "codeable_at_11_bits": true,
+            "payload_bits": 24551,
+            "lane_padding_bits": 537,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 27200,
+            "bits_per_weight": 6.640625,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 18052,
+            "lane_padding_bits": 476,
+            "codebook_bytes": 2877,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 42632,
+            "bits_per_weight": 10.408203125,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 7,
+            "codeable_at_11_bits": true,
+            "payload_bits": 24545,
+            "lane_padding_bits": 543,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 27200,
+            "bits_per_weight": 6.640625,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 17894,
+            "lane_padding_bits": 538,
+            "codebook_bytes": 2763,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 41624,
+            "bits_per_weight": 10.162109375,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 7,
+            "codeable_at_11_bits": true,
+            "payload_bits": 24565,
+            "lane_padding_bits": 523,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 27200,
+            "bits_per_weight": 6.640625,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 18254,
+            "lane_padding_bits": 530,
+            "codebook_bytes": 2952,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 43488,
+            "bits_per_weight": 10.6171875,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 7,
+            "codeable_at_11_bits": true,
+            "payload_bits": 24536,
+            "lane_padding_bits": 488,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 27136,
+            "bits_per_weight": 6.625,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 17977,
+            "lane_padding_bits": 519,
+            "codebook_bytes": 2838,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 42288,
+            "bits_per_weight": 10.32421875,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        }
+      ],
+      "pair_selected_count": 0,
+      "pair_ineligible_count": 0,
+      "mean_scalar_bits_per_weight": 6.63671875,
+      "mean_pair_bits_per_weight": 10.3779296875,
+      "mean_eligible_pair_bits_per_weight": 10.3779296875,
+      "mean_selected_bits_per_weight": 6.63671875,
+      "mean_selected_decoder_work_cycles_proxy": 128.0
+    },
+    {
+      "alphabet_size": 64,
+      "persistence_probability": 0.5,
+      "weights": 65536,
+      "repeats": [
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 393216,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 395328,
+            "bits_per_weight": 6.0322265625,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 15,
+            "codeable_at_11_bits": false,
+            "payload_bits": 322552,
+            "lane_padding_bits": 520,
+            "codebook_bytes": 12015,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 420280,
+            "bits_per_weight": 6.4129638671875,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 393216,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 395328,
+            "bits_per_weight": 6.0322265625,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 15,
+            "codeable_at_11_bits": false,
+            "payload_bits": 324010,
+            "lane_padding_bits": 566,
+            "codebook_bytes": 12075,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 422264,
+            "bits_per_weight": 6.4432373046875,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 393216,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 395328,
+            "bits_per_weight": 6.0322265625,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 15,
+            "codeable_at_11_bits": false,
+            "payload_bits": 323419,
+            "lane_padding_bits": 517,
+            "codebook_bytes": 12075,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 421624,
+            "bits_per_weight": 6.4334716796875,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 393216,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 395328,
+            "bits_per_weight": 6.0322265625,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 15,
+            "codeable_at_11_bits": false,
+            "payload_bits": 323429,
+            "lane_padding_bits": 475,
+            "codebook_bytes": 12063,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 421496,
+            "bits_per_weight": 6.4315185546875,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        }
+      ],
+      "pair_selected_count": 0,
+      "pair_ineligible_count": 4,
+      "mean_scalar_bits_per_weight": 6.0322265625,
+      "mean_pair_bits_per_weight": 6.4302978515625,
+      "mean_eligible_pair_bits_per_weight": 0.0,
+      "mean_selected_bits_per_weight": 6.0322265625,
+      "mean_selected_decoder_work_cycles_proxy": 2048.0
+    },
+    {
+      "alphabet_size": 64,
+      "persistence_probability": 0.5,
+      "weights": 262144,
+      "repeats": [
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1572864,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1574976,
+            "bits_per_weight": 6.008056640625,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 15,
+            "codeable_at_11_bits": false,
+            "payload_bits": 1302356,
+            "lane_padding_bits": 524,
+            "codebook_bytes": 12288,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1402272,
+            "bits_per_weight": 5.3492431640625,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1572864,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1574976,
+            "bits_per_weight": 6.008056640625,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 15,
+            "codeable_at_11_bits": false,
+            "payload_bits": 1300692,
+            "lane_padding_bits": 460,
+            "codebook_bytes": 12288,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1400544,
+            "bits_per_weight": 5.3426513671875,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1572864,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1574976,
+            "bits_per_weight": 6.008056640625,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 15,
+            "codeable_at_11_bits": false,
+            "payload_bits": 1302319,
+            "lane_padding_bits": 497,
+            "codebook_bytes": 12288,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1402208,
+            "bits_per_weight": 5.3489990234375,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1572864,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1574976,
+            "bits_per_weight": 6.008056640625,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 15,
+            "codeable_at_11_bits": false,
+            "payload_bits": 1300233,
+            "lane_padding_bits": 471,
+            "codebook_bytes": 12288,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1400096,
+            "bits_per_weight": 5.3409423828125,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        }
+      ],
+      "pair_selected_count": 0,
+      "pair_ineligible_count": 4,
+      "mean_scalar_bits_per_weight": 6.008056640625,
+      "mean_pair_bits_per_weight": 5.345458984375,
+      "mean_eligible_pair_bits_per_weight": 0.0,
+      "mean_selected_bits_per_weight": 6.008056640625,
+      "mean_selected_decoder_work_cycles_proxy": 8192.0
+    },
+    {
+      "alphabet_size": 64,
+      "persistence_probability": 0.8,
+      "weights": 4096,
+      "repeats": [
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 8,
+            "codeable_at_11_bits": true,
+            "payload_bits": 24267,
+            "lane_padding_bits": 501,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 26880,
+            "bits_per_weight": 6.5625,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 14575,
+            "lane_padding_bits": 497,
+            "codebook_bytes": 1335,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 26840,
+            "bits_per_weight": 6.552734375,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 2
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 8,
+            "codeable_at_11_bits": true,
+            "payload_bits": 24310,
+            "lane_padding_bits": 458,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 26880,
+            "bits_per_weight": 6.5625,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 14670,
+            "lane_padding_bits": 434,
+            "codebook_bytes": 1344,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 26944,
+            "bits_per_weight": 6.578125,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 9,
+            "codeable_at_11_bits": true,
+            "payload_bits": 24155,
+            "lane_padding_bits": 517,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 26784,
+            "bits_per_weight": 6.5390625,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 14473,
+            "lane_padding_bits": 471,
+            "codebook_bytes": 1314,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 26544,
+            "bits_per_weight": 6.48046875,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 2
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 9,
+            "codeable_at_11_bits": true,
+            "payload_bits": 24222,
+            "lane_padding_bits": 482,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 26816,
+            "bits_per_weight": 6.546875,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 14678,
+            "lane_padding_bits": 426,
+            "codebook_bytes": 1392,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 27328,
+            "bits_per_weight": 6.671875,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        }
+      ],
+      "pair_selected_count": 2,
+      "pair_ineligible_count": 0,
+      "mean_scalar_bits_per_weight": 6.552734375,
+      "mean_pair_bits_per_weight": 6.57080078125,
+      "mean_eligible_pair_bits_per_weight": 6.57080078125,
+      "mean_selected_bits_per_weight": 6.53564453125,
+      "mean_selected_decoder_work_cycles_proxy": 96.0
+    },
+    {
+      "alphabet_size": 64,
+      "persistence_probability": 0.8,
+      "weights": 65536,
+      "repeats": [
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 393216,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 395328,
+            "bits_per_weight": 6.0322265625,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 15,
+            "codeable_at_11_bits": false,
+            "payload_bits": 255479,
+            "lane_padding_bits": 489,
+            "codebook_bytes": 9729,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 334888,
+            "bits_per_weight": 5.1099853515625,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 393216,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 395328,
+            "bits_per_weight": 6.0322265625,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 15,
+            "codeable_at_11_bits": false,
+            "payload_bits": 256372,
+            "lane_padding_bits": 524,
+            "codebook_bytes": 9807,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 336440,
+            "bits_per_weight": 5.1336669921875,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 393216,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 395328,
+            "bits_per_weight": 6.0322265625,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 15,
+            "codeable_at_11_bits": false,
+            "payload_bits": 256665,
+            "lane_padding_bits": 519,
+            "codebook_bytes": 9861,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 337160,
+            "bits_per_weight": 5.1446533203125,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 393216,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 395328,
+            "bits_per_weight": 6.0322265625,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 15,
+            "codeable_at_11_bits": false,
+            "payload_bits": 256869,
+            "lane_padding_bits": 539,
+            "codebook_bytes": 9930,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 337936,
+            "bits_per_weight": 5.156494140625,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        }
+      ],
+      "pair_selected_count": 0,
+      "pair_ineligible_count": 4,
+      "mean_scalar_bits_per_weight": 6.0322265625,
+      "mean_pair_bits_per_weight": 5.136199951171875,
+      "mean_eligible_pair_bits_per_weight": 0.0,
+      "mean_selected_bits_per_weight": 6.0322265625,
+      "mean_selected_decoder_work_cycles_proxy": 2048.0
+    },
+    {
+      "alphabet_size": 64,
+      "persistence_probability": 0.8,
+      "weights": 262144,
+      "repeats": [
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1572864,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1574976,
+            "bits_per_weight": 6.008056640625,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 17,
+            "codeable_at_11_bits": false,
+            "payload_bits": 1037708,
+            "lane_padding_bits": 532,
+            "codebook_bytes": 12261,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1137416,
+            "bits_per_weight": 4.338897705078125,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1572864,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1574976,
+            "bits_per_weight": 6.008056640625,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 17,
+            "codeable_at_11_bits": false,
+            "payload_bits": 1037703,
+            "lane_padding_bits": 505,
+            "codebook_bytes": 12252,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1137312,
+            "bits_per_weight": 4.3385009765625,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1572864,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1574976,
+            "bits_per_weight": 6.008056640625,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 17,
+            "codeable_at_11_bits": false,
+            "payload_bits": 1038744,
+            "lane_padding_bits": 360,
+            "codebook_bytes": 12273,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1138376,
+            "bits_per_weight": 4.342559814453125,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1572864,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1574976,
+            "bits_per_weight": 6.008056640625,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 17,
+            "codeable_at_11_bits": false,
+            "payload_bits": 1039021,
+            "lane_padding_bits": 467,
+            "codebook_bytes": 12255,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1138616,
+            "bits_per_weight": 4.343475341796875,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        }
+      ],
+      "pair_selected_count": 0,
+      "pair_ineligible_count": 4,
+      "mean_scalar_bits_per_weight": 6.008056640625,
+      "mean_pair_bits_per_weight": 4.340858459472656,
+      "mean_eligible_pair_bits_per_weight": 0.0,
+      "mean_selected_bits_per_weight": 6.008056640625,
+      "mean_selected_decoder_work_cycles_proxy": 8192.0
+    },
+    {
+      "alphabet_size": 64,
+      "persistence_probability": 0.95,
+      "weights": 4096,
+      "repeats": [
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 22755,
+            "lane_padding_bits": 445,
+            "codebook_bytes": 122,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 25264,
+            "bits_per_weight": 6.16796875,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 12025,
+            "lane_padding_bits": 455,
+            "codebook_bytes": 480,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 17408,
+            "bits_per_weight": 4.25,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 2
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 9,
+            "codeable_at_11_bits": true,
+            "payload_bits": 23190,
+            "lane_padding_bits": 458,
+            "codebook_bytes": 122,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 25712,
+            "bits_per_weight": 6.27734375,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 12238,
+            "lane_padding_bits": 530,
+            "codebook_bytes": 480,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 17696,
+            "bits_per_weight": 4.3203125,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 2
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 10,
+            "codeable_at_11_bits": true,
+            "payload_bits": 22671,
+            "lane_padding_bits": 497,
+            "codebook_bytes": 120,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 25216,
+            "bits_per_weight": 6.15625,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 12039,
+            "lane_padding_bits": 473,
+            "codebook_bytes": 492,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 17536,
+            "bits_per_weight": 4.28125,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 2
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 9,
+            "codeable_at_11_bits": true,
+            "payload_bits": 22974,
+            "lane_padding_bits": 514,
+            "codebook_bytes": 126,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 25584,
+            "bits_per_weight": 6.24609375,
+            "decoder_work_cycles_proxy": 128,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 11,
+            "codeable_at_11_bits": true,
+            "payload_bits": 12164,
+            "lane_padding_bits": 508,
+            "codebook_bytes": 498,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 17744,
+            "bits_per_weight": 4.33203125,
+            "decoder_work_cycles_proxy": 64,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 2
+        }
+      ],
+      "pair_selected_count": 4,
+      "pair_ineligible_count": 0,
+      "mean_scalar_bits_per_weight": 6.2119140625,
+      "mean_pair_bits_per_weight": 4.2958984375,
+      "mean_eligible_pair_bits_per_weight": 4.2958984375,
+      "mean_selected_bits_per_weight": 4.2958984375,
+      "mean_selected_decoder_work_cycles_proxy": 64.0
+    },
+    {
+      "alphabet_size": 64,
+      "persistence_probability": 0.95,
+      "weights": 65536,
+      "repeats": [
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 7,
+            "codeable_at_11_bits": true,
+            "payload_bits": 393025,
+            "lane_padding_bits": 479,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 395616,
+            "bits_per_weight": 6.03662109375,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 15,
+            "codeable_at_11_bits": false,
+            "payload_bits": 212928,
+            "lane_padding_bits": 480,
+            "codebook_bytes": 4215,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 248216,
+            "bits_per_weight": 3.7874755859375,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 7,
+            "codeable_at_11_bits": true,
+            "payload_bits": 392853,
+            "lane_padding_bits": 491,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 395456,
+            "bits_per_weight": 6.0341796875,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 15,
+            "codeable_at_11_bits": false,
+            "payload_bits": 212321,
+            "lane_padding_bits": 479,
+            "codebook_bytes": 4122,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 246864,
+            "bits_per_weight": 3.766845703125,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 7,
+            "codeable_at_11_bits": true,
+            "payload_bits": 393132,
+            "lane_padding_bits": 596,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 395840,
+            "bits_per_weight": 6.0400390625,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 15,
+            "codeable_at_11_bits": false,
+            "payload_bits": 213178,
+            "lane_padding_bits": 550,
+            "codebook_bytes": 4323,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 249400,
+            "bits_per_weight": 3.8055419921875,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 7,
+            "codeable_at_11_bits": true,
+            "payload_bits": 392809,
+            "lane_padding_bits": 471,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 395392,
+            "bits_per_weight": 6.033203125,
+            "decoder_work_cycles_proxy": 2048,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 15,
+            "codeable_at_11_bits": false,
+            "payload_bits": 212743,
+            "lane_padding_bits": 505,
+            "codebook_bytes": 4206,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 247984,
+            "bits_per_weight": 3.783935546875,
+            "decoder_work_cycles_proxy": 1024,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        }
+      ],
+      "pair_selected_count": 0,
+      "pair_ineligible_count": 4,
+      "mean_scalar_bits_per_weight": 6.0360107421875,
+      "mean_pair_bits_per_weight": 3.78594970703125,
+      "mean_eligible_pair_bits_per_weight": 0.0,
+      "mean_selected_bits_per_weight": 6.0360107421875,
+      "mean_selected_decoder_work_cycles_proxy": 2048.0
+    },
+    {
+      "alphabet_size": 64,
+      "persistence_probability": 0.95,
+      "weights": 262144,
+      "repeats": [
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1572864,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1574976,
+            "bits_per_weight": 6.008056640625,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 17,
+            "codeable_at_11_bits": false,
+            "payload_bits": 860962,
+            "lane_padding_bits": 414,
+            "codebook_bytes": 9951,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 942072,
+            "bits_per_weight": 3.593719482421875,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1572864,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1574976,
+            "bits_per_weight": 6.008056640625,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 17,
+            "codeable_at_11_bits": false,
+            "payload_bits": 859509,
+            "lane_padding_bits": 427,
+            "codebook_bytes": 9678,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 938448,
+            "bits_per_weight": 3.57989501953125,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1572864,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1574976,
+            "bits_per_weight": 6.008056640625,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 17,
+            "codeable_at_11_bits": false,
+            "payload_bits": 858941,
+            "lane_padding_bits": 419,
+            "codebook_bytes": 9735,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 938328,
+            "bits_per_weight": 3.579437255859375,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        },
+        {
+          "scalar": {
+            "arity": 1,
+            "max_code_bits": 6,
+            "codeable_at_11_bits": true,
+            "payload_bits": 1572864,
+            "lane_padding_bits": 0,
+            "codebook_bytes": 128,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 1574976,
+            "bits_per_weight": 6.008056640625,
+            "decoder_work_cycles_proxy": 8192,
+            "weights_per_decoder_symbol": 1
+          },
+          "pair": {
+            "arity": 2,
+            "max_code_bits": 17,
+            "codeable_at_11_bits": false,
+            "payload_bits": 860829,
+            "lane_padding_bits": 483,
+            "codebook_bytes": 9807,
+            "layout_bytes": 136,
+            "total_bits_including_metadata_and_padding": 940856,
+            "bits_per_weight": 3.589080810546875,
+            "decoder_work_cycles_proxy": 4096,
+            "weights_per_decoder_symbol": 2
+          },
+          "selected_arity": 1
+        }
+      ],
+      "pair_selected_count": 0,
+      "pair_ineligible_count": 4,
+      "mean_scalar_bits_per_weight": 6.008056640625,
+      "mean_pair_bits_per_weight": 3.5855331420898438,
+      "mean_eligible_pair_bits_per_weight": 0.0,
+      "mean_selected_bits_per_weight": 6.008056640625,
+      "mean_selected_decoder_work_cycles_proxy": 8192.0
+    }
+  ]
+}

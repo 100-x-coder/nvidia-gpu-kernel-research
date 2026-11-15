@@ -46,3 +46,7 @@ The ordered splat composition paper uses `experiment.py` directly and does not p
 ## Decay-aware recurrent-state error budget
 
 `DecayBudgetClaims.lean` checks the scalar step rule and by induction the invariant `e_t ≤ B` for `e_t ≤ α_t e_(t-1) + δ_t`, with `0 ≤ α_t ≤ 1` and `0 ≤ δ_t ≤ B(1-α_t)`. This proves only the real-number recurrence. It does not formalize the matrix Frobenius norm, SVD tail residual, floating-point effects, or SinkState's local/frozen update. Run `~/.elan/bin/lake env lean DecayBudgetClaims.lean` from this directory using Lean 4.35.0 / Mathlib 4.35.0.
+
+## Adaptive Huffman arity selector
+
+`AritySelectionClaims.lean` proves that the per-matrix selector's output bit count never exceeds the scalar candidate's bit count: it selects pair mode only when the pair tree is within the 11-bit limit and has strictly lower modeled size. Checked with Lean 4.35.0 core using `~/.elan/bin/lean AritySelectionClaims.lean`. This is a selector fallback property only; it does not prove Huffman code optimality, the experiment's synthetic rates, codebook serialization compatibility, or decoder performance.
