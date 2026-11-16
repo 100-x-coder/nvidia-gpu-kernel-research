@@ -1,0 +1,522 @@
+{
+  "Attention & Sequence Kernels": {
+    "keywords": [
+      "attention",
+      "flashattention",
+      "flash-attention",
+      "ringattention",
+      "linear attention",
+      "mla",
+      "multi-head latent attention",
+      "kv cache",
+      "paged attention",
+      "vllm",
+      "flashinfer",
+      "context extension",
+      "long-context"
+    ],
+    "items": [
+      {
+        "title": "Mutable Inference: Architecting LLM Accelerators for Inference-Time Learning",
+        "summary": "Long-context LLMs must retain growing histories, but full attention makes each new token increasingly expensive. Inference-time learning (ITL) offers another approach. The model keeps training on the context during inference, retaining what it learns in its weights. Recent work shows that ITL can match full-context attention quality while attending only to a recent fixed-size window. This bounds attention costs but adds Learning (backward computation and weight updates) alongside Prediction (the forward pass) costs. Inference accelerators assume fixed weights, while training accelerators target complete training steps.   This work identifies two opportunities. Attention's non-matrix operations leave enough idle matrix capacity for Learning, while selected layers can tolerate delayed weight updates with little quality loss. We exploit both with Learning While Serving (LWS), an inference accelerator architecture that shares compute hardware between latency-critical Prediction and deadline-flexible Learning. Hardware-managed per-layer weight versioning allows Learning to publish updates while in-flight computations read older versions. Resumable reduction blocks let Learning kernels span fragmented idle windows and yield to Prediction, while dedicated softmax-gradient units relieve vector contention. On modeled datacenter and edge NPUs, LWS hides Learning within Prediction, sustaining Prediction-only throughput while preserving 99.3% of fully fresh Learning's quality benefit for TTT-E2E 3B at 128K tokens. Across nine models, LWS achieves 1.6x the throughput of serial execution and 1.3x that of the best prior co-execution architecture. RTL synthesis shows that LWS adds 1.5% to NPU core area without another MAC array. By efficiently turning idle inference capacity into learning capacity, LWS establishes inference-time learning as a first-class workload for future LLM accelerators.",
+        "url": "http://arxiv.org/abs/2611.18523v1",
+        "date": "2026-11-13",
+        "author": "Yimin Gao",
+        "type": "Paper"
+      },
+      {
+        "title": "MMFlash: Faster Speculative Decoding for Vision-Language Models",
+        "summary": "Speculative decoding accelerates generation by letting a lightweight drafter propose tokens for parallel verification by a target model. Diffusion drafters such as DFlash propose an entire token block in a single forward pass, but mainly focus on text-only tasks, leaving multimodal drafting underexplored. To study this setting, we first introduce a metric of token-level visual dependence based on the KL divergence between next-token distributions with and without visual input. We find that acceptance rates decrease from 46% in the lowest visual-dependence quartile to 22% in the highest, with this disparity persisting after multimodal training. Motivated by this observation, we propose MMFlash, a simple and effective framework that adaptively upweights visually dependent tokens that the drafter predicts poorly. For long video inputs, MMFlash further employs sparse attention to reduce redundant attention computation and improve drafting quality. Across various multimodal benchmarks, MMFlash achieves lossless decoding speedups of up to $3.58\\times$, outperforming EAGLE-3 and DFlash by up to 195.4% and 17.1%, respectively.",
+        "url": "http://arxiv.org/abs/2611.18482v1",
+        "date": "2026-11-13",
+        "author": "Sicheng Feng",
+        "type": "Paper"
+      },
+      {
+        "title": "PACT: A Decoder-Confidence-Guided Two-Round Receiver for Joint Channel and Phase-Noise Estimation in Sub-THz OFDM",
+        "summary": "Frequency-selective fading and oscillator phase noise (PN) jointly impair coded sub-THz OFDM reception. We propose a decoder-confidence-guided two-round receiver combining a {pilot-aware complex transformer} (PACT) estimator, banded linear minimum mean-square error equalization, and neural normalized min-sum decoding. PACT jointly estimates the frequency-domain channel and effective time-domain PN through interacting complex-valued branches. Decoder-derived pseudo-pilots and continuous constellation-aware confidence guide second-round refinement through PACT inputs and attention, with parameters shared across rounds. At $E_b/N_0=30$~dB, the PACT receiver achieves approximately $70\\%$ and $57\\%$ lower code-block error rates than the best-performing learning-based baseline in the two benchmark settings, respectively. Frozen-weight tests further demonstrate applicability across channel/PN models, carrier frequencies, and FFT/bandwidth configurations.",
+        "url": "http://arxiv.org/abs/2611.18450v1",
+        "date": "2026-11-13",
+        "author": "Ruilin Wang",
+        "type": "Paper"
+      },
+      {
+        "title": "Between Obligations and Evidence: A Participatory Study of Translating the EU AI Act into Technical Requirements",
+        "summary": "The EU AI Act imposes technical and organizational requirements for high-risk AI systems, but applying these requirements involves contextual choices about what to measure and what evidence supports a compliance claim. We investigate these challenges through a participatory workshop involving 32 researchers, policymakers, and practitioners from different disciplines, using realistic scenarios in healthcare, recruitment, and public transport to examine how regulatory obligations are interpreted, translated into technical requirements, and evaluated in practice. Through a thematic analysis of workshop data, we identify recurring tensions between how regulatory obligations are translated into measurable system properties, how responsibility and human oversight are exercised in practice, and how the validity of compliance evidence is affected by changing operational conditions and system uses. For example, participants highlighted how fairness metrics could conceal discrimination in recruitment, how time pressure and limited information could undermine human oversight in public transport, and how changes in patient populations could invalidate previously established evidence of system performance. Our findings suggest that technical, organizational, and evidentiary challenges are interdependent, and that establishing and maintaining compliance requires attention not only to technical assessments but also to how AI systems are used, governed, and monitored over time. We discuss implications for supporting context-sensitive and ongoing compliance.",
+        "url": "http://arxiv.org/abs/2611.18439v1",
+        "date": "2026-11-13",
+        "author": "Helma Torkamaan",
+        "type": "Paper"
+      },
+      {
+        "title": "The State Is Not the Bottleneck: A Paged-State Gated-DeltaNet Tile on a Tri-Mode Multicast Mesh, Bit-Exact from RTL to Silicon",
+        "summary": "Linear-attention language models replace a growing key-value cache with a recurrent state of fixed size. On an edge FPGA, this state can exceed the on-chip memory and must be paged to external memory. This paper asks whether such paging dominates the cost of decoding (generating tokens). We built a hardware tile that computes one complete layer of a custom 369-million-parameter hybrid Gated DeltaNet model on an Agilex 5 FPGA and pages its recurrent state. The model state needs 6.2 MiB, whereas the device has 0.87 MiB of block memory. Paging adds 26.0 MB of memory traffic per decoded token, at most 11.2 percent of the calculated total. On the board at 75 MHz, with synthetic weights, one token takes 11.15 ms in this layer. The matrix-vector products with the weights take about 62 percent of this time and the state phase, including the paging, 13 percent. The tile is one node of a multicast mesh of tri-mode processing elements. We measure the error of the fixed-point arithmetic against floating point and check that the hardware agrees bit for bit with a fixed-point reference. In simulation, the state logic agrees with the reference on all 18 recurrent layers. On the board, six builds pass all 30 runs of 64 tokens and two runs of 1,024 tokens. For this model and memory interface, the delivery of the weights limits the decoding performance, and the recurrent state does not. State paging is therefore practical for such a model on an edge FPGA.",
+        "url": "http://arxiv.org/abs/2611.18422v1",
+        "date": "2026-11-13",
+        "author": "Cong Xu",
+        "type": "Paper"
+      },
+      {
+        "title": "VelServe: Taming Decode Jitters in LLM Inference with Tail-Calibrated Scheduling",
+        "summary": "Interactive LLM services must meet latency service-level objectives (SLOs) for the time to first token (TTFT) and the time between tokens (TBT), as streaming and soft real-time applications require predictable token delivery. We identify decode jitters in both aggregated and disaggregated serving. A jitter delays every request in the batch, and long responses span hundreds of steps, so even rare overruns cause many SLO violations. In aggregated serving, SLO-aware schedulers set each step's prefill budget until its predicted latency just meets the TBT target, leaving no room for mispredictions or host stalls. Disaggregation meets average TBT targets at a cost in capacity, yet the steps that admit new requests still run late.   We present \\sysname, a scheduler that calibrates how much prefill work each decode step carries using the measured tail of its own iteration latency. The SLO determines how rare a late step must be, and \\sysname leaves enough headroom in each iteration to prevent overruns and meet the target decode latency. This headroom slows prefill, so \\sysname serves the shortest waiting prompt first. When TTFT deadlines grow with prompt length, the long prompts it delays have the most time to spare. Under disaggregation, it spaces admissions so that no request waits on more slow admission steps than its P99 target allows. On three attention families and varying workloads, \\sysname sustains 2.4--2.9$\\times$ the SLO goodput of the strongest baseline on Qwen3-8B and DeepSeek-V4-Flash, and at least 4.4$\\times$ on DeepSeek-V2-Lite. With prefill and decode disaggregated on eight GPUs, \\sysname meets the SLO for more than twice as many requests as state-of-the-art baselines.",
+        "url": "http://arxiv.org/abs/2611.18392v1",
+        "date": "2026-11-13",
+        "author": "Ishaan Datta",
+        "type": "Paper"
+      },
+      {
+        "title": "DecompJSCC: Joint Source-Channel Coding With Decoupled SNR and Rate Adaptation",
+        "summary": "Deep joint source-channel coding (DeepJSCC) for image transmission must adapt to changes in the signal-to-noise ratio (SNR) and available transmission resources. However, some existing joint-adaptive methods condition the encoder on the requested rate, while others apply static masks after encoding. The former couples latent formation to the rate request, whereas the latter cannot adapt channel selection to image content. To address these limitations, we propose DecompJSCC, which decomposes joint adaptation into SNR-conditioned latent formation and post-encoding rate control within a single model. The encoder applies SNR-conditioned block attention residuals across all stages, aggregating intra-stage and cross-stage semantic representations. At the receiver, an adapter performs SNR-conditioned affine correction. We introduce a post-encoding rate-adaptive channel semantic budgeting (RCSB) module whose shared gate selects channels of the formed latent by image content, adjusts their gains, and keeps exactly the requested count. This keeps the encoder output independent of the rate request for a fixed image and SNR. Experimental results show that DecompJSCC outperforms SwinJSCC and SA-RA-JSCC in peak signal-to-noise ratio (PSNR) across a range of SNR and rate settings, by 0.64 and 1.00 dB over SwinJSCC and by 0.97 and 0.96 dB over SA-RA-JSCC on Kodak and CLIC2021, while using only 7.5% of SwinJSCC's Adaptive ModNet parameters.",
+        "url": "http://arxiv.org/abs/2611.18379v1",
+        "date": "2026-11-13",
+        "author": "Yunhao Liu",
+        "type": "Paper"
+      },
+      {
+        "title": "The $\\operatorname{Proj}$ construction for pro-graded Huber pairs",
+        "summary": "Inspired by the theory of pro-graded adic rings developed recently by Ishizuka and Yoshikawa, we introduce and study the notions of a pro-graded Huber ring and a pro-graded Huber pair \\begin{equation*}((\\mathcal{A}, \\mathcal{A}_{\\textrm{gr}}), \\mathcal{A}^{+}),\\end{equation*}which capture the intuition of a complete Huber ring (or Huber pair) equipped with a dense graded subring. Using these notions, we define and study an analog \\begin{equation*}\\operatorname{Proj}(\\mathcal{A}, \\mathcal{A}_{\\textrm{gr}}, \\mathcal{A}^{+})\\end{equation*}of the $\\operatorname{Proj}$ construction from algebraic geometry in the realm of adic spaces, without restricting our attention to adic spaces satisfying any Noetherian or finite-type assumptions. We consider gradings both by $\\mathbb{Z}$ and by $\\mathbb{Z}[1/p]$ for a fixed prime number $p$, so our $\\operatorname{Proj}$ construction recovers both classical examples such as usual adic projective space $\\mathbb{P}_{K}^{n,\\textrm{ad}}$ and infinite-type, perfectoid examples such as perfectoid projective space $\\mathbb{P}_{K}^{n,\\textrm{perfd}}$. Using GAGA, we prove that the adic analytification of any projective variety $X$ over a nonarchimedean field $K$ can be described as the adic $\\operatorname{Proj}$ of a suitable pro-graded affinoid algebra $\\mathcal{A}$. Moreover, we prove that in this case $\\dim X=\\dim \\mathcal{A}-1$. We also relate our adic $\\operatorname{Proj}$ construction to formal models.",
+        "url": "http://arxiv.org/abs/2611.18374v1",
+        "date": "2026-11-13",
+        "author": "Dimitri Dine",
+        "type": "Paper"
+      },
+      {
+        "title": "MaskSCD: Bitemporal Mask Classification for Semantic Change Detection in Remote Sensing Images",
+        "summary": "Semantic change detection (SCD) identifies where the land surface has changed and which land-cover transition has taken place. Most deep SCD networks predict the change map and the land-cover map of each date with separate per-pixel decoders. These outputs need not agree, so a pixel can be labeled as changed although it has the same class at both dates, and per-pixel decisions fragment objects. We present MaskSCD, which formulates SCD as the mask classification of a bitemporal label-pair image. Each bitemporal segment, a region of constant land-cover class pair, is predicted as one mask shared by both dates together with one class per date, and the change map is derived from the predicted class pair. This formulation keeps the change and semantic maps consistent and the label space linear in the number of classes. A bitemporal masked-attention transformer decoder implements it by reading each segment in both images and relating the two readings, and a bitemporal fusion pyramid provides per-date and change-aware features. MaskSCD is evaluated on SECOND, Landsat-SCD and Hi-UCD, which span 0.1 to 30 m resolution and four to nine land-cover classes, against fourteen recent SCD models re-trained under one protocol. MaskSCD achieves the best separated kappa, semantic change $F_1$ and transition $F_1$ on all three datasets and exceeds the strongest competitor by about five points in mean separated kappa. It produces no contradictory change pixels, which account for nearly 30% of the predicted change of some multi-task networks. The code is available at https://github.com/EricYu97/MaskSCD.",
+        "url": "http://arxiv.org/abs/2611.18350v1",
+        "date": "2026-11-13",
+        "author": "Weikang Yu",
+        "type": "Paper"
+      },
+      {
+        "title": "The directions of science: How we search the unknown",
+        "summary": "Science is producing knowledge at unprecedented scale, while artificial intelligence promises to accelerate the generation of hypotheses, analyses, and scientific outputs further. Yet increasing the volume of research does not necessarily expand the range of directions science effectively explores. We argue that science can be understood as a collective search process in which finite resources are allocated across an evolving space of possible research trajectories. Careers, funding, organization, publication, attention, and technology act as interacting selection mechanisms that shape this allocation. This Perspective distinguishes the visible diversity of scientific activity from its effective diversity: apparently different researchers, institutions, or projects need not provide genuinely different routes of exploration or evaluation. Our principal contribution is to introduce cross-stage dependence, which occurs when selection processes operating at different stages of science are not fully independent in the grounds through which they favour scientific trajectories. We hypothesize that, under uncertainty, repeated filtering through overlapping criteria, information, prior selections, or technological infrastructure can reduce the capacity of science to maintain plausible alternatives and redirect effort when evidence changes their relative promise. Artificial intelligence makes this problem increasingly consequential because it can simultaneously expand scientific search capacity and participate across multiple stages of production and selection. The challenge is therefore not simply to produce more knowledge, but to preserve sufficiently distinct routes of exploration, verification and correction while retaining the ability to change direction.",
+        "url": "http://arxiv.org/abs/2611.18349v1",
+        "date": "2026-11-13",
+        "author": "Nicola Cinardi",
+        "type": "Paper"
+      },
+      {
+        "title": "Unlocking Cross-Attention in Label-Scarce Regimes: A Weakly Supervised Approach for Video Semantic Segmentation",
+        "summary": "Weakly Supervised Video Semantic Segmentation (WS-VSS) aims to learn temporally consistent semantic object masks in videos using only video-level labels. While fully supervised models successfully learn temporal relationships by means of cross-attention, training these temporal weights under weak supervision is unstable and even pushes the model below its single-frame baseline. Therefore, existing WS-VSS methods exploit temporal consistency by relying on external priors, such as optical flow. Unfortunately these cues are non-semantic, computationally expensive and noisy, degrading the supervisory signal. Instead of supervising attention weights directly or using external priors, we propose MemCAM, a WS-VSS transformer framework that learns temporal cross-attention directly through feature-space self-supervision. MemCAM introduces a CAM Propagation Algorithm that synthesizes a supervisory signal by propagating past CAMs according to patch-level feature similarities in the latent space. Specifically, we constrain their induced CAMs through a consistency objective between predicted and propagated maps, stabilizing temporal attention learning. Experiments on the YouTube-Objects v2.2 and WS$^2$ datasets demonstrate that MemCAM consistently outperforms the temporal localization and segmentation performance of WS-VSS alternatives, showing that cross-attention can be effectively trained in label-scarce video settings through internal self-supervision.",
+        "url": "http://arxiv.org/abs/2611.18324v1",
+        "date": "2026-11-13",
+        "author": "Andrea Marelli",
+        "type": "Paper"
+      },
+      {
+        "title": "Experts Across Schemas: Agent-Guided Mixture-of-Relational-Experts for Cross-Database Generalization",
+        "summary": "Web platforms record user and item activity in relational databases whose schemas differ from platform to platform, which makes it difficult to transfer predictive models between them. Relational foundation models address this through cross-database pretraining, yet recent improvements have relied on increasingly large pretraining corpora. We ask whether a better architecture, together with features specific to the target database, can deliver comparable gains from far less pretraining data. We introduce MoREGT, a mixture-of-relational-experts graph transformer that represents both rows and cells as tokens, adds the log-ages of rows and the names of foreign-key relationships to attention, and routes cells and rows to experts by column metadata rather than by values. A label-blind LLM agent complements the model: it reads the target database's schema and column statistics and adds validated single-row derived columns, without access to labels or model scores. On 21 RelBench tasks with leave-one-database-out pretraining on six databases, the MoREGT backbone improves on the Relational Transformer pretrained on the same databases by 2.25 points of mean AUROC and 5.83 points of mean nMAE. The agent's columns raise mean AUROC from 78.45 to 79.63 and lower mean nMAE from 27.91 to 26.98, the highest means on both metrics among the compared methods, including RT-J, which pretrains on about 400 times as many databases.",
+        "url": "http://arxiv.org/abs/2611.18315v1",
+        "date": "2026-11-13",
+        "author": "Hiren Madhu",
+        "type": "Paper"
+      },
+      {
+        "title": "On the Same Track: Privacy Leaks in Electric Rail Transport via Magnetic Fields",
+        "summary": "Inertial sensors of smartphones are a well-known privacy risk, as they allow inferring sensitive user movements and activity without explicit permissions. Among these sensors, the magnetometer has received little attention, as it is assumed to measure mainly the Earth's magnetic field. In this paper, we show that electric trains generate distinctive magnetic fields that can be captured by a smartphone magnetometer. Apps deployed on the device can access these signals without user permission, enabling two novel attacks on passenger privacy: First, we are able to determine whether the user is riding an electric train (transport mode detection). Second, we can infer whether other victims are aboard the same train due to shared patterns in the magnetic field (colocation prediction). In an empirical evaluation across 217 train rides, we demonstrate that both attacks are effective, confirming a real-world threat. We discuss countermeasures and argue that magnetometer access should require explicit user permission in mobile operating systems.",
+        "url": "http://arxiv.org/abs/2611.18312v1",
+        "date": "2026-11-13",
+        "author": "Stefan Czybik",
+        "type": "Paper"
+      },
+      {
+        "title": "Structural Self-Teaching for Compositional Generation in Unified Multimodal Models",
+        "summary": "We propose Structural Self-Teaching (SST), a novel framework that enhances compositional image generation in diffusion-based unified multimodal models (UMMs) by leveraging their internal understanding path as a source of structural supervision. The generation path of UMMs often struggles with dense compositional prompts, leading to missing objects, attribute binding failures, and spatial errors. In contrast, their understanding path localizes the same phrases in images that satisfy these prompts. SST converts this phrase-level grounding into training-time structural signals for the generation path. Specifically, we extract phrase-conditioned support masks from internal attention maps derived from the understanding path and employ them through two mechanisms. Phrase-local contrastive alignment uses these masks as pooling regions and aligns each generated phrase region with the same region of the target image. A structural scaffold builds a phrase-level layout from the same masks and modulates an intermediate spatial state of the generation path during training. The scaffold is phased out during training and removed at inference. SST requires no external structural annotations for training and no additional input at test time. Extensive experiments across multiple UMMs demonstrate that SST improves compositional fidelity over LoRA fine-tuning on the same data, with no inference-time cost. Project page is available at https://bellos1203.github.io/sst",
+        "url": "http://arxiv.org/abs/2611.18261v1",
+        "date": "2026-11-13",
+        "author": "Jaeyoo Park",
+        "type": "Paper"
+      },
+      {
+        "title": "PTMTD: A Topology-Aware Temporal-Graph Attention Network for Joint Cyber-Attack Detection and Relay-Level Localization in Power System Protection Networks",
+        "summary": "The digitization of protection relays exposes power grids to sophisticated cyberattacks, yet existing GNN detectors omit temporal encoding, rely on static topologies, and lack relay localization. We propose PTMTD-a Pearson-driven Temporal Multimodal Topology-aware Detection Network-coupling a dilated TCN with multi-head GATv2 in a dual-head architecture for simultaneous 37-class detection and four-relay localization. PTMTD constructs its graph from measurement correlations (no impedance data) and is trained with a composite loss jointly optimizing both tasks. On the MSU-ORNL benchmark (78,377 samples, 37 classes), it achieves 99.27% accuracy, 99.25% macro F1, and 95.98% localization, outperforming GraphKAN, LSTM, GCN, and Random Forest by 5.64-11.15 percentage points (p < 0.05). Ablations confirm gains from temporal encoding (+2.38%), graph attention (+2.69%), residuals (+2.07%), and correlation-driven supervision. With 639k parameters and 2.5 ms CPU inference, PTMTD is lightweight and deployment-ready. While validated on a transmission testbed, the architecture applies to microgrids with similar relay structures. Code and models are publicly available.",
+        "url": "http://arxiv.org/abs/2611.18184v1",
+        "date": "2026-11-13",
+        "author": "Shahin Razazni",
+        "type": "Paper"
+      },
+      {
+        "title": "When Should a Virtual Patient Ask? RISP-Guided Proactive Information Seeking in Multi-Agent Patient Simulation",
+        "summary": "Virtual patient (VP) systems support nursing communication training by providing simulated encounters in which learners practise explaining care and responding to patient concerns. Although large language models (LLMs) support flexible dialogue, current approaches give less explicit attention to how patients' information needs develop and guide the content and timing of their questions. We draw on the Risk Information Seeking and Processing (RISP) model, which relates information seeking to perceived risk and the gap between perceived knowledge and desired understanding. Guided by this perspective, we propose the RISP Multi-Agent System (RISP-MAS), a VP system for patient-initiated information seeking. The system links ongoing assessment of the patient's perceptions and information needs to coordinated decisions about whether to seek information, when to ask and which uncertainty to address. Evaluation of nursing student-VP interactions suggested that RISP-MAS exhibited plausible patient information-seeking behaviour, as indicated by expert assessments, while student feedback reflected positive interaction experiences. This work extends patient simulation by connecting a psychological account of information needs to explicit decisions about question initiation. The approach offers nursing students opportunities to practise recognising unresolved patient concerns and tailoring explanations to patients' information needs.",
+        "url": "http://arxiv.org/abs/2611.18183v1",
+        "date": "2026-11-13",
+        "author": "Jingyao Cai",
+        "type": "Paper"
+      },
+      {
+        "title": "Compiling Specialized GPU-Initiated Networking",
+        "summary": "Machine learning systems specialize computation to the workload and hardware, but communication remains in generic libraries whose device code and transport decisions are not visible to high-level compilers. We present Obaleth, a compiler that makes GPU-initiated communication part of a kernel's intermediate representation, co-optimizes it alongside computation, and lowers it to specialized transport code. Obaleth plans completions around buffer lifetimes and optimizes memory ordering, synchronization, and batching across NVIDIA and AMD GPUs. On H100 GPUs, Obaleth sends small messages up to 3.3$\\times$ faster, and on 256 GPUs runs all-to-all 1.25$\\times$ and 2.3$\\times$ faster than NVSHMEM and NCCL GIN, with much smaller memory and register use. In vLLM, it serves Qwen3-235B on 16 B200 GPUs and answers requests up to 1.29$\\times$ faster than with DeepEP.",
+        "url": "http://arxiv.org/abs/2611.18145v1",
+        "date": "2026-11-13",
+        "author": "Javid Baydamirli",
+        "type": "Paper"
+      },
+      {
+        "title": "PUMA-Former: Uncertainty-Aware Agentic Computation Offloading in MEO-LEO Satellite Networks With Incomplete Information",
+        "summary": "Satellite edge computing distributes mobile workloads across moving processors whose service capacity must be coordinated over time. In medium Earth orbit (MEO)--low Earth orbit (LEO) networks, periodic reports leave CPU states stale or missing, making offloading sensitive to uncertain capacity and shared-destination congestion. We propose PUMA-Former, an uncertainty-aware agentic framework for cooperative offloading under incomplete information that balances completed work, service delay, and execution cost. A MEO coordinator maintains distinct-report memory and closes the loop between available evidence, capacity estimates, allocation commands, and execution feedback. Latent-delay attention weights plausible measurement-age hypotheses, and historical innovations refine CPU estimates around the latest received report. Queue-error-aware fusion incorporates auxiliary pressure while accounting for backlog uncertainty. The inferred resource moments condition a structured Transformer allocator for joint destination, partition, bandwidth, CPU, and power decisions. Bounded risk-aware calibration then adjusts workload splits to reflect uncertainty and shared destination load. In traffic-driven development evaluation, PUMA-Former increases admitted compute-work completion by 8.62%, reduces mean modeled service delay by 34.78%, and reduces mean episode-P95 delay by 71.08% relative to ATLA-adapt. It also improves completion and normalized energy over fixed-half round-robin offloading. Service gains over the learning baselines involve higher normalized energy.",
+        "url": "http://arxiv.org/abs/2611.18139v1",
+        "date": "2026-11-13",
+        "author": "Yi Jing",
+        "type": "Paper"
+      },
+      {
+        "title": "Any Channel Count, One Token Stream: Incorporating Spatial Audio Understanding and Reasoning into Large Audio-Language Models",
+        "summary": "Audio phase relations encode source locations, yet existing large audio-language models (LALM) reduce audio to single-channel content to stabilise general audio understanding, leaving spatial information for direction, distance, and source-relation questions unused. We present SpheraAudio, which accepts recordings with any channel count -- mono, stereo, First-Order Ambisonics (FOA), or higher -- and maps them into a single token stream. A spatial encoder turns complex multichannel spectra into spatial tokens interleaved with audio tokens at corresponding temporal positions. Spatial Multimodal RoPE (SMRoPE) makes each token's modality identity and temporal slot visible to rotary attention without altering the language model's original RoPE. Training runs in three stages -- spatial-encoder pretraining, projector alignment, and joint supervised-and-reinforcement learning -- progressing from geometric supervision to language-based spatial decisions, with answers trained as explicit spatial chain-of-thought: step-by-step geometric reasoning over the heard scene. Current benchmarks tie questions to a fixed channel-count format and score answers without spatial reasoning evidence. We introduce SpheraQA, which spans mono, stereo, and FOA recordings and organises questions hierarchically from single-attribute perception through cross-source relations to multi-step reasoning, scored programmatically against simulated scene geometry and real-recording annotations with step-by-step solution references. Across SpheraQA and public spatial-audio benchmarks, SpheraAudio sets a new performance standard for spatial audio understanding. It supports high-precision localisation, tracking, and reasoning over static and moving sound sources while preserving strong general-audio capabilities. We will release code, SpheraQA, and evaluation metrics to support reproducibility.",
+        "url": "http://arxiv.org/abs/2611.18112v1",
+        "date": "2026-11-13",
+        "author": "Yuhuan You",
+        "type": "Paper"
+      },
+      {
+        "title": "EcoVGGT: Pinned-Key Inference for Efficient and Streamable Feed-Forward 3D Reconstruction from Long Videos",
+        "summary": "Feed-forward multi-view transformers such as VGGT recover the cameras and geometry of a video in one pass, but the cost of their cross-frame attention grows quadratically with the frame count, and their accuracy drops on long videos. Most remedies approximate attention over all frames within a budget or select a few keys by their content. We hypothesize that the keys of a long video can be chosen without looking at its content, and our experiments on VGGT and $π^3$ support it: a few dozen evenly spread frames can serve as the keys of every frame. We present EcoVGGT, a training-free inference framework whose keys form a Pinned Key Set of 31 such frames. A pin pass stores their tokens in a Scene Cache, and the other frames read it in independent batches that reproduce joint inference with these keys exactly, at a constant cost per frame. An Online Stream updates the pinned frames during recording. Six middle global blocks align the frames and form a reusable VGGT module: the Alignment Score reads their attention to flag failures, and Alignment Refocusing reduces them by fine-tuning only these blocks (3.6 GPU hours). EcoVGGT ($π^3$) matches the success rate of $π^3$ on 1,000-frame ScanNet videos at 13.8 times its speed. With refocusing, EcoVGGT (VGGT) raises the success rate of VGGT from 70% to 82% at 8.5 times its speed on 500 frames. EcoVGGT reconstructs 4,000 frames on one GPU, and EcoVGGT ($π^3$) streams 1,000 frames at 18.6 frames per second with the lowest online absolute trajectory error.",
+        "url": "http://arxiv.org/abs/2611.18099v1",
+        "date": "2026-11-13",
+        "author": "Hongsen Cao",
+        "type": "Paper"
+      },
+      {
+        "title": "Two-Clustering Regime of Token Dynamics in Causal Attention",
+        "summary": "We partially resolve Conjecture 1 of [Karagodin et al., Clustering in Causal Attention Masking (NeurIPS 2024)] and extend it to time-dependent parameter regimes. The conjecture predicts that causal attention dynamics converge to two clusters aligned with the eigenvectors associated with the largest eigenvalue $λ_{\\max}$ of the value transformation. We prove that this behavior holds when $λ_{\\max}>0$ and is generally false when $λ_{\\max}\\le0$. The resulting two-cluster regime is common in practice and substantially more challenging than the classical single-cluster setting studied previously. A central contribution of our work is the identification of a rigorous dimension reduction phenomenon: despite evolving in a high-dimensional embedding space, token trajectories collapse onto a two-dimensional structure governed by a small number of dominant directions. Building on this insight, we introduce a new analytical framework--instability within the flow--inspired by instability phenomena in physical systems. This framework enables the analysis of steady-regime behavior in non-monotone, non-autonomous attention dynamics. Our theoretical findings are illustrated through simulations and experimental studies using Group Query Attention (GQA) layers.",
+        "url": "http://arxiv.org/abs/2611.18088v1",
+        "date": "2026-11-13",
+        "author": "Trinh T. Nguyen",
+        "type": "Paper"
+      },
+      {
+        "title": "SWAM: Saliency-Weighted Asymmetric Merging for Efficient Vision Transformers",
+        "summary": "Vision Transformers (ViTs) achieve strong performance on image recognition tasks, yet their quadratic self-attention complexity over input tokens creates prohibitive computational costs for practical deployment. Token reduction methods offer a practical solution by progressively reducing the token sequence during the forward pass. We propose Saliency-Weighted Asymmetric Merging (SWAM), a training-based token merging framework that extends the Bipartite Soft Matching (BSM) with two saliency-aware mechanisms. We introduce a two-step matching formulation in which cosine similarity decides candidate pairs, while a multiplicative maximum saliency penalty regulates their selection for merging. We then further use asymmetric exponential saliency-weighted aggregation, which allows more salient tokens to contribute more strongly to the merged representation. A lightweight MLP-based saliency prediction module (75k parameters per stage, 1% of backbone parameters) supervised via attention rollout is trained end-to-end jointly with a DeiT-Small backbone using a composite cross-entropy, knowledge-distillation, and saliency-alignment objective. On CIFAR-100, TinyImageNet, and ImageNet-100, under a conservative schedule that reduces tokens from 196 to 100 patch tokens, with the CLS token retained throughout, 27.5% FLOPs reduction and 1.35 times speedup, SWAM matches or exceeds baseline across the reported results. Under an aggressive schedule (196 to 70 tokens with the CLS token kept throughout, 33.8% FLOPs reduction, and 1.46 times speedup), accuracy gains are achieved on ImageNet-100 (+0.23%) with minimal losses on CIFAR-100 and TinyImageNet.",
+        "url": "http://arxiv.org/abs/2611.18057v1",
+        "date": "2026-11-13",
+        "author": "Utkarsh Kumar Singh",
+        "type": "Paper"
+      },
+      {
+        "title": "A Concise Introduction to Quantum Electromagnetics",
+        "summary": "This book introduces quantum electromagnetics to readers trained in classical electromagnetics, without assuming a systematic background in quantum mechanics. The central question is when classical descriptions suffice, and when the quantum states of matter or the field must be retained explicitly. Starting from familiar electromagnetic modes and material response, the discussion develops atomic dynamics, field quantization, and the interaction of quantized fields with quantum matter. Particular attention is given to how mode profiles, Green functions, and scattering matrices obtained from classical electromagnetic calculations enter quantum models. Atomic coherence, photon statistics, spontaneous emission, and cavity coupling are developed through derivations that identify the physical assumptions and limits of each description. Examples drawn from atomic clocks, Rydberg-atom receivers, and single-photon devices connect these concepts to excitation, propagation, and measurement in practical systems. Loss and noise are included in relating internal dynamics to measured signals and correlations. The final discussion examines how sensitivity and claims of quantum advantage depend on bandwidth, measurement resources, and the classical reference used for comparison. The aim is to help readers choose an appropriate model, carry out the calculation, and understand what its predictions mean for an electromagnetic measurement.",
+        "url": "http://arxiv.org/abs/2611.17988v1",
+        "date": "2026-11-13",
+        "author": "Wei E. I. Sha",
+        "type": "Paper"
+      },
+      {
+        "title": "Projection of massive and interacting conformal theories to the future null infinity",
+        "summary": "On a four-dimensional, globally hyperbolic and asymptotically flat spacetime, we consider a real, linear, massive scalar field. Within the framework of perturbative algebraic quantum field theory and inspired by the principle of perturbative agreement, we regard the mass term in the underlying Lagrangian as an interaction potential. This allows us to construct the algebra of observables of the massive theory and, using a Møller map, to represent its elements as formal power series in the squared mass, with coefficients in the algebra of observables of a massless, conformally coupled scalar field. Following [DMP06], we use the bulk-to-boundary correspondence for the massless theory to project each coefficient to future null infinity $\\mathscr{I}^+$.In four-dimensional Minkowski spacetime, we prove convergence of the projected series in the presence of an infrared cut-off and show that the global adiabatic limit exists but is trivial. We circumvent this obstruction by exploiting the time-slice axiom, which allows us to restrict our attention to observables localized in a causally convex neighbourhood containing a Cauchy hypersurface. Removing the cut-off locally yields a non-trivial limit and hence a bulk-to-boundary correspondence for the massive theory. We then extend our procedure to a self-interacting real scalar field. We represent interacting observables as formal power series in the coupling constant, with coefficients in the algebra of observables of a massless, conformally coupled scalar field. Each coefficient in the domain of the bulk-to-boundary map can thus be projected to future null infinity. As a concrete example, we apply this method to the stress-energy tensor of a massless scalar field with a quartic self-interaction, computing its projection up to first order in perturbation theory.",
+        "url": "http://arxiv.org/abs/2611.17943v1",
+        "date": "2026-11-13",
+        "author": "Beatrice Costeri",
+        "type": "Paper"
+      },
+      {
+        "title": "Complexity and symmetry: The asymmetry factor approach",
+        "summary": "We study the influence of the instantaneous appearance of a time-like Killing vector (TKV) in self-gravitating fluid spheres during their evolution. For doing so we resort to the concept of asymmetry factor which allows the existence of any specific type of symmetry (e.g. a TKV), exclusively, for a given value of the time-like coordinate. We consider adiabatic and dissipative fluids. The analysis of different relevant physical variables in this process shows the imprints of the emergence of TKV at some point of the evolution. Particular attention is paid to the relationship appearing between the TKV, and the complexity factor describing the degree of complexity of the fluid, bringing out for the first time a link between complexity and symmetry.",
+        "url": "http://arxiv.org/abs/2611.17940v1",
+        "date": "2026-11-13",
+        "author": "L. Herrera",
+        "type": "Paper"
+      }
+    ]
+  },
+  "MoE (Mixture of Experts) & Routing": {
+    "keywords": [
+      "moe",
+      "mixture of experts",
+      "mixture-of-experts",
+      "expert routing",
+      "switch transformer",
+      "deepseek-v2",
+      "deepseek-v3",
+      "token dispatch",
+      "ep parallelism",
+      "expert parallelism",
+      "fused moe"
+    ],
+    "items": [
+      {
+        "title": "CoPre-MoE: Consolidating and Preserving MoE for Multimodal Continual Instruction Tuning",
+        "summary": "Multimodal continual instruction tuning requires multimodal large language models to sequentially acquire new capabilities without catastrophic forgetting. Mixture-of-experts (MoE) architectures offer a promising way to mitigate task interference through expert specialization and combination. However, while existing MoE-based methods avoid overwriting shared parameters by allocating separate experts for each task, this progressive expansion incurs severe cross-task redundancy and linear parameter growth. Specifically, experts across tasks often learn overlapping functions alongside task-specific capabilities. For instance, ScienceQA and TextVQA both locate relevant image regions. To curb parameter redundancy without inducing forgetting, we propose Consolidating and Preserving MoE (CoPre-MoE). For each incoming task, CoPre-MoE first learns task-specific MoE to capture specialized capabilities. To eliminate redundancy and reduce parameter growth across tasks, we design a shared-and-private expert architecture. Specifically, we first evaluate functional overlap to selectively consolidate overlapping experts across tasks into a fixed-capacity generic expert pool. We then factorize the remaining task-specific experts into shared projection bases and compact task-specific cores within a private expert pool. To mitigate forgetting, we construct the router by pairing each expert with learnable retrieval keys, where historical keys remain frozen during continual updates while newly added keys are regularized with an orthogonality penalty. At inference, input-dependent routing dynamically combines both pools without test-time task labels. Extensive experiments demonstrate that CoPre-MoE achieves superior performance while substantially reducing parameter overhead.",
+        "url": "http://arxiv.org/abs/2611.18417v1",
+        "date": "2026-11-13",
+        "author": "Tao Hu",
+        "type": "Paper"
+      }
+    ]
+  },
+  "GEMM, Tensor Cores & Low-Precision": {
+    "keywords": [
+      "gemm",
+      "matmul",
+      "matrix multiplication",
+      "tensor core",
+      "wgmma",
+      "cutlass",
+      "cute",
+      "fp8",
+      "fp4",
+      "nvfp4",
+      "mxfp4",
+      "mxfp8",
+      "quantization",
+      "awq",
+      "gptq",
+      "bitsandbytes",
+      "block scaling",
+      "sm90",
+      "sm100"
+    ],
+    "items": [
+      {
+        "title": "Characterization of the GIGAPYX-4600 CMOS visible image sensor in the context of high precision astrometry",
+        "summary": "To evaluate the potential of detectors for next-generation space astrometry missions such as the HWO and Theia, an extensive analysis of the performance of the GIGAPYX-4600 46-megapixel CMOS detector from Pyxalis was conducted at IPAG. The 5456x8320-pixel detector, featuring a 4.4-micron pitch and back-side illumination, constitutes a matrix of 24x36 mm. It has a measured gain of 13.3 electrons per ADU in low-gain mode. The saturation level of the detector in low-gain-mode is estimated to be approximately 52 000 electrons. This sensor demonstrates linearity errors of 0.90%, pixel response non-uniformity of less than 1.3%, and readout and quantization noise of 12 electrons in low-gain mode. Dark current was measured at 35 electrons per second at 35{\\textdegree}C and inter-pixel capacitance remained under 3%. We demonstrated that inter-pixel capacitance effects can be effectively mitigated using spatially varying kernel correction algorithms. Radiation tests confirmed its robustness against protons and heavy ions, and no latch-up was observed. These measurements agree with the manufacturer figures. These characterization results validate the GIGAPYX-4600 as a strong candidate for high-precision astrometry. Further improvements are currently being developed for space implementation.",
+        "url": "http://arxiv.org/abs/2611.18366v1",
+        "date": "2026-11-13",
+        "author": "Manon Lizzana",
+        "type": "Paper"
+      },
+      {
+        "title": "BPU-SpikeMM:Exact Matrix Multiplication via Spatio-Temporal Spike Encoding on Real Neuromorphic Hardware",
+        "summary": "Matrix multiplication is the dominant computational kernel in deep learning, yet its growing scale strains conventional von Neumann hardware in energy efficiency and bandwidth. Neuromorphic architectures offer a promising alternative, but mathematical equivalence between matrix multiplication and spiking computation does not guarantee direct execution on real neuromorphic hardware, as the specific hardware paradigm may still require additional data recovery, bit-weight reconstruction, or state readout after neuromorphic execution. This paper presents BPU-SpikeMM (Brain Processing Unit-based Spike Matrix Multiplication), an exact spatio-temporal spike encoding framework for matrix multiplication on real neuromorphic hardware. We prove the exact equivalence of spike-encoded matrix multiplication under the BPU execution paradigm, distinguish mathematical equivalence from native direct-readout equivalence on BPU hardware, and build a spatio-temporal offloading pipeline supporting multiple encoding schemes. Furthermore, we extend the framework to a multi-dimensional encoding design space and evaluate the applicability of different encodings on real BPU hardware in terms of correctness, temporal resource cost, spatial resource cost, and event-driven metrics. The results confirm native direct-readout equivalence across all evaluated encoding schemes and show that their applicability to BPU execution depends on joint trade-offs among temporal cost, spatial resource consumption, and event activity.",
+        "url": "http://arxiv.org/abs/2611.18275v1",
+        "date": "2026-11-13",
+        "author": "Rongyuan Guo",
+        "type": "Paper"
+      }
+    ]
+  },
+  "Kernel Compilers & DSLs (Triton, TileLang, CUDA)": {
+    "keywords": [
+      "triton",
+      "tilelang",
+      "thunderkittens",
+      "cutedsl",
+      "tvm",
+      "halide",
+      "autotuning",
+      "kernel generation",
+      "cuda optimization",
+      "warp specialization",
+      "tma",
+      "tensor memory accelerator"
+    ],
+    "items": [
+      {
+        "title": "Rigidity of the moving particle lemma for the interchange process",
+        "summary": "Let $G=(V,c)$ be a finite connected weighted graph. We establish the exact conditions for attaining equality in the moving particle lemma for the interchange process on $G$ subject to a unit voltage drop across two terminal vertices $x\\neq y \\in V$. First, equality can occur only in irreducible representations indexed by partitions with at most two rows. We then show that the equality phenomenon beyond the constant and linear sectors is already visible in the two-particle exclusion process. Such equality occurs in exactly two cases: either the harmonic $x$--$y$ voltage is $\\frac12$ on every nonterminal vertex, and the induced nonterminal graph $G[V\\setminus\\{x,y\\}]$ is disconnected; or the harmonic voltage is constant on each connected component of $G[V\\setminus \\{x,y\\}]$, and both voltage values $a$ and $1-a$, with $0\\le a<\\frac12$, occur. In each case we compute the equality kernel in every degree and particle sector. The resulting decomposition gives the complete equality kernel for exclusion and, through the regular representation, for the interchange process.",
+        "url": "http://arxiv.org/abs/2611.18483v1",
+        "date": "2026-11-13",
+        "author": "Joe P. Chen",
+        "type": "Paper"
+      },
+      {
+        "title": "Mesh-Free Weak-Form Regression for Learning Interaction Kernels from Particle Trajectories",
+        "summary": "We propose mesh-free weak-form regression for learning interaction kernels from noisy particle trajectories. Our method uses smooth test functions to avoid differentiating noisy data and empirical particle averages to avoid density reconstruction and spatial grids. We then fit sparse combinations of candidate functions, evaluating interaction terms on sampled particle pairs to avoid all-pair quadratic cost. By transferring identifiability from the mean-field limit, we prove high-probability coefficient error bounds that separate finite-particle, time-discretization, observation-noise, and pair-sampling errors, without grid-resolution or density-estimation terms. We evaluate one-dimensional (1D) Newtonian-repulsion, 2D predator-prey, and 10D distance-localized experiments. The numerical results show trends consistent with the theoretical coefficient-error bounds. Comparisons of weak and forward-difference formulations with LASSO, Ridge, and OLS show that weak LASSO gives the smallest coefficient and drift errors in the three nominal experiments.",
+        "url": "http://arxiv.org/abs/2611.18455v1",
+        "date": "2026-11-13",
+        "author": "Daisuke Inoue",
+        "type": "Paper"
+      },
+      {
+        "title": "On the origin and geometry of anomaly-related poles in Double Deeply Virtual Compton Scattering",
+        "summary": "Anomaly-related poles have been reported in one-loop box amplitudes for the gluon-initiated channel of double deeply virtual Compton scattering (DDVCS). The residues of these poles carry the gluonic operator structures associated with the chiral and trace anomalies. The origin of the poles within the box amplitude has remained unclear. In this work, we trace both poles to a subleading Landau singularity on the boundary of the box's Feynman-parameter domain, where one parameter vanishes and the remaining three propagators form a triangle subdiagram. We examine the same boundary using dimensional regularization (DR), nonzero momentum transfer $t$, and a finite quark mass $m$. At $t=m=0$, the boundary contribution is power infrared divergent in four dimensions. Analytic continuation in DR conceals this divergence, which gives no $1/ε$ pole about $d=4$. At the critical dimension $d=6$, the same endpoint diverges logarithmically and gives a pole in the continued integral. Nonzero $t$ and finite $m$ regulate the same boundary region, yielding the known anomaly-related $1/t$ pole and a previously unreported $1/m^2$ behavior, respectively. We also show that a transverse gluon-polarization projector can eliminate an anomaly-related contribution that survives with explicit gluon polarization vectors. Finally, we present complete one-loop results for polarized and unpolarized DDVCS with all three infrared prescriptions. After summing the diagrams, the same evolution kernel governs the infrared pole in DR and the logarithms $\\ln(Q^2/(-t))$ and $\\ln(Q^2/m^2)$ within each polarization channel. This work establishes the common geometric origin of these anomaly-related poles within one-loop box amplitudes.",
+        "url": "http://arxiv.org/abs/2611.18386v1",
+        "date": "2026-11-13",
+        "author": "Shohini Bhattacharya",
+        "type": "Paper"
+      },
+      {
+        "title": "Convergence rate of observables in the Marcus-Lushnikov process toward Smoluchowski with singular homogeneous kernels",
+        "summary": "We study the approximation of the Smoluchowski coagulation equation by the Marcus--Lushnikov process with $N$ initial particles for the singular family of kernels $K\\_α(x,y)=x^{-α}+y^{-α}, α> 0$. For regular mean-field particle systems, pathwise fluctuations are naturally expected on the scale $N^{-1/2}$, whereas sufficiently smooth observables may exhibit a weak error of order $N^{-1}$ after averaging. The singularity of $K\\_α$ at the origin makes it unclear whether this second-order mechanism survives. We prove that it does: for a class of sufficiently regular nonlinear functionals of the empirical measure, we establish a weak error of order $N^{-1}$ on finite time intervals. The main mechanism is a regularization produced by the singular dynamics itself. Small clusters coagulate at increasingly large rates, which generates exponential moments in the singular variable $x^{-α}$ and yields a rapid escape from the singularity at zero. We exploit this phenomenon through a Wasserstein-type distance adapted to $x^{-α}$, together with weighted total variation estimates used to construct and control the derivative of the Smoluchowski flow.",
+        "url": "http://arxiv.org/abs/2611.18380v1",
+        "date": "2026-11-13",
+        "author": "R{é}mi Catellier",
+        "type": "Paper"
+      },
+      {
+        "title": "How rigid is maximum cardinality search? Stability and locality of MCS orderings under edge updates, verified in Lean",
+        "summary": "For which sets F of edge modifications do a graph G and the modified graph share a maximum cardinality search (MCS) ordering? We prove that they do whenever, along every proper common MCS prefix, each unchosen vertex's neighbour count in the second graph exceeds its count in the first by zero or one. In particular, inserting or deleting any matching, or flipping a single edge, preserves a common ordering, and under the same hypothesis every common MCS prefix extends to a full common ordering without backtracking. Neither part of the hypothesis can simply be dropped: inserting a triangle, a P_4 or a 2P_3 shows that the +1 bound cannot be relaxed to +2, and a disjoint mixed insert/delete pair shows that the one-directional condition is needed. For the canonical ordering (smallest-index tie-breaking) under a single-edge update, an insertion can first change the ordering only strictly between the endpoints' positions, and a deletion only at the later endpoint; when no break fires, the ordering is unchanged. A boolean-adjacency executable refines the abstract probe-then-repair update. All of these results, including the four obstructions, are proved in Lean 4 over Mathlib, re-checked by independent kernel checkers, and registered in the Palomar registry. On paper we further show that the first break of an insertion is located in O((deg(v)+1) log n) time, independent of the window length. We claim no worst-case asymptotic speedup over recomputation.",
+        "url": "http://arxiv.org/abs/2611.18369v1",
+        "date": "2026-11-13",
+        "author": "Md Thoriqul Islam Thonmay",
+        "type": "Paper"
+      },
+      {
+        "title": "Kronecker Approximations of Covariance Matrices for Solving Inverse Problems",
+        "summary": "Inverse problems arise in many applications where the task is to recover unknown parameters from indirect or noisy observations. In contrast to forward problems, where outputs are directly computed from known inputs, inverse problems are designed to infer the underlying variables from the observed effect. Inverse problems are often ill-posed, so regularization is needed to compute reasonable solutions. One form of regularization incorporates prior knowledge about the unknown parameters in the form of prior distributions. However, in many settings, large prior covariance matrices pose computational bottlenecks for solving inverse problems. To address this, we study approximations of large covariance matrices via structured Kronecker-Toeplitz products and demonstrate how these approximations can be used to solve inverse problems. We exploit the Block-Toeplitz-Toeplitz-Block structure induced by the covariance kernel to construct compact approximations that are orders of magnitude cheaper to store and invert. These approximations are deployed as prior covariance surrogates in Bayesian inverse problems solved via generalized hybrid iterative methods. We demonstrate that the Kronecker-Toeplitz approximation attains lower relative approximation error than existing matrix approximations, exhibits rapid error decay with rank, and enables efficient matrix-vector products. Applications to 2D seismic tomography reconstruction problems illustrate the practical utility of these methods.",
+        "url": "http://arxiv.org/abs/2611.18309v1",
+        "date": "2026-11-13",
+        "author": "Srijon Sarkar",
+        "type": "Paper"
+      },
+      {
+        "title": "Scan-specific k-space interpolation using deep Koopman autoencoders",
+        "summary": "Purpose: To develop a scan-specific, interpretable k-space interpolation technique for the reconstruction of accelerated MRI data.   Methods: A deep Koopman autoencoder for nonlinear k-space interpolation was developed consisting of an encoder, a linear layer for interpolation and a decoder. The resulting network is implemented using mean square error loss function on k-space neighbourhoods derived from the autocalibration signals (ACS), combining a prediction loss and an autoencoding loss. The approach was compared to GRAPPA and RAKI in 281 retrospectively undersampled brain datasets, using quantitative reconstruction metrics. In a subset of 52 randomly selected images, a clinical reader study compared the proposed approach and RAKI in a forced choice scenario and using a five-point ordinal scoring, assessing sharpness, SNR, aliasing and overall image quality. Additionally, the effect of varying parameters such as the number of autocalibration signals, the contribution of the autoencoding loss, the kernel size, and the latent space dimension for the proposed technique was studied.   Results: The proposed approach showed improved quantitative metrics compared to GRAPPA and RAKI. Visually, the method showed higher resilience to noise amplification and improved preservation of sharp details. In the clinical reader study, the proposed approach was preferred overall to RAKI and yielded higher scores than GRAPPA and RAKI. The proposed method showed robustness to parameter variations.   Conclusion: Deep Learning based k-space interpolation can be achieved using a Koopman autoencoder for k-space neighbourhoods.   Keywords: Parallel imaging, Koopman autoencoder, nonlinear mapping, k-space interpolation, deep learning reconstruction",
+        "url": "http://arxiv.org/abs/2611.18301v1",
+        "date": "2026-11-13",
+        "author": "Wassim Ben Salah",
+        "type": "Paper"
+      },
+      {
+        "title": "Nondegeneracy of the bubble for a fourth-order Liouville boundary problem",
+        "summary": "We establish the nondegeneracy of the bubble for \\[ Δ^2u=0\\quad \\text{in }\\mathbb R^4_+,\\qquad \\partial_tu=0,\\quad \\partial_tΔu=e^{24π^2u} \\quad \\text{on }\\partial\\mathbb R^4_+. \\] Using Fourier analysis, stereographic projection and a removable-singularity argument, we classify the weighted $L^2$ boundary kernel without assuming boundedness of the boundary solution. This determines the bounded half-space kernel. Both kernels are generated by dilation and tangential translations. We further obtain sharp estimates for the projected spherical inverse.",
+        "url": "http://arxiv.org/abs/2611.18277v1",
+        "date": "2026-11-13",
+        "author": "Jiaoping Chen",
+        "type": "Paper"
+      },
+      {
+        "title": "From Bytes to Behavior: Request-Level Attribution from Live GPU Hidden States",
+        "summary": "Existing memory forensics for machine learning systems typically targets static artifacts, such as model weights or prompt logs, rather than the transient computational states of a live inference process. This gap limits an examiner's ability to analyze the specific behavior of a running large language model (LLM) service that cannot be restarted or modified. We present a method for acquiring per-layer residual-stream activations from a live GPU process using a non-modifying debugger, without requiring prior knowledge of the model's architecture parameters or weights. The approach employs a general six-stage process with platform-specific adapters, utilizing either a PyTorch allocator clock or a kernel-launch clock to identify and read tensor allocations from video memory. We validate this acquisition on 33 open-source decoder-only models across nine architecture classes, demonstrating that the recovered bytes are byte-exact and usable for downstream analysis. As a use case, we apply linear probes trained on standard framework activations to the recovered states, successfully distinguishing refusal from compliance with an AUROC of 0.88 on held-out prompts. This work establishes that live, observational access to intermediate hidden states is feasible on named inference platforms, providing a new source of evidence for examining the operational behavior of deployed AI systems.",
+        "url": "http://arxiv.org/abs/2611.18272v1",
+        "date": "2026-11-13",
+        "author": "Jonathan Pan",
+        "type": "Paper"
+      },
+      {
+        "title": "From Pen-and-Paper to Machine-Checked Proofs: Lean for System Identification",
+        "summary": "Mathematical proofs in scientific papers are often long and intricate, relying on chains of references to earlier results. This makes it difficult for readers and reviewers to verify each and every step. Interactive theorem proving offers a complement: the theorem and its proof are written as code, and every inference is checked by a small, trusted piece of software called the kernel. This paper serves as an introduction to the Lean 4 proof assistant for a system identification and control audience, assuming no prior exposure to formal methods. We first show how a Lean proof is read using two elementary examples: the first on identifiability, the second on set invariance. We then illustrate how Lean can be used to analyse results from the literature, taking as example a classic lemma on the inversion of the noise filter in prediction-error identification (Ljung, 1999, Lemma 3.1). Since in Lean every step must be justified, the formalization brings to light a subtle point: the original claim of that lemma holds almost surely, although not for every realisation, as its statement may suggest. A simple counterexample makes this concrete. Finally, the paper discusses guidelines and perspectives on the use of Lean in system identification research.",
+        "url": "http://arxiv.org/abs/2611.18220v1",
+        "date": "2026-11-13",
+        "author": "Manas Mejari",
+        "type": "Paper"
+      },
+      {
+        "title": "The Chabauty--Kim dimension inequality via noncommutative Iwasawa theory",
+        "summary": "We establish Kim's conjectural dimension inequality for smooth projective geometrically connected curves $C/\\mathbb{Q}$ of genus at least two with a rational basepoint. For every odd prime $p$ of good reduction, we prove that $$\\mathrm{dim} H_f^1(G_{\\mathbb{Q},Σ},U_n^\\mathrm{ét}) < \\mathrm{dim}(U_n^{\\mathrm{dR}}/F^0)$$ for all sufficiently large $n$, where $U_n^\\mathrm{ét}$ and $U_n^\\mathrm{dR}$ are the $n$'th lower central series truncations of the $\\mathbb{Q}_p$-pro-unipotent geometric étale, and de Rham fundamental groups of $C$, and $Σ$ is any finite set of places containing $p$, $\\infty$, and the primes of bad reduction. Inspired by Coates and Kim's work on curves with CM Jacobians, we use noncommutative Iwasawa theory to bound second Galois cohomology through dimensions of kernels of certain Iwasawa operators, acting on finite dimensional representations of the ambient generalized symplectic group. We establish bounds for these kernels in terms of the highest weight and dimension of the ambient symplectic representation. No restriction is imposed on the Jacobian's geometric endomorphism ring or its Tate-module Galois image. Consequently, the Chabauty--Kim loci are finite at all sufficiently large levels, recovering the Mordell theorem over $\\mathbb{Q}$ through the Chabauty--Kim method.",
+        "url": "http://arxiv.org/abs/2611.18218v1",
+        "date": "2026-11-13",
+        "author": "Sa'ar Zehavi",
+        "type": "Paper"
+      },
+      {
+        "title": "RG evolution of the $B$-meson LCDA and radiative jet function at three loops",
+        "summary": "We calculate the three-loop evolution kernel of the light-cone distribution amplitude of the $B$ meson, together with the radiative jet function in the leptonic radiative decay $B^-\\toγ\\ell^-\\barν$ for the first time. Representing the light-cone distribution amplitude as the discontinuity of a matrix element containing an inverse differential operator, we compute the partonic matrix element in momentum space with a novel method of infrared subtraction. We show that its infrared singularities are governed by the same anomalous dimension as that of the heavy-light quark form factor, so that they can be subtracted without introducing any infrared regulator, thereby preserving gauge invariance and avoiding additional complexity in the Feynman integrals. Based on the renormalization-group invariance of the factorization theorem, we derive the renormalization factor of the radiative jet function, and confirm that it removes all divergences of the bare three-loop radiative jet function. Our results enable the resummation of large logarithms in exclusive $B$ decays at next-to-next-to-next-to-leading logarithmic accuracy.",
+        "url": "http://arxiv.org/abs/2611.18206v1",
+        "date": "2026-11-13",
+        "author": "Ze Long Liu",
+        "type": "Paper"
+      },
+      {
+        "title": "Three-Loop Evolution for Soft Functions of Exclusive $B$-Meson and Higgs Decays",
+        "summary": "We bootstrap the complete three-loop Lange--Neubert kernel for the leading-twist $B$-meson light-cone distribution amplitude in heavy quark effective theory by taking advantage of the conformal symmetry technique. In particular, we provide for the first time an all-order Wilson-line argument for the determination of the constant term in the LN kernel in terms of the light-quark, heavy-quark, and threshold soft anomalous dimensions. Remarkably, this innovative construction requires no additional three-loop diagrammatic calculations. Taking into account further the three-loop QCD evolutions for the hard and hard-collinear coefficient functions, the newly derived three-loop Lange--Neubert equation enables us to manifestly demonstrate the renormalization-group invariance of the soft-collinear factorization formula for the radiative leptonic $B_{u}^- \\to γ\\ell^{-} \\bar ν_{\\ell}$ decay at leading power, validating our bootstrapped three-loop kernel and more importantly, our full bootstrap approach.",
+        "url": "http://arxiv.org/abs/2611.18204v1",
+        "date": "2026-11-13",
+        "author": "Yao Ji",
+        "type": "Paper"
+      },
+      {
+        "title": "Training-point consistency of kernel ridge regression with varying correlation scales",
+        "summary": "The scale parameter in kernel ridge regression plays a pivotal role in modeling the correlation structure of data. In modern applications, sampling density and the underlying correlation range often change simultaneously, making a fixed-scale assumption highly restrictive. However, establishing asymptotic theories under varying scale parameters is fundamentally challenging. To address this gap, this paper develops a unified theoretical framework for kernel ridge regression under varying scale parameters. We establish that, on uniform tensor grids with product exponential kernels, the consistency of the training-point risk holds if and only if the effective local sample size diverges to infinity. This sharp criterion universally covers all regimes along arbitrary deterministic scale sequences, seamlessly unifying the long-range, fixed-scale, and short-range. Furthermore, we provide an explicit, signal-independent construction of a deterministic regularization penalty that guarantees this consistency. Numerical experiments illustrate the criterion and the corresponding penalty across all the three regimes.",
+        "url": "http://arxiv.org/abs/2611.18095v1",
+        "date": "2026-11-13",
+        "author": "Weiyan Mu",
+        "type": "Paper"
+      },
+      {
+        "title": "Finite-Larmor-radius vortex interaction from δf to full-f gyrofluid dynamics",
+        "summary": "We study finite-size electrostatic gyrofluid vortex pairs in a two-dimensional isothermal model, focusing on finite-Larmor-radius effects and the transition from local perturbative to finite-amplitude full-distribution dynamics. An effective response kernel based on Padé ion gyroaveraging regularizes the short-range Euler interaction on the Larmor-radius scale while preserving its logarithmic far field, yielding a finite- core prediction for the orbital frequency. Local-model scans show that increasing the ion temperature relative to the electron temperature enhances gyrospinning and filamentation and drives a separation-dependent transition from merger to long-lived co-rotation. Long-wavelength simulations reproduce the predicted finite-Larmor- radius-induced dip in orbital angular frequency, corresponding to a pronounced slowdown of the vortex-pair rotation. For the full-distribution regime, we introduce a quasi-neutrality-consistent initialization that reconstructs the ion gyrocenter density from prescribed electron density and electrostatic potential. It recovers the local limit at small amplitude, whereas finite-amplitude simulations reveal additional mean-density polarization vorticity, delayed or arrested merger, and a loss of density- vorticity sign symmetry already in the cold-ion full-f system. An independent sign scan of density and vorticity then shows how this nonlinear NOB asymmetry combines with the local warm-ion FLR symmetry breaking identified in earlier δf vortex studies; for warm ions, Padé-based arbitrary-wavelength NOB and NOB+LWL polarization additionally produce distinct morphologies and trajectories. These results demonstrate that nonlinear density-dependent polarization and FLR physics form separate but coupled mechanisms that can qualitatively alter elementary vortex interactions in two-dimensional gyrofluid dynamics.",
+        "url": "http://arxiv.org/abs/2611.18093v1",
+        "date": "2026-11-13",
+        "author": "Manuel Rinner",
+        "type": "Paper"
+      },
+      {
+        "title": "Spectrum of a 2D QFT analogue of the SYK model",
+        "summary": "We study the spectrum of the two-dimensional generalisation of the SYK model proposed by Turiaci and Verlinde, in which chiral Majorana fermions with a topological kinetic term interact through random $2q$-fermion couplings. We compute the four-point function at order $1/N$ in the conformal limit. In addition to the conformal Casimir, the ladder kernels commute with the operator that exchanges a single lightcone coordinate. As a result, the four-point function splits into an even and an odd sector, which the kernels do not mix. In each sector we construct a complete eigenbasis of the Casimir, find the eigenvalues of the kernels in closed form and sum the ladder diagrams. The poles in the ladder sum lie on a spectral curve in the plane of the two conformal weights. A conformal solution in the IR limit breaks the symmetries of the model under chiral reparametrisations and local Lorentz transformations, and the kernel has eigenvalue one on the corresponding modes. The reparametrisation modes, with conformal weights $(2,0)$ and $(0,2)$, are non-normalisable, whereas the Lorentz mode of the odd sector, with weights $(1,1)$, is normalisable. We determine the region where the sum of ladders can be represented in a contour form analogous to that of the one-dimensional SYK model.",
+        "url": "http://arxiv.org/abs/2611.18063v1",
+        "date": "2026-11-13",
+        "author": "Avik Chakraborty",
+        "type": "Paper"
+      },
+      {
+        "title": "Hidden Quantum Markov Processes: Mealy Formulation and Observable Reduction",
+        "summary": "We formulate hidden quantum Markov processes in a Mealy architecture using a single completely positive unital transition expectation coupling the present hidden system, the emitted output, and the next hidden system. Together with a boundary state, it generates a quasi-local, finitely correlated hidden--output state; for the commutative generator associated with a classical Mealy kernel, this state is the full joint law of the classical Mealy model.   Moore realizations correspond to transition expectations that factor on the prescribed hidden algebra. We establish a rank obstruction to such factorization and prove its sufficiency for isometric generators: factorization holds exactly when the induced hidden-memory channel has Kraus rank at most the hidden Hilbert-space dimension. The Kraus rank also gives the minimal intermediate Hilbert-space dimension. When the hidden and output dimensions are at least two, the factorizable isometric generators form a closed subset of measure zero.   For any fixed projective readout, a Mealy generator induces an operational hidden quantum Markov model in the sense of Monràs, Beige and Wiesner; conversely, every finite-dimensional operational model admits a Mealy lift on the same memory space with a rank-one readout. For their cluster-state instrument, two isometric, Moore-factorizable lifts with the same instrument and initial memory state yield identical measured output statistics but different quantum output states: one has marginals entangled across $1|2\\cdots n$ for $n\\geq3$, with three-output negativity $\\tfrac12$, whereas the other has fully separable marginals. Thus operational equivalence does not determine output entanglement.",
+        "url": "http://arxiv.org/abs/2611.18040v1",
+        "date": "2026-11-13",
+        "author": "Soueidi El Gheteb",
+        "type": "Paper"
+      },
+      {
+        "title": "Wireless Node Ranking via Fourier-Driven Maximum-Likelihood Estimation (extended version)",
+        "summary": "We apply non-abelian Fourier theory to the problem of maximum-likelihood estimation of the order of a line topology, based on signal strength measurements under shadowing only. This yields up to a 60-fold speedup over standard methods for uncorrelated shadowing.   Moreover, for correlated Gaussian shadowing with a singular covariance (e.g. the joint path-loss model), maximum-likelihood recovery is exact and independent of the shadowing variance (an infinite Le Cam threshold), which our implementation confirms for $σ/α$ as high as 7.0. The key object is the covariance's null space. Its dimension is fixed by the topology; its orientation depends on the correlation function only through the per-link variances.   Although the mechanism formally requires an exact line, it is robust to small perturbations of the formation: an approximate kernel recovers as well as the exact one. We explore the dependence on the perturbation in detail for five nodes.",
+        "url": "http://arxiv.org/abs/2611.17973v1",
+        "date": "2026-11-13",
+        "author": "Daniel Schneider",
+        "type": "Paper"
+      },
+      {
+        "title": "Statistical guarantees for signature kernel ridge regression",
+        "summary": "Path signatures are a standard tool for learning functionals on path space. The main underpinnings of their application are universal approximation results. For a wide range of function classes on path space, these results state that any function in such a class can be approximated arbitrarily well by a linear functional of the path signature. Hence, linear functionals of the signature are in principle expressive enough for learning functions on path space. Nonetheless, these results do not provide insights into the statistical question of how much data is needed to identify a suitable signature functional. In this work, we study this question in the framework of kernel ridge regression with the signature kernel. The target is the conditional expectation $\\E[Y|X]$, where $X$ is the observed path and $Y$ is a real-valued response. Under different assumptions on the moments of the signature kernel and the response, we provide finite-sample and consistency guarantees for the method. We supplement our theoretical analysis with numerical experiments that illustrate our results.",
+        "url": "http://arxiv.org/abs/2611.17934v1",
+        "date": "2026-11-13",
+        "author": "Christian Bayer",
+        "type": "Paper"
+      }
+    ]
+  },
+  "Pre-training & Distributed Infrastructure": {
+    "keywords": [
+      "pre-training",
+      "pretraining",
+      "foundation model",
+      "megatron",
+      "deepspeed",
+      "fsdp",
+      "tensor parallel",
+      "pipeline parallel",
+      "sequence parallel",
+      "3d parallelism",
+      "context parallelism",
+      "data parallel",
+      "cluster scheduling",
+      "collective communication",
+      "nccl"
+    ],
+    "items": [
+      {
+        "title": "Zero-SM NCCL: A Systematic Guide to Designing and Deploying SM-Free GPU Communication",
+        "summary": "GPU communication libraries such as NCCL use Streaming Multiprocessors (SMs) for data movement and synchronization, slowing overlapped computation at a cost that grows with interconnect bandwidth. We present Zero-SM NCCL, which communicates within and across scale-up domains without launching any SM kernel. It synchronizes through CUDA stream memory operations, moves data asynchronously with copy engines within a scale-up domain, and drives network RDMA from a stream-ordered CPU proxy. It supports data-movement collectives such as AllGather and AlltoAll, plus one-sided ncclPutSignal and ncclWaitSignal APIs. On GB200 NVL72 and B200 NVL8 systems, Zero-SM collectives reach up to 1.36x higher AllGather bandwidth than NCCL's legacy SM-based kernels and cut the median slowdown of overlapped GEMMs from 33% to 4%, at a higher latency per operation. In Megatron-LM training, they accelerate FSDP by up to 3.5%, and one-sided puts accelerate pipeline parallelism by up to 15%. Zero-SM communication is not a universal win, however. Through an end-to-end study across models and parallelism strategies, we show that it pays off for large transfers in GPU-bound workloads and for deep pipelines with large bubbles, but loses on small messages and host-bound workloads. We distill these findings into guidelines for enabling zero-SM communication in NCCL and building it into other libraries.",
+        "url": "http://arxiv.org/abs/2611.18075v1",
+        "date": "2026-11-13",
+        "author": "Zhenhao He",
+        "type": "Paper"
+      }
+    ]
+  },
+  "Post-training, Alignment & RL": {
+    "keywords": [
+      "post-training",
+      "post training",
+      "rlhf",
+      "dpo",
+      "ppo",
+      "grpo",
+      "reinforcement learning from human feedback",
+      "instruction tuning",
+      "sft",
+      "preference optimization",
+      "reasoning models",
+      "distillation",
+      "lora",
+      "qlora"
+    ],
+    "items": [
+      {
+        "title": "VEPO: Mitigating Multilingual Hallucinations in LVLMs via Visual Evidence-guided Preference Optimization",
+        "summary": "Large vision-language models (LVLMs) achieve strong multimodal performance, yet they remain prone to object hallucination---generating answers that are linguistically fluent but visually ungrounded. This issue is especially severe in low-resource languages, where weaker cross-modal alignment causes models to rely more on language priors than on image evidence. Existing remedies either require costly multilingual annotations or external translation/reward models, or intervene at inference time in ways that can distort the output language. We propose VEPO(Visual Evidence-guided Preference Optimization), a training-time method that transfers reliable visual grounding from English to other languages without external models. VEPO first localizes key visual evidence using English queries via mid-layer cross-modal attention, then constructs preference pairs that share the same correct answer but differ in evidence sufficiency (full image vs.\\ key-region masked image). Direct preference optimization on these pairs encourages low-resource inputs to prefer answers supported by complete visual evidence. Experiments on multilingual POPE and MME with Chinese, French, and Hindi show consistent hallucination reduction and perception gains, with the largest improvements on the lowest-resource language. Analyses further confirm that VEPO sharpens question-relevant attention and that evidence-guided masking outperforms random masking.",
+        "url": "http://arxiv.org/abs/2611.18096v1",
+        "date": "2026-11-13",
+        "author": "Chengpeng Fu",
+        "type": "Paper"
+      },
+      {
+        "title": "Reasoning Models Confabulate to Defend Injected Beliefs About Their Own Requests",
+        "summary": "Chain-of-thought (CoT) monitoring and self-report are proposed as levers for AI oversight, on the assumption that a model's account of what it is doing is anchored to what it was asked. We show this anchor can be cut. An activation edit invisible in the prompt text, the injected forming-trace of an off-topic concept, overwrites a reasoning model's belief about its own request: across six models spanning scale, architecture, and recipe, the injected topic becomes the task it reasons about, reports back, and answers: the forced quote-back returns the injected topic in 47 of 48 model-concept cells, and on the four models with clean final haiku the injected answer follows in 99% of generations. Warnings barely move it: even one naming the true topic yields under 5% true-topic answers. Handed the truth in clean tokens, the model confabulates a story about the user (\"maybe they got confused and corrected themselves\") and answers with the injection anyway, its behavior and chain-of-thought corrupted together: a concrete limit on CoT monitorability. Opening the model up offers no reprieve: it attends to the true request even harder after edits, yet that attention is causally inert, and the injected content rides intact task circuits, so attention maps and circuit attributions read as on-task too; the same edit redirects the request's language and format, not only its topic. What the injection reaches is the model's reference to its own input; what it elicits is its defense of it.",
+        "url": "http://arxiv.org/abs/2611.17958v1",
+        "date": "2026-11-13",
+        "author": "Yang Ou",
+        "type": "Paper"
+      }
+    ]
+  }
+}
