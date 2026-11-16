@@ -1,0 +1,79 @@
+\documentclass[11pt]{article}
+\usepackage[final]{acl}
+\usepackage{times,latexsym}
+\usepackage{amsmath,amssymb,booktabs}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype,inconsolata}
+\title{Certified Omitted-Band Screening for Batched Matched Filtering: A CPU Reference Study}
+\author{Lee Si Yuan \\
+  Independent Researcher \\
+  \texttt{siyuanlee.cs@gmail.com}}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+Recent work on batched matched filtering combines fused correlation kernels with hierarchical, statistically controlled screening. We study a complementary gate: certify that an omitted frequency band cannot raise a coarse correlation peak above the detection threshold. For each data--template pair, the omitted inverse-transform residual is bounded by the product of the data and template tail spectral energies, divided by transform length. The bound gives a zero-false-dismissal screening rule in exact arithmetic, conditional on correct spectra and normalization. A seeded CPU reference experiment on an Apple M2 tests 512 Gaussian noise pairs and 128 template-aligned injections at length 128. Under an explicitly low-band-dominant synthetic spectrum, the certificate safely skips 85.5\% of noise pairs and skips none of the 128 above-threshold injections. A scalar Python transform harness shows 3.11$\times$ lower time for screen-then-full evaluation than its full direct-DFT baseline on 48 pairs; this measures the toy implementation only. A Lean lemma verifies the screening implication from a supplied residual bound. These results do not establish GPU speed, production false-dismissal rates, or robustness to detector-domain spectral mismatch.
+\end{abstract}
+
+\section{Motivation and scope}
+Nitz et al.~\cite{nitz2026} describe fusion of matched filtering with peak extraction and a hierarchical low-frequency screening scheme whose stage thresholds target a false-dismissal probability. We consider an alternative question: can a pair be discarded with a deterministic certificate rather than a probabilistic stage threshold? The answer is yes when an upper bound on all omitted-band correlation values is cheap to obtain. The gate is most useful when the tail-energy terms can be precomputed or reused across many data--template pairs.
+
+This paper is a mathematical and CPU-reference extension, not an implementation of the source paper's GPU kernels. It evaluates a controlled regime in which spectral energy is concentrated in the retained band. The accompanying Lean theorem checks the last implication in the certificate. The triangle inequality and Cauchy--Schwarz derivation are given below; it is not claimed as a formalized proof in Lean.
+
+\section{Residual certificate}
+Let $X_k$ and $H_k$ be the length-$N$ discrete Fourier transforms of real data and template sequences, and define $C_k=X_k\overline{H_k}$. Let $L$ be a retained conjugate-symmetric set of frequency bins and $T$ its complement. With inverse-transform normalization $1/N$, write
+\begin{align}
+ r[t] &= \frac{1}{N}\sum_{k\in L}C_k e^{2\pi i kt/N} + \frac{1}{N}\sum_{k\in T}C_k e^{2\pi i kt/N} \\
+      &= r_L[t]+r_T[t].
+\end{align}
+The triangle inequality and Cauchy--Schwarz give, for every lag $t$,
+\begin{align}
+ |r_T[t]| &\leq \frac{1}{N}\sum_{k\in T}|X_k||H_k| \\
+           &\leq \frac{1}{N}\sqrt{\sum_{k\in T}|X_k|^2}\sqrt{\sum_{k\in T}|H_k|^2} \equiv B_T.
+\end{align}
+Therefore $\max_t|r[t]|\leq\max_t|r_L[t]|+B_T$. If the right-hand side is strictly below a detection threshold $\tau$, the pair may be skipped without dismissing a full-band candidate at or above $\tau$. The statement concerns this thresholded peak statistic; it does not infer a probabilistic false-dismissal rate for a broader pipeline.
+
+For a bank of templates, the template tail energy is computed once per template and data tail energy once per data segment. Each pair then needs a coarse retained-band correlation, a scalar product and square root, and a comparison. The retained-band correlation can still cost $O(N|L|)$ in a direct reference implementation; an optimized FFT or fused kernel is needed for useful device performance. Floating-point implementations need a conservative roundoff allowance added to $B_T$ to retain the guarantee.
+
+\section{Lean-checked implication}
+The Lean theorem in the accompanying formal file proves $|a+b|<\tau$ given $|b|\leq B$ and $|a|+B<\tau$. It validates the final real-valued screening implication, not the Fourier transform, Cauchy--Schwarz derivation, floating-point error, or an implementation. The bound computation and every numeric comparison in a deployed kernel would need matching assumptions and precision margins.
+
+\section{CPU reference experiment}
+The Python standard-library script constructs Hermitian spectra at $N=128$. Independent Gaussian spectral coefficients have an amplitude ratio of 8:1 between retained and omitted frequency bins, making this a defined low-band-dominant stress case rather than a claim about measured signals. Twelve nonnegative bins are retained, including DC; their conjugate mirrors are included. A 90th-percentile peak threshold is calibrated on 96 noise pairs. We evaluate 512 additional noise pairs and 128 template-aligned injections with amplitude 4.0. For each pair, direct scalar DFTs compute the full and retained-band correlations. The energy certificate is checked against the exact full-band peak, with a stated floating-point tolerance.
+
+The timing comparison uses 48 pairs and scalar Python direct DFTs. It is an implementation-harness check. It must not be compared with the optimized FFT, CPU, or GPU numbers in the cited paper. No NVIDIA GPU is present on the host; the experiment ran on an Apple M2 CPU under Asahi Linux.
+
+\section{Results}
+\begin{table}[t]
+\centering\small
+\caption{Seeded synthetic CPU reference results.}
+\begin{tabular}{lr}
+\toprule
+Metric & Result\\
+\midrule
+Noise pairs safely skipped & 438/512 (85.5\%)\\
+Above-threshold injections & 128/128\\
+Above-threshold injections skipped & 0/128\\
+Median noise residual bound & 0.01282\\
+Full scalar DFT, 48 pairs & 0.15662 s\\
+Screen then full if needed & 0.05028 s (3.11$\times$)\\
+Certificate checks & 640/640 passed\\
+\bottomrule
+\end{tabular}
+\end{table}
+The experiment found no missed above-threshold injection and no numerical violation of the computed upper bound. Since the threshold is calibrated empirically from only 96 synthetic noise pairs, it is not a controlled false-alarm or false-dismissal estimate. The skip fraction depends directly on the imposed low-band energy profile. The timing result compares a partial direct DFT against a full direct DFT and provides no evidence about GPU throughput or the benefit over an optimized FFT.
+
+\section{Limitations and next tests}
+The certificate is mathematically deterministic in exact arithmetic, but this implementation uses floating point and checks inequalities with tolerance. A practical kernel should outward-round tail energies and the residual bound, account for transform and accumulation error, and test the resulting guard against a high-precision reference. Follow-up work should evaluate real detector PSDs and waveform banks, distribution shift in tail energy, batched energy reuse, threshold sweeps, and optimized CPU/GPU implementations. The present results support the safety implication and a synthetic pruning opportunity only.
+
+\section{Conclusion}
+A tail-energy envelope turns omitted-band matched-filter screening into a deterministic threshold test when the envelope is valid and conservatively computed. In a deliberately low-band-dominant reference workload it pruned most noise pairs without pruning any tested detection. Formal verification covers the implication from the residual bound to safe screening; signal-model validity, numerical outward rounding, and accelerator benefit remain open empirical obligations.
+
+\begin{thebibliography}{1}
+\bibitem[Nitz et~al.(2026)]{nitz2026}
+Alexander H. Nitz, Keisi Kacanja, and Collin D. Capano. 2026.
+\newblock Peak Performance in Matched Filtering: Fused Correlation and Statistically Controlled Screening on CPUs and GPUs.
+\newblock arXiv:2611.17229v1. \url{https://arxiv.org/abs/2611.17229}.
+\end{thebibliography}
+\end{document}

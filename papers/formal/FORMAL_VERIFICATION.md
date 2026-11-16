@@ -50,3 +50,7 @@ The ordered splat composition paper uses `experiment.py` directly and does not p
 ## Adaptive Huffman arity selector
 
 `AritySelectionClaims.lean` proves that the per-matrix selector's output bit count never exceeds the scalar candidate's bit count: it selects pair mode only when the pair tree is within the 11-bit limit and has strictly lower modeled size. Checked with Lean 4.35.0 core using `~/.elan/bin/lean AritySelectionClaims.lean`. This is a selector fallback property only; it does not prove Huffman code optimality, the experiment's synthetic rates, codebook serialization compatibility, or decoder performance.
+
+## Certified omitted-band matched-filter screening
+
+`PaperClaims.FrequencyScreenClaims.certified_frequency_screen_no_false_dismissal` proves that if the omitted-band residual magnitude is bounded by `B`, then a coarse magnitude plus `B` below threshold implies that the full correlation magnitude is below threshold. Checked as part of `lake build PaperClaims` with Lean 4.35.0 / Mathlib v4.35.0. This is the final real-number implication only; it does not formalize the DFT decomposition, the triangle/Cauchy residual-bound derivation, floating-point margins, the experiment, or accelerator behavior.

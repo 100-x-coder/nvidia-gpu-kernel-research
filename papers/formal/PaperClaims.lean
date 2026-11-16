@@ -5,6 +5,7 @@ import Mathlib.Algebra.BigOperators.Group.Finset.Basic
 import Mathlib.Analysis.SpecialFunctions.Log.Basic
 import Mathlib.Order.Basic
 import Mathlib.Tactic.Ring
+import PaperClaims.FrequencyScreenClaims
 
 /-!
 Machine-checked lemmas for algebraic claims used by the accompanying papers.
