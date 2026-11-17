@@ -1,83 +1,27 @@
-# Automated Research & Kernel Funnel (2026-11-16)
+# Automated Research & Kernel Funnel (2026-11-17)
 
 > Automated daily CI/CD snapshot indexing fresh Pre-training, Post-training, and GPU Kernel Optimizations.
 
 ## Attention & Sequence Kernels
 
-| Title / Paper | Author / Source | Date | Key Highlights |
-|---|---|---|---|
-| [Mutable Inference: Architecting LLM Accelerators for Inference-Time Learning](http://arxiv.org/abs/2611.18523v1) | Yimin Gao | 2026-11-13 | Long-context LLMs must retain growing histories, but full attention makes each new token increasingly expensive. Inference-time learning (ITL) offers another ap... |
-| [MMFlash: Faster Speculative Decoding for Vision-Language Models](http://arxiv.org/abs/2611.18482v1) | Sicheng Feng | 2026-11-13 | Speculative decoding accelerates generation by letting a lightweight drafter propose tokens for parallel verification by a target model. Diffusion drafters such... |
-| [PACT: A Decoder-Confidence-Guided Two-Round Receiver for Joint Channel and Phase-Noise Estimation in Sub-THz OFDM](http://arxiv.org/abs/2611.18450v1) | Ruilin Wang | 2026-11-13 | Frequency-selective fading and oscillator phase noise (PN) jointly impair coded sub-THz OFDM reception. We propose a decoder-confidence-guided two-round receive... |
-| [Between Obligations and Evidence: A Participatory Study of Translating the EU AI Act into Technical Requirements](http://arxiv.org/abs/2611.18439v1) | Helma Torkamaan | 2026-11-13 | The EU AI Act imposes technical and organizational requirements for high-risk AI systems, but applying these requirements involves contextual choices about what... |
-| [The State Is Not the Bottleneck: A Paged-State Gated-DeltaNet Tile on a Tri-Mode Multicast Mesh, Bit-Exact from RTL to Silicon](http://arxiv.org/abs/2611.18422v1) | Cong Xu | 2026-11-13 | Linear-attention language models replace a growing key-value cache with a recurrent state of fixed size. On an edge FPGA, this state can exceed the on-chip memo... |
-| [VelServe: Taming Decode Jitters in LLM Inference with Tail-Calibrated Scheduling](http://arxiv.org/abs/2611.18392v1) | Ishaan Datta | 2026-11-13 | Interactive LLM services must meet latency service-level objectives (SLOs) for the time to first token (TTFT) and the time between tokens (TBT), as streaming an... |
-| [DecompJSCC: Joint Source-Channel Coding With Decoupled SNR and Rate Adaptation](http://arxiv.org/abs/2611.18379v1) | Yunhao Liu | 2026-11-13 | Deep joint source-channel coding (DeepJSCC) for image transmission must adapt to changes in the signal-to-noise ratio (SNR) and available transmission resources... |
-| [The $\operatorname{Proj}$ construction for pro-graded Huber pairs](http://arxiv.org/abs/2611.18374v1) | Dimitri Dine | 2026-11-13 | Inspired by the theory of pro-graded adic rings developed recently by Ishizuka and Yoshikawa, we introduce and study the notions of a pro-graded Huber ring and ... |
-| [MaskSCD: Bitemporal Mask Classification for Semantic Change Detection in Remote Sensing Images](http://arxiv.org/abs/2611.18350v1) | Weikang Yu | 2026-11-13 | Semantic change detection (SCD) identifies where the land surface has changed and which land-cover transition has taken place. Most deep SCD networks predict th... |
-| [The directions of science: How we search the unknown](http://arxiv.org/abs/2611.18349v1) | Nicola Cinardi | 2026-11-13 | Science is producing knowledge at unprecedented scale, while artificial intelligence promises to accelerate the generation of hypotheses, analyses, and scientif... |
-| [Unlocking Cross-Attention in Label-Scarce Regimes: A Weakly Supervised Approach for Video Semantic Segmentation](http://arxiv.org/abs/2611.18324v1) | Andrea Marelli | 2026-11-13 | Weakly Supervised Video Semantic Segmentation (WS-VSS) aims to learn temporally consistent semantic object masks in videos using only video-level labels. While ... |
-| [Experts Across Schemas: Agent-Guided Mixture-of-Relational-Experts for Cross-Database Generalization](http://arxiv.org/abs/2611.18315v1) | Hiren Madhu | 2026-11-13 | Web platforms record user and item activity in relational databases whose schemas differ from platform to platform, which makes it difficult to transfer predict... |
-| [On the Same Track: Privacy Leaks in Electric Rail Transport via Magnetic Fields](http://arxiv.org/abs/2611.18312v1) | Stefan Czybik | 2026-11-13 | Inertial sensors of smartphones are a well-known privacy risk, as they allow inferring sensitive user movements and activity without explicit permissions. Among... |
-| [Structural Self-Teaching for Compositional Generation in Unified Multimodal Models](http://arxiv.org/abs/2611.18261v1) | Jaeyoo Park | 2026-11-13 | We propose Structural Self-Teaching (SST), a novel framework that enhances compositional image generation in diffusion-based unified multimodal models (UMMs) by... |
-| [PTMTD: A Topology-Aware Temporal-Graph Attention Network for Joint Cyber-Attack Detection and Relay-Level Localization in Power System Protection Networks](http://arxiv.org/abs/2611.18184v1) | Shahin Razazni | 2026-11-13 | The digitization of protection relays exposes power grids to sophisticated cyberattacks, yet existing GNN detectors omit temporal encoding, rely on static topol... |
-| [When Should a Virtual Patient Ask? RISP-Guided Proactive Information Seeking in Multi-Agent Patient Simulation](http://arxiv.org/abs/2611.18183v1) | Jingyao Cai | 2026-11-13 | Virtual patient (VP) systems support nursing communication training by providing simulated encounters in which learners practise explaining care and responding ... |
-| [Compiling Specialized GPU-Initiated Networking](http://arxiv.org/abs/2611.18145v1) | Javid Baydamirli | 2026-11-13 | Machine learning systems specialize computation to the workload and hardware, but communication remains in generic libraries whose device code and transport dec... |
-| [PUMA-Former: Uncertainty-Aware Agentic Computation Offloading in MEO-LEO Satellite Networks With Incomplete Information](http://arxiv.org/abs/2611.18139v1) | Yi Jing | 2026-11-13 | Satellite edge computing distributes mobile workloads across moving processors whose service capacity must be coordinated over time. In medium Earth orbit (MEO)... |
-| [Any Channel Count, One Token Stream: Incorporating Spatial Audio Understanding and Reasoning into Large Audio-Language Models](http://arxiv.org/abs/2611.18112v1) | Yuhuan You | 2026-11-13 | Audio phase relations encode source locations, yet existing large audio-language models (LALM) reduce audio to single-channel content to stabilise general audio... |
-| [EcoVGGT: Pinned-Key Inference for Efficient and Streamable Feed-Forward 3D Reconstruction from Long Videos](http://arxiv.org/abs/2611.18099v1) | Hongsen Cao | 2026-11-13 | Feed-forward multi-view transformers such as VGGT recover the cameras and geometry of a video in one pass, but the cost of their cross-frame attention grows qua... |
-| [Two-Clustering Regime of Token Dynamics in Causal Attention](http://arxiv.org/abs/2611.18088v1) | Trinh T. Nguyen | 2026-11-13 | We partially resolve Conjecture 1 of [Karagodin et al., Clustering in Causal Attention Masking (NeurIPS 2024)] and extend it to time-dependent parameter regimes... |
-| [SWAM: Saliency-Weighted Asymmetric Merging for Efficient Vision Transformers](http://arxiv.org/abs/2611.18057v1) | Utkarsh Kumar Singh | 2026-11-13 | Vision Transformers (ViTs) achieve strong performance on image recognition tasks, yet their quadratic self-attention complexity over input tokens creates prohib... |
-| [A Concise Introduction to Quantum Electromagnetics](http://arxiv.org/abs/2611.17988v1) | Wei E. I. Sha | 2026-11-13 | This book introduces quantum electromagnetics to readers trained in classical electromagnetics, without assuming a systematic background in quantum mechanics. T... |
-| [Projection of massive and interacting conformal theories to the future null infinity](http://arxiv.org/abs/2611.17943v1) | Beatrice Costeri | 2026-11-13 | On a four-dimensional, globally hyperbolic and asymptotically flat spacetime, we consider a real, linear, massive scalar field. Within the framework of perturba... |
-| [Complexity and symmetry: The asymmetry factor approach](http://arxiv.org/abs/2611.17940v1) | L. Herrera | 2026-11-13 | We study the influence of the instantaneous appearance of a time-like Killing vector (TKV) in self-gravitating fluid spheres during their evolution. For doing s... |
+_No new tracked entries for this section in the latest batch._
 
 ## MoE (Mixture of Experts) & Routing
 
-| Title / Paper | Author / Source | Date | Key Highlights |
-|---|---|---|---|
-| [CoPre-MoE: Consolidating and Preserving MoE for Multimodal Continual Instruction Tuning](http://arxiv.org/abs/2611.18417v1) | Tao Hu | 2026-11-13 | Multimodal continual instruction tuning requires multimodal large language models to sequentially acquire new capabilities without catastrophic forgetting. Mixt... |
+_No new tracked entries for this section in the latest batch._
 
 ## GEMM, Tensor Cores & Low-Precision
 
-| Title / Paper | Author / Source | Date | Key Highlights |
-|---|---|---|---|
-| [Characterization of the GIGAPYX-4600 CMOS visible image sensor in the context of high precision astrometry](http://arxiv.org/abs/2611.18366v1) | Manon Lizzana | 2026-11-13 | To evaluate the potential of detectors for next-generation space astrometry missions such as the HWO and Theia, an extensive analysis of the performance of the ... |
-| [BPU-SpikeMM:Exact Matrix Multiplication via Spatio-Temporal Spike Encoding on Real Neuromorphic Hardware](http://arxiv.org/abs/2611.18275v1) | Rongyuan Guo | 2026-11-13 | Matrix multiplication is the dominant computational kernel in deep learning, yet its growing scale strains conventional von Neumann hardware in energy efficienc... |
+_No new tracked entries for this section in the latest batch._
 
 ## Kernel Compilers & DSLs (Triton, TileLang, CUDA)
 
-| Title / Paper | Author / Source | Date | Key Highlights |
-|---|---|---|---|
-| [Rigidity of the moving particle lemma for the interchange process](http://arxiv.org/abs/2611.18483v1) | Joe P. Chen | 2026-11-13 | Let $G=(V,c)$ be a finite connected weighted graph. We establish the exact conditions for attaining equality in the moving particle lemma for the interchange pr... |
-| [Mesh-Free Weak-Form Regression for Learning Interaction Kernels from Particle Trajectories](http://arxiv.org/abs/2611.18455v1) | Daisuke Inoue | 2026-11-13 | We propose mesh-free weak-form regression for learning interaction kernels from noisy particle trajectories. Our method uses smooth test functions to avoid diff... |
-| [On the origin and geometry of anomaly-related poles in Double Deeply Virtual Compton Scattering](http://arxiv.org/abs/2611.18386v1) | Shohini Bhattacharya | 2026-11-13 | Anomaly-related poles have been reported in one-loop box amplitudes for the gluon-initiated channel of double deeply virtual Compton scattering (DDVCS). The res... |
-| [Convergence rate of observables in the Marcus-Lushnikov process toward Smoluchowski with singular homogeneous kernels](http://arxiv.org/abs/2611.18380v1) | R{é}mi Catellier | 2026-11-13 | We study the approximation of the Smoluchowski coagulation equation by the Marcus--Lushnikov process with $N$ initial particles for the singular family of kerne... |
-| [How rigid is maximum cardinality search? Stability and locality of MCS orderings under edge updates, verified in Lean](http://arxiv.org/abs/2611.18369v1) | Md Thoriqul Islam Thonmay | 2026-11-13 | For which sets F of edge modifications do a graph G and the modified graph share a maximum cardinality search (MCS) ordering? We prove that they do whenever, al... |
-| [Kronecker Approximations of Covariance Matrices for Solving Inverse Problems](http://arxiv.org/abs/2611.18309v1) | Srijon Sarkar | 2026-11-13 | Inverse problems arise in many applications where the task is to recover unknown parameters from indirect or noisy observations. In contrast to forward problems... |
-| [Scan-specific k-space interpolation using deep Koopman autoencoders](http://arxiv.org/abs/2611.18301v1) | Wassim Ben Salah | 2026-11-13 | Purpose: To develop a scan-specific, interpretable k-space interpolation technique for the reconstruction of accelerated MRI data.   Methods: A deep Koopman aut... |
-| [Nondegeneracy of the bubble for a fourth-order Liouville boundary problem](http://arxiv.org/abs/2611.18277v1) | Jiaoping Chen | 2026-11-13 | We establish the nondegeneracy of the bubble for \[ Δ^2u=0\quad \text{in }\mathbb R^4_+,\qquad \partial_tu=0,\quad \partial_tΔu=e^{24π^2u} \quad \text{on }\part... |
-| [From Bytes to Behavior: Request-Level Attribution from Live GPU Hidden States](http://arxiv.org/abs/2611.18272v1) | Jonathan Pan | 2026-11-13 | Existing memory forensics for machine learning systems typically targets static artifacts, such as model weights or prompt logs, rather than the transient compu... |
-| [From Pen-and-Paper to Machine-Checked Proofs: Lean for System Identification](http://arxiv.org/abs/2611.18220v1) | Manas Mejari | 2026-11-13 | Mathematical proofs in scientific papers are often long and intricate, relying on chains of references to earlier results. This makes it difficult for readers a... |
-| [The Chabauty--Kim dimension inequality via noncommutative Iwasawa theory](http://arxiv.org/abs/2611.18218v1) | Sa'ar Zehavi | 2026-11-13 | We establish Kim's conjectural dimension inequality for smooth projective geometrically connected curves $C/\mathbb{Q}$ of genus at least two with a rational ba... |
-| [RG evolution of the $B$-meson LCDA and radiative jet function at three loops](http://arxiv.org/abs/2611.18206v1) | Ze Long Liu | 2026-11-13 | We calculate the three-loop evolution kernel of the light-cone distribution amplitude of the $B$ meson, together with the radiative jet function in the leptonic... |
-| [Three-Loop Evolution for Soft Functions of Exclusive $B$-Meson and Higgs Decays](http://arxiv.org/abs/2611.18204v1) | Yao Ji | 2026-11-13 | We bootstrap the complete three-loop Lange--Neubert kernel for the leading-twist $B$-meson light-cone distribution amplitude in heavy quark effective theory by ... |
-| [Training-point consistency of kernel ridge regression with varying correlation scales](http://arxiv.org/abs/2611.18095v1) | Weiyan Mu | 2026-11-13 | The scale parameter in kernel ridge regression plays a pivotal role in modeling the correlation structure of data. In modern applications, sampling density and ... |
-| [Finite-Larmor-radius vortex interaction from δf to full-f gyrofluid dynamics](http://arxiv.org/abs/2611.18093v1) | Manuel Rinner | 2026-11-13 | We study finite-size electrostatic gyrofluid vortex pairs in a two-dimensional isothermal model, focusing on finite-Larmor-radius effects and the transition fro... |
-| [Spectrum of a 2D QFT analogue of the SYK model](http://arxiv.org/abs/2611.18063v1) | Avik Chakraborty | 2026-11-13 | We study the spectrum of the two-dimensional generalisation of the SYK model proposed by Turiaci and Verlinde, in which chiral Majorana fermions with a topologi... |
-| [Hidden Quantum Markov Processes: Mealy Formulation and Observable Reduction](http://arxiv.org/abs/2611.18040v1) | Soueidi El Gheteb | 2026-11-13 | We formulate hidden quantum Markov processes in a Mealy architecture using a single completely positive unital transition expectation coupling the present hidde... |
-| [Wireless Node Ranking via Fourier-Driven Maximum-Likelihood Estimation (extended version)](http://arxiv.org/abs/2611.17973v1) | Daniel Schneider | 2026-11-13 | We apply non-abelian Fourier theory to the problem of maximum-likelihood estimation of the order of a line topology, based on signal strength measurements under... |
-| [Statistical guarantees for signature kernel ridge regression](http://arxiv.org/abs/2611.17934v1) | Christian Bayer | 2026-11-13 | Path signatures are a standard tool for learning functionals on path space. The main underpinnings of their application are universal approximation results. For... |
+_No new tracked entries for this section in the latest batch._
 
 ## Pre-training & Distributed Infrastructure
 
-| Title / Paper | Author / Source | Date | Key Highlights |
-|---|---|---|---|
-| [Zero-SM NCCL: A Systematic Guide to Designing and Deploying SM-Free GPU Communication](http://arxiv.org/abs/2611.18075v1) | Zhenhao He | 2026-11-13 | GPU communication libraries such as NCCL use Streaming Multiprocessors (SMs) for data movement and synchronization, slowing overlapped computation at a cost tha... |
+_No new tracked entries for this section in the latest batch._
 
 ## Post-training, Alignment & RL
 
-| Title / Paper | Author / Source | Date | Key Highlights |
-|---|---|---|---|
-| [VEPO: Mitigating Multilingual Hallucinations in LVLMs via Visual Evidence-guided Preference Optimization](http://arxiv.org/abs/2611.18096v1) | Chengpeng Fu | 2026-11-13 | Large vision-language models (LVLMs) achieve strong multimodal performance, yet they remain prone to object hallucination---generating answers that are linguist... |
-| [Reasoning Models Confabulate to Defend Injected Beliefs About Their Own Requests](http://arxiv.org/abs/2611.17958v1) | Yang Ou | 2026-11-13 | Chain-of-thought (CoT) monitoring and self-report are proposed as levers for AI oversight, on the assumption that a model's account of what it is doing is ancho... |
+_No new tracked entries for this section in the latest batch._
