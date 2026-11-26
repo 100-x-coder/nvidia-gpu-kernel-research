@@ -1,22 +1,73 @@
-# Automated Research & Kernel Funnel (2026-11-25)
+# Automated Research & Kernel Funnel (2026-11-26)
 
 > Automated daily CI/CD snapshot indexing fresh Pre-training, Post-training, and GPU Kernel Optimizations.
 
 ## Attention & Sequence Kernels
 
-_No new tracked entries for this section in the latest batch._
+| Title / Paper | Author / Source | Date | Key Highlights |
+|---|---|---|---|
+| [Mixture-of-Loops Transformer](http://arxiv.org/abs/2611.34923v1) | Lianghui Zhu | 2026-11-25 | Looped Transformers boost expressivity by reusing shared layers across loops, yet at the cost of efficiency. Pushing their expressivity-efficiency frontier requ... |
+| [LiveVAE: Causal Window Attention Makes Efficient Streaming Video VAE](http://arxiv.org/abs/2611.34912v1) | Jiachen An | 2026-11-25 | While video diffusion models have grown faster and increasingly streamable, the video VAE remains a primary latency bottleneck across interactive generation and... |
+| [Agentic LongLive: Asynchronous Agentic Memory for Long Video Generation](http://arxiv.org/abs/2611.34907v1) | Shaoteng Liu | 2026-11-25 | Real-time autoregressive video generators stream minutes of video and accept new prompts on the fly, but struggle to keep people, objects, and places consistent... |
+| [Towards Closing the Performance Gap in Cross-Modal Place Recognition](http://arxiv.org/abs/2611.34877v1) | Ofer Idan | 2026-11-25 | Cross-modal place recognition (CMPR) matches natural language descriptions against databases of geo-tagged reference images, enabling localization without visua... |
+| [HOG-WAM: Improving Visual Robustness through Future Gradient Prediction](http://arxiv.org/abs/2611.34811v1) | Boxuan Dong | 2026-11-25 | World-action models jointly predict future observations and actions, yet visual corruption can disrupt the resulting policies. We introduce HOG-WAM, which adds ... |
+| [WorldExpand: Building Coherent 3D Worlds via Sparse Joint Panoramic Expansion](http://arxiv.org/abs/2611.34810v1) | Yuyang Yin | 2026-11-25 | Constructing complete 3D worlds from a single panorama is challenging because large portions of the scene remain unobserved. Existing panoramic-video methods ex... |
+| [Comparative Study of Deep Learning Architectures for Brain Tumour Classification](http://arxiv.org/abs/2611.34781v1) | Prisha Gupta | 2026-11-25 | Accurate and early classification of brain tumours from magnetic resonance imaging (MRI) is essential for treatment planning, yet many published deep learning s... |
+| [DFly2: Turbocharging Long-Context Speculative Decoding by Sharing the Target's Sparsity](http://arxiv.org/abs/2611.34776v1) | Hong Liu | 2026-11-25 | To avoid the quadratic cost of dense attention over long contexts, models such as DeepSeek-V4 and Hy4 have turned natively sparse, and speculative decoding, whi... |
+| [One Model, Many Modes: Evolving System Prompt Ensembles for Creative Generation](http://arxiv.org/abs/2611.34760v1) | Daiwei Chen | 2026-11-25 | Preference-aligned LLMs can exhibit mode collapse, concentrating their output distributions around a narrow set of high-reward responses. This limits creative g... |
+| [Left-Invariant Kundt Structures on Almost Abelian Lie Groups](http://arxiv.org/abs/2611.34738v1) | S. El Bourkadi | 2026-11-25 | We study left-invariant Kundt structures on almost abelian Lie groups. We establish algebraic existence criteria and characterize the admissible real Jordan for... |
+| [Bigger Model or Bigger Table? How Much Backbone a Chorus N-gram Module Replaces](http://arxiv.org/abs/2611.34725v1) | Szymon Kocur | 2026-11-25 | We ask how much of a transformer's backbone the Chorus N-gram module replaces. Chorus adds hashed tables of token bigrams and trigrams to its input and attentio... |
+| [Reading, Not Adapting: Unlocking Frozen Visual Knowledge for AI-Generated Image Detection](http://arxiv.org/abs/2611.34719v1) | Yuncheng Guo | 2026-11-25 | Generalization to unseen image generators has driven efforts to adapt pretrained visual representations for detection. Yet recent findings show that vision foun... |
+| [From Spin Glass Theory to Optimization in High Dimensions and Modern Artificial Neural Networks](http://arxiv.org/abs/2611.34713v1) | Riccardo Zecchina | 2026-11-25 | This chapter pays tribute to Giorgio Parisi by reviewing the influence of his work on spin glasses and replica symmetry breaking (RSB) on combinatorial optimiza... |
+| [Motion Beyond Pixels: Learning Future Visual Representations for Object-Centric Dynamics](http://arxiv.org/abs/2611.34644v1) | Chengzhi Zhao | 2026-11-25 | Many embodied world models predict future states in latent spaces optimized for RGB reconstruction, which do not explicitly prioritize object-level semantics an... |
+| [PipeAxes: Decoupling Compute and Communication Granularities for Pipeline-Parallel LLM Serving](http://arxiv.org/abs/2611.34615v1) | Xiaoqiang Guo | 2026-11-25 | Pipeline parallelism can serve long-context language models on PCIe servers and across heterogeneous GPU clusters. Existing engines split prefill into token chu... |
+| [DuCo: Exploiting Dual Cross-Layer Consistency for Sparse Geometric Attention](http://arxiv.org/abs/2611.34608v1) | Liangyu Xiang | 2026-11-25 | Dense global attention is crucial for capturing cross-view geometry in visual geometry foundation models, yet its quadratic complexity limits efficient inferenc... |
+| [M$^{2}$AdaptVLA: Multimodal Memory-Augmented Vision-Language-Action Model with Predictive Test-Time Adaptation](http://arxiv.org/abs/2611.34560v1) | Liufan Tan | 2026-11-25 | Effective robotic manipulation calls for multimodal memory and rapid adaptation to shifts in contact dynamics. However, many existing policies, which retain eit... |
+| [AliceAI-Foundation-80B-A3B-Base](http://arxiv.org/abs/2611.34529v1) | Nikolay Skachkov | 2026-11-25 | We present AliceAI-Foundation-80B-A3B-Base, a mixture-of-experts language model with 80 billion total parameters and approximately 3 billion active parameters p... |
+| [Rank Before You Encode: Reading a Few Percent of a Whole-Slide Image](http://arxiv.org/abs/2611.34523v1) | Haoyu He | 2026-11-25 | Classifying a whole-slide image requires encoding thousands of high-resolution tiles with a pathology foundation model, which accounts for most of the inference... |
+| [SceneDesigner++: A Unified 9-DoF Pose Control Framework for T2I and T2V Generation](http://arxiv.org/abs/2611.34461v1) | Xincheng Shuai | 2026-11-25 | Precise 9-DoF pose control is essential for visual content generation, enabling users to specify object location, size, and orientation in 3D space. However, ex... |
+| [A Head-Level Investigative Study of Self-Supervised Backbones for Synthetic Speech Detection](http://arxiv.org/abs/2611.34426v1) | Mohamed Mallat | 2026-11-25 | Self-supervised learning (SSL) speech backbones are the standard frontend for synthetic-speech detection, and layer-wise probing has established which layers ca... |
+| [DocSEAM: Bidirectional Cross-Page Encoding for Multi-Page Document Understanding](http://arxiv.org/abs/2611.34420v1) | Hoang-Nhat Nguyen | 2026-11-25 | Multi-page document vision-language models encode each page independently, creating a feature-level discontinuity at page boundaries: visual tokens are formed w... |
+| [Agentic Waterfall: An Intent-Driven Information Discovery Framework for Reclaiming User Control in the Attention Economy](http://arxiv.org/abs/2611.34407v1) | Yige Luo | 2026-11-25 | We formalize Agentic Waterfall Feed, a new problem of personalized information discovery in which users actively direct recommendations and the system adapts to... |
+| [On Bramble-Pasciak-type preconditioners and their properties](http://arxiv.org/abs/2611.34379v1) | Chen Greif | 2026-11-25 | Bramble and Pasciak (Math. Comp., 1988) discovered a preconditioning method for linear algebraic systems in saddle point form, which under certain conditions tr... |
+| [AIRIS: Benchmarking Social Embodied Intelligence in Egocentric Streaming Videos](http://arxiv.org/abs/2611.34347v1) | Yuchen Zhou | 2026-11-25 | Embodied agents operating around people must not only recognize social cues, but also decide when the available evidence is sufficient, whether to intervene, an... |
+| [RAP: Radial-Angular Random Projection for Hyperbolic Representations](http://arxiv.org/abs/2611.34298v1) | Jiahong Liu | 2026-11-25 | Random projection is a basic compression primitive for Euclidean representation learning, with the Johnson--Lindenstrauss lemma giving a target dimension $k=O(\... |
+| [UMAI: UM Aware Inference with a Frozen Qwen3-ASR](http://arxiv.org/abs/2611.34256v1) | Gyeongmin Kim | 2026-11-25 | Speech recognizers often leave filled pauses such as uh and um out of the transcript. Fine-tuning on verbatim transcripts can bring them back, but it can also c... |
 
 ## MoE (Mixture of Experts) & Routing
 
-_No new tracked entries for this section in the latest batch._
+| Title / Paper | Author / Source | Date | Key Highlights |
+|---|---|---|---|
+| [LoopTitan: What Does Parameter Revisit Buy a Mixture-of-Experts?](http://arxiv.org/abs/2611.34821v1) | Zichen Tian | 2026-11-25 | Looped Mixture-of-Experts (MoE) architectures revisit layer parameters across depths. This design increases effective depth without adding parameters. Recent lo... |
+| [Routing and Cache Retention for Multi-Turn LLM Inference: Theory and Implementation](http://arxiv.org/abs/2611.34584v1) | Sentao Miao | 2026-11-25 | Multi-turn AI agents execute iterative loops of large language model (LLM) inference and external tool calls, transforming cluster serving into a dynamic resour... |
+| [Scaling Looped MoE Language Models under Matched Budgets: Information Flow and Parameter Allocation](http://arxiv.org/abs/2611.34276v1) | Shipeng Bai | 2026-11-25 | Looped Transformers decouple computational depth from parameter count, and prior studies have demonstrated promising performance gains with increased computatio... |
 
 ## GEMM, Tensor Cores & Low-Precision
 
-_No new tracked entries for this section in the latest batch._
+| Title / Paper | Author / Source | Date | Key Highlights |
+|---|---|---|---|
+| [A Differential Computing Accelerator for LLM Inference Leveraging Bit-Slice Transition Sparsity](http://arxiv.org/abs/2611.34630v1) | Yifan Wang | 2026-11-25 | Large language models (LLMs) have become foundational to modern artificial intelligence. Driven by scaling laws, their rapid growth poses increasing computation... |
+| [Any-Rate: Half-Bit Multi-Precision LLM Quantization with Coded Bit-Planes](http://arxiv.org/abs/2611.34402v1) | Hoonki Lee | 2026-11-25 | Nested multi-precision quantization derives multiple precisions from a single checkpoint by reading only the leading bits of each weight, which makes it attract... |
 
 ## Kernel Compilers & DSLs (Triton, TileLang, CUDA)
 
-_No new tracked entries for this section in the latest batch._
+| Title / Paper | Author / Source | Date | Key Highlights |
+|---|---|---|---|
+| [A Mesh for Every Moment](http://arxiv.org/abs/2611.34939v1) | Roy Or-El | 2026-11-25 | We present MEMO (a Mesh for Every MOment), a method that reconstructs the geometry of complete dynamic scenes, captured by multiple synchronized cameras, and ex... |
+| [Sharp constant in 2D critical fermionic Hardy inequality](http://arxiv.org/abs/2611.34845v1) | Marvin R. Schulz | 2026-11-25 | We study the large-$N$ behavior of the optimal constant $κ_N$ in the two-dimensional fermionic many-particle Hardy inequality \[ \sum_{i=1}^N -Δ_i \geq κ_N^{(2)... |
+| [PrO Filtering via Kernel Mean Embedding Dynamics](http://arxiv.org/abs/2611.34809v1) | Linfeng Wang | 2026-11-25 | Filtering methods are routinely deployed with misspecified state-space models, where Bayesian filters can diverge and become overconfident. Predictively-oriente... |
+| [Minimizing Optical Circuit Reconfigurations for Concurrent Collectives](http://arxiv.org/abs/2611.34759v1) | Xinchi Han | 2026-11-25 | Optical circuit switches (OCSes) provide high-bandwidth point-to-point circuits in GPU clusters, but each optical port attaches to only one peer at a time, and ... |
+| [Electrostatic effects on settling cloud droplets: from pair collisions to size distribution evolution](http://arxiv.org/abs/2611.34676v1) | Pijush Patra | 2026-11-25 | We investigate how droplet charge and a uniform vertical electric field influence collisions between cloud droplets settling in still air and how these collisio... |
+| [Tackling the DVCS inverse problem with finite element method](http://arxiv.org/abs/2611.34631v1) | Marija Čuić | 2026-11-25 | In this paper, we tackle the problem of shadow GPDs, arising from the non-invertibility of the measured $2\to 2$ exclusive processes at large virtualities (DVCS... |
+| [Automated Batch-Variable Selection for ComBat-Based Radiomic Harmonization](http://arxiv.org/abs/2611.34618v1) | Jose Lozano-Montoya | 2026-11-25 | ComBat harmonizes multicentre radiomic features, but batch variables are usually chosen manually, without a standardized criterion across image acquisition para... |
+| [Distribution of the ratio of the two smallest eigenphases of the Jacobi unitary ensemble](http://arxiv.org/abs/2611.34553v1) | Shinsuke M. Nishigaki | 2026-11-25 | We compute the joint distribution of the two smallest eigenvalues of the Jacobi unitary ensemble and the distribution of their ratio. We use a framework for cal... |
+| [Convergence of Residual-driven Adaptive Kernel-based Multilevel Approximation](http://arxiv.org/abs/2611.34530v1) | Rüdiger Kempf | 2026-11-25 | Kernel-based multilevel methods combine compactly supported radial basis functions with a residual correction scheme and are known to converge linearly in the n... |
+| [Exact sequences of regular LF-spaces](http://arxiv.org/abs/2611.34477v1) | José Bonet | 2026-11-25 | We show that the category of regular LF-spaces has all kernels but, unlike the category of regular LB-spaces, does not have all cokernels. Its topological exact... |
+| [Functional Factor Graphs and the Functional Sum-Product Algorithm](http://arxiv.org/abs/2611.34460v1) | Kuranage Roche Rayan Ranasinghe | 2026-11-25 | We propose a generalization of factor graphs and the sum-product algorithm (SPA), widely used in the estimation of data, channel state information and sensing p... |
+| [Global Convergence of Second-Order Methods for Physics-Informed Neural Networks in the Overparameterized Limit](http://arxiv.org/abs/2611.34452v1) | Konstantin Riedl | 2026-11-25 | Solving high-dimensional partial differential equations (PDEs) constitutes a core task in many engineering and scientific disciplines. Physics-informed neural n... |
+| [The singular Paneitz equation on four-manifolds: refined blow-up analysis and degree jumps](http://arxiv.org/abs/2611.34424v1) | Mohameden Ahmedou | 2026-11-25 | We compute the Leray--Schauder degree of the singular Paneitz equation on a closed four-manifold with conical orders strictly between minus one and zero. We ass... |
+| [Morse theory and a degree formula for the resonant singular Paneitz equation on four-manifolds](http://arxiv.org/abs/2611.34406v1) | Mohameden Ahmedou | 2026-11-25 | We develop Morse theory for the singular Paneitz equation at resonant mass on closed four-manifolds with conical orders between minus one and zero and Paneitz k... |
+| [Libtt: A Compiler and Runtime for Tenstorrent Processors](http://arxiv.org/abs/2611.34273v1) | Philipp Moritz | 2026-11-25 | Libtt brings the PyTorch and JAX ecosystem to Tenstorrent hardware. It implements PJRT, the interface through which XLA-based frameworks drive Google's TPUs, so... |
 
 ## Pre-training & Distributed Infrastructure
 
@@ -24,4 +75,8 @@ _No new tracked entries for this section in the latest batch._
 
 ## Post-training, Alignment & RL
 
-_No new tracked entries for this section in the latest batch._
+| Title / Paper | Author / Source | Date | Key Highlights |
+|---|---|---|---|
+| [A Failure-Driven Data Flywheel for Post-Training Vision-Language-Action Models](http://arxiv.org/abs/2611.34698v1) | Yuhao Luo | 2026-11-25 | Pretrained vision-language-action (VLA) models rarely satisfy all behavioral requirements of a new platform, and teams without a large deployed fleet lack the d... |
+| [PostMesh: Self-Rewarded Preference Post-Training for Flow-Based Artist Mesh Generation](http://arxiv.org/abs/2611.34319v1) | Gihyun Kwon | 2026-11-25 | Artistic mesh generators turn a dense 3D object into an artist mesh: a compact, quad-dominant mesh that is easy to edit. Most of current models are auto-regress... |
+| [LatentCP-DPO: Conformal Pessimism for DPO with Finite-Sample Guarantees](http://arxiv.org/abs/2611.34275v1) | Hongwei Xu | 2026-11-25 | Direct Preference Optimization (DPO) learns a response policy from human preference data, but with a limited dataset it can overfit to noisy or weakly informati... |

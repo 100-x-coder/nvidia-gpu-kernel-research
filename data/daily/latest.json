@@ -15,7 +15,224 @@
       "context extension",
       "long-context"
     ],
-    "items": []
+    "items": [
+      {
+        "title": "Mixture-of-Loops Transformer",
+        "summary": "Looped Transformers boost expressivity by reusing shared layers across loops, yet at the cost of efficiency. Pushing their expressivity-efficiency frontier requires rethinking the core mechanism connecting adjacent loops: What should be passed as a Transformer loops? We introduce Mixture-of-Loops Transformer (MoLT), whose Mixture-of-Loops Attention (MoLA) uses keys and values (KV) as memory for selective reuse across depths and loops. Under loop residual, MoLT-R retains the residual stream and reads local KV across loops for expressivity. Under loop KV, MoLT-KV instead restarts from embeddings and reads current-loop local KV with preceding-loop memory KV at earlier positions for efficiency. MoLT-KV eliminates same-position cross-loop dependence and, paired with loop forcing for parallel training, unlocks single-traversal Mixture-of-Loops (MoL) decoding beyond the training loop horizon. To balance efficiency and quality, we introduce U-shaped MoLT (U-MoLT), which separates memory construction from prediction readout and skips unused decoder traversals without changing predictions. In 400B-token pretraining, U-MoLT outperforms OLMo3 across 700M/1.5B dense and 3B MoE models, achieving 1.7x validation cross-entropy (CE) token efficiency at 700M while improving 3B MoE 10-domain perplexity by 0.75 and 10-task accuracy by 2.1 percentage points. In 100B-token continued pretraining of Qwen3.5-0.8B-Base, our U-MoLT adaptation lowers CE on all 11 domains over the matched baseline with 1.4x mean token efficiency. At inference, U-MoLT with MoL-Hybrid-2 matches non-looped OLMo3 latency at 996.6 vs. 1,000.6 ms on S-size (~113M) models. Code is available at https://github.com/hustvl/MoLT",
+        "url": "http://arxiv.org/abs/2611.34923v1",
+        "date": "2026-11-25",
+        "author": "Lianghui Zhu",
+        "type": "Paper"
+      },
+      {
+        "title": "LiveVAE: Causal Window Attention Makes Efficient Streaming Video VAE",
+        "summary": "While video diffusion models have grown faster and increasingly streamable, the video VAE remains a primary latency bottleneck across interactive generation and editing pipelines. Existing VAEs and their acceleration methods rely mainly on heavy convolutions or full frame attention, and most focus only on decoding, leaving encoding costly for streaming conditional generation and editing. This raises a natural question: Do video VAE encoding and decoding actually require such global spatiotemporal modeling? By analyzing the effective receptive fields of pretrained video VAEs, we find that both encoding and decoding a patch rely almost entirely on its spatial and temporal neighbors. To exploit this strong locality, we introduce LiveVAE, a streaming encoder and decoder built on causal window attention, which cuts per frame compute while keeping the temporal KV cache bounded for streaming. Decoupled encoder/decoder distillation followed by joint finetuning preserves the pretrained latent space, making LiveVAE a drop-in replacement for the original VAE. On MiniMax-H3, LiveVAE achieves 5.2-6.2x faster encoding and 3.0-3.3x faster decoding than the official VAE with higher PSNR. Paired with our dedicated inference infrastructure, LiveVAE pushes the speedup to 13.4x with almost no quality loss. Code and models will be released.",
+        "url": "http://arxiv.org/abs/2611.34912v1",
+        "date": "2026-11-25",
+        "author": "Jiachen An",
+        "type": "Paper"
+      },
+      {
+        "title": "Agentic LongLive: Asynchronous Agentic Memory for Long Video Generation",
+        "summary": "Real-time autoregressive video generators stream minutes of video and accept new prompts on the fly, but struggle to keep people, objects, and places consistent over a long interactive story. Agent systems provide such memory for offline multi-shot generation, yet they read the whole script in advance, plan each shot before generating it, and regenerate failed shots, which a live stream does not allow. We present Agentic LongLive, an asynchronous agentic memory for long video generation. A memory agent on separate GPUs reads only the prompts revealed so far, never the generated video, and keeps a text state and evolving images for every person, object, and scene. From this entity memory it composes a global image and a per-shot memory image, which an auxiliary GPU prefills into the generator's attention sink before the next shot starts, and writes entity cards for the prompts that name them, so the video never waits for memory and video errors are not written back. A small language model, trained with reinforcement learning and an image reward calibrated using downstream video outcomes, decides what to remember before the next prompt is known. On LongStory-Online, a new benchmark of 25 stories (857 shots) revealed one shot at a time, Agentic LongLive improves persistent-state accuracy of LongLive-2.0, its base generator, by 26.3 points, protagonist identity by 44.9, and revisited-place consistency by 40.4, at about 1% extra generation time on H100. The full system streams faster than real time on one 8xB200 node with the generator in BF16 (34.3 FPS), keeps image quality stable over 14-minute stories, and improves identity on two MiniMax-H3 generators, one of which, LongLive-H3, also runs in real time with it. To our knowledge, it is the first real-time video generator with text and image memory kept by an LLM agent.",
+        "url": "http://arxiv.org/abs/2611.34907v1",
+        "date": "2026-11-25",
+        "author": "Shaoteng Liu",
+        "type": "Paper"
+      },
+      {
+        "title": "Towards Closing the Performance Gap in Cross-Modal Place Recognition",
+        "summary": "Cross-modal place recognition (CMPR) matches natural language descriptions against databases of geo-tagged reference images, enabling localization without visual queries. Despite its potential for language-guided navigation, existing vision-language models lag far behind visual place recognition (VPR) baselines, even after task adaptation. Unlike general-purpose text-to-image retrieval, place recognition relies on subtle local cues to distinguish visually similar locations. We therefore hypothesize that a primary bottleneck in CMPR is capturing fine-grained correspondences between image regions and text details, which requires higher visual token granularity, strong text representation capacity, and local cross-modal matching. To address this challenge, we propose CrossPlace, a two-stage CMPR framework. Stage 1 performs global retrieval by pairing a jointly aligned DINOv2-B/14 visual backbone with a progressively fine-tuned BGE-Large text encoder, while Stage 2 refines top candidates using a lightweight token-level cross-attention reranker. Through systematic analysis, we isolate the drivers of retrieval accuracy and show that visual token density provides the largest performance improvement, while text encoder capacity and task fine-tuning offer complementary gains. To evaluate robustness under realistic conditions, we also extend CMPR evaluation to city-scale and severe weather and illumination settings. Across all existing and new benchmarks, CrossPlace achieves double-digit Recall@1 improvements over prior cross-modal methods, closes the gap to unimodal text retrieval, and narrows it to unimodal VPR. Code and benchmarks are available at https://github.com/oferidan1/CrossPlace",
+        "url": "http://arxiv.org/abs/2611.34877v1",
+        "date": "2026-11-25",
+        "author": "Ofer Idan",
+        "type": "Paper"
+      },
+      {
+        "title": "HOG-WAM: Improving Visual Robustness through Future Gradient Prediction",
+        "summary": "World-action models jointly predict future observations and actions, yet visual corruption can disrupt the resulting policies. We introduce HOG-WAM, which adds future Histograms of Oriented Gradients (HOG) as structural supervision derived directly from demonstration images. An auxiliary HOG diffusion transformer (DiT) module reads RGB features through asymmetric attention, allowing its objective to shape the visual representation used for control. The module is used only during training and removed at inference, preserving FastWAM's RGB-to-action architecture. We evaluate four controlled observation corruptions through a visual-corruption extension of RoboTwin, termed RoboTwin-Plus; HOG-WAM achieves the highest success among the compared policies under all four. Mixed-noise success increases from 78.86% to 82.86% relative to FastWAM, with comparable performance on clean scenes. On LIBERO Plus, overall success increases from 74.49% to 75.26%, with the largest gain under sensor noise, from 74.14% to 78.89%. Across four Franka tasks, average success increases from 40% to 59% under clean observations and from 17% to 24% under noisy observations. A representation ablation favors combining RGB observations with auxiliary HOG prediction over replacing RGB with HOG. These findings support future-gradient prediction as complementary supervision for visually robust control, with larger absolute gains on physical tasks than in simulation. Code is available at https://github.com/iPPLab/HOG-WAM.",
+        "url": "http://arxiv.org/abs/2611.34811v1",
+        "date": "2026-11-25",
+        "author": "Boxuan Dong",
+        "type": "Paper"
+      },
+      {
+        "title": "WorldExpand: Building Coherent 3D Worlds via Sparse Joint Panoramic Expansion",
+        "summary": "Constructing complete 3D worlds from a single panorama is challenging because large portions of the scene remain unobserved. Existing panoramic-video methods expand spatial coverage through dense sequential generation, but neighboring frames contain substantial redundancy, long trajectories accumulate errors, and independently generated directions may be inconsistent. We present WorldExpand, which formulates single-panorama world expansion as the generation of sparse, complementary, and high-resolution panoramic observations. This representation concentrates the generation budget on informative scene regions and preserves the fine-grained details required for 3D construction. WorldExpand addresses two key challenges: where to observe and how to synthesize. Our Coverage-Guided View Selection identifies informative target locations using scene-adaptive quadrants and warp-based coverage scores, while our Joint Panoramic Diffusion uses Gaussian-splatting-based geometric warps to jointly synthesize four pose-grounded and cross-view-consistent panoramas. A diagnostic-guided global--local attention schedule retains global attention only in sensitive layers, reducing the training and inference costs of high-resolution joint generation. The resulting posed panoramas can be directly fed into an existing reconstruction pipeline to build an explicit 3D representation. Experiments show that WorldExpand recovers content behind occluders and around distant corners, improves both novel-view synthesis and downstream 3D reconstruction metrics across various datasets, and generalizes robustly to diverse in-the-wild scenes. WorldExpand runs significantly faster than the state-of-the-art panoramic-video method while producing higher-resolution observations with stronger cross-view consistency.",
+        "url": "http://arxiv.org/abs/2611.34810v1",
+        "date": "2026-11-25",
+        "author": "Yuyang Yin",
+        "type": "Paper"
+      },
+      {
+        "title": "Comparative Study of Deep Learning Architectures for Brain Tumour Classification",
+        "summary": "Accurate and early classification of brain tumours from magnetic resonance imaging (MRI) is essential for treatment planning, yet many published deep learning studies are trained and tested on small, single-source datasets, reporting accuracies that may not hold outside these datasets. This study compares six deep learning architectures for four-class classification (healthy, meningioma, glioma and pituitary tumour): a baseline convolutional neural network (CNN), an attention-based CNN, ShuffleNet, and EfficientNet-B0, ResNet-50 and Xception augmented with the Convolutional Block Attention Module (CBAM). The models were trained on a corpus assembled from four publicly available MRI datasets. Because these datasets carry no patient identifiers, a leakage-aware pipeline was developed that removes exact duplicates using MD5 hashing (550 images) and near-duplicates using perceptual hashing (8,024 images), and assigns visually similar images to the same fold during 5-fold group cross-validation. A leave-one-dataset-out (LODO) test on a fully held-out dataset was used to measure cross-dataset generalisation. Under a conventional random split, ShuffleNet achieved 97.1% accuracy with 1.2M parameters. Under leakage-aware group K-fold cross-validation, ShuffleNetV2 (98.41%) and EfficientNet-B0 (98.23%) were statistically indistinguishable (paired t-test, p = 0.19), and both significantly outperformed the custom CNNs. On the held-out dataset, accuracy dropped for every model: EfficientNet-B0 generalised best (78.4%), while ShuffleNetV2 fell to 66.2%. Glioma-meningioma confusion was the dominant error mode, and Grad-CAM maps showed that predictions were driven by tumour regions. These results indicate that in-distribution accuracy alone overstates real-world performance and that leakage-aware and cross-dataset evaluation should be reported alongside it.",
+        "url": "http://arxiv.org/abs/2611.34781v1",
+        "date": "2026-11-25",
+        "author": "Prisha Gupta",
+        "type": "Paper"
+      },
+      {
+        "title": "DFly2: Turbocharging Long-Context Speculative Decoding by Sharing the Target's Sparsity",
+        "summary": "To avoid the quadratic cost of dense attention over long contexts, models such as DeepSeek-V4 and Hy4 have turned natively sparse, and speculative decoding, which matters most where decoding is slowest, increasingly runs on them. Their drafters, however, still keep a context cache of their own, over the whole prompt or a sliding window. Beyond memory, such a cache costs prefill time, prefix-cache hits and decode concurrency. Drafters that read the target's cache avoid one of their own, but settle only which cache, not which positions, and still read everything or a recent window. Neither rule is made for the query at hand, and computing a selection per query in the drafter would cost more as the context grows. Yet a natively sparse target already picks positions for each query, over a cache it keeps anyway. Both of the drafter's choices are therefore already made, and paid for, by the target: its cache and its selection. We measure how far one selection carries: made a step early, it still covers close to nine tenths of what each later token selects on DS-V4.1-Flash. We present DFly2, a block-parallel drafter that shares the target's sparsity. Each draft layer reads the KV its paired target layer cached (KV sharing), at the positions that layer's indexer selected, a fixed number anywhere in the context (Index sharing). DFly2 thus runs no scoring pass and keeps no cache of its own. On DS-V4.1-Flash, GLM-5.3-Flash and Hy4~flash, whose sparse attention and architecture differ, it accepts more tokens per step than DFlash and DSpark trained on the same recipe, over general, long-context and agentic benchmarks. Its margin over the stronger baseline widens from 3.9%-10.5% on general workloads to 10.0%-31.5% on long-context and agentic ones. At high concurrency on DS-V4.1-Flash, at matched per-user decode speed, its throughput is 62% and 81% higher on two 64K sets.",
+        "url": "http://arxiv.org/abs/2611.34776v1",
+        "date": "2026-11-25",
+        "author": "Hong Liu",
+        "type": "Paper"
+      },
+      {
+        "title": "One Model, Many Modes: Evolving System Prompt Ensembles for Creative Generation",
+        "summary": "Preference-aligned LLMs can exhibit mode collapse, concentrating their output distributions around a narrow set of high-reward responses. This limits creative generation, which requires quality, novelty, and diversity. Existing test-time methods often emphasize diversity, giving less attention to whether individual responses are both high-quality and novel. This distinction matters in practical use, where users may seek a single compelling, original response. We formalize creative generation as a multi-objective distributional optimization problem and introduce SEPO, a training-free framework for System Prompt Ensemble Optimization. The framework combines prompt evolution with greedy max-min selection to identify behaviorally distinct system prompts under a quality constraint, then uniformly samples one prompt per response at inference time. Across four creative generation tasks with increasing quality requirements and three open-weight models, SEPO ranks first in 8 of 12 settings on the harmonic mean of quality, diversity, and novelty, while no baseline leads in more than two. On average, it raises LLM-judged diversity from 1.92 to 3.43 and novelty from 1.00 to 3.34 over base sampling (1-5 scale), with quality decreasing from 3.72 to 3.30. We further show that expanding the optimized ensemble increases separation among prompt-conditioned response distributions. These results support system prompt ensemble optimization as a promising approach to improving LLM creativity at inference time.",
+        "url": "http://arxiv.org/abs/2611.34760v1",
+        "date": "2026-11-25",
+        "author": "Daiwei Chen",
+        "type": "Paper"
+      },
+      {
+        "title": "Left-Invariant Kundt Structures on Almost Abelian Lie Groups",
+        "summary": "We study left-invariant Kundt structures on almost abelian Lie groups. We establish algebraic existence criteria and characterize the admissible real Jordan forms according to the signature of the Abelian ideal. We then characterize the Kundt pairs defining pp-waves and plane waves in arbitrary dimension, with particular attention to recurrent and parallel null directions. Examples in dimension four illustrate both plane and non-plane pp-wave geometries.",
+        "url": "http://arxiv.org/abs/2611.34738v1",
+        "date": "2026-11-25",
+        "author": "S. El Bourkadi",
+        "type": "Paper"
+      },
+      {
+        "title": "Bigger Model or Bigger Table? How Much Backbone a Chorus N-gram Module Replaces",
+        "summary": "We ask how much of a transformer's backbone the Chorus N-gram module replaces. Chorus adds hashed tables of token bigrams and trigrams to its input and attention. We train models of 16M to 349M parameters on 1.34 billion tokens of Polish printed before 1918 and find the size of a plain model with the same held-out loss. A separate learning-rate search for each kind of model cuts Chorus's gain at 47M by about a third. With tables about as large as the backbone, Chorus then matches a plain model 1.34 times its size at 16M and 1.16 to 1.20 times from 107M to 349M. With these tables, each added parameter replaces at most 0.31 backbone parameters. Chorus trains slower than a plain model of its size and faster than one of the same loss. On a fact quiz the two differ about as much as two seeds of one model. The results rest on one corpus, one 8,000-token vocabulary and a fifth of an epoch.",
+        "url": "http://arxiv.org/abs/2611.34725v1",
+        "date": "2026-11-25",
+        "author": "Szymon Kocur",
+        "type": "Paper"
+      },
+      {
+        "title": "Reading, Not Adapting: Unlocking Frozen Visual Knowledge for AI-Generated Image Detection",
+        "summary": "Generalization to unseen image generators has driven efforts to adapt pretrained visual representations for detection. Yet recent findings show that vision foundation models already encode transferable detection knowledge, while further adaptation can impair generalization. This motivates a shift from backbone adaptation to knowledge readout. Conventional linear probing offers a direct way to read this knowledge but is limited to final-layer RGB features. Multi-cue detectors broaden the evidence base, but their designs introduce other tradeoffs: adaptation may compromise pretrained transferability, heterogeneous encoders complicate feature integration, and late fusion precludes intermediate cross-view interaction. To overcome these limitations, we propose ReMoT, a Mixture-of-Transformers-inspired framework that reads complementary knowledge from spatially aligned RGB and wavelet views within a fully frozen visual foundation. ReMoT employs staged joint attention to enable controlled local and global cross-view interaction, while learnable fusion queries progressively read complementary evidence across Transformer depth without writeback. ReMoT achieves 91.2% average accuracy across eight benchmark groups with 3,074 trainable parameters, attaining the highest overall average among the evaluated methods. These results support structured knowledge readout as a promising alternative to backbone adaptation. Code is available at https://github.com/yunncheng/ReMoT.",
+        "url": "http://arxiv.org/abs/2611.34719v1",
+        "date": "2026-11-25",
+        "author": "Yuncheng Guo",
+        "type": "Paper"
+      },
+      {
+        "title": "From Spin Glass Theory to Optimization in High Dimensions and Modern Artificial Neural Networks",
+        "summary": "This chapter pays tribute to Giorgio Parisi by reviewing the influence of his work on spin glasses and replica symmetry breaking (RSB) on combinatorial optimization and artificial neural networks. We first introduce replica and cavity methods through the matching and traveling salesman problems, before discussing random satisfiability and the development of survey propagation. We then examine applications to neural networks, emphasizing the connections between the geometry of solution spaces, computational hardness, and learning. Particular attention is given to rare regions of high local entropy and their role in algorithmic accessibility. Examples involving overparameterized models and asymmetric recurrent networks illustrate how these ideas connect constrained optimization and inference with concepts developed in spin-glass theory.",
+        "url": "http://arxiv.org/abs/2611.34713v1",
+        "date": "2026-11-25",
+        "author": "Riccardo Zecchina",
+        "type": "Paper"
+      },
+      {
+        "title": "Motion Beyond Pixels: Learning Future Visual Representations for Object-Centric Dynamics",
+        "summary": "Many embodied world models predict future states in latent spaces optimized for RGB reconstruction, which do not explicitly prioritize object-level semantics and geometry relevant to motion generation. We present MotionRep, a visual representation world model that jointly generates future DINO representations and 3D object flow, coupling semantic and geometric information with object-centric dynamics. To make high-dimensional DINO features amenable to generative modeling, we introduce DINO-VAE, which combines temporal and channel compression with latent regularization to produce compact latents while preserving semantic and geometric information. Conditioned on an initial observation, object query points, and a language instruction, a unified diffusion transformer predicts future visual representations and 3D object flow through joint attention. MotionRep employs asymmetric modality-specific noise schedules to keep the visual stream ahead of 3D object flow during joint denoising, allowing progressively refined future visual representations to guide flow generation. Experiments on simulated and real-world manipulation benchmarks demonstrate that MotionRep outperforms pixel-based baselines in 3D object flow accuracy and generalization to unseen scenes, while requiring only three denoising steps for inference. These results support predictive visual representations as an effective future-state space for object-centric dynamics modeling.",
+        "url": "http://arxiv.org/abs/2611.34644v1",
+        "date": "2026-11-25",
+        "author": "Chengzhi Zhao",
+        "type": "Paper"
+      },
+      {
+        "title": "PipeAxes: Decoupling Compute and Communication Granularities for Pipeline-Parallel LLM Serving",
+        "summary": "Pipeline parallelism can serve long-context language models on PCIe servers and across heterogeneous GPU clusters. Existing engines split prefill into token chunks to limit decode stalls. The chunk size also sets the GPU batch width and the size of activation transfers between stages. Small chunks reload model weights more often. Large chunks can keep the GPU and the link busy long enough to delay interactive requests.   PipeAxes runs wide prefill batches a few layers at a time so decodes can run between slices. A fused Triton Hadamard-INT4 codec compresses activations, which travel in independently sized row groups over parallel TCP sockets. The scheduler uses latency slack to choose batch width, slice depth, and row-group size. We evaluated PipeAxes in 97 replays covering 5,016 requests on A800, RTX 4090, and RTX 3090 GPUs. All 74 requests met their latency targets during a tenfold bandwidth swing. In a four-stage mixture-of-experts pipeline, PipeAxes served requests within their latency targets at 23.3x the rate of calibrated Revisit-PP and 4.44x the rate of Fixed-4096 with Express. In a mixed 64K-context workload, p95 time to first token for short requests fell from 129.8 s with native vLLM to 512 ms. With INT4 transport, MMLU accuracy rose by 0.06 percentage points and GSM8K accuracy fell by 0.46 percentage points relative to BF16.",
+        "url": "http://arxiv.org/abs/2611.34615v1",
+        "date": "2026-11-25",
+        "author": "Xiaoqiang Guo",
+        "type": "Paper"
+      },
+      {
+        "title": "DuCo: Exploiting Dual Cross-Layer Consistency for Sparse Geometric Attention",
+        "summary": "Dense global attention is crucial for capturing cross-view geometry in visual geometry foundation models, yet its quadratic complexity limits efficient inference on long image sequences. Existing sparse attention methods primarily select entries of the global attention matrix based on attention probabilities and construct masks independently across layers, overlooking value redundancy and cross-layer information reuse. By analyzing attention distributions and clustering value representations across layers, we reveal two forms of \\emph{cross-layer consistency}, characterized by highly similar attention probability distributions and localized changes in value redundancy structures. Building on these observations, we propose \\textbf{DuCo}, a training-free sparse attention framework that exploits historical attention information and value redundancy for efficient geometric inference. Specifically, DuCo leverages historical attention information to estimate current-layer dense attention probabilities and introduces value clustering to exploit redundancy, with clusters efficiently refined through local updates across layers. Both factors are integrated through probability-weighted value distortion to jointly optimize four cluster representation states under an attention budget for sparse mask construction. Experiments across three visual geometry foundation models and five benchmarks demonstrate favorable accuracy--efficiency trade-offs.",
+        "url": "http://arxiv.org/abs/2611.34608v1",
+        "date": "2026-11-25",
+        "author": "Liangyu Xiang",
+        "type": "Paper"
+      },
+      {
+        "title": "M$^{2}$AdaptVLA: Multimodal Memory-Augmented Vision-Language-Action Model with Predictive Test-Time Adaptation",
+        "summary": "Effective robotic manipulation calls for multimodal memory and rapid adaptation to shifts in contact dynamics. However, many existing policies, which retain either visual or wrench history, may miss key cues from the other modality. Moreover, even with wrench memory, fixed policies can struggle when contact conditions shift at deployment. To this end, we introduce M$^{2}$AdaptVLA, a vision-language-action model that integrates visual and wrench memories with predictive test-time adaptation. For visual memory, the model uses test-time training (TTT) to encode observation history in fast weights. Each entry in the bounded TTT bank combines the corresponding frame's features with a readout from these weights, preserving cues that predate the oldest retained frame. For wrench memory, a context gate controls how much the action expert draws on wrench history as it jointly denoises future actions and wrenches. For predictive test-time adaptation, the auxiliary wrench prediction loss also provides online self-supervision. Using measured wrenches as targets, we update low-rank policy adapters by backpropagating only through the final denoising step. Real-world experiments show that the TTT bank outperforms visual memory baselines on progress tracking, scene recall, and demonstration following. On contact-sensitive tasks, the context gate yields higher success rates than direct injection or gated cross-attention. Predictive test-time adaptation improves robustness to shifts in contact dynamics. On eight tasks requiring visual and wrench memory, M$^{2}$AdaptVLA achieves a mean success rate of 82.71%, a 31.46% absolute gain over the strongest baseline. The project page is available at https://tlf-tlf.github.io/M2AdaptVLAPage/.",
+        "url": "http://arxiv.org/abs/2611.34560v1",
+        "date": "2026-11-25",
+        "author": "Liufan Tan",
+        "type": "Paper"
+      },
+      {
+        "title": "AliceAI-Foundation-80B-A3B-Base",
+        "summary": "We present AliceAI-Foundation-80B-A3B-Base, a mixture-of-experts language model with 80 billion total parameters and approximately 3 billion active parameters per token, trained from scratch at Yandex and released under the Apache 2.0 license. The model combines Kimi Delta Attention with full attention, uses Attention Residuals, and is trained with Muon. Training comprises general pretraining on 17.5 trillion tokens, two context-extension stages, and a dedicated stage for reasoning and agentic interaction. We describe the data collection and augmentation pipelines, evaluation protocols, architectural ablations, and scaling-law experiments. We identify the limitations of held-out training loss as a proxy for downstream performance and introduce an auxiliary loss on mixture-of-experts outputs to stabilize training at the predicted learning rate. Domain-specific data selection and augmentation improve factual knowledge, mathematics, and programming skills, while agent trajectories introduced during pretraining improve performance on agentic benchmarks after supervised fine-tuning. In zero-shot reasoning evaluation, the model achieves leading results among open base models of comparable size, with 88.7% pass@8 on IMO-AnswerBench and 82.9% pass@8 on LiveCodeBench v5-v6. To evaluate Russian-language factual knowledge, we introduce and release two benchmarks with their evaluation protocols: WikiWebFacts, which tests short factual questions drawn from encyclopedic sources and search queries, and HardMultiQA, which tests more demanding factual questions inspired by user interactions. Our model scores 86.5% on WikiWebFacts and 67.9% on HardMultiQA, compared with 83.2% and 65.4% for DeepSeek-V4-Flash-Base (284B total and 13B active parameters) and 72.8% and 54.5% for Nemotron-3-Super-120B-A12B-Base (120B total and 12B active parameters), outperforming both larger models on these benchmarks.",
+        "url": "http://arxiv.org/abs/2611.34529v1",
+        "date": "2026-11-25",
+        "author": "Nikolay Skachkov",
+        "type": "Paper"
+      },
+      {
+        "title": "Rank Before You Encode: Reading a Few Percent of a Whole-Slide Image",
+        "summary": "Classifying a whole-slide image requires encoding thousands of high-resolution tiles with a pathology foundation model, which accounts for most of the inference cost. Existing efficient methods reduce this cost by selecting fewer tiles, but typically train a new model around their selection strategy. A largely unexplored alternative is to keep an existing full-bag model frozen and run it on selected tiles at the same encoder cost. We introduce this comparison, alongside random tile sampling at matched cost. To select tiles, we fit a lightweight selector with 3.3K parameters to the attention of a frozen model, without additional slide labels. The selector ranks regions from a slide thumbnail, encodes the top K regions at 5x magnification, and selects b for processing at 20x. We evaluate seven frozen MIL aggregators on six tasks and compare them with nine efficient methods trained on the same features and splits. At a budget of (K,b)=(1000,10), encoding costs about 6.6% of the full bag and is 10-14x faster, excluding tiling. The AUROC drop is no more than 0.005 in 33 of 36 aggregator-task pairs. At (500,10), the cost falls to about 4% and inference is 13-22x faster, but AUROC drops by up to 0.035 on CAMELYON17, where small metastases are easily missed. Selection improves over random sampling by about 0.10 AUROC on tasks with focal lesions, while random sampling performs well on diffuse tasks. In our comparisons, the frozen model at (500,10) is ahead of nine efficient methods in 55 of 60 paired comparisons. Giving an existing WSI model fewer tiles is thus a baseline that a new efficient model should be compared with at matched encoder cost.",
+        "url": "http://arxiv.org/abs/2611.34523v1",
+        "date": "2026-11-25",
+        "author": "Haoyu He",
+        "type": "Paper"
+      },
+      {
+        "title": "SceneDesigner++: A Unified 9-DoF Pose Control Framework for T2I and T2V Generation",
+        "summary": "Precise 9-DoF pose control is essential for visual content generation, enabling users to specify object location, size, and orientation in 3D space. However, existing methods typically focus on either text-to-image (T2I) or text-to-video (T2V) generation, with limitations in pose controllability and temporal coherence. We present SceneDesigner++, a unified framework for 9-DoF pose control across both T2I and T2V generation. We construct ObjectPose9D++, a dataset containing high-quality images and videos with accurate pose annotations. Trained on ObjectPose9D++, SceneDesigner++ combines absolute and relative pose encoding strategies to decouple frame-wise spatial grounding from inter-frame motion modeling. Specifically, absolute pose encoding leverages CNOCS map sequences to provide explicit, frame-wise 9-DoF pose guidance. Meanwhile, our relative pose encoding, termed VPRoPE, incorporates relative pose information into rotary position embeddings to explicitly model inter-frame pose transitions, thereby promoting temporally coherent object motion. A learnable orthogonal transformation is further introduced for each attention head, allowing different heads to capture complementary geometric relationships while preserving input feature norms to promote training stability. We further adopt a two-stage training strategy to learn the absolute and relative pose encoding mechanisms separately. Benefiting from this lightweight and decoupled design, SceneDesigner++ also supports integration with an independently trained camera-control module, enabling separate or joint control over object and camera motion. Finally, we introduce T2IVPoseEval, a benchmark for evaluating diverse object poses and motion patterns in both T2I and T2V tasks. Extensive experiments demonstrate that SceneDesigner++ consistently outperforms same-backbone baselines in pose fidelity and motion quality.",
+        "url": "http://arxiv.org/abs/2611.34461v1",
+        "date": "2026-11-25",
+        "author": "Xincheng Shuai",
+        "type": "Paper"
+      },
+      {
+        "title": "A Head-Level Investigative Study of Self-Supervised Backbones for Synthetic Speech Detection",
+        "summary": "Self-supervised learning (SSL) speech backbones are the standard frontend for synthetic-speech detection, and layer-wise probing has established which layers carry the most signal. But analysis stops there: which of a layer's twelve attention heads compute the spoof decision is unknown. We present the first head-level study of two frozen backbones, WavLM-base and Wav2Vec2-base, on ASVspoof 5. Per-head ablation shows that only a few heads carry the decision while others actively oppose it; removing those heads lowers equal error rate (EER) with no retraining, by 13% relative in WavLM and 22% in Wav2Vec2. We also find a probe-free signature: spoofed speech draws more focused attention than genuine speech, and this gap alone separates the two almost as well as the full representation, peaking at each backbone's most discriminative layer. Finally, attack identity is decodable from every head, yet heads differ in what they do, not in what they know.",
+        "url": "http://arxiv.org/abs/2611.34426v1",
+        "date": "2026-11-25",
+        "author": "Mohamed Mallat",
+        "type": "Paper"
+      },
+      {
+        "title": "DocSEAM: Bidirectional Cross-Page Encoding for Multi-Page Document Understanding",
+        "summary": "Multi-page document vision-language models encode each page independently, creating a feature-level discontinuity at page boundaries: visual tokens are formed without access to content on adjacent pages, and the language model must reason over these page representations formed in isolation. We introduce DocSEAM (Document Selective Enrichment via Anchored Masking), a lightweight module inserted between a pretrained vision encoder and the language model that injects the inductive bias of local cross-page context into visual representations. For each page, DocSEAM forms a local triplet with its two neighbors, applies center-anchored masked self-attention with directional salience gates to fuse information from neighbor pages, and returns only the enriched center-page tokens, leaving the visual token count unchanged. After a supervised cross-page warm-up and multi-page fine-tuning with DocSEAM frozen, our 9B-parameter model achieves state-of-the-art results among the evaluated open-weight models of up to 10B parameters on five multi-page document VQA benchmarks. We further show that under controlled re-pagination, DocSEAM reduces sensitivity to boundary placement and improves cross-page span localization",
+        "url": "http://arxiv.org/abs/2611.34420v1",
+        "date": "2026-11-25",
+        "author": "Hoang-Nhat Nguyen",
+        "type": "Paper"
+      },
+      {
+        "title": "Agentic Waterfall: An Intent-Driven Information Discovery Framework for Reclaiming User Control in the Attention Economy",
+        "summary": "We formalize Agentic Waterfall Feed, a new problem of personalized information discovery in which users actively direct recommendations and the system adapts to evolving needs inferred from both explicit requests and browsing behavior. We address this problem with the Agentic Waterfall framework, whose language-model controller maintains persistent user state and coordinates content retrieval, ranking, and state updates. To evaluate systems on this task, we contribute the Agentic Waterfall Dataset and a replay-based evaluation protocol. The dataset combines real content metadata with simulated interaction histories. The protocol compares systems under shared histories using relevance scores and blind judgments of how well recommendations satisfy current user goals and constraints. Agentic Waterfall remains competitive with strong baselines on conventional recommendation tasks across five public benchmarks. On the Agentic Waterfall Dataset, it outperforms the strongest baseline in both evaluations, with relative improvements of up to 16.1%.",
+        "url": "http://arxiv.org/abs/2611.34407v1",
+        "date": "2026-11-25",
+        "author": "Yige Luo",
+        "type": "Paper"
+      },
+      {
+        "title": "On Bramble-Pasciak-type preconditioners and their properties",
+        "summary": "Bramble and Pasciak (Math. Comp., 1988) discovered a preconditioning method for linear algebraic systems in saddle point form, which under certain conditions transforms a symmetric indefinite saddle point matrix into a nonsymmetric matrix that is positive definite in some non-standard inner product. Thus, the method \"removes\" the indefiniteness of the problem, while retaining the property that the preconditioned system can be solved using an optimal Krylov subspace method with three-term recurrences. Since this well-known method has some limitations, several variants with potential improvements have been proposed in the literature. In this paper, we attempt a systematic assessment of the mathematical properties and practical efficiency of Bramble-Pasciak-type preconditioners. Our goal is to close some gaps in the understanding of these techniques. We identify and analyze the three main methods in this context, highlighting a variant that offers additional flexibility but has received little attention to date. We perform detailed spectral analyzes of the preconditioned matrices and illustrate our theoretical results on several numerical examples.",
+        "url": "http://arxiv.org/abs/2611.34379v1",
+        "date": "2026-11-25",
+        "author": "Chen Greif",
+        "type": "Paper"
+      },
+      {
+        "title": "AIRIS: Benchmarking Social Embodied Intelligence in Egocentric Streaming Videos",
+        "summary": "Embodied agents operating around people must not only recognize social cues, but also decide when the available evidence is sufficient, whether to intervene, and how to respond without violating social norms. Existing benchmarks typically evaluate these abilities in isolation or with access to completed videos, obscuring where an online social decision fails. We introduce AIRIS, a causal streaming benchmark that formulates social embodied intelligence as a time-anchored chain of Attention, Intention, Reaction, and Interaction (A-I-R-I). AIRIS contains 8,000 expert-curated questions grounded in 357 egocentric clips across 11 context categories and 36 capability dimensions. At each query, models receive only the observation prefix available at that time; decision-aware metrics reward calibrated waiting and complete reactions while penalizing premature commitment. Evaluating 45 proprietary and open-source general-purpose, embodied, streaming-video, and omni-modal models reveals fragmented and temporally miscalibrated competence. General-purpose VLMs excel at passive cue grounding and intent recognition, whereas embodied specialists lead on isolated reaction sub-decisions; yet across all families, models frequently guess intents before sufficient evidence emerges and fail to jointly align intervention timing, action domain, and concrete execution within the same episode. AIRIS thus provides a diagnostic foundation for bridging the gap between passive social perception and reliable embodied interaction.",
+        "url": "http://arxiv.org/abs/2611.34347v1",
+        "date": "2026-11-25",
+        "author": "Yuchen Zhou",
+        "type": "Paper"
+      },
+      {
+        "title": "RAP: Radial-Angular Random Projection for Hyperbolic Representations",
+        "summary": "Random projection is a basic compression primitive for Euclidean representation learning, with the Johnson--Lindenstrauss lemma giving a target dimension $k=O(\\varepsilon^{-2}\\log n)$ independent of the ambient dimension. As hyperbolic representations gain increasing attention in modern Transformers, vision-language models, and large language models, the same need for oblivious dimensionality reduction arises, but no analogous primitive yet exists for hyperbolic representations. We study this gap. Two natural attempts fail in dual ways: a tangent-space scheme gives a clean local guarantee but is chart-bound and pays a curvature penalty, while a fully hyperbolic projection in the hyperboloid model is geometrically native but mixes radial and angular error before feeding them into the conditioning of $\\operatorname{arcosh}$. We propose radial-angular random projection (RAP), which preserves the radial coordinate exactly and applies a Euclidean random projection only to the angular direction, lifting the result back to the target hyperboloid. RAP is hyperbolic-to-hyperbolic by construction, costs one Gaussian matrix-vector product, and reduces hyperbolic compression to a normalized angular JL question on $\\mathbb{S}^{d-1}$. We prove a finite-set RAP guarantee with explicit $\\sinh(\\sqrt{c}\\,r_x)\\sinh(\\sqrt{c}\\,r_y)$ conditioning, complemented by a local tangent-space JL theorem and an arcosh-conditioning lemma for the fully hyperbolic comparator. Across an origin-centered broad-radius point cloud, a balanced tree, a clustered Gaussian, and the WordNet noun hierarchy, RAP attains the lowest mean relative distortion in every $(n,k)$ cell, reducing distortion over the strongest hyperbolic baseline by approximately $48\\%$--$49\\%$ on broad-radius data. RAP also scales to million-point datasets and improves retrieval on vision--language representations over hyperbolic projection baselines.",
+        "url": "http://arxiv.org/abs/2611.34298v1",
+        "date": "2026-11-25",
+        "author": "Jiahong Liu",
+        "type": "Paper"
+      },
+      {
+        "title": "UMAI: UM Aware Inference with a Frozen Qwen3-ASR",
+        "summary": "Speech recognizers often leave filled pauses such as uh and um out of the transcript. Fine-tuning on verbatim transcripts can bring them back, but it can also change the rest of the output. We show that most missing fillers can be recovered from values recorded during a single greedy decoding pass of a frozen recognizer, Qwen3-ASR-1.7B. For each gap between output words, UMAI (UM Aware Inference) pools frame-class posteriors over an audio window located by decoder attention. It combines them with the decoder states through two stages of linear discriminant analysis and calibrates the score by isotonic regression. No parameter is trained by gradient descent. UMAI inserts [uh] and [um] tags and leaves every recognized word unchanged. On the held-out AMI evaluation set, filler F1 rises from 12.2 to 82.6. On the Nyra verbatim benchmark, where the operating threshold was chosen, it rises from 37.2 to 96.5. Total processing time increases by 14%.",
+        "url": "http://arxiv.org/abs/2611.34256v1",
+        "date": "2026-11-25",
+        "author": "Gyeongmin Kim",
+        "type": "Paper"
+      }
+    ]
   },
   "MoE (Mixture of Experts) & Routing": {
     "keywords": [
@@ -31,7 +248,32 @@
       "expert parallelism",
       "fused moe"
     ],
-    "items": []
+    "items": [
+      {
+        "title": "LoopTitan: What Does Parameter Revisit Buy a Mixture-of-Experts?",
+        "summary": "Looped Mixture-of-Experts (MoE) architectures revisit layer parameters across depths. This design increases effective depth without adding parameters. Recent looped MoE studies report substantial gains over the standard MoE at matched budgets (parameters, FLOPs and KV cache). However, the reported gains still confound parameter revisit with other design choices, e.g., network shape and residual scale. We ask, what does parameter revisit itself buy? Using matched non-revisit controls, we find that parameter revisit itself buys almost nothing. We argue that revisit only offers a freedom an MoE already has, i.e., trading experts for depth (more layers, fewer experts each) at fixed parameters. First, at matched budgets, we decompose the state-of-the-art looped recipe, with revisit last. A non-revisit control retains all the gain. Most comes from network shape, and the rest from residual scale. We prove this scale acts as a lower learning rate on revisited layers. This helps under AdamW's uneven layer step sizes, but disappears under Muon, which keeps them nearly equal. Second, beyond matched budgets, we evaluate revisit by adding compute at fixed parameters. One extra visit gains more than doubling the experts. Yet without revisit, a deeper standard MoE at equal parameters and compute obtains 90.2% of that gain under Muon. Overall, gains come from network shape, the optimizer and added compute, which a standard MoE can adopt. Accordingly, we propose LoopTitan-Base as a stronger MoE baseline. Under Muon, it matches the strongest looped recipe without revisit or residual scale. We open-source LoopTitan and release 17 pretrained models (including LoopTitan-Base and the control). Our experiment record is public as GitHub issues, with predictions pre-registered and the full exploration history kept. This is our Phase 1 technical report, laying the foundation for follow-up studies.",
+        "url": "http://arxiv.org/abs/2611.34821v1",
+        "date": "2026-11-25",
+        "author": "Zichen Tian",
+        "type": "Paper"
+      },
+      {
+        "title": "Routing and Cache Retention for Multi-Turn LLM Inference: Theory and Implementation",
+        "summary": "Multi-turn AI agents execute iterative loops of large language model (LLM) inference and external tool calls, transforming cluster serving into a dynamic resource-allocation problem where routing and key-value (KV) cache retention jointly govern prefix reuse across inter-turn delays. We formulate a fluid approximation of this system and show that optimal admission, routing, and eviction are governed by endpoint-specific shadow prices for computation and memory together with session continuation values. Building on this structure, we propose an asymptotically optimal buffer-reserve policy that absorbs stochastic fluctuations using a vanishing share of capacity. To handle asynchronous arrivals, delayed load reports, and engine-local memory management in production clusters, we translate these principles into a practical controller named PARK, which pairs online projected subgradient price updates and one-turn migration lookahead with a local KV retention index ranked by expected reuse value per byte-epoch. In real GPU cluster experiments serving a 197-billion-parameter mixture-of-experts model on multi-turn software-engineering agent benchmarks (SWE and Terminal-Bench), PARK outperforms all five load-balancing and prefix-aware baselines across contrasting traffic regimes. On 16 H200 GPUs, PARK raises output throughput by $24.2\\%$ over the strongest baseline ($336.9\\%$ over round robin) on turn-intensive SWE trajectories and by $40.0\\%$ over the strongest baseline ($63.3\\%$ over round robin) on generation-intensive Terminal-Bench trajectories. Controlled single-replica ablations show that our retention index alone cuts prior-prefix token loss from $13.26\\%$ to $2.17\\%$ and increases throughput by $36.7\\%$ over least-recently-used (LRU) eviction, while 128-GPU scale-up experiments sustain 50,789 to 67,363 output tokens/s across 16~replicas with prefix cache hit rates of $91.3\\%$ to $97.4\\%$.",
+        "url": "http://arxiv.org/abs/2611.34584v1",
+        "date": "2026-11-25",
+        "author": "Sentao Miao",
+        "type": "Paper"
+      },
+      {
+        "title": "Scaling Looped MoE Language Models under Matched Budgets: Information Flow and Parameter Allocation",
+        "summary": "Looped Transformers decouple computational depth from parameter count, and prior studies have demonstrated promising performance gains with increased computation. However, systematic design principles for configuring these models under strict iso-parameter and iso-FLOP constraints remain scarce. We contribute to this direction by improving information flow in looped models and systematically studying loop parameter configurations. Specifically, we refine this information flow via gated inner-loop state updates and a cross-stage residual connection. Building on this design, controlled studies identify a configuration combining a single-pass Core depth of 25%-35% of the total unrolled depth with reallocating saved parameters into extra routed experts per layer, improving performance at zero extra compute while preserving compatibility with existing training infrastructure. Evaluated after 1T pre-training tokens, our 69B MLA and 51B KDA Mixture-of-Experts models outperform budget-matched non-recurrent baselines by an average of 1.16 and 2.29 percentage points across four benchmarks, respectively. Further reproduction experiments on a common backbone with a 200B-token training budget show that our method achieves lower perplexity than other looped methods. Code for these reproduction experiments is available at https://github.com/lxi01766/Scaling-Looped-MoE-Language-Models-under-Matched-Budgets-Information-Flow-and-Parameter-Allocation.",
+        "url": "http://arxiv.org/abs/2611.34276v1",
+        "date": "2026-11-25",
+        "author": "Shipeng Bai",
+        "type": "Paper"
+      }
+    ]
   },
   "GEMM, Tensor Cores & Low-Precision": {
     "keywords": [
@@ -55,7 +297,24 @@
       "sm90",
       "sm100"
     ],
-    "items": []
+    "items": [
+      {
+        "title": "A Differential Computing Accelerator for LLM Inference Leveraging Bit-Slice Transition Sparsity",
+        "summary": "Large language models (LLMs) have become foundational to modern artificial intelligence. Driven by scaling laws, their rapid growth poses increasing computational and memory challenges for deployment. To accelerate the general matrix multiplication (GEMM) operations that dominate LLM computation, bit-slice architectures decompose quantized operands along the bit dimension, exposing slice-level sparsity and redundancy. However, existing bit-slice designs primarily exploit sparsity in high-order slices, while dense low-order slices still offer substantial untapped reuse opportunities.   We observe that bit-slice vectors (BSVs) are highly clustered in Hamming space, with many BSVs lying only a few bit flips away from a small set of representative patterns. Based on this observation, we propose ISTS, an algorithm-hardware co-designed accelerator that leverages representative BSV patterns as shared Steiner points to reuse partial sums across slices, substantially reducing computation. Specifically, the partial sum of each target BSV can be reconstructed from that of its assigned Steiner point using only a few additions or subtractions. On the algorithmic side, we propose Steiner Absorption Table Construction (SATC), which selects a compact set of Steiner points to absorb BSVs with only a few bidirectional bit flips, while FlipPrune selectively prunes flips to further expand the reusable BSV population. On the hardware side, we design a lightweight accelerator that supports Steiner reuse for static linear layer weights and runtime-generated attention K/V tensors. Comprehensive evaluations show that ISTS achieves average speedups of $3.09\\times$, $2.41\\times$, $2.18\\times$, $1.27\\times$, and $1.41\\times$ over the state-of-the-art accelerators ANT, BBS, LUT Tensor Core, Transitive Array, and MCBP-BRCR, respectively.",
+        "url": "http://arxiv.org/abs/2611.34630v1",
+        "date": "2026-11-25",
+        "author": "Yifan Wang",
+        "type": "Paper"
+      },
+      {
+        "title": "Any-Rate: Half-Bit Multi-Precision LLM Quantization with Coded Bit-Planes",
+        "summary": "Nested multi-precision quantization derives multiple precisions from a single checkpoint by reading only the leading bits of each weight, which makes it attractive for on-device deployment under varying memory and energy budgets. However, existing methods offer only integer bits, leaving large accuracy gaps between adjacent precisions and severe degradation at 2 bits. To address this, we propose Any-Rate, which serves 2-8 bits from one checkpoint, in half-bit steps over 2-4 bits. Any-Rate restricts some bit-planes to extended Hamming codewords in 8-weight blocks (0.5 bits per weight), shares one LUT per row across precisions, and encodes all precisions jointly with a separate target for each, reducing the loss from sharing bit-planes. Across four LLMs, Any-Rate achieves state-of-the-art accuracy among multi-precision methods at 2 and 3 bits, keeping 69% of FP16 accuracy at 2 bits, and is within one point of the best at 4 bits. It decodes about as fast as existing kernels, and an LPDDR energy model estimates up to 27% less energy at equal accuracy. Code is available at https://github.com/hoonki2002/Any-Rate.",
+        "url": "http://arxiv.org/abs/2611.34402v1",
+        "date": "2026-11-25",
+        "author": "Hoonki Lee",
+        "type": "Paper"
+      }
+    ]
   },
   "Kernel Compilers & DSLs (Triton, TileLang, CUDA)": {
     "keywords": [
@@ -72,7 +331,128 @@
       "tma",
       "tensor memory accelerator"
     ],
-    "items": []
+    "items": [
+      {
+        "title": "A Mesh for Every Moment",
+        "summary": "We present MEMO (a Mesh for Every MOment), a method that reconstructs the geometry of complete dynamic scenes, captured by multiple synchronized cameras, and extracts a mesh at every frame. Existing dynamic Gaussian splatting methods either model appearance alone or target isolated objects segmented by foreground masks, and all of them recover meshes by TSDF fusion or Poisson reconstruction, whose fixed grids limit the detail they can capture. At the core of MEMO is a per-Gaussian motion model inspired by Gaussian processes, which represents each Gaussian's position and rotation over time as a combination of temporal Gaussian kernels. The model keeps every Gaussian a valid surface element throughout the sequence and carries an implicit representation of the dynamic geometry, so a mesh can be derived at any time from a field defined by the Gaussians. Although common in real captures, large and fast motion poses a challenge that dynamic Gaussian splatting methods usually overlook. To account for it, we design a track-based initialization scheme that fits each Gaussian's initial trajectory to point tracks in closed form. We evaluate MEMO on Blender-Moments, a new benchmark of nine animated scenes with ground-truth meshes at every frame, and on two real-world datasets. MEMO reconstructs the most accurate geometry among state-of-the-art methods, and remains competitive in novel-view synthesis and training time. Project page: https://memo-4d.github.io",
+        "url": "http://arxiv.org/abs/2611.34939v1",
+        "date": "2026-11-25",
+        "author": "Roy Or-El",
+        "type": "Paper"
+      },
+      {
+        "title": "Sharp constant in 2D critical fermionic Hardy inequality",
+        "summary": "We study the large-$N$ behavior of the optimal constant $κ_N$ in the two-dimensional fermionic many-particle Hardy inequality \\[ \\sum_{i=1}^N -Δ_i \\geq κ_N^{(2)}\\sum_{1\\leq i<j\\leq N}\\frac{1}{|x_i-x_j|^2}, \\] understood as a quadratic-form inequality on antisymmetric wave functions. We prove that \\[ \\lim_{N\\to\\infty}(\\log N)κ_N^{(2)}=4, \\] thereby proving a conjecture of Frank, Hoffmann-Ostenhof, Laptev, and Solovej. The proof combines a dyadic Fefferman-de la Llave representation of the Coulomb kernel with separate estimates for squares of low and high particle occupation. A trace inequality controls the low-occupation regime, while sums of Neumann eigenvalues yield the sharp bound in the high-occupation regime.",
+        "url": "http://arxiv.org/abs/2611.34845v1",
+        "date": "2026-11-25",
+        "author": "Marvin R. Schulz",
+        "type": "Paper"
+      },
+      {
+        "title": "PrO Filtering via Kernel Mean Embedding Dynamics",
+        "summary": "Filtering methods are routinely deployed with misspecified state-space models, where Bayesian filters can diverge and become overconfident. Predictively-oriented (PrO) filtering is a recent, hyperparameter-free alternative that was demonstrated to outperform (generalised) Bayesian filtering methods when either the dynamical model or the measurement model is structurally misspecified. This can be attributed to \\emph{hedging} behaviour: when an observation conflicts with the forecast, the PrO update places mass near both. Yet existing implementations of PrO filtering rely on unimodal (Gaussian) approximations, whose ability to effectively hedge is limited. This paper develops the first nonparametric, particle-based implementation of PrO filtering. The key obstacle, that PrO filtering distributions are only implicitly defined, is overcome by constructing a path from the predictive to the PrO filtering distribution whose rate is available in closed form, enabling the use of kernel mean embedding dynamics for measure transport. The resulting algorithm requires only simulation from the dynamical model and evaluations of the likelihood, with neither importance weights nor the predictive density. Moreover, as we prove, the number of pseudo-time steps it requires does not grow with the outlyingness of the observation, in contrast to transport along the Bayesian tempering path. An empirical assessment shows substantial improvement over Gaussian variation of PrO filtering in challenging nonlinear examples where Gaussian approximation is unreasonably limited.",
+        "url": "http://arxiv.org/abs/2611.34809v1",
+        "date": "2026-11-25",
+        "author": "Linfeng Wang",
+        "type": "Paper"
+      },
+      {
+        "title": "Minimizing Optical Circuit Reconfigurations for Concurrent Collectives",
+        "summary": "Optical circuit switches (OCSes) provide high-bandwidth point-to-point circuits in GPU clusters, but each optical port attaches to only one peer at a time, and reconfiguring a connection interrupts transmission. In large-model training, these ports are shared by many communication domains, each running its own collective instance, called a CCL kernel; often, several of these kernels execute the same collective at the same time. Because each step of the collective can reach a different peer, domains advancing through the steps in the same order may require a reconfiguration at every step.   We introduce the mega CCL kernel to schedule these kernels jointly. When a collective permits its steps to be reordered, different domains can take different legal steps in the same round, letting consecutive rounds share the same circuits and reducing the number of reconfigurations. Because the kernels are interchangeable, we need not decide the steps of every kernel separately. Instead, in each round we count how many kernels run each pattern, and then use bipartite matching to turn those counts into a concrete schedule for each kernel. We call this the count model, as opposed to the direct formulation that decides each kernel separately, and prove that the two give the same configuration sequences and the same optimum while the count model is substantially easier to solve.   On a fully loaded 64-supernode, 64-domain scheduling instance, joint scheduling cuts pairwise-AlltoAll reconfigurations from 62 to 3 and HD AllReduce from 10 to 2. In synthetic training replays parameterized by eight real models, it reduces iteration time by up to about 34%; on a 64-GPU test case, the count model solves over six orders of magnitude faster than the direct formulation.",
+        "url": "http://arxiv.org/abs/2611.34759v1",
+        "date": "2026-11-25",
+        "author": "Xinchi Han",
+        "type": "Paper"
+      },
+      {
+        "title": "Electrostatic effects on settling cloud droplets: from pair collisions to size distribution evolution",
+        "summary": "We investigate how droplet charge and a uniform vertical electric field influence collisions between cloud droplets settling in still air and how these collisions shape the droplet size distribution. We compute collision efficiencies by analyzing the relative trajectories of pairs of spherical, conducting droplets, accounting for droplet inertia, exact hydrodynamic, electrostatic, and van der Waals forces. The hydrodynamic interactions are based on exact two-body solutions for Stokes flow with interfacial mobility and internal circulation. In the absence of an applied electric field, collisions between like-charged droplets are suppressed, whereas collisions between oppositely-charged droplets are enhanced. A vertical electric field promotes collisions between uncharged droplets through induced polarization and, when sufficiently strong, can overcome the repulsion between like-charged droplets. When the larger droplet has a radius of $10$ or $20μ$m raising the electric field strength from $5\\times10^{4}$ to $3\\times10^{5}\\,\\mathrm{V\\,m^{-1}}$ can enhance the collision efficiency of uncharged droplet pairs by an order of magnitude. Depending on droplet size and field strength, for oppositely charged pairs, an applied electric field can either enhance or suppress collisions relative to the zero-field case. Using collision kernels computed from droplet pair trajectories, we solve the stochastic collection equation with a flux method on a two-dimensional grid that resolves droplet mass and charge. For an initial mean droplet radius of $10μ$m , by $40$ min in every electrified case the large-droplet mode of the mass spectrum reaches a larger radius than in the hydrodynamic reference case. This suggests that electrostatic interactions can hasten warm rain initiation by accelerating droplet growth through collision and coalescence.",
+        "url": "http://arxiv.org/abs/2611.34676v1",
+        "date": "2026-11-25",
+        "author": "Pijush Patra",
+        "type": "Paper"
+      },
+      {
+        "title": "Tackling the DVCS inverse problem with finite element method",
+        "summary": "In this paper, we tackle the problem of shadow GPDs, arising from the non-invertibility of the measured $2\\to 2$ exclusive processes at large virtualities (DVCS, TCS and DVMP). This problem arose five years ago as the main source of theoretical uncertainties, potentially dominating experimental ones by orders of magnitude. We show here that the deconvolution ambiguity can be elegantly eliminated by relying on finite element method. The problem is essentially converted at any finite discretisation area $a$ from a non-invertible to an ill-conditioned one. Given experimental uncertainties, this yields a theoretical lower bound on the discretisation area $a_\\textrm{min}$, that can be interpreted as the maximal theoretical resolution one can obtain on the reconstruction of the lightcone momentum fractions. Associated with the local polynomial degree $p$, the pair $(a,p)$ provides an insightful and easily understandable regularisation framework, allowing one to systematically improve the description of the momentum fractions dependence of GPDs with the pQCD order at which the hard kernels of exclusive processes are computed.",
+        "url": "http://arxiv.org/abs/2611.34631v1",
+        "date": "2026-11-25",
+        "author": "Marija Čuić",
+        "type": "Paper"
+      },
+      {
+        "title": "Automated Batch-Variable Selection for ComBat-Based Radiomic Harmonization",
+        "summary": "ComBat harmonizes multicentre radiomic features, but batch variables are usually chosen manually, without a standardized criterion across image acquisition parameters. We propose ParsiComBat, which selects acquisition parameters for ComBat, balancing batch-effect removal against feature-structure preservation and abstaining when technical variation is negligible.   ParsiComBat ranks candidate acquisition parameters by batch effect, filters redundancy, and scores sequential ComBat corrections. We evaluated it in three experiments: in simulations, testing whether it recovered a known batch variable and abstained without one; in CT (NSCLC-Radiomics) and MRI (MAMA-MIA) cohorts, comparing batch-effect removal against manufacturer (manual), every feasible parameter (greedy) and AutoCombat; and in clinical prediction, internally and externally.   In simulations, ParsiComBat identified the true batch variable in 92.9% of positive trials and abstained in 99.2% of null controls. In CT, correcting for reconstruction kernel reduced mean k-nearest neighbour batch-effect test from 0.276 to 0.032, almost matching greedy correction of six variables. In MRI, correcting for slice thickness and manufacturer reduced it from 0.680 to 0.325, slightly more than manual selection but less than greedy correction of seven variables. Removing technical variation did not improve clinical discrimination: no strategy, including raw features, differed significantly from ParsiComBat in area under the curve.   ParsiComBat provides a data-driven framework that removes technical batch effects using minimal acquisition parameters, preserving feature structure and clinical discrimination. It selects variables verifiable against the acquisition protocol and abstains when no correction is needed, supporting transparent, reproducible multicentre radiomics.",
+        "url": "http://arxiv.org/abs/2611.34618v1",
+        "date": "2026-11-25",
+        "author": "Jose Lozano-Montoya",
+        "type": "Paper"
+      },
+      {
+        "title": "Distribution of the ratio of the two smallest eigenphases of the Jacobi unitary ensemble",
+        "summary": "We compute the joint distribution of the two smallest eigenvalues of the Jacobi unitary ensemble and the distribution of their ratio. We use a framework for calculating Janossy densities based on the Tracy-Widom system of ordinary differential equations. For the cases studied here, the leading finite-N correction to the ratio distribution, relative to its universal Bessel-kernel limit, is O(N^{-4}). This behaviour reflects a nontrivial cancellation of lower-order corrections present in the Jacobi kernel. Eigenphase ratios may thus reveal subtle finite-size effects in quantum-chaotic systems with particle-hole or chiral symmetry. As an exploratory arithmetic application, we compare the ratio distribution for the two lowest zeros of quadratic Dirichlet L-functions with the hard-edge limit for Sp(N). The data indicate that the N_{eff}^{-1} term vanishes, leaving an O(N_{eff}^{-2}) correction.",
+        "url": "http://arxiv.org/abs/2611.34553v1",
+        "date": "2026-11-25",
+        "author": "Shinsuke M. Nishigaki",
+        "type": "Paper"
+      },
+      {
+        "title": "Convergence of Residual-driven Adaptive Kernel-based Multilevel Approximation",
+        "summary": "Kernel-based multilevel methods combine compactly supported radial basis functions with a residual correction scheme and are known to converge linearly in the number of levels. In this paper we study an adaptive version of the multilevel method, in which the interpolation on each level only uses those sites at which the residual of the preceding level exceeds a given threshold. Although this method has been proposed some time ago and converges in all numerical tests, a convergence proof has been missing so far. We close this gap. We derive an a priori error bound, an a posteriori error bound valid for arbitrary point selections, and extend the analysis to penalized least-squares approximation and to target functions outside the native space of the kernel. For a variant with an additional check-loop per level, we show convergence with the rate of the classical multilevel method. We illustrate our findings with three numerical examples.",
+        "url": "http://arxiv.org/abs/2611.34530v1",
+        "date": "2026-11-25",
+        "author": "Rüdiger Kempf",
+        "type": "Paper"
+      },
+      {
+        "title": "Exact sequences of regular LF-spaces",
+        "summary": "We show that the category of regular LF-spaces has all kernels but, unlike the category of regular LB-spaces, does not have all cokernels. Its topological exact structure, maximal exact structure and maximal deflation-exact structure form a strictly increasing chain of proper subclasses of the class of all kernel-cokernel pairs. To the best of the authors' knowledge, regular LF-spaces in particular provide the first natural example of a category that has all kernels but is not preabelian and whose maximal deflation-exact structure is neither two-sided exact nor equal to the class of all kernel-cokernel pairs.",
+        "url": "http://arxiv.org/abs/2611.34477v1",
+        "date": "2026-11-25",
+        "author": "José Bonet",
+        "type": "Paper"
+      },
+      {
+        "title": "Functional Factor Graphs and the Functional Sum-Product Algorithm",
+        "summary": "We propose a generalization of factor graphs and the sum-product algorithm (SPA), widely used in the estimation of data, channel state information and sensing parameters, to unknowns that are functions, such as waveforms, time-varying channels and continuous-aperture array currents, which must otherwise be sampled first. In order to mitigate the challenge that functions have no probability density functions (PDFs), the proposed scheme measures densities relative to the prior of each function, not to the flat reference implicit in every PDF. Messages then become likelihood ratios, and the factor-node rule an average over the priors, still exact on trees. For Gaussian models, the proposed functional SPA (FSPA) is Gaussian belief propagation (GaBP) with kernels in place of matrices and a grid-independent convergence condition, whereas scalar GaBP on grid samples provably slows down under refinement, as information hops from sample to sample. Simulations in a multi-user detection setting confirms the latter, and shows that sampling first can also fail for smooth priors.",
+        "url": "http://arxiv.org/abs/2611.34460v1",
+        "date": "2026-11-25",
+        "author": "Kuranage Roche Rayan Ranasinghe",
+        "type": "Paper"
+      },
+      {
+        "title": "Global Convergence of Second-Order Methods for Physics-Informed Neural Networks in the Overparameterized Limit",
+        "summary": "Solving high-dimensional partial differential equations (PDEs) constitutes a core task in many engineering and scientific disciplines. Physics-informed neural networks and the deep Galerkin method effectively leverage machine learning models to approximate solutions of known PDEs by minimizing residuals corresponding to the PDE operator alongside external constraints. Although second-order optimizers are becoming increasingly popular for training neural networks (NNs) to solve PDEs and empirically outperform their first-order counterparts in both speed and accuracy, the convergence theory for training such models is essentially confined to first-order methods. In this paper, we close this gap and develop a convergence analysis for the regularized Newton and Gauss-Newton methods. As the number of hidden units tends to infinity, the training dynamics converge in probability, with explicit rates, to the solution of a deterministic limit equation involving a Newton neural tangent kernel operator associated with the PDE. Although the limiting kernel operator admits no spectral gap, we prove that, in the overparameterized limit, the PDE residual vanishes as training proceeds, and, under mild assumptions, the NN converges to the PDE solution. We further show that, provided a sufficiently small regularization parameter, the projection of the residual onto any fixed number of leading eigenfunctions decays exponentially fast, demonstrating that this hyperparameter acts as a spectral filter: it lifts the convergence rates of high-frequency components toward those of low-frequency ones, thereby mitigating the spectral bias inherent in gradient descent. Mathematical challenges arise from the implicit parameter update involving a linear system whose dimension increases with the NN width and, for Newton's method, a potentially indefinite Hessian, as well as from the PDE operator entering the kernel.",
+        "url": "http://arxiv.org/abs/2611.34452v1",
+        "date": "2026-11-25",
+        "author": "Konstantin Riedl",
+        "type": "Paper"
+      },
+      {
+        "title": "The singular Paneitz equation on four-manifolds: refined blow-up analysis and degree jumps",
+        "summary": "We compute the Leray--Schauder degree of the singular Paneitz equation on a closed four-manifold with conical orders strictly between minus one and zero. We assume that the kernel of the Paneitz operator consists of the constants. In each positive nonresonant chamber the degree is a partial sum of an explicit generating series determined by the Euler characteristic and the conical orders. We match the heights of exact blow-up solutions and expand the gradient near the corrected projected bubbles. A localized dilation identity gives its common-scale component on the zero set of the relative-scale equations. For generic data a fixed-mass homotopy then gives the signed degree of each concentrating configuration. Assign ordinary points weight one and conical points weight one plus their order. If the largest concentrating weight exceeds one half, a finite second moment gives the coefficient. At one half the expansion acquires a logarithm, and below one half the coefficient is a global finite part. On the round four-sphere with two antipodal points of equal weight below one half, perturbing the prescribed curvature away from both points selects the side of bubbling.",
+        "url": "http://arxiv.org/abs/2611.34424v1",
+        "date": "2026-11-25",
+        "author": "Mohameden Ahmedou",
+        "type": "Paper"
+      },
+      {
+        "title": "Morse theory and a degree formula for the resonant singular Paneitz equation on four-manifolds",
+        "summary": "We develop Morse theory for the singular Paneitz equation at resonant mass on closed four-manifolds with conical orders between minus one and zero and Paneitz kernel consisting of the constants. Under nondegeneracy of the reduced interactions and nonvanishing of the leading mass-defect coefficients, we classify the critical points at infinity by the sign of these coefficients. We compute their indices and their contributions to the relative homology of sublevels. The topology of very low sublevels is determined by weighted barycenters of strictly smaller total weight and by the negative Paneitz eigenspace. These results yield strong Morse inequalities and a Leray--Schauder degree formula at resonance, which also applies when genuine solutions are degenerate. On the round four-sphere with two conical points, the Morse inequalities give existence on an open set of data for which the degree vanishes.",
+        "url": "http://arxiv.org/abs/2611.34406v1",
+        "date": "2026-11-25",
+        "author": "Mohameden Ahmedou",
+        "type": "Paper"
+      },
+      {
+        "title": "Libtt: A Compiler and Runtime for Tenstorrent Processors",
+        "summary": "Libtt brings the PyTorch and JAX ecosystem to Tenstorrent hardware. It implements PJRT, the interface through which XLA-based frameworks drive Google's TPUs, so JAX runs on it directly, PyTorch runs through TorchTPU, and software written for TPUs carries over with no changes except replacing custom kernels. Built on Tenstorrent's open-source compiler and runtime, libtt ships the entire stack, from the compiler to the multi-chip runtime, as a single shared library. It contains extensive fixes to the upstream Tenstorrent software to make existing PyTorch and JAX code work out of the box, and extensive new compiler optimizations to make it fast. It passes most of the JAX and TorchTPU test suites and runs SGLang, TorchTitan, and Miles, covering serving, fine-tuning, and reinforcement learning.",
+        "url": "http://arxiv.org/abs/2611.34273v1",
+        "date": "2026-11-25",
+        "author": "Philipp Moritz",
+        "type": "Paper"
+      }
+    ]
   },
   "Pre-training & Distributed Infrastructure": {
     "keywords": [
@@ -111,6 +491,31 @@
       "lora",
       "qlora"
     ],
-    "items": []
+    "items": [
+      {
+        "title": "A Failure-Driven Data Flywheel for Post-Training Vision-Language-Action Models",
+        "summary": "Pretrained vision-language-action (VLA) models rarely satisfy all behavioral requirements of a new platform, and teams without a large deployed fleet lack the data to address the resulting failures. We propose a failure-driven data flywheel for post-training such models. It constructs target scenarios absent from the available data by inserting task-relevant entities into reconstructed real-world scenes, and evaluates the model against each behavioral requirement of the target task. Failure rates form a failure map across task conditions and difficulty levels, which is re-evaluated after each round and assigns larger data generation quotas to conditions where the model still fails. We instantiate the framework in autonomous driving for occluded-pedestrian emergence and yielding at stop-sign-controlled intersections, and evaluate it on two VLA models and one non-VLA planner in simulation and on a real vehicle. For occluded-pedestrian emergence, five rounds of post-training improve the critical-phase collision-free rate on the sealed test set from 0.261 to 0.579 for AutoVLA and from 0.390 to 0.765 for ReCogDrive, while the unnecessary braking rate in paired control scenarios never exceeds 0.013. On a full-scale vehicle without real-world training, post-trained ReCogDrive achieves 4 of 5 safe passages, versus 1 of 5 for the base model. Fine-grained evaluation reveals a pattern obscured by the collision-free rate alone: both VLA models learn anticipatory deceleration before reaching the occluding vehicle, while braking after pedestrian emergence remains limited. For stop-sign yielding, the stop-before-line rate rises from 0.100 to 0.897 for AutoVLA and from 0.000 to 0.667 for ReCogDrive. With sequential training from the pedestrian-capability models, it reaches 0.599 and 0.358, respectively, while the pedestrian collision-free rate decreases by at most 0.032.",
+        "url": "http://arxiv.org/abs/2611.34698v1",
+        "date": "2026-11-25",
+        "author": "Yuhao Luo",
+        "type": "Paper"
+      },
+      {
+        "title": "PostMesh: Self-Rewarded Preference Post-Training for Flow-Based Artist Mesh Generation",
+        "summary": "Artistic mesh generators turn a dense 3D object into an artist mesh: a compact, quad-dominant mesh that is easy to edit. Most of current models are auto-regressive methods which decode a mesh token by token, take tens to hundreds of seconds per mesh. Diffusion- and flow-based generators are much faster, but their meshes still fall short of artist quality. To our knowledge, PostMesh is the first post-training method for a diffusion- or flow-based artist mesh generator, and it needs no expensive artist-made ground truth: the generator is trained on its own samples, scored by a reward computed from the dense input and the output. We propose an artistic mesh reward that keeps the output consistent with the dense input while making the mesh structure into artistic. We also propose a multi-negative flow preference optimisation that transfers the reward to the generator. After a short LoRA post-training, PostMesh is comparable to or better than slow autoregressive generators on most artist-mesh quality metrics and in a blind VLM preference test, at a fraction of their time.",
+        "url": "http://arxiv.org/abs/2611.34319v1",
+        "date": "2026-11-25",
+        "author": "Gihyun Kwon",
+        "type": "Paper"
+      },
+      {
+        "title": "LatentCP-DPO: Conformal Pessimism for DPO with Finite-Sample Guarantees",
+        "summary": "Direct Preference Optimization (DPO) learns a response policy from human preference data, but with a limited dataset it can overfit to noisy or weakly informative preference labels. We introduce LatentCP-DPO, a framework that combines conformal prediction with pessimistic preference optimization for Bradley-Terry (BT) pairwise feedback and Plackett-Luce (PL) ranking feedback. Building on LatentCP's construction of uncertainty sets for unobserved model parameters, we address how to incorporate this uncertainty into preference optimization and characterize its effect on policy performance. Under exchangeability and a correctly specified preference model, we construct uncertainty sets for latent relative rewards with finite-sample marginal coverage from conformal prediction sets for observable preferences. We then learn a response policy by maximizing the worst-case expected preference log-likelihood over these uncertainty sets, using an independent collection of prompts and candidate responses without preference labels. Under suitable assumptions, we establish finite-sample upper bounds on regularized policy suboptimality that separate policy-class approximation error, conformal uncertainty, and statistical estimation error. For BT feedback, we further establish a worst-case lower bound for LatentCP-DPO that matches the upper bound's reciprocal dependence on the number of unlabeled optimization examples. The lower bound also shows that the uncertainty sets can induce a bias that persists as the optimization sample grows. Together, these results characterize both the statistical accuracy and potential limitations of preference optimization using conformal uncertainty sets. Experiments support the benefits of the proposed framework in finite preference datasets.",
+        "url": "http://arxiv.org/abs/2611.34275v1",
+        "date": "2026-11-25",
+        "author": "Hongwei Xu",
+        "type": "Paper"
+      }
+    ]
   }
 }
