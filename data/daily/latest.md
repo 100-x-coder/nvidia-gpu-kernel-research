@@ -1,4 +1,4 @@
-# Automated Research & Kernel Funnel (2026-11-26)
+# Automated Research & Kernel Funnel (2026-11-27)
 
 > Automated daily CI/CD snapshot indexing fresh Pre-training, Post-training, and GPU Kernel Optimizations.
 
